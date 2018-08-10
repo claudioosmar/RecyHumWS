@@ -13,8 +13,8 @@ import com.vector.model.Modelo;
  */
 public interface ModelABCLD<T> {
 	
-	Modelo Create(T datos);
-	Modelo Delete (int id);
+	String Create(T datos);
+	String Delete (int id);
 	Modelo Buscar(T datos);
 	List<Modelo> Listar (T datos);
 

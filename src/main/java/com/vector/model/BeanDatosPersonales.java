@@ -2,6 +2,11 @@ package com.vector.model;
 
 public class BeanDatosPersonales implements Modelo {
 
+	
+	private String formulario;
+	private String accion;
+	private String IP;
+	private long iduser;
 	private long idarea;
 	private long idcodpost;
 	private long idedocivil;
@@ -13,27 +18,35 @@ public class BeanDatosPersonales implements Modelo {
 	private String segnombre;
 	private String apellidop;
 	private String apellidom;
-	private char sexo;
+	private String sexo;
 	private String fechanac;
 	private String nacionalidad;
 	private String urlfoto;
 	private String status;
 	private String resumen;
 	private String objlaboral;
-	private long ncontrol;
+	private String ncontrol;
 	private String calle;
 	private String colonia;
-	private int numext;
-	private int numinter;
+	private String numext;
+	private String numinter;
 	private String descripcion;
 	private String urldoc;
 	private String correo;
-	private long telefono;
-	private long porcentaje;
+	private String telefono;
+	private int porcentaje;
 	private int añosexp;
-	private long idherramientas;
+	private int idherramientas;
+	private String resp;
 	
 	
+	
+	public String getResp() {
+		return resp;
+	}
+	public void setResp(String resp) {
+		this.resp = resp;
+	}
 	public long getIdarea() {
 		return idarea;
 	}
@@ -100,10 +113,10 @@ public class BeanDatosPersonales implements Modelo {
 	public void setApellidom(String apellidom) {
 		this.apellidom = apellidom;
 	}
-	public char getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(char sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 	public String getFechanac() {
@@ -142,10 +155,10 @@ public class BeanDatosPersonales implements Modelo {
 	public void setObjlaboral(String objlaboral) {
 		this.objlaboral = objlaboral;
 	}
-	public long getNcontrol() {
+	public String getNcontrol() {
 		return ncontrol;
 	}
-	public void setNcontrol(long ncontrol) {
+	public void setNcontrol(String ncontrol) {
 		this.ncontrol = ncontrol;
 	}
 	public String getCalle() {
@@ -160,16 +173,16 @@ public class BeanDatosPersonales implements Modelo {
 	public void setColonia(String colonia) {
 		this.colonia = colonia;
 	}
-	public int getNumext() {
+	public String getNumext() {
 		return numext;
 	}
-	public void setNumext(int numext) {
+	public void setNumext(String numext) {
 		this.numext = numext;
 	}
-	public int getNuminter() {
+	public String getNuminter() {
 		return numinter;
 	}
-	public void setNuminter(int numinter) {
+	public void setNuminter(String numinter) {
 		this.numinter = numinter;
 	}
 	public String getDescripcion() {
@@ -190,16 +203,16 @@ public class BeanDatosPersonales implements Modelo {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	public long getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
-	public void setTelefono(long telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public long getPorcentaje() {
+	public int getPorcentaje() {
 		return porcentaje;
 	}
-	public void setPorcentaje(long porcentaje) {
+	public void setPorcentaje(int porcentaje) {
 		this.porcentaje = porcentaje;
 	}
 	public int getAñosexp() {
@@ -211,8 +224,32 @@ public class BeanDatosPersonales implements Modelo {
 	public long getIdherramientas() {
 		return idherramientas;
 	}
-	public void setIdherramientas(long idherramientas) {
+	public void setIdherramientas(int idherramientas) {
 		this.idherramientas = idherramientas;
+	}
+	public long getIduser() {
+		return iduser;
+	}
+	public void setIduser(long iduser) {
+		this.iduser = iduser;
+	}
+	public String getFormulario() {
+		return formulario;
+	}
+	public void setFormulario(String formulario) {
+		this.formulario = formulario;
+	}
+	public String getAccion() {
+		return accion;
+	}
+	public void setAccion(String accion) {
+		this.accion = accion;
+	}
+	public String getIP() {
+		return IP;
+	}
+	public void setIP(String iP) {
+		IP = iP;
 	}
 	
 	
