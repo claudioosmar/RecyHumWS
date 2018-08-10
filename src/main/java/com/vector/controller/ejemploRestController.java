@@ -22,10 +22,11 @@ import com.vector.repository.UserRepository;
 public class ejemploRestController {
 	@Autowired
 	private UserRepository userRep;
+	private int cont=1;
 	
 	@RequestMapping(value = "/listarusuarios", method = RequestMethod.POST)
 	public ResponseEntity<List<User>> consulta(){
-		System.out.println("Ingresando a listar usuarios");
+		System.out.println("Ingresando a listar usuarios "+cont++);
 		List<User> usuarios = userRep.findAll();
 		
 		if(usuarios.isEmpty()) {
@@ -34,12 +35,19 @@ public class ejemploRestController {
 			return new ResponseEntity<List<User>>(usuarios, HttpStatus.OK);
 		}
 	}
+	
+	
+	
+	
 	@RequestMapping(value = "/insertarusuario", method = RequestMethod.POST)
 	public ResponseEntity<User> insertar(@RequestBody User body){
 		User resp = new User();
 		resp =userRep.create(body);
 		return new ResponseEntity<User>(resp,HttpStatus.OK);
 	}
+	
+	
+	
 	@RequestMapping(value = "/verificaruser", method = RequestMethod.POST)
 	public ResponseEntity<String> verificarlogin(@RequestBody User in){
 		String resp = userRep.verificarusuario(in);

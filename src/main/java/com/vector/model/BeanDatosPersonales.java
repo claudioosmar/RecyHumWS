@@ -1,6 +1,6 @@
 package com.vector.model;
 
-public class BeanDetallesPersonales {
+public class BeanDatosPersonales implements Modelo {
 
 	private long idarea;
 	private long idcodpost;
@@ -32,6 +32,8 @@ public class BeanDetallesPersonales {
 	private long porcentaje;
 	private int añosexp;
 	private long idherramientas;
+	
+	
 	public long getIdarea() {
 		return idarea;
 	}
