@@ -1,9 +1,7 @@
-package com.vector.controller;
-
 /**
- * @author Claudio
- *
+ * 
  */
+package com.vector.controller;
 
 import java.util.List;
 
@@ -13,20 +11,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
+import com.vector.model.BeanInicioSesion;
 import com.vector.model.User;
 import com.vector.repository.UserRepository;
 
-@RestController
-public class ejemploRestController {
+/**
+ * @author Claudio
+ *
+ */
+public class InicioSesionController {
 	@Autowired
 	private UserRepository userRep;
-	private int cont=1;
+	
 	
 	@RequestMapping(value = "/listarusuarios", method = RequestMethod.POST)
-	public ResponseEntity<List<User>> consulta(){
-		System.out.println("Ingresando a listar usuarios "+cont++);
+	public ResponseEntity<List<User>> consulta(@RequestBody BeanInicioSesion bean){
+		System.out.println("Ingresando a listar usuarios ");
 		List<User> usuarios = userRep.findAll();
 		
 		if(usuarios.isEmpty()) {
@@ -53,4 +54,5 @@ public class ejemploRestController {
 		String resp = userRep.verificarusuario(in);
 		return new ResponseEntity<String>(resp,HttpStatus.OK);
 	}
+
 }

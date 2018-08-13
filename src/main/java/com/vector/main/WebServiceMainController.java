@@ -6,11 +6,9 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(scanBasePackages= {"com.vector"})
-@EnableJpaRepositories("com.vector.repository")
-@EntityScan("com.vector.model")
-public class demoMain{
+public class WebServiceMainController{
 		
 	public static void main(String[] args) {
-		SpringApplication.run(demoMain.class, args);
+		SpringApplication.run(WebServiceMainController.class, args);
 	}
 }

@@ -15,16 +15,16 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.vector.interfaceModel.InterModelBean;
+import com.vector.interfaceModel.InterModelRepository;
 import com.vector.model.BeanDatosPersonales;
-import com.vector.model.Modelo;
-import com.vector.service.ModelABCLD;
 
 /**
  * @author Claudio
  *
  */
 @Repository
-public class DatosPersonalesRepository implements ModelABCLD<BeanDatosPersonales> {
+public class DatosPersonalesRepository implements InterModelRepository<BeanDatosPersonales> {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
@@ -92,7 +92,7 @@ public class DatosPersonalesRepository implements ModelABCLD<BeanDatosPersonales
 	 */
 	@Transactional(readOnly = true)
 	public String Delete(int id) {
-		// TODO Auto-generated method stub
+		final String  sql = "";
 		
 		return "";
 	}
@@ -103,9 +103,11 @@ public class DatosPersonalesRepository implements ModelABCLD<BeanDatosPersonales
 	 * @see com.vector.service.ModelABCLD#Buscar(com.vector.model.Modelo)
 	 */
 	@Transactional(readOnly = true)
-	public Modelo Buscar(BeanDatosPersonales datos) {
-		// TODO Auto-generated method stub
+	public InterModelBean Buscar(BeanDatosPersonales datos) {
+		
 		BeanDatosPersonales bean = new BeanDatosPersonales();
+		
+		
 		return bean;
 	}
 
@@ -115,7 +117,7 @@ public class DatosPersonalesRepository implements ModelABCLD<BeanDatosPersonales
 	 * @see com.vector.service.ModelABCLD#Listar(com.vector.model.Modelo)
 	 */
 	@Transactional(readOnly = true)
-	public List<Modelo> Listar(BeanDatosPersonales  datos) {
+	public List<InterModelBean> Listar(BeanDatosPersonales  datos) {
 		// TODO Auto-generated method stub
 		return null;
 	}

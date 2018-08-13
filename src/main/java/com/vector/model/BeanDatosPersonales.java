@@ -1,6 +1,8 @@
 package com.vector.model;
 
-public class BeanDatosPersonales implements Modelo {
+import com.vector.interfaceModel.InterModelBean;
+
+public class BeanDatosPersonales implements InterModelBean {
 
 	
 	private String formulario;
