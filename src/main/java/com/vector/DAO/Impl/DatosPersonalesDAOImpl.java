@@ -15,6 +15,7 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.vector.BO.DatosPersonalesBO;
 import com.vector.Beans.DatosPersonalesBean;
 import com.vector.Beans.Model;
 
@@ -23,7 +24,7 @@ import com.vector.Beans.Model;
  *
  */
 @Repository
-public class DatosPersonalesRepository  {
+public class DatosPersonalesDAOImpl implements DatosPersonalesBO  {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vector.BO.LoginBO;
-import com.vector.Beans.BeanInicioSesion;
+import com.vector.Beans.InicioSesionBean;
 import com.vector.DAO.SesionDAO;
 
 /**
@@ -25,7 +25,7 @@ public class LoginBOImpl implements LoginBO {
 	 * @see com.vector.BO.LoginBO#ListarUsuarios()
 	 */
 	@Override
-	public List<BeanInicioSesion> ListarUsuarios() {
+	public List<InicioSesionBean> ListarUsuarios() {
 		// TODO Auto-generated method stub
 		return sesion.Listar();
 	}
@@ -34,16 +34,16 @@ public class LoginBOImpl implements LoginBO {
 	 * @see com.vector.BO.LoginBO#VerificarUsuario(java.lang.Object)
 	 */
 	@Override
-	public String VerificarUsuario(BeanInicioSesion datos) {
+	public String VerificarUsuario(InicioSesionBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		return sesion.VerificarLogin(datos);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.vector.BO.LoginBO#CreateUser(java.lang.Object)
 	 */
 	@Override
-	public BeanInicioSesion CreateUser(BeanInicioSesion datos) {
+	public InicioSesionBean CreateUser(InicioSesionBean datos) {
 		// TODO Auto-generated method stub
 		return null;
 	}

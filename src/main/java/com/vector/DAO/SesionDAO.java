@@ -5,7 +5,7 @@ package com.vector.DAO;
 
 import java.util.List;
 
-import com.vector.Beans.BeanInicioSesion;
+import com.vector.Beans.InicioSesionBean;
 import com.vector.Beans.Model;
 
 /**
@@ -14,9 +14,10 @@ import com.vector.Beans.Model;
  */
 public interface SesionDAO {
 	
-	String Create(BeanInicioSesion datos);
+	String Create(InicioSesionBean datos);
 	String Delete (int id);
-	Model Buscar(BeanInicioSesion datos);
-	List<BeanInicioSesion> Listar ();
+	Model Buscar(InicioSesionBean datos);
+	List<InicioSesionBean> Listar ();
+	String VerificarLogin(InicioSesionBean datos);
 
 }

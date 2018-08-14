@@ -7,7 +7,7 @@ package com.vector.Beans;
  * @author Claudio
  *
  */
-public class BeanInicioSesion {
+public class InicioSesionBean {
 	private long ID_User;
 	private int IP;
 	private String usuario;
@@ -17,9 +17,16 @@ public class BeanInicioSesion {
 	private String formulario_accion;
 	private String movimiento;
 	private int idtipouser;
+	private String resp;
 	
 	
 	
+	public String getResp() {
+		return resp;
+	}
+	public void setResp(String resp) {
+		this.resp = resp;
+	}
 	public int getIdtipouser() {
 		return idtipouser;
 	}
