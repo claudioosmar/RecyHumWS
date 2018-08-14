@@ -17,14 +17,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.vector.Beans.DatosPersonalesBean;
 import com.vector.Beans.Model;
-import com.vector.DAO.SesionDAO;
 
 /**
  * @author Claudio
  *
  */
 @Repository
-public class DatosPersonalesRepository implements SesionDAO<DatosPersonalesBean> {
+public class DatosPersonalesRepository  {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
@@ -33,7 +32,7 @@ public class DatosPersonalesRepository implements SesionDAO<DatosPersonalesBean>
 	 * 
 	 * @see com.vector.service.ModelABCLD#Create(com.vector.model.Modelo)
 	 */
-	@Override
+	
 	@Transactional(readOnly = true)
 	public String Create(DatosPersonalesBean datos) {
 		
@@ -125,7 +124,7 @@ public class DatosPersonalesRepository implements SesionDAO<DatosPersonalesBean>
 	/* (non-Javadoc)
 	 * @see com.vector.DAO.SesionDAO#Listar()
 	 */
-	@Override
+
 	public List<DatosPersonalesBean> Listar() {
 		// TODO Auto-generated method stub
 		return null;

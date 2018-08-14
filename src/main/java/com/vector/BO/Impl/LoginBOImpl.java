@@ -5,18 +5,21 @@ package com.vector.BO.Impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.vector.BO.LoginBO;
 import com.vector.Beans.BeanInicioSesion;
-import com.vector.Beans.DatosPersonalesBean;
 import com.vector.DAO.SesionDAO;
 
 /**
  * @author vectormx
  *
  */
-public class LoginBOImpl implements LoginBO<BeanInicioSesion> {
-	
-	private SesionDAO<BeanInicioSesion> sesion;
+@Service
+public class LoginBOImpl implements LoginBO {
+	@Autowired
+	private SesionDAO sesion;
 
 	/* (non-Javadoc)
 	 * @see com.vector.BO.LoginBO#ListarUsuarios()

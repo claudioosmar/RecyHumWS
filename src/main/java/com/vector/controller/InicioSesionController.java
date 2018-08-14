@@ -24,14 +24,13 @@ import com.vector.Beans.BeanInicioSesion;
 @RestController
 public class InicioSesionController {
 	@Autowired
-	private LoginBO<BeanInicioSesion> login;
+	private LoginBO login;
 	
 	
 	@RequestMapping(value = "/listarusuarios", method = RequestMethod.POST)
 	public ResponseEntity<List<BeanInicioSesion>> consulta(){
 		System.out.println("Ingresando a listar usuarios ");
 		List<BeanInicioSesion> usuarios = login.ListarUsuarios();
-		
 		if(usuarios.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}else {
@@ -48,6 +47,7 @@ public class InicioSesionController {
 		resp =(BeanInicioSesion) login.CreateUser(datos);
 		return new ResponseEntity<BeanInicioSesion>(resp,HttpStatus.OK);
 	}
+	
 	
 	
 	

@@ -5,13 +5,15 @@ package com.vector.BO;
 
 import java.util.List;
 
+import com.vector.Beans.BeanInicioSesion;
+
 /**
  * @author vectormx
  *
  */
-public interface LoginBO<T>  {
-	List<T> ListarUsuarios ();
-	String VerificarUsuario(T datos);
-	T CreateUser(T datos);
+public interface LoginBO  {
+	List<BeanInicioSesion> ListarUsuarios ();
+	String VerificarUsuario(BeanInicioSesion datos);
+	BeanInicioSesion CreateUser(BeanInicioSesion datos);
 	
 }
