@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vector.BO.LoginBO;
+import com.vector.BO.BOLogin;
 import com.vector.Beans.InicioSesionBean;
 
 
@@ -24,7 +24,7 @@ import com.vector.Beans.InicioSesionBean;
 @RestController
 public class InicioSesionController {
 	@Autowired
-	private LoginBO login;
+	private BOLogin login;
 	
 	
 	@RequestMapping(value = "/listarusuarios", method = RequestMethod.POST)

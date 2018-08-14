@@ -11,7 +11,7 @@ import com.vector.Beans.InicioSesionBean;
  * @author vectormx
  *
  */
-public interface LoginBO  {
+public interface BOLogin  {
 	List<InicioSesionBean> ListarUsuarios ();
 	String VerificarUsuario(InicioSesionBean datos);
 	InicioSesionBean CreateUser(InicioSesionBean datos);

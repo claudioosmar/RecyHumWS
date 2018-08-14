@@ -18,14 +18,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.vector.Beans.InicioSesionBean;
 import com.vector.Beans.Model;
-import com.vector.DAO.SesionDAO;
+import com.vector.DAO.DAOSesion;
 
 /**
  * @author vectormx
  *
  */
 @Service
-public class SesionDAOImpl implements SesionDAO {
+public class DAOSesionImpl implements DAOSesion {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 

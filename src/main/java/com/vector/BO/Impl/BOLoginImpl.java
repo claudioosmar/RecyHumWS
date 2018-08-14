@@ -8,18 +8,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.vector.BO.LoginBO;
+import com.vector.BO.BOLogin;
 import com.vector.Beans.InicioSesionBean;
-import com.vector.DAO.SesionDAO;
+import com.vector.DAO.DAOSesion;
 
 /**
  * @author vectormx
  *
  */
 @Service
-public class LoginBOImpl implements LoginBO {
+public class BOLoginImpl implements BOLogin {
 	@Autowired
-	private SesionDAO sesion;
+	private DAOSesion sesion;
 
 	/* (non-Javadoc)
 	 * @see com.vector.BO.LoginBO#ListarUsuarios()

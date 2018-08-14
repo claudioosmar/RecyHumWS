@@ -15,16 +15,16 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.vector.BO.DatosPersonalesBO;
-import com.vector.Beans.DatosPersonalesBean;
+import com.vector.BO.BODatosPersonales;
 import com.vector.Beans.Model;
+import com.vector.Beans.DatosPersonales.DatosPersonalesBean;
 
 /**
  * @author Claudio
  *
  */
 @Repository
-public class DatosPersonalesDAOImpl implements DatosPersonalesBO  {
+public class DAODatosPersonalesImpl implements BODatosPersonales  {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
@@ -92,7 +92,7 @@ public class DatosPersonalesDAOImpl implements DatosPersonalesBO  {
 	 */
 	@Transactional(readOnly = true)
 	public String Delete(int id) {
-		final String  sql = "";
+		//final String  sql = "";
 		
 		return "";
 	}

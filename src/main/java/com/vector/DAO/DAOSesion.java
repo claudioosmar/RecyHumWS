@@ -12,7 +12,7 @@ import com.vector.Beans.Model;
  * @author Claudio
  *
  */
-public interface SesionDAO {
+public interface DAOSesion {
 	
 	String Create(InicioSesionBean datos);
 	String Delete (int id);
