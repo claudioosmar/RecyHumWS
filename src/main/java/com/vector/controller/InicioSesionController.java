@@ -11,29 +11,31 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.vector.model.BeanInicioSesion;
-import com.vector.model.User;
-import com.vector.repository.UserRepository;
+import com.vector.BO.LoginBO;
+import com.vector.Beans.BeanInicioSesion;
+
 
 /**
  * @author Claudio
  *
  */
+@RestController
 public class InicioSesionController {
 	@Autowired
-	private UserRepository userRep;
+	private LoginBO<BeanInicioSesion> login;
 	
 	
 	@RequestMapping(value = "/listarusuarios", method = RequestMethod.POST)
-	public ResponseEntity<List<User>> consulta(@RequestBody BeanInicioSesion bean){
+	public ResponseEntity<List<BeanInicioSesion>> consulta(){
 		System.out.println("Ingresando a listar usuarios ");
-		List<User> usuarios = userRep.findAll();
+		List<BeanInicioSesion> usuarios = login.ListarUsuarios();
 		
 		if(usuarios.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}else {
-			return new ResponseEntity<List<User>>(usuarios, HttpStatus.OK);
+			return new ResponseEntity<List<BeanInicioSesion>>(usuarios, HttpStatus.OK);
 		}
 	}
 	
@@ -41,17 +43,17 @@ public class InicioSesionController {
 	
 	
 	@RequestMapping(value = "/insertarusuario", method = RequestMethod.POST)
-	public ResponseEntity<User> insertar(@RequestBody User body){
-		User resp = new User();
-		resp =userRep.create(body);
-		return new ResponseEntity<User>(resp,HttpStatus.OK);
+	public ResponseEntity<BeanInicioSesion> insertar(@RequestBody BeanInicioSesion datos){
+		BeanInicioSesion resp = new BeanInicioSesion();
+		resp =(BeanInicioSesion) login.CreateUser(datos);
+		return new ResponseEntity<BeanInicioSesion>(resp,HttpStatus.OK);
 	}
 	
 	
 	
 	@RequestMapping(value = "/verificaruser", method = RequestMethod.POST)
-	public ResponseEntity<String> verificarlogin(@RequestBody User in){
-		String resp = userRep.verificarusuario(in);
+	public ResponseEntity<String> verificarlogin(@RequestBody BeanInicioSesion datos){
+		String resp = login.VerificarUsuario(datos);
 		return new ResponseEntity<String>(resp,HttpStatus.OK);
 	}
 
