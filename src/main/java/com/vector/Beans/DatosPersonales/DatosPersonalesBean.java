@@ -8,13 +8,14 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 implements Model {
 	private String formulario;
 	private String accion;
 	private String IP;
-	private long iduser;
+	private long idp;
 	private long idarea;
 	private long idcodpost;
 	private long idedocivil;
 	private long idtipotelefono;
 	private long idtipocorreo;
 	private long iddoc;
+	
 	public String getFormulario() {
 		return formulario;
 	}
@@ -33,11 +34,11 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 implements Model {
 	public void setIP(String iP) {
 		IP = iP;
 	}
-	public long getIduser() {
-		return iduser;
+	public long getIdp() {
+		return idp;
 	}
-	public void setIduser(long iduser) {
-		this.iduser = iduser;
+	public void setIdp(long idp) {
+		this.idp = idp;
 	}
 	public long getIdarea() {
 		return idarea;

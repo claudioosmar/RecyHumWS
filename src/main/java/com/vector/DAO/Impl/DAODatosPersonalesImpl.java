@@ -12,19 +12,20 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.stereotype.Repository;
+import org.springframework.jdbc.core.RowMapper;
+
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.vector.BO.BODatosPersonales;
-import com.vector.Beans.Model;
 import com.vector.Beans.DatosPersonales.DatosPersonalesBean;
+import com.vector.DAO.DAODatosPersonales;
 
 /**
  * @author Claudio
  *
  */
-@Repository
-public class DAODatosPersonalesImpl implements BODatosPersonales  {
+@Service
+public class DAODatosPersonalesImpl implements DAODatosPersonales  {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
@@ -35,7 +36,7 @@ public class DAODatosPersonalesImpl implements BODatosPersonales  {
 	 */
 	
 	@Transactional(readOnly = true)
-	public String Create(DatosPersonalesBean datos) {
+	public DatosPersonalesBean Crear(DatosPersonalesBean datos) {
 		
 		final String sql="execute SP_AGREGARPERSONA(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";		
 		jdbcTemplate.update(new PreparedStatementCreator() {
@@ -74,7 +75,7 @@ public class DAODatosPersonalesImpl implements BODatosPersonales  {
 				ps.setString(30, datos.getUrldoc());
 				ps.setString(31, datos.getCorreo());
 				ps.setString(32, datos.getTelefono());
-				ps.setInt(33, datos.getPorcentaje());
+				ps.setString(33, datos.getPorcentaje());
 				ps.setInt(34, datos.getAñosexp());
 				ResultSet rs = ps.executeQuery();
 				rs.next();
@@ -82,7 +83,7 @@ public class DAODatosPersonalesImpl implements BODatosPersonales  {
 				return ps;
 			}
 		});
-		return datos.getResp();
+		return datos;
 	}
 
 	/*
@@ -91,7 +92,7 @@ public class DAODatosPersonalesImpl implements BODatosPersonales  {
 	 * @see com.vector.service.ModelABCLD#Delete(int)
 	 */
 	@Transactional(readOnly = true)
-	public String Delete(int id) {
+	public String Eliminar(int id) {
 		//final String  sql = "";
 		
 		return "";
@@ -103,7 +104,7 @@ public class DAODatosPersonalesImpl implements BODatosPersonales  {
 	 * @see com.vector.service.ModelABCLD#Buscar(com.vector.model.Modelo)
 	 */
 	@Transactional(readOnly = true)
-	public Model Buscar(DatosPersonalesBean datos) {
+	public DatosPersonalesBean Buscar(DatosPersonalesBean datos) {
 		
 		DatosPersonalesBean bean = new DatosPersonalesBean();
 		
@@ -117,19 +118,57 @@ public class DAODatosPersonalesImpl implements BODatosPersonales  {
 	 * @see com.vector.service.ModelABCLD#Listar(com.vector.model.Modelo)
 	 */
 	@Transactional(readOnly = true)
-	public List<Model> Listar(DatosPersonalesBean  datos) {
+	public List<DatosPersonalesBean> Listar() {
 		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.query("select * from view_datospersonales", new DatPerRowMapper());
 	}
 
 	/* (non-Javadoc)
-	 * @see com.vector.DAO.SesionDAO#Listar()
+	 * @see com.vector.DAO.DAODatosPersonales#Actualizar(com.vector.Beans.DatosPersonales.DatosPersonalesBean)
 	 */
-
-	public List<DatosPersonalesBean> Listar() {
+	@Override
+	public DatosPersonalesBean Actualizar(DatosPersonalesBean datos) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 
+
+}
+class DatPerRowMapper implements RowMapper<DatosPersonalesBean> {
+	@Override
+	public DatosPersonalesBean mapRow(ResultSet rs, int rowNum) throws SQLException {
+		DatosPersonalesBean datos = new DatosPersonalesBean();
+		datos.setIdp(rs.getLong("IDP"));
+		datos.setNombre(rs.getString("NOMBREPERSONA"));
+		datos.setSegnombre(rs.getString("SEGUNDONOMBRE"));
+		datos.setApellidop(rs.getString("APELLIDOPATERNO"));
+		datos.setApellidom(rs.getString("APELLIDOMATERNO"));
+		datos.setSexo(rs.getString("SEXO"));
+		datos.setFechanac(rs.getString("FECHANACIMIENTO"));
+		datos.setNacionalidad(rs.getString("NACIONALIDAD"));
+		datos.setResumen(rs.getString("RESUMEN"));
+		datos.setObjlaboral(rs.getString("OBJETIVOLABORAL"));
+		datos.setSueldo(rs.getString("SUELDO"));
+		datos.setNcontrol(rs.getString("NUMEROCONTROL"));
+		datos.setEstadoCivil(rs.getString("ESTADOCIVIL"));
+		datos.setStatus(rs.getString("STATUS"));
+		datos.setNombrearea(rs.getString("NOMBREAREA"));
+		datos.setTelefono(rs.getString("TELEFONO"));
+		datos.setCorreo(rs.getString("CORREO"));
+		datos.setTipocorreo(rs.getString("TIPOCORREO"));
+		datos.setNombredocumento(rs.getString("NOMBREDOCUMENTO"));
+		datos.setNombreherramienta(rs.getString("NOMBREHERRAMIENTA"));
+		datos.setVersionherramienta(rs.getString("VERSIONHERRAMIENTA"));
+		datos.setPorcentaje(rs.getString("PORCENTAJECONECERLA"));
+		datos.setAñosexp(rs.getInt("AÑOSEXPERIENCIA"));
+		datos.setEstado(rs.getString("NOMBREESTADO"));
+		datos.setMunicipio(rs.getString("NOMBREMUNICIPIO"));
+		datos.setLocalidad(rs.getString("LOCALIDAD"));
+		datos.setCodpostal(rs.getString("CODIGOPOSTAL"));
+		datos.setCalle(rs.getString("CALLE"));
+		datos.setColonia(rs.getString("COLONIA"));
+		datos.setNuminter(rs.getString("NUMEROINTERIOR"));
+		datos.setNumext(rs.getString("NUMEROEXTERIOR"));
+		return datos;
+	}
 }

@@ -19,6 +19,7 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	private String numinter;
 	private String descripcion;
 	private String urldoc;
+	
 	public String getStatus() {
 		return status;
 	}

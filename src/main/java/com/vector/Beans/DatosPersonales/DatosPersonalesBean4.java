@@ -7,10 +7,10 @@ package com.vector.Beans.DatosPersonales;
  * @author vectormx
  *
  */
-public class DatosPersonalesBean4  {
+public class DatosPersonalesBean4 extends DatosPersonalesBean5 {
 	private String correo;
 	private String telefono;
-	private int porcentaje;
+	private String porcentaje;
 	private int añosexp;
 	private int idherramientas;
 	private String resp;
@@ -27,10 +27,10 @@ public class DatosPersonalesBean4  {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public int getPorcentaje() {
+	public String getPorcentaje() {
 		return porcentaje;
 	}
-	public void setPorcentaje(int porcentaje) {
+	public void setPorcentaje(String porcentaje) {
 		this.porcentaje = porcentaje;
 	}
 	public int getAñosexp() {

@@ -18,6 +18,23 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3 {
 	private String fechanac;
 	private String nacionalidad;
 	private String urlfoto;
+	private String sueldo;
+	private String EstadoCivil;
+	
+	
+	
+	public String getEstadoCivil() {
+		return EstadoCivil;
+	}
+	public void setEstadoCivil(String estadoCivil) {
+		EstadoCivil = estadoCivil;
+	}
+	public String getSueldo() {
+		return sueldo;
+	}
+	public void setSueldo(String sueldo) {
+		this.sueldo = sueldo;
+	}
 	public long getIdestudio() {
 		return idestudio;
 	}

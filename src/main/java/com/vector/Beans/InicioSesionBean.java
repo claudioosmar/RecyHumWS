@@ -3,30 +3,37 @@
  */
 package com.vector.Beans;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * @author Claudio
  *
  */
-public class InicioSesionBean {
+public class InicioSesionBean implements Model {
+	/*Atributos del inicio de sesion*/
+	@NotNull
 	private long ID_User;
-	private int IP;
+	@NotNull
+	private String IP;
+	@NotNull
 	private String usuario;
+	@NotNull
 	private String contra;
+	@NotNull
 	private String Status;
+	@NotNull
 	private String token;
+	@NotNull
 	private String formulario_accion;
+	@NotNull
 	private String movimiento;
+	@NotNull
 	private int idtipouser;
-	private String resp;
+
 	
 	
 	
-	public String getResp() {
-		return resp;
-	}
-	public void setResp(String resp) {
-		this.resp = resp;
-	}
+
 	public int getIdtipouser() {
 		return idtipouser;
 	}
@@ -39,10 +46,10 @@ public class InicioSesionBean {
 	public void setID_User(long iD_User) {
 		ID_User = iD_User;
 	}
-	public int getIP() {
+	public String getIP() {
 		return IP;
 	}
-	public void setIP(int iP) {
+	public void setIP(String iP) {
 		IP = iP;
 	}
 	public String getUsuario() {
