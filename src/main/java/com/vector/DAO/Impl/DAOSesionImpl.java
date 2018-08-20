@@ -83,8 +83,7 @@ public class DAOSesionImpl implements DAOSesion {
 	@Transactional(readOnly = true)
 	public List<InicioSesionBean> Listar() {
 		// TODO Auto-generated method stub
-	
-	
+
 		final String sql = "select * from view_acceso";
 		return jdbcTemplate.query(sql, new SesionRowMapper());
 		/*jdbcTemplate.update(new PreparedStatementCreator() {
