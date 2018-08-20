@@ -24,6 +24,8 @@ public class DatosIdiomasBean extends LogBean implements Model {
 	private String descripciondominio;
 	@NotNull
 	private String idiomanativa;
+	@NotNull
+	private long idpersona;
 	
 	/**
 	 * @return the ididioma
@@ -98,5 +100,16 @@ public class DatosIdiomasBean extends LogBean implements Model {
 		this.idiomanativa = idiomanativa;
 	}
 	
-	
+	/**
+	 * @return the idpersona
+	 */
+	public long getIdpersona() {
+		return idpersona;
+	}
+	/**
+	 * @param idpersona the idpersona to set
+	 */
+	public void setIdpersona(long idpersona) {
+		this.idpersona = idpersona;
+	}
 }
