@@ -5,10 +5,11 @@ package com.vector.BO.Impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.vector.BO.BOIdiomas;
 import com.vector.Beans.DatosIdiomasBean;
+import com.vector.DAO.DAODatosIdiomas;
 
 /**
  * @author vectormx
@@ -16,14 +17,20 @@ import com.vector.Beans.DatosIdiomasBean;
  */
 @Service
 public class BODatosIdiomaImpl implements BOIdiomas {
-
+	@Autowired
+	private DAODatosIdiomas idiomas;
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BOIdiomas#Crear(com.vector.Beans.DatosIdiomasBean)
 	 */
 	@Override
 	public String Crear(DatosIdiomasBean datos) {
+		int respuesta = idiomas.Crear(datos);
 		// TODO Auto-generated method stub
-		return null;
+		if (respuesta == 1) {
+			return "se agrego correctamente";
+		}else {
+		return "fallo al ingresar";
+	}
 	}
 
 	/* (non-Javadoc)
@@ -32,7 +39,13 @@ public class BODatosIdiomaImpl implements BOIdiomas {
 	@Override
 	public String Modificar(DatosIdiomasBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		int respuesta = idiomas.Modificar(datos);
+		// TODO Auto-generated method stub
+		if (respuesta == 1) {
+			return "se agrego correctamente";
+		}else {
+		return "fallo al ingresar";
+	}
 	}
 
 	/* (non-Javadoc)

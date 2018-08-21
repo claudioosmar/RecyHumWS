@@ -12,9 +12,9 @@ import com.vector.Beans.DatosIdiomasBean;
  *
  */
 public interface DAODatosIdiomas {
-	String Crear(DatosIdiomasBean datos);
-	String Modificar(DatosIdiomasBean datos);
-	String Eliminar(int id);
+	int Crear(DatosIdiomasBean datos);
+	int Modificar(DatosIdiomasBean datos);
+	int Eliminar(int id);
 	DatosIdiomasBean Buscar(DatosIdiomasBean datos);
 	List<DatosIdiomasBean> Listar();
 }

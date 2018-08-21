@@ -3,12 +3,22 @@
  */
 package com.vector.DAO.Impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.vector.Beans.DatosIdiomasBean;
 import com.vector.DAO.DAODatosIdiomas;
+
 
 /**
  * @author vectormx
@@ -16,32 +26,78 @@ import com.vector.DAO.DAODatosIdiomas;
  */
 @Service
 public class DAODatosIdiomasImpl implements DAODatosIdiomas {
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 
 	/* (non-Javadoc)
 	 * @see com.vector.DAO.DAODatosIdiomas#Crear(com.vector.Beans.DatosIdiomasBean)
 	 */
 	@Override
-	public String Crear(DatosIdiomasBean datos) {
+	@Transactional(readOnly = true)
+	public int Crear(DatosIdiomasBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		final String sql = "begin sp_agregaridioma(?,?,?,?,?,?,?,?,?,?,?); end;";
+		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(sql);
+				
+				ps.setLong(1, datos.getIduser());
+				ps.setString(2, datos.getFormulario());
+				ps.setString(3,datos.getAccion());
+				ps.setString(4, datos.getIpequipo());
+				ps.setLong(5, datos.getIdpersona());	
+				ps.setInt(6, datos.getIdidioma());
+				ps.setInt(7, datos.getPcjescrito());
+				ps.setInt(8, datos.getPcjhablado());
+				ps.setInt(9, datos.getPcjentendido());
+				ps.setString(10, datos.getDescripciondominio());
+				ps.setString(11, datos.getIdiomanativa());
+							
+				return ps;
+			}
+		});
+		return respuesta;
 	}
 
 	/* (non-Javadoc)
 	 * @see com.vector.DAO.DAODatosIdiomas#Modificar(com.vector.Beans.DatosIdiomasBean)
 	 */
 	@Override
-	public String Modificar(DatosIdiomasBean datos) {
+	@Transactional(readOnly = true)
+	public int Modificar(DatosIdiomasBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		final String sql = "begin sp_modificaridioma(?,?,?,?,?,?,?,?,?,?,?); end;";
+		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(sql);
+				
+				ps.setLong(1, datos.getIduser());
+				ps.setString(2, datos.getFormulario());
+				ps.setString(3,datos.getAccion());
+				ps.setString(4, datos.getIpequipo());
+				ps.setLong(5, datos.getIdpersona());	
+				ps.setInt(6, datos.getIdidioma());
+				ps.setInt(7, datos.getPcjescrito());
+				ps.setInt(8, datos.getPcjhablado());
+				ps.setInt(9, datos.getPcjentendido());
+				ps.setString(10, datos.getDescripciondominio());
+				ps.setString(11, datos.getIdiomanativa());
+							
+				return ps;
+			}
+		});
+		return respuesta;
 	}
 
 	/* (non-Javadoc)
 	 * @see com.vector.DAO.DAODatosIdiomas#Eliminar(int)
 	 */
 	@Override
-	public String Eliminar(int id) {
+	public int Eliminar(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	/* (non-Javadoc)
@@ -57,9 +113,21 @@ public class DAODatosIdiomasImpl implements DAODatosIdiomas {
 	 * @see com.vector.DAO.DAODatosIdiomas#Listar()
 	 */
 	@Override
+	@Transactional(readOnly = true)
 	public List<DatosIdiomasBean> Listar() {
 		// TODO Auto-generated method stub
-		return null;
+		final String sql = "select * from tbldominios";
+		return jdbcTemplate.query(sql, new SesionRowMapper());
+		
 	}
+	
+	class SesionRowMapper implements RowMapper<DatosIdiomasBean> {
+		@Override
+		public DatosIdiomasBean mapRow(ResultSet rs, int rowNum) throws SQLException {
+			DatosIdiomasBean idioma = new DatosIdiomasBean();
 
+			return idioma;
+		}
+
+	}
 }

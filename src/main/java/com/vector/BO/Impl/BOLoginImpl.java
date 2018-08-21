@@ -6,7 +6,9 @@ package com.vector.BO.Impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.vector.BO.BOLogin;
 import com.vector.Beans.InicioSesionBean;
@@ -18,6 +20,8 @@ import com.vector.DAO.DAOSesion;
  */
 @Service
 public class BOLoginImpl implements BOLogin {
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 	@Autowired
 	private DAOSesion sesion;
 
@@ -43,8 +47,10 @@ public class BOLoginImpl implements BOLogin {
 	 * @see com.vector.BO.LoginBO#CreateUser(java.lang.Object)
 	 */
 	@Override
+	@Transactional(readOnly = true)
 	public InicioSesionBean CreateUser(InicioSesionBean datos) {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

@@ -8,7 +8,7 @@ public class User
 {
 	private Integer id;
 	private String nombre;
-	private String contra;
+	private String contraseña;
 	private String verlogin;
 	private String status;
 	
@@ -21,12 +21,12 @@ public class User
 		this.status = status;
 	}
 
-	public String getContra() {
-		return contra;
+	public String getContraseña() {
+		return contraseña;
 	}
 
-	public void setContra(String contra) {
-		this.contra = contra;
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
 	}
 
 	public String getVerlogin() {

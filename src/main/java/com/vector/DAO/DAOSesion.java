@@ -14,7 +14,7 @@ import com.vector.Beans.Model;
  */
 public interface DAOSesion {
 	
-	String Create(InicioSesionBean datos);
+	int Create(InicioSesionBean datos);
 	String Delete (int id);
 	Model Buscar(InicioSesionBean datos);
 	List<InicioSesionBean> Listar ();

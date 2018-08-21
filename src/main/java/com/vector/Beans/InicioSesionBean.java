@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
  * @author Claudio
  *
  */
-public class InicioSesionBean implements Model {
+public class InicioSesionBean extends LogBean implements Model {
 	/*Atributos del inicio de sesion*/
 	@NotNull
 	private long ID_User;
@@ -18,22 +18,62 @@ public class InicioSesionBean implements Model {
 	@NotNull
 	private String usuario;
 	@NotNull
-	private String contra;
+	private String contraseña;
 	@NotNull
 	private String Status;
 	@NotNull
 	private String token;
 	@NotNull
-	private String formulario_accion;
-	@NotNull
 	private String movimiento;
 	@NotNull
 	private int idtipouser;
+	@NotNull
+	private long idpersonaalta;
+	@NotNull
+	private long idpersona;
+	@NotNull
+	private String observacion;
 
 	
 	
 	
 
+	/**
+	 * @return the idpersonaalta
+	 */
+	public long getIdpersonaalta() {
+		return idpersonaalta;
+	}
+	/**
+	 * @param idpersonaalta the idpersonaalta to set
+	 */
+	public void setIdpersonaalta(long idpersonaalta) {
+		this.idpersonaalta = idpersonaalta;
+	}
+	/**
+	 * @return the idpersona
+	 */
+	public long getIdpersona() {
+		return idpersona;
+	}
+	/**
+	 * @param idpersona the idpersona to set
+	 */
+	public void setIdpersona(long idpersona) {
+		this.idpersona = idpersona;
+	}
+	/**
+	 * @return the observacion
+	 */
+	public String getObservacion() {
+		return observacion;
+	}
+	/**
+	 * @param observacion the observacion to set
+	 */
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
 	public int getIdtipouser() {
 		return idtipouser;
 	}
@@ -58,12 +98,7 @@ public class InicioSesionBean implements Model {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-	public String getContra() {
-		return contra;
-	}
-	public void setContra(String contra) {
-		this.contra = contra;
-	}
+
 	public String getStatus() {
 		return Status;
 	}
@@ -76,17 +111,23 @@ public class InicioSesionBean implements Model {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	public String getFormulario_accion() {
-		return formulario_accion;
-	}
-	public void setFormulario_accion(String formulario_accion) {
-		this.formulario_accion = formulario_accion;
-	}
 	public String getMovimiento() {
 		return movimiento;
 	}
 	public void setMovimiento(String movimiento) {
 		this.movimiento = movimiento;
+	}
+	/**
+	 * @return the contraseña
+	 */
+	public String getContraseña() {
+		return contraseña;
+	}
+	/**
+	 * @param contraseña the contraseña to set
+	 */
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
 	}
 	
 }

@@ -108,10 +108,9 @@ class CrearRowMapper implements RowMapper<InicioSesionBean> {
 		user.setID_User(rs.getInt(1));
 		user.setIP(rs.getString(4));
 		user.setUsuario(rs.getString(2));
-		user.setContra("unsigned");
+		user.setContraseña("unsigned");
 		user.setStatus(rs.getString(8));
 		user.setToken(rs.getString(3));
-		user.setFormulario_accion(rs.getString(5));
 		user.setMovimiento(rs.getString(7));
 		user.setIdtipouser(rs.getInt(6));
 		return user;
