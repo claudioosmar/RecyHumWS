@@ -24,7 +24,6 @@ import com.vector.Beans.MsgBean;
  */
 
 @RestController
-@RequestMapping("/SGRHWebService/{modulo.uno}")
 public class DatosInicioSesionController {
 	
 	
@@ -33,7 +32,7 @@ public class DatosInicioSesionController {
 	private BODatosLogin login;
 	
 
-	@RequestMapping(path = "/Crear", method = RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosSesion/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody DatosInicioSesionBean datos){
 		System.out.print("Se creo un usuario");
 		return new ResponseEntity<MsgBean>(login.CreateUser(datos),HttpStatus.OK);
@@ -42,7 +41,7 @@ public class DatosInicioSesionController {
 	
 	
 	
-	@RequestMapping(path = "/Verificar", method = RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosSesion/Verificar", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> verificarlogin(@RequestBody DatosInicioSesionBean datos){
 		MsgBean respuesta = new MsgBean();
 		if(datos.getUsuario().isEmpty()&&datos.getContraseña().isEmpty()) {
@@ -56,7 +55,7 @@ public class DatosInicioSesionController {
 	}
 
 	
-	@RequestMapping(path = "/Listar", method = RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosSesion/Listar", method = RequestMethod.POST)
 	public ResponseEntity<List<DatosInicioSesionBean>> consulta(){
 		System.out.println("Ingresando a listar usuarios ");
 		List<DatosInicioSesionBean> usuarios = login.ListarUsuarios();

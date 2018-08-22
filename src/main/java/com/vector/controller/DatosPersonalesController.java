@@ -16,7 +16,7 @@ public class DatosPersonalesController {
 	@Autowired
 	private BODatosPersonales bodatos;
 	
-	@RequestMapping("/datospersonales/listar")
+	@RequestMapping("/SGRHWebService/DatosPersonales/listar")
 	public ResponseEntity<List<DatosPersonalesBean>> Listar(){
 		List<DatosPersonalesBean> resp = bodatos.Listar();
 		if(resp.isEmpty()) {

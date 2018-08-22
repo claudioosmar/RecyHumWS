@@ -22,36 +22,35 @@ import com.vector.Beans.MsgBean;
  *
  */
 @RestController
-@RequestMapping("{proyecto}/{modulo}")
 public class DatosHerramientasController {
 	@Autowired
 	private BODatosHerramientas herramientas;
 	
-	@RequestMapping(path = "/Crear", method = RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody DatosHerramientasBean datos){
 		System.out.print("Se creo un historial academico");
 		return new ResponseEntity<MsgBean>(herramientas.Crear(datos),HttpStatus.OK);
 	}
 	
-	@RequestMapping(path = "/Modificar",method = RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosHerramientasBean datos){
 		System.out.print("Se modifico historial academico");
 		return new ResponseEntity<MsgBean>(herramientas.Modificar(datos),HttpStatus.OK);
 	}
 	
-	@RequestMapping(path = "/Eliminar",method = RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody int id){
 		System.out.print("se elimo historial academico");
 		return new ResponseEntity<MsgBean>(herramientas.Eliminar(id),HttpStatus.OK);
 	}
 	
-	@RequestMapping(path = "/Buscar",method=RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<DatosHerramientasBean>buscar(@RequestBody DatosHerramientasBean datos){
 		System.out.print("se busco historial acdemico");
 		return new ResponseEntity<DatosHerramientasBean>(herramientas.Buscar(datos),HttpStatus.OK);
 	}
 	
-	@RequestMapping(path = "/Listar",method=RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosHerramientasBean>> consulta(){
 		System.out.println("Ingresando a listar estudio ");
 		List<DatosHerramientasBean> herramienta = herramientas.Listar();

@@ -22,36 +22,35 @@ import com.vector.Beans.MsgBean;
  *
  */
 @RestController
-@RequestMapping("{proyecto}/{modulo}")
 public class DatosDocumentosController {
 	@Autowired
 	private BODatosDocumentos documento;
 	
-	@RequestMapping(path = "/Crear", method = RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody DatosDocumentoBean datos){
 		System.out.print("Se creo un historial academico");
 		return new ResponseEntity<MsgBean>(documento.Crear(datos),HttpStatus.OK);
 	}
 	
-	@RequestMapping(path = "/Modificar",method = RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosDocumentoBean datos){
 		System.out.print("Se modifico historial academico");
 		return new ResponseEntity<MsgBean>(documento.Modificar(datos),HttpStatus.OK);
 	}
 	
-	@RequestMapping(path = "/Eliminar",method = RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody int id){
 		System.out.print("se elimo historial academico");
 		return new ResponseEntity<MsgBean>(documento.Eliminar(id),HttpStatus.OK);
 	}
 	
-	@RequestMapping(path = "/Buscar",method=RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<DatosDocumentoBean>buscar(@RequestBody DatosDocumentoBean datos){
 		System.out.print("se busco historial acdemico");
 		return new ResponseEntity<DatosDocumentoBean>(documento.Buscar(datos),HttpStatus.OK);
 	}
 	
-	@RequestMapping(path = "/Listar",method=RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosDocumentoBean>> consulta(){
 		System.out.println("Ingresando a listar estudio ");
 		List<DatosDocumentoBean> documentos = documento.Listar();

@@ -23,38 +23,37 @@ import com.vector.Beans.MsgBean;
  */
 
 @RestController
-@RequestMapping("/{proyecto}/{modulo.2}")
 public class DatosEstudioController {
 	
 	
 	@Autowired
 	private BODatosEstudio estudio;
 	
-	@RequestMapping(path = "/Crear", method = RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosEstudio/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody DatosEstudioBean datos){
 		System.out.print("Se creo un historial academico");
 		return new ResponseEntity<MsgBean>(estudio.Crear(datos),HttpStatus.OK);
 	}
 	
-	@RequestMapping(path = "/Modificar",method = RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosEstudio/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosEstudioBean datos){
 		System.out.print("Se modifico historial academico");
 		return new ResponseEntity<MsgBean>(estudio.Modificar(datos),HttpStatus.OK);
 	}
 	
-	@RequestMapping(path = "/Eliminar",method = RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosEstudio/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody int id){
 		System.out.print("se elimo historial academico");
 		return new ResponseEntity<MsgBean>(estudio.Eliminar(id),HttpStatus.OK);
 	}
 	
-	@RequestMapping(path = "/Buscar",method=RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosEstudio/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<DatosEstudioBean>buscar(@RequestBody DatosEstudioBean datos){
 		System.out.print("se busco historial acdemico");
 		return new ResponseEntity<DatosEstudioBean>(estudio.Buscar(datos),HttpStatus.OK);
 	}
 	
-	@RequestMapping(path = "/Listar",method=RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosEstudio/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosEstudioBean>> consulta(){
 		System.out.println("Ingresando a listar estudio ");
 		List<DatosEstudioBean> estudios = estudio.Listar();

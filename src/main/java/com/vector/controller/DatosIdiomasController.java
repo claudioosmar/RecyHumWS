@@ -21,33 +21,32 @@ import com.vector.Beans.DatosIdiomasBean;
  *
  */
 @RestController
-@RequestMapping("/{proyecto}/{modulo.5}")
 public class DatosIdiomasController {
 
 	@Autowired
 	private BODatosIdiomas idioma;
 	
-	@RequestMapping(path = "/Crear", method = RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosIdiomas/Crear", method = RequestMethod.POST)
 	public ResponseEntity<String> insertar(@RequestBody DatosIdiomasBean datos){
 		return new ResponseEntity<String>(idioma.Crear(datos),HttpStatus.OK);
 	}
 	
-	@RequestMapping(path = "/Modificar",method = RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosIdiomas/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<String>actualizar(@RequestBody DatosIdiomasBean datos){
 		return new ResponseEntity<String>(idioma.Modificar(datos),HttpStatus.OK);
 	}
 	
-	@RequestMapping(path = "/Eliminar",method = RequestMethod.POST)
+	@RequestMapping(path = "/SGRHWebService/DatosIdiomas/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<String> eliminar(@RequestBody int id){
 		return new ResponseEntity<String>(idioma.Eliminar(id),HttpStatus.OK);
 	}
 	
-	@RequestMapping(path =  "/Buscar",method=RequestMethod.POST)
+	@RequestMapping(path =  "/SGRHWebService/DatosIdiomas/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<DatosIdiomasBean>buscar(@RequestBody DatosIdiomasBean datos){
 		return new ResponseEntity<DatosIdiomasBean>(idioma.Buscar(datos),HttpStatus.OK);
 	}
 	
-    @RequestMapping(value = "/Listar",method=RequestMethod.POST)
+    @RequestMapping(value = "/SGRHWebService/DatosIdiomas/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosIdiomasBean>> consulta(){
 		System.out.println("Ingresando a listar estudio ");
 		List<DatosIdiomasBean> idiomas = idioma.Listar();
