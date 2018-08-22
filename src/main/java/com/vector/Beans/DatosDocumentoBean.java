@@ -16,6 +16,21 @@ public class DatosDocumentoBean extends LogBean implements Model{
 	private String descripciondoc="";
 	@NotNull
 	private String urldoc="";
+	private long idpersona =0;
+	
+	
+	/**
+	 * @return the idpersona
+	 */
+	public long getIdpersona() {
+		return idpersona;
+	}
+	/**
+	 * @param idpersona the idpersona to set
+	 */
+	public void setIdpersona(long idpersona) {
+		this.idpersona = idpersona;
+	}
 	/**
 	 * @return the iddocumento
 	 */

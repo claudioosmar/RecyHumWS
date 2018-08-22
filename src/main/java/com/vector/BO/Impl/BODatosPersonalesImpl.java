@@ -44,7 +44,7 @@ public class BODatosPersonalesImpl implements BODatosPersonales {
 	 * @see com.vector.BO.BODatosPersonales#Actualizar(com.vector.Beans.DatosPersonales.DatosPersonalesBean)
 	 */
 	@Override
-	public MsgBean Actualizar(DatosPersonalesBean datos) {
+	public MsgBean Modificar(DatosPersonalesBean datos) {
 		// TODO Auto-generated method stub
 		MsgBean mensaje = new MsgBean();
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
@@ -61,9 +61,17 @@ public class BODatosPersonalesImpl implements BODatosPersonales {
 	 * @see com.vector.BO.BODatosPersonales#Eliminar(int)
 	 */
 	@Override
-	public String Eliminar(int id) {
+	public MsgBean Eliminar(int id) {
 		// TODO Auto-generated method stub
-		return datospersonales.Eliminar(id);
+		MsgBean mensaje = new MsgBean();
+		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		int resultado = datospersonales.Eliminar(id);
+		if(resultado == 1) {
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+		}else {
+			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		}
+		return mensaje;
 	}
 
 	/* (non-Javadoc)

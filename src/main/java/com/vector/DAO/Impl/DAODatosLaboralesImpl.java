@@ -65,7 +65,7 @@ public class DAODatosLaboralesImpl implements DAODatosLaborales {
 	@Override
 	public int Modificar(DatosLaboralesBean datos) {
 		// TODO Auto-generated method stub
-		final String sql="execute sp_modificarexplaboral(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";		
+		final String sql="execute sp_modificarexplaboral(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";		
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
@@ -87,6 +87,10 @@ public class DAODatosLaboralesImpl implements DAODatosLaborales {
 				ps.setInt(15,datos.getIdherramienta());
 				ps.setInt(16,datos.getPorsentajeherra());
 				ps.setInt(17,datos.getAñosexp());
+				ps.setString(18, datos.getDescripcionherrm());
+				ps.setInt(19, datos.getIddescmotivo());
+				ps.setInt(20, datos.getIdexplaborl());
+				ps.setInt(21, datos.getIdempresa());
 				
 				return ps;
 			}

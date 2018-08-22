@@ -70,7 +70,7 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 	@Transactional(readOnly = true)
 	public int Modificar(DatosEstudioBean datos) {
 		// TODO Auto-generated method stub
-		final String sql = "begin sp_modificareducacion(?,?,?,?,?,?,?,?,?,?,?); end;";
+		final String sql = "begin sp_modificareducacion(?,?,?,?,?,?,?,?,?,?,?,?,?); end;";
 		int respuesta = jdbctemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
@@ -81,12 +81,14 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 				ps.setString(3,datos.getAccion());
 				ps.setString(4, datos.getIpequipo());
 				ps.setLong(5, datos.getIdpersona());
-				ps.setString(6, datos.getNombrecorrera());
-				ps.setInt(7, datos.getIdgrado());
-				ps.setInt(8, datos.getIdlocalidad());
-				ps.setString(9, datos.getInstitutoestudio());
-				ps.setString(10, datos.getPeriodoinicial());
-				ps.setString(11, datos.getPeriodofinal());
+				ps.setInt(6, datos.getIdcarrera());
+				ps.setString(7, datos.getNombrecorrera());
+				ps.setInt(8, datos.getIdgrado());
+				ps.setInt(9, datos.getIdlocalidad());
+				ps.setLong(10, datos.getIdestudio());
+				ps.setString(11, datos.getInstitutoestudio());
+				ps.setString(12, datos.getPeriodoinicial());
+				ps.setString(13, datos.getPeriodofinal());
 			
 				
 				return ps;

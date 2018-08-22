@@ -26,8 +26,34 @@ public class DatosEstudioBean extends LogBean implements Model {
 	private String nombrecorrera="";
 	@NotNull
 	private long idpersona=0;
+	private int idcarrera=0;
+	private long idestudio=0;
 	
 	
+	/**
+	 * @return the idestudio
+	 */
+	public long getIdestudio() {
+		return idestudio;
+	}
+	/**
+	 * @param idestudio the idestudio to set
+	 */
+	public void setIdestudio(long idestudio) {
+		this.idestudio = idestudio;
+	}
+	/**
+	 * @return the idcarrera
+	 */
+	public int getIdcarrera() {
+		return idcarrera;
+	}
+	/**
+	 * @param idcarrera the idcarrera to set
+	 */
+	public void setIdcarrera(int idcarrera) {
+		this.idcarrera = idcarrera;
+	}
 	/**
 	 * @return the idpersona
 	 */

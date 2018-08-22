@@ -118,10 +118,10 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales  {
 	 * @see com.vector.service.ModelABCLD#Delete(int)
 	 */
 	@Transactional(readOnly = true)
-	public String Eliminar(int id) {
+	public int Eliminar(int id) {
 		//final String  sql = "";
 		
-		return "";
+		return 0;
 	}
 
 	/*
@@ -132,10 +132,17 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales  {
 	@Transactional(readOnly = true)
 	public DatosPersonalesBean Buscar(DatosPersonalesBean datos) {
 		
-		DatosPersonalesBean bean = new DatosPersonalesBean();
+		final String sql="select * from datospersonales where idpersona = ?";		
+		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setLong(1, datos.getIdpersona());
 		
-		
-		return bean;
+				return ps;
+			}
+		});
+		return respuesta;
 	}
 
 	/*
@@ -146,7 +153,7 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales  {
 	@Transactional(readOnly = true)
 	public List<DatosPersonalesBean> Listar() {
 		// TODO Auto-generated method stub
-		return jdbcTemplate.query("select * from view_datospersonales", new DatPerRowMapper());
+		return jdbcTemplate.query("select * from datospersonales", new DatPerRowMapper());
 	}
 
 	/* (non-Javadoc)
@@ -231,7 +238,6 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales  {
 				ps.setInt(69, datos.getIdestudio());
 				ps.setInt(70, datos.getIddominio());
 				ps.setInt(71, datos.getIdexplaboral());
-				
 				ps.setInt(72, datos.getIdempresa());
 				ps.setInt(73, datos.getIddescmotivo());
 				ps.setInt(74, datos.getIddocumento());

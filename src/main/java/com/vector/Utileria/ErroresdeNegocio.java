@@ -47,4 +47,10 @@ public class ErroresdeNegocio {
         mensaje.setMsjAccion(e.getMessage());
 		return new ResponseEntity<MsgBean>(mensaje,HttpStatus.BAD_REQUEST);
 	}
+	@ExceptionHandler(java.lang.NumberFormatException.class)
+	public ResponseEntity<MsgBean> NumberFormatException(HttpServletRequest request, java.lang.NumberFormatException e){
+		MsgBean mensaje = new MsgBean();
+        mensaje.setMsjAccion(e.getMessage());
+		return new ResponseEntity<MsgBean>(mensaje,HttpStatus.BAD_REQUEST);
+	}
 }

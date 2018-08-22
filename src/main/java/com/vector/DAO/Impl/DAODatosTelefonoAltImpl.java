@@ -54,7 +54,7 @@ public class DAODatosTelefonoAltImpl implements DAODatosTelefonoAlt {
 	@Override
 	public int Modificar(DatosTelefonoAltBean datos) {
 		// TODO Auto-generated method stub
-		final String sql="execute sp_modificartelefonoalt(?,?,?,?,?,?)";		
+		final String sql="execute sp_modificartelefonoalt(?,?,?,?,?,?,?)";		
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
@@ -65,6 +65,7 @@ public class DAODatosTelefonoAltImpl implements DAODatosTelefonoAlt {
 				ps.setString(4, datos.getIpequipo());
 				ps.setInt(5, datos.getIdtipotelefono());
 				ps.setString(6, datos.getTelefono());
+				ps.setLong(7, datos.getIdpersona());
 				
 				return ps;
 			}

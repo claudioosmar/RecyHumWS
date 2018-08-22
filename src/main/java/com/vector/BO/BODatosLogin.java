@@ -17,5 +17,6 @@ public interface BODatosLogin  {
 	List<DatosInicioSesionBean> ListarUsuarios ();
 	List<DatosFormularioBean> VerificarUsuario(DatosInicioSesionBean datos);
 	MsgBean CreateUser(DatosInicioSesionBean datos);
+	MsgBean Modificar(DatosInicioSesionBean datos);
 	
 }

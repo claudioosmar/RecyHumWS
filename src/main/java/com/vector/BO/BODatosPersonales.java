@@ -15,8 +15,8 @@ import com.vector.Beans.DatosPersonales.DatosPersonalesBean;
 public interface BODatosPersonales {
 	
 	MsgBean Crear(DatosPersonalesBean datos);
-	MsgBean Actualizar(DatosPersonalesBean datos);
-	String Eliminar (int id);
+	MsgBean Modificar(DatosPersonalesBean datos);
+	MsgBean Eliminar (int id);
 	DatosPersonalesBean Buscar(DatosPersonalesBean datos);
 	List<DatosPersonalesBean> Listar ();
 

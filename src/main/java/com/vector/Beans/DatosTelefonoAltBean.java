@@ -14,6 +14,20 @@ public class DatosTelefonoAltBean extends LogBean implements Model{
 	private int idtipotelefono=0;
 	@NotNull
 	private String telefono="";
+	private long idpersona=0;
+	
+	/**
+	 * @return the idpersona
+	 */
+	public long getIdpersona() {
+		return idpersona;
+	}
+	/**
+	 * @param idpersona the idpersona to set
+	 */
+	public void setIdpersona(long idpersona) {
+		this.idpersona = idpersona;
+	}
 	/**
 	 * @return the idtipotelefono
 	 */

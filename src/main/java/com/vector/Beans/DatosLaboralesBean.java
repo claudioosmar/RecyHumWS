@@ -36,6 +36,60 @@ public class DatosLaboralesBean extends LogBean implements Model{
 	private int porsentajeherra=0;
 	@NotNull
 	private int añosexp=0;
+	private String descripcionherrm="";
+	private int iddescmotivo=0;
+	private int idexplaborl=0;
+	private int idempresa=0;
+	
+	
+	/**
+	 * @return the descripcionherrm
+	 */
+	public String getDescripcionherrm() {
+		return descripcionherrm;
+	}
+	/**
+	 * @param descripcionherrm the descripcionherrm to set
+	 */
+	public void setDescripcionherrm(String descripcionherrm) {
+		this.descripcionherrm = descripcionherrm;
+	}
+	/**
+	 * @return the iddescmotivo
+	 */
+	public int getIddescmotivo() {
+		return iddescmotivo;
+	}
+	/**
+	 * @param iddescmotivo the iddescmotivo to set
+	 */
+	public void setIddescmotivo(int iddescmotivo) {
+		this.iddescmotivo = iddescmotivo;
+	}
+	/**
+	 * @return the idexplaborl
+	 */
+	public int getIdexplaborl() {
+		return idexplaborl;
+	}
+	/**
+	 * @param idexplaborl the idexplaborl to set
+	 */
+	public void setIdexplaborl(int idexplaborl) {
+		this.idexplaborl = idexplaborl;
+	}
+	/**
+	 * @return the idempresa
+	 */
+	public int getIdempresa() {
+		return idempresa;
+	}
+	/**
+	 * @param idempresa the idempresa to set
+	 */
+	public void setIdempresa(int idempresa) {
+		this.idempresa = idempresa;
+	}
 	/**
 	 * @return the idmotivotermino
 	 */

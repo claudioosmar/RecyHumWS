@@ -15,7 +15,7 @@ public interface DAODatosPersonales {
 
 	int Crear (DatosPersonalesBean datos);
 	int Modificar (DatosPersonalesBean datos);
-	String Eliminar (int id);
+	int Eliminar (int id);
 	DatosPersonalesBean Buscar (DatosPersonalesBean datos);
 	List<DatosPersonalesBean> Listar ();
 	

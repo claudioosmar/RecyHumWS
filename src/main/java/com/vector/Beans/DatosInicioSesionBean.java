@@ -33,11 +33,24 @@ public class DatosInicioSesionBean extends LogBean implements Model {
 	private long idpersona=0;
 	@NotNull
 	private String observacion="";
+	private String nombre="";
 
 	
 	
 	
 
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 	/**
 	 * @return the idpersonaalta
 	 */

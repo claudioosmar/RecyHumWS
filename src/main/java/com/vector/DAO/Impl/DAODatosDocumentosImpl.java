@@ -56,7 +56,7 @@ public class DAODatosDocumentosImpl implements DAODatosDocumento {
 	@Override
 	public int Modificar(DatosDocumentoBean datos) {
 		// TODO Auto-generated method stub
-		final String sql="execute sp_modificardocumento(?,?,?,?,?,?,?)";		
+		final String sql="execute sp_modificardocumento(?,?,?,?,?,?,?,?)";		
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
@@ -65,9 +65,11 @@ public class DAODatosDocumentosImpl implements DAODatosDocumento {
 				ps.setString(2, datos.getFormulario());
 				ps.setString(3, datos.getAccion());
 				ps.setString(4, datos.getIpequipo());
-				ps.setInt(5, datos.getIddocumento());
-				ps.setString(6, datos.getDescripciondoc());
-				ps.setString(7,datos.getUrldoc());
+				ps.setString(5, datos.getDescripciondoc());
+				ps.setString(6,datos.getUrldoc());
+				ps.setLong(7, datos.getIdpersona());
+				ps.setInt(8, datos.getIddocumento());
+			
 
 				return ps;
 			}

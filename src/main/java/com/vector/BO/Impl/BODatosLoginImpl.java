@@ -62,6 +62,23 @@ public class BODatosLoginImpl implements BODatosLogin {
 		return mensaje;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.vector.BO.BODatosLogin#Modificar(com.vector.Beans.DatosInicioSesionBean)
+	 */
+	@Override
+	@Transactional(readOnly = true)
+	public MsgBean Modificar(DatosInicioSesionBean datos) {
+		// TODO Auto-generated method stub
+		MsgBean mensaje = new MsgBean();
+		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		int resultado = sesion.Modificar(datos);
+		if(resultado == 1) {
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+		}else {
+			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		}
+		return mensaje;
+	}
 
 
 }

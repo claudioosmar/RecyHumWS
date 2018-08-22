@@ -26,7 +26,22 @@ public class DatosIdiomasBean extends LogBean implements Model {
 	private String idiomanativa="";
 	@NotNull
 	private long idpersona=0;
+	private int iddominio=0;
 	
+	
+	
+	/**
+	 * @return the iddominio
+	 */
+	public int getIddominio() {
+		return iddominio;
+	}
+	/**
+	 * @param iddominio the iddominio to set
+	 */
+	public void setIddominio(int iddominio) {
+		this.iddominio = iddominio;
+	}
 	/**
 	 * @return the ididioma
 	 */

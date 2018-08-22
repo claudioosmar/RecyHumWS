@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vector.BO.BODatosPistaAuditora;
-import com.vector.Beans.DatosInicioSesionBean;
-import com.vector.Beans.Model;
 import com.vector.Beans.DatosPistaAuditoraBean;
 
 /**

@@ -67,7 +67,7 @@ public class DAODatosIdiomasImpl implements DAODatosIdiomas {
 	@Transactional(readOnly = true)
 	public int Modificar(DatosIdiomasBean datos) {
 		// TODO Auto-generated method stub
-		final String sql = "begin sp_modificaridioma(?,?,?,?,?,?,?,?,?,?,?); end;";
+		final String sql = "begin sp_modificaridioma(?,?,?,?,?,?,?,?,?,?,?,?,?); end;";
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
@@ -77,13 +77,15 @@ public class DAODatosIdiomasImpl implements DAODatosIdiomas {
 				ps.setString(2, datos.getFormulario());
 				ps.setString(3,datos.getAccion());
 				ps.setString(4, datos.getIpequipo());
-				ps.setLong(5, datos.getIdpersona());	
-				ps.setInt(6, datos.getIdidioma());
-				ps.setInt(7, datos.getPcjescrito());
-				ps.setInt(8, datos.getPcjhablado());
-				ps.setInt(9, datos.getPcjentendido());
-				ps.setString(10, datos.getDescripciondominio());
-				ps.setString(11, datos.getIdiomanativa());
+				ps.setLong(5, datos.getIdpersona());		
+				ps.setInt(6, datos.getPcjescrito());
+				ps.setInt(7, datos.getPcjhablado());
+				ps.setInt(8, datos.getPcjentendido());
+				ps.setString(9, datos.getDescripciondominio());
+				ps.setString(10, datos.getIdiomanativa());
+				ps.setLong(11, datos.getIdpersona());
+				ps.setInt(12, datos.getIdidioma());
+				ps.setInt(13, datos.getIddominio());
 							
 				return ps;
 			}
