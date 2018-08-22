@@ -28,6 +28,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/oracle"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Oracle"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

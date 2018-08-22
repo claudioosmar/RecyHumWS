@@ -131,18 +131,39 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales  {
 	 */
 	@Transactional(readOnly = true)
 	public DatosPersonalesBean Buscar(DatosPersonalesBean datos) {
-		
+		DatosPersonalesBean retorno = new DatosPersonalesBean();
 		final String sql="select * from datospersonales where idpersona = ?";		
-		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
+		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setLong(1, datos.getIdpersona());
-		
+				ResultSet rs = ps.executeQuery();
+				retorno.setIdpersona(rs.getLong(1));
+				retorno.setNombrepersona(rs.getString(2));
+				retorno.setSegundonombre(rs.getString(3));
+				retorno.setApellidopaterno(rs.getString(4));
+				retorno.setApellidomaterno(rs.getString(5));
+				retorno.setSexo(rs.getString(6));
+				retorno.setFechanacimiento(rs.getString(7));
+				retorno.setNacionalidad(rs.getString(8));
+				retorno.setResumen(rs.getString(9));
+				retorno.setIdtipotelefono(rs.getInt(16));
+				retorno.setTelefono(rs.getString(17));
+				retorno.setCorreo(rs.getString(18));
+				retorno.setIdtipocorreo(rs.getInt(19));
+				retorno.setDescripciondoc(rs.getString(21));
+				retorno.setUrldoc(rs.getString(22));
+				retorno.setPorcentaje(rs.getInt(25));
+				retorno.setAños(rs.getInt(26));
+				retorno.setCalle(rs.getString(31));
+				retorno.setColonia(rs.getString(32));
+				retorno.setNumerointerior(rs.getString(33));
+				retorno.setNumeroexterior(rs.getString(34));
 				return ps;
 			}
 		});
-		return respuesta;
+		return retorno;
 	}
 
 	/*
