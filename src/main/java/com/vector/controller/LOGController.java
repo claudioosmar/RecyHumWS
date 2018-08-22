@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vector.BO.BOPistaAuditora;
-import com.vector.Beans.InicioSesionBean;
+import com.vector.BO.BODatosPistaAuditora;
+import com.vector.Beans.DatosInicioSesionBean;
 import com.vector.Beans.Model;
-import com.vector.Beans.PistaAuditoraBean;
+import com.vector.Beans.DatosPistaAuditoraBean;
 
 /**
  * @author vectormx
@@ -20,10 +20,10 @@ import com.vector.Beans.PistaAuditoraBean;
 @RestController
 public class LOGController {
 	@Autowired
-	private BOPistaAuditora LOG;
+	private BODatosPistaAuditora LOG;
 	
 	@RequestMapping(value="/log")
-	public String AgregaAceso(@RequestBody PistaAuditoraBean datos) {
+	public String AgregaAceso(@RequestBody DatosPistaAuditoraBean datos) {
 		return LOG.agregaraceso(datos);
 	}
 	

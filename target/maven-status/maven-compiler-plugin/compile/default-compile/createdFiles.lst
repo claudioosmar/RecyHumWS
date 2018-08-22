@@ -1,3 +1,5 @@
+com\vector\DAO\Impl\DAOSesionImpl$2.class
+com\vector\DAO\Impl\DAODatosEstudioImpl$2.class
 com\vector\DAO\DAODatosEstudio.class
 com\vector\controller\InicioSesionController.class
 com\vector\Beans\LogBean.class
@@ -31,7 +33,10 @@ com\vector\DAO\Impl\DAOSesionImpl.class
 com\vector\Utileria\Encriptarsha1.class
 com\vector\BO\BOPistaAuditora.class
 com\vector\Beans\DatosEstudioBean.class
+com\vector\DAO\Impl\EnvioMensaje.class
 com\vector\DAO\Impl\DAODatosPersonalesImpl.class
+com\vector\Beans\MsgBean.class
+com\vector\Beans\DatosCertificadoBean.class
 com\vector\Beans\PistaAuditoraBean.class
 com\vector\DAO\Impl\DaoPistaAuditoraImpl$1.class
 com\vector\DAO\Impl\DAODatosPersonalesImpl$1.class
@@ -49,6 +54,7 @@ com\vector\Beans\DatosPersonales\DatosPersonalesBean5.class
 com\vector\Beans\DatosPersonales\DatosPersonalesBean.class
 com\vector\BO\BOLogin.class
 com\vector\DAO\Impl\DAODatosIdiomasImpl$1.class
+com\vector\Utileria\ErroresdeNegocio.class
 com\vector\Utileria\ConvertirDatos.class
 com\vector\Utileria\ConvertirSesion.class
 com\vector\Beans\User.class

@@ -5,80 +5,137 @@ import com.vector.Beans.Model;
 public class DatosPersonalesBean extends DatosPersonalesBean2 implements Model {
 
 	/** The variable formulario*/
-	private String formulario;
-	private String accion;
-	private String IP;
-	private long idp;
-	private long idarea;
-	private long idcodpost;
-	private long idedocivil;
-	private long idtipotelefono;
-	private long idtipocorreo;
-	private long iddoc;
-	
-	public String getFormulario() {
-		return formulario;
+
+	private int idestadocivil;
+	private String nombrepersona;
+	private String segundonombre;
+	private String apellidopaterno;
+	private String apellidomaterno;
+	private String sexo;
+	private String fechanacimiento;
+	private String nacionalidad;
+	private String calle;
+	private String colonia;
+	/**
+	 * @return the idestadocivil
+	 */
+	public int getIdestadocivil() {
+		return idestadocivil;
 	}
-	public void setFormulario(String formulario) {
-		this.formulario = formulario;
+	/**
+	 * @param idestadocivil the idestadocivil to set
+	 */
+	public void setIdestadocivil(int idestadocivil) {
+		this.idestadocivil = idestadocivil;
 	}
-	public String getAccion() {
-		return accion;
+	/**
+	 * @return the nombrepersona
+	 */
+	public String getNombrepersona() {
+		return nombrepersona;
 	}
-	public void setAccion(String accion) {
-		this.accion = accion;
+	/**
+	 * @param nombrepersona the nombrepersona to set
+	 */
+	public void setNombrepersona(String nombrepersona) {
+		this.nombrepersona = nombrepersona;
 	}
-	public String getIP() {
-		return IP;
+	/**
+	 * @return the segundonombre
+	 */
+	public String getSegundonombre() {
+		return segundonombre;
 	}
-	public void setIP(String iP) {
-		IP = iP;
+	/**
+	 * @param segundonombre the segundonombre to set
+	 */
+	public void setSegundonombre(String segundonombre) {
+		this.segundonombre = segundonombre;
 	}
-	public long getIdp() {
-		return idp;
+	/**
+	 * @return the apellidopaterno
+	 */
+	public String getApellidopaterno() {
+		return apellidopaterno;
 	}
-	public void setIdp(long idp) {
-		this.idp = idp;
+	/**
+	 * @param apellidopaterno the apellidopaterno to set
+	 */
+	public void setApellidopaterno(String apellidopaterno) {
+		this.apellidopaterno = apellidopaterno;
 	}
-	public long getIdarea() {
-		return idarea;
+	/**
+	 * @return the apellidomaterno
+	 */
+	public String getApellidomaterno() {
+		return apellidomaterno;
 	}
-	public void setIdarea(long idarea) {
-		this.idarea = idarea;
+	/**
+	 * @param apellidomaterno the apellidomaterno to set
+	 */
+	public void setApellidomaterno(String apellidomaterno) {
+		this.apellidomaterno = apellidomaterno;
 	}
-	public long getIdcodpost() {
-		return idcodpost;
+	/**
+	 * @return the sexo
+	 */
+	public String getSexo() {
+		return sexo;
 	}
-	public void setIdcodpost(long idcodpost) {
-		this.idcodpost = idcodpost;
+	/**
+	 * @param sexo the sexo to set
+	 */
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
-	public long getIdedocivil() {
-		return idedocivil;
+	/**
+	 * @return the fechanacimiento
+	 */
+	public String getFechanacimiento() {
+		return fechanacimiento;
 	}
-	public void setIdedocivil(long idedocivil) {
-		this.idedocivil = idedocivil;
+	/**
+	 * @param fechanacimiento the fechanacimiento to set
+	 */
+	public void setFechanacimiento(String fechanacimiento) {
+		this.fechanacimiento = fechanacimiento;
 	}
-	public long getIdtipotelefono() {
-		return idtipotelefono;
+	/**
+	 * @return the nacionalidad
+	 */
+	public String getNacionalidad() {
+		return nacionalidad;
 	}
-	public void setIdtipotelefono(long idtipotelefono) {
-		this.idtipotelefono = idtipotelefono;
+	/**
+	 * @param nacionalidad the nacionalidad to set
+	 */
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
 	}
-	public long getIdtipocorreo() {
-		return idtipocorreo;
+	/**
+	 * @return the calle
+	 */
+	public String getCalle() {
+		return calle;
 	}
-	public void setIdtipocorreo(long idtipocorreo) {
-		this.idtipocorreo = idtipocorreo;
+	/**
+	 * @param calle the calle to set
+	 */
+	public void setCalle(String calle) {
+		this.calle = calle;
 	}
-	public long getIddoc() {
-		return iddoc;
+	/**
+	 * @return the colonia
+	 */
+	public String getColonia() {
+		return colonia;
 	}
-	public void setIddoc(long iddoc) {
-		this.iddoc = iddoc;
+	/**
+	 * @param colonia the colonia to set
+	 */
+	public void setColonia(String colonia) {
+		this.colonia = colonia;
 	}
-	
-	
-	
 	
 	
 }

@@ -9,77 +9,137 @@ package com.vector.Beans.DatosPersonales;
  */
 public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	
-	private String status;
-	private String resumen;
-	private String objlaboral;
-	private String ncontrol;
-	private String calle;
-	private String colonia;
-	private String numext;
-	private String numinter;
-	private String descripcion;
+	private String descripciondominio;
+	private String idiomanativa;
+	private int idtipotelefono;
+	private String telefono;
+	private String correo;
+	private int idtipocorreo;
+	private int iddocumento;
+	private String descripciondoc;
 	private String urldoc;
-	
-	public String getStatus() {
-		return status;
+	private int idotrodocs;
+	/**
+	 * @return the descripciondominio
+	 */
+	public String getDescripciondominio() {
+		return descripciondominio;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	/**
+	 * @param descripciondominio the descripciondominio to set
+	 */
+	public void setDescripciondominio(String descripciondominio) {
+		this.descripciondominio = descripciondominio;
 	}
-	public String getResumen() {
-		return resumen;
+	/**
+	 * @return the idiomanativa
+	 */
+	public String getIdiomanativa() {
+		return idiomanativa;
 	}
-	public void setResumen(String resumen) {
-		this.resumen = resumen;
+	/**
+	 * @param idiomanativa the idiomanativa to set
+	 */
+	public void setIdiomanativa(String idiomanativa) {
+		this.idiomanativa = idiomanativa;
 	}
-	public String getObjlaboral() {
-		return objlaboral;
+	/**
+	 * @return the idtipotelefono
+	 */
+	public int getIdtipotelefono() {
+		return idtipotelefono;
 	}
-	public void setObjlaboral(String objlaboral) {
-		this.objlaboral = objlaboral;
+	/**
+	 * @param idtipotelefono the idtipotelefono to set
+	 */
+	public void setIdtipotelefono(int idtipotelefono) {
+		this.idtipotelefono = idtipotelefono;
 	}
-	public String getNcontrol() {
-		return ncontrol;
+	/**
+	 * @return the telefono
+	 */
+	public String getTelefono() {
+		return telefono;
 	}
-	public void setNcontrol(String ncontrol) {
-		this.ncontrol = ncontrol;
+	/**
+	 * @param telefono the telefono to set
+	 */
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
-	public String getCalle() {
-		return calle;
+	/**
+	 * @return the correo
+	 */
+	public String getCorreo() {
+		return correo;
 	}
-	public void setCalle(String calle) {
-		this.calle = calle;
+	/**
+	 * @param correo the correo to set
+	 */
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
-	public String getColonia() {
-		return colonia;
+	/**
+	 * @return the idtipocorreo
+	 */
+	public int getIdtipocorreo() {
+		return idtipocorreo;
 	}
-	public void setColonia(String colonia) {
-		this.colonia = colonia;
+	/**
+	 * @param idtipocorreo the idtipocorreo to set
+	 */
+	public void setIdtipocorreo(int idtipocorreo) {
+		this.idtipocorreo = idtipocorreo;
 	}
-	public String getNumext() {
-		return numext;
+	/**
+	 * @return the iddocumento
+	 */
+	public int getIddocumento() {
+		return iddocumento;
 	}
-	public void setNumext(String numext) {
-		this.numext = numext;
+	/**
+	 * @param iddocumento the iddocumento to set
+	 */
+	public void setIddocumento(int iddocumento) {
+		this.iddocumento = iddocumento;
 	}
-	public String getNuminter() {
-		return numinter;
+	/**
+	 * @return the descripciondoc
+	 */
+	public String getDescripciondoc() {
+		return descripciondoc;
 	}
-	public void setNuminter(String numinter) {
-		this.numinter = numinter;
+	/**
+	 * @param descripciondoc the descripciondoc to set
+	 */
+	public void setDescripciondoc(String descripciondoc) {
+		this.descripciondoc = descripciondoc;
 	}
-	public String getDescripcion() {
-		return descripcion;
-	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+	/**
+	 * @return the urldoc
+	 */
 	public String getUrldoc() {
 		return urldoc;
 	}
+	/**
+	 * @param urldoc the urldoc to set
+	 */
 	public void setUrldoc(String urldoc) {
 		this.urldoc = urldoc;
 	}
+	/**
+	 * @return the idotrodocs
+	 */
+	public int getIdotrodocs() {
+		return idotrodocs;
+	}
+	/**
+	 * @param idotrodocs the idotrodocs to set
+	 */
+	public void setIdotrodocs(int idotrodocs) {
+		this.idotrodocs = idotrodocs;
+	}
+	
 	
 	
 }

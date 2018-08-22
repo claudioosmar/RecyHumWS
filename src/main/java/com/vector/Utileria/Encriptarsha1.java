@@ -8,10 +8,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
+import org.springframework.stereotype.Service;
+
 /**
  * @author vectormx
  *
  */
+@Service
 public class Encriptarsha1 {
 public String Encriptar(String kripto) {
 	byte[] newpassword=null;

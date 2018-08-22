@@ -46,7 +46,7 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales  {
 				ps.setLong(1, datos.getIduser());
 				ps.setString(2, datos.getFormulario());
 				ps.setString(3, datos.getAccion());
-				ps.setString(4, datos.getIP());
+				ps.setString(4, datos.getIpequipo());
 				ps.setLong(5, datos.getIdarea());
 				ps.setLong(6, datos.getIdcodpost());
 				ps.setLong(7, datos.getIdedocivil());

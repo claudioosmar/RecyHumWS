@@ -9,86 +9,137 @@ package com.vector.Beans.DatosPersonales;
  */
 public class DatosPersonalesBean2 extends DatosPersonalesBean3 {
 	
-	private long idestudio;
-	private String nombre;
-	private String segnombre;
-	private String apellidop;
-	private String apellidom;
-	private String sexo;
-	private String fechanac;
-	private String nacionalidad;
+	private String numerointerior;
+	private String numeroexterior;
+	private long idcodigopostal;
 	private String urlfoto;
-	private String sueldo;
-	private String EstadoCivil;
-	
-	
-	
-	public String getEstadoCivil() {
-		return EstadoCivil;
+	private String resumen;
+	private String objetivolaboral;
+	private int ididioma;
+	private int pcjescrito;
+	private int pcjhablado;
+	private int pcjentendido;
+	/**
+	 * @return the numerointerior
+	 */
+	public String getNumerointerior() {
+		return numerointerior;
 	}
-	public void setEstadoCivil(String estadoCivil) {
-		EstadoCivil = estadoCivil;
+	/**
+	 * @param numerointerior the numerointerior to set
+	 */
+	public void setNumerointerior(String numerointerior) {
+		this.numerointerior = numerointerior;
 	}
-	public String getSueldo() {
-		return sueldo;
+	/**
+	 * @return the numeroexterior
+	 */
+	public String getNumeroexterior() {
+		return numeroexterior;
 	}
-	public void setSueldo(String sueldo) {
-		this.sueldo = sueldo;
+	/**
+	 * @param numeroexterior the numeroexterior to set
+	 */
+	public void setNumeroexterior(String numeroexterior) {
+		this.numeroexterior = numeroexterior;
 	}
-	public long getIdestudio() {
-		return idestudio;
+	/**
+	 * @return the idcodigopostal
+	 */
+	public long getIdcodigopostal() {
+		return idcodigopostal;
 	}
-	public void setIdestudio(long idestudio) {
-		this.idestudio = idestudio;
+	/**
+	 * @param idcodigopostal the idcodigopostal to set
+	 */
+	public void setIdcodigopostal(long idcodigopostal) {
+		this.idcodigopostal = idcodigopostal;
 	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public String getSegnombre() {
-		return segnombre;
-	}
-	public void setSegnombre(String segnombre) {
-		this.segnombre = segnombre;
-	}
-	public String getApellidop() {
-		return apellidop;
-	}
-	public void setApellidop(String apellidop) {
-		this.apellidop = apellidop;
-	}
-	public String getApellidom() {
-		return apellidom;
-	}
-	public void setApellidom(String apellidom) {
-		this.apellidom = apellidom;
-	}
-	public String getSexo() {
-		return sexo;
-	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-	public String getFechanac() {
-		return fechanac;
-	}
-	public void setFechanac(String fechanac) {
-		this.fechanac = fechanac;
-	}
-	public String getNacionalidad() {
-		return nacionalidad;
-	}
-	public void setNacionalidad(String nacionalidad) {
-		this.nacionalidad = nacionalidad;
-	}
+	/**
+	 * @return the urlfoto
+	 */
 	public String getUrlfoto() {
 		return urlfoto;
 	}
+	/**
+	 * @param urlfoto the urlfoto to set
+	 */
 	public void setUrlfoto(String urlfoto) {
 		this.urlfoto = urlfoto;
 	}
+	/**
+	 * @return the resumen
+	 */
+	public String getResumen() {
+		return resumen;
+	}
+	/**
+	 * @param resumen the resumen to set
+	 */
+	public void setResumen(String resumen) {
+		this.resumen = resumen;
+	}
+	/**
+	 * @return the objetivolaboral
+	 */
+	public String getObjetivolaboral() {
+		return objetivolaboral;
+	}
+	/**
+	 * @param objetivolaboral the objetivolaboral to set
+	 */
+	public void setObjetivolaboral(String objetivolaboral) {
+		this.objetivolaboral = objetivolaboral;
+	}
+	/**
+	 * @return the ididioma
+	 */
+	public int getIdidioma() {
+		return ididioma;
+	}
+	/**
+	 * @param ididioma the ididioma to set
+	 */
+	public void setIdidioma(int ididioma) {
+		this.ididioma = ididioma;
+	}
+	/**
+	 * @return the pcjescrito
+	 */
+	public int getPcjescrito() {
+		return pcjescrito;
+	}
+	/**
+	 * @param pcjescrito the pcjescrito to set
+	 */
+	public void setPcjescrito(int pcjescrito) {
+		this.pcjescrito = pcjescrito;
+	}
+	/**
+	 * @return the pcjhablado
+	 */
+	public int getPcjhablado() {
+		return pcjhablado;
+	}
+	/**
+	 * @param pcjhablado the pcjhablado to set
+	 */
+	public void setPcjhablado(int pcjhablado) {
+		this.pcjhablado = pcjhablado;
+	}
+	/**
+	 * @return the pcjentendido
+	 */
+	public int getPcjentendido() {
+		return pcjentendido;
+	}
+	/**
+	 * @param pcjentendido the pcjentendido to set
+	 */
+	public void setPcjentendido(int pcjentendido) {
+		this.pcjentendido = pcjentendido;
+	}
+	
 	
 	
 }

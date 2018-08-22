@@ -15,39 +15,46 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vector.BO.BODatosEstudio;
 import com.vector.Beans.DatosEstudioBean;
+import com.vector.Beans.MsgBean;
 
 /**
  * @author Claudio
  *
  */
+
 @RestController
+@RequestMapping("/{proyecto}/{modulo.2}")
 public class DatosEstudioController {
 	
 	
 	@Autowired
 	private BODatosEstudio estudio;
 	
-	@RequestMapping(value = "{proyecto}/{modulo.2}/Crear", method = RequestMethod.POST)
-	public ResponseEntity<String> insertar(@RequestBody DatosEstudioBean datos){
-		return new ResponseEntity<String>(estudio.Crear(datos),HttpStatus.OK);
+	@RequestMapping(path = "/Crear", method = RequestMethod.POST)
+	public ResponseEntity<MsgBean> insertar(@RequestBody DatosEstudioBean datos){
+		System.out.print("Se creo un historial academico");
+		return new ResponseEntity<MsgBean>(estudio.Crear(datos),HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "{proyecto}/{modulo.2}/Modificar",method = RequestMethod.POST)
-	public ResponseEntity<String>actualizar(@RequestBody DatosEstudioBean datos){
-		return new ResponseEntity<String>(estudio.Modificar(datos),HttpStatus.OK);
+	@RequestMapping(path = "/Modificar",method = RequestMethod.POST)
+	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosEstudioBean datos){
+		System.out.print("Se modifico historial academico");
+		return new ResponseEntity<MsgBean>(estudio.Modificar(datos),HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "{proyecto}/{modulo.2}/Eliminar",method = RequestMethod.POST)
-	public ResponseEntity<String> eliminar(@RequestBody int id){
-		return new ResponseEntity<String>(estudio.Eliminar(id),HttpStatus.OK);
+	@RequestMapping(path = "/Eliminar",method = RequestMethod.POST)
+	public ResponseEntity<MsgBean> eliminar(@RequestBody int id){
+		System.out.print("se elimo historial academico");
+		return new ResponseEntity<MsgBean>(estudio.Eliminar(id),HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "{proyecto}/{modulo.2}/Buscar",method=RequestMethod.POST)
+	@RequestMapping(path = "/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<DatosEstudioBean>buscar(@RequestBody DatosEstudioBean datos){
+		System.out.print("se busco historial acdemico");
 		return new ResponseEntity<DatosEstudioBean>(estudio.Buscar(datos),HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "{proyecto}/{modulo.2}/Listar",method=RequestMethod.POST)
+	@RequestMapping(path = "/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosEstudioBean>> consulta(){
 		System.out.println("Ingresando a listar estudio ");
 		List<DatosEstudioBean> estudios = estudio.Listar();

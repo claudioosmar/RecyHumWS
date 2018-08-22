@@ -3,14 +3,20 @@
  */
 package com.vector.Beans;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * @author vectormx
  *
  */
 public class LogBean {
+	@NotNull
  private long iduser;
+	@NotNull
  private String formulario;
+	@NotNull
  private String accion;
+	@NotNull
  private String ipequipo;
 /**
  * @return the iduser

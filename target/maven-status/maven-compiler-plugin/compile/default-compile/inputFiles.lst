@@ -29,13 +29,17 @@ C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\BO\BOPistaAuditora.jav
 C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\DAO\DAOPistaAuditora.java
 C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\BO\Impl\BODatosIdiomaImpl.java
 C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\BO\BODatosEstudio.java
+C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\Beans\DatosCertificadoBean.java
 C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\DAO\Impl\DAOSesionImpl.java
+C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\DAO\Impl\EnvioMensaje.java
 C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\Beans\DatosPersonales\DatosPersonalesBean.java
 C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\Beans\DatosPersonales\DatosPersonalesBean5.java
+C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\Utileria\ErroresdeNegocio.java
 C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\DAO\Impl\DAODatosIdiomasImpl.java
 C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\controller\DatosEstudioController.java
 C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\Beans\InicioSesionBean.java
 C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\controller\DatosPersonalesController.java
+C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\Beans\MsgBean.java
 C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\controller\DatosLaboralesController.java
 C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\Beans\User.java
 C:\Users\vectormx\git\RecyHumWS2\src\main\java\com\vector\Utileria\Encriptarsha1.java

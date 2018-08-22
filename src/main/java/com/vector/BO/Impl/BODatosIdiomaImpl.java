@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.vector.BO.BOIdiomas;
+import com.vector.BO.BODatosIdiomas;
 import com.vector.Beans.DatosIdiomasBean;
 import com.vector.DAO.DAODatosIdiomas;
 
@@ -16,7 +16,7 @@ import com.vector.DAO.DAODatosIdiomas;
  *
  */
 @Service
-public class BODatosIdiomaImpl implements BOIdiomas {
+public class BODatosIdiomaImpl implements BODatosIdiomas {
 	@Autowired
 	private DAODatosIdiomas idiomas;
 	/* (non-Javadoc)

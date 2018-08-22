@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.vector.BO.BODatosEstudio;
 import com.vector.Beans.DatosEstudioBean;
+import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosEstudio;
+import com.vector.DAO.Impl.EnvioMensaje;
 
 /**
  * @author vectormx
@@ -24,31 +26,51 @@ public class BODatosEstudioImpl implements BODatosEstudio {
 	 * @see com.vector.BO.BOEstudios#Crear(com.vector.Beans.DatosEstudioBean)
 	 */
 	@Override
-	public String Crear(DatosEstudioBean datos) {
-		int respuesta = daoestudio.Crear(datos);
+
+	public MsgBean Crear(DatosEstudioBean datos) {
 		// TODO Auto-generated method stub
-		if (respuesta == 1) {
-			return "se agrego correctamente";
+		MsgBean mensaje = new MsgBean();
+		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		int resultado = daoestudio.Crear(datos);
+		if(resultado == 1) {
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 		}else {
-		return "fallo al ingresar";
-	}
+			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		}
+		return mensaje;
 	}
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BOEstudios#Modificar(com.vector.Beans.DatosEstudioBean)
 	 */
 	@Override
-	public String Modificar(DatosEstudioBean datos) {
+	public MsgBean Modificar(DatosEstudioBean datos) {
 		// TODO Auto-generated method stub
-		return daoestudio.Modificar(datos);
+		MsgBean mensaje = new MsgBean();
+		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		int resultado = daoestudio.Modificar(datos);
+		if(resultado == 1) {
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+		}else {
+			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		}
+		return mensaje;
 	}
 
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BOEstudios#Eliminar(int)
 	 */
 	@Override
-	public String Eliminar(int id) {
+	public MsgBean Eliminar(int id) {
 		// TODO Auto-generated method stub
-		return daoestudio.Eliminar(id);
+		MsgBean mensaje = new MsgBean();
+		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		int resultado = daoestudio.Eliminar(id);
+		if(resultado == 1) {
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+		}else {
+			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		}
+		return mensaje;
 	}
 
 	/* (non-Javadoc)
