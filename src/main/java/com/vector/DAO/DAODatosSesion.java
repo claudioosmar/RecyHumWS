@@ -5,6 +5,7 @@ package com.vector.DAO;
 
 import java.util.List;
 
+import com.vector.Beans.DatosFormularioBean;
 import com.vector.Beans.DatosInicioSesionBean;
 import com.vector.Beans.Model;
 
@@ -18,6 +19,6 @@ public interface DAODatosSesion {
 	String Delete (int id);
 	Model Buscar(DatosInicioSesionBean datos);
 	List<DatosInicioSesionBean> Listar ();
-	String VerificarLogin(DatosInicioSesionBean datos);
+	List<DatosFormularioBean> VerificarLogin(DatosInicioSesionBean datos);
 
 }

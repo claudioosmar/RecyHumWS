@@ -5,6 +5,7 @@ package com.vector.BO;
 
 import java.util.List;
 
+import com.vector.Beans.DatosFormularioBean;
 import com.vector.Beans.DatosInicioSesionBean;
 import com.vector.Beans.MsgBean;
 
@@ -14,7 +15,7 @@ import com.vector.Beans.MsgBean;
  */
 public interface BODatosLogin  {
 	List<DatosInicioSesionBean> ListarUsuarios ();
-	String VerificarUsuario(DatosInicioSesionBean datos);
+	List<DatosFormularioBean> VerificarUsuario(DatosInicioSesionBean datos);
 	MsgBean CreateUser(DatosInicioSesionBean datos);
 	
 }

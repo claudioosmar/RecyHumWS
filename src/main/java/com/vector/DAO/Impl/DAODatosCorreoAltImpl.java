@@ -55,7 +55,7 @@ public class DAODatosCorreoAltImpl implements DAODatosCorreoAlt {
 	@Override
 	public int Modificar(DatosCorreoAltBean datos) {
 		// TODO Auto-generated method stub
-		final String sql="execute sp_modificarcorreoalt(?,?,?,?,?,?)";		
+		final String sql="execute sp_modificarcorreoalt(?,?,?,?,?,?,?)";		
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
@@ -64,8 +64,9 @@ public class DAODatosCorreoAltImpl implements DAODatosCorreoAlt {
 				ps.setString(2, datos.getFormulario());
 				ps.setString(3, datos.getAccion());
 				ps.setString(4, datos.getIpequipo());
-				ps.setInt(5, datos.getIdtipocorreo());
-				ps.setString(6, datos.getCorreo());
+				ps.setLong(5, datos.getIdpersona());
+				ps.setInt(6, datos.getIdtipocorreo());
+				ps.setString(7, datos.getCorreo());
 				
 				
 				return ps;

@@ -14,6 +14,21 @@ public class DatosCorreoAltBean extends LogBean implements Model{
 	private int idtipocorreo=0;
 	@NotNull
 	private String Correo="";
+	private long idpersona=0;
+	
+	
+	/**
+	 * @return the idpersona
+	 */
+	public long getIdpersona() {
+		return idpersona;
+	}
+	/**
+	 * @param idpersona the idpersona to set
+	 */
+	public void setIdpersona(long idpersona) {
+		this.idpersona = idpersona;
+	}
 	/**
 	 * @return the idtipocorreo
 	 */

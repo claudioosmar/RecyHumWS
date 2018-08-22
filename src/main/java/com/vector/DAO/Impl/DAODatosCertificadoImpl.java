@@ -57,7 +57,7 @@ public class DAODatosCertificadoImpl implements DAODatosCertificado {
 	@Override
 	public int Modificar(DatosCertificadoBean datos) {
 		// TODO Auto-generated method stub
-		final String sql="execute sp_modificarcertificado(?,?,?,?,?,?,?,?)";		
+		final String sql="execute sp_modificarcertificado(?,?,?,?,?,?,?,?,?,?)";		
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
@@ -66,10 +66,14 @@ public class DAODatosCertificadoImpl implements DAODatosCertificado {
 				ps.setString(2, datos.getFormulario());
 				ps.setString(3, datos.getAccion());
 				ps.setString(4, datos.getIpequipo());
-				ps.setString(5, datos.getNombrecertificado());
+				ps.setString(5, datos.getDescripciondoc());
 				ps.setInt(6, datos.getIddocumento());
-				ps.setString(7, datos.getDescripciondoc());
-				ps.setString(8, datos.getUrldoc());
+				ps.setString(7, datos.getUrldoc());
+				ps.setString(8, datos.getNombrecertificado());
+				ps.setLong(9, datos.getIdpersona());
+				ps.setLong(10, datos.getIdcertificado());
+				
+				
 				
 				
 				return ps;

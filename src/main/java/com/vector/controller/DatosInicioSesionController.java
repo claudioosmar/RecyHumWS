@@ -44,15 +44,15 @@ public class DatosInicioSesionController {
 	
 	
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Verificar", method = RequestMethod.POST)
-	public ResponseEntity<MsgBean> verificarlogin(@RequestBody DatosInicioSesionBean datos){
+	public ResponseEntity<List<DatosFormularioBean>> verificarlogin(@RequestBody DatosInicioSesionBean datos){
 		MsgBean respuesta = new MsgBean();
 		if(datos.getUsuario().isEmpty()&&datos.getContraseña().isEmpty()) {
 			respuesta.setMsjAccion("falta usuario y/o contraseña");
 		}else {
-		respuesta.setMsjAccion(login.VerificarUsuario(datos));
+		
 		System.out.println("Usuario "+datos.getUsuario()+" Contra "+datos.getContraseña());
 	}
-		return new ResponseEntity<MsgBean>(respuesta,HttpStatus.OK);
+		return new ResponseEntity<List<DatosFormularioBean>>(login.VerificarUsuario(datos),HttpStatus.OK);
 		
 	}
 

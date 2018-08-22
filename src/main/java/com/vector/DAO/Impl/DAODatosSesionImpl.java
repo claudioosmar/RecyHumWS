@@ -8,7 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,6 +20,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.vector.Beans.DatosFormularioBean;
 import com.vector.Beans.DatosInicioSesionBean;
 import com.vector.Beans.Model;
 import com.vector.DAO.DAODatosSesion;
@@ -30,7 +34,7 @@ import com.vector.Utileria.*;
 public class DAODatosSesionImpl implements DAODatosSesion {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	private String resp;
+	private List<DatosFormularioBean> listaform;
 
 	/*
 	 * (non-Javadoc)
@@ -115,9 +119,9 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 	 * @see com.vector.DAO.SesionDAO#VerificarLogin(com.vector.Beans.InicioSesionBean)
 	 */
 	@Override
-	public String VerificarLogin(DatosInicioSesionBean datos) {
+	public List<DatosFormularioBean> VerificarLogin(DatosInicioSesionBean datos) {
 		// TODO Auto-generated method stub
-		final String sql = "select fverificar_login(?,?) from dual";
+		final String sql = "select * from tblusers where Nombre=(?)and contraseña=(?) from dual";
 		datos.setContraseña(new Encriptarsha1().Encriptar(datos.getContraseña()));
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
@@ -127,11 +131,40 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 				ps.setString(2, datos.getContraseña());
 				ResultSet rs = ps.executeQuery();
 				rs.next();
-				resp=(rs.getString(1));
+				datos.setIdtipouser(rs.getInt(2));
+				PreparedStatement ps2 = con.prepareStatement("select * from tblpiv12 where idtipouser=(?)");
+				ps2.setInt(1, datos.getIdtipouser());
+				ResultSet rs2 = ps2.executeQuery();
+				List<Integer> idprivilegio = new ArrayList<Integer>();
+				while(rs2.next()) {
+					idprivilegio.add(rs.getInt(1));
+				}
+				DatosFormularioBean var2 =new DatosFormularioBean();
+				List<DatosFormularioBean> resp = new ArrayList<DatosFormularioBean>();
+				for (int i = 0; i < idprivilegio.size(); i++) {
+					PreparedStatement ps3 = con.prepareStatement("select * from tblpiv10 where idprivilegio =(?)");
+					ps3.setInt(1, idprivilegio.get(i));
+					ResultSet rs3 = ps3.executeQuery();
+					rs3.next();
+					
+					var2.setNomformulario(String.valueOf(rs3.getInt(2)));
+					var2.setStatus(rs3.getBoolean(3));
+					resp.add(var2);
+				}
+				for (int i = 0; i < idprivilegio.size(); i++) {
+					PreparedStatement ps4 = con.prepareStatement("select * from tblformularios where idformulario =(?)");
+					ps4.setInt(1, Integer.parseInt(resp.get(i).getNomformulario()));
+					ResultSet rs4 = ps4.executeQuery();
+					rs4.next();
+					resp.get(i).setNomformulario(rs4.getString(2));
+				}
+				listaform = resp;
 				return ps;
 			}
 		});
-		return resp;
+		
+		
+		return listaform;
 		
 	
 
@@ -159,4 +192,19 @@ class SesionRowMapper implements RowMapper<DatosInicioSesionBean> {
 		user.setIpequipo("");
 		return user;
 	}
+}
+class FormularioRowMapper implements RowMapper<DatosFormularioBean>{
+
+	/* (non-Javadoc)
+	 * @see org.springframework.jdbc.core.RowMapper#mapRow(java.sql.ResultSet, int)
+	 */
+	@Override
+	public DatosFormularioBean mapRow(ResultSet rs, int rowNum) throws SQLException {
+		// TODO Auto-generated method stub
+		DatosFormularioBean form = new DatosFormularioBean();
+		form.setNomformulario(rs.getString(1));
+		form.setStatus(rs.getBoolean(2));
+		return null;
+	}
+	
 }

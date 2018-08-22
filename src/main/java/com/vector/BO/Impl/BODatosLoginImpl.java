@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.vector.BO.BODatosLogin;
+import com.vector.Beans.DatosFormularioBean;
 import com.vector.Beans.DatosInicioSesionBean;
 import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosSesion;
@@ -38,7 +39,7 @@ public class BODatosLoginImpl implements BODatosLogin {
 	 * @see com.vector.BO.LoginBO#VerificarUsuario(java.lang.Object)
 	 */
 	@Override
-	public String VerificarUsuario(DatosInicioSesionBean datos) {
+	public List<DatosFormularioBean> VerificarUsuario(DatosInicioSesionBean datos) {
 		// TODO Auto-generated method stub
 		return sesion.VerificarLogin(datos);
 	}

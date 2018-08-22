@@ -18,6 +18,34 @@ public class DatosCertificadoBean extends LogBean implements Model{
 	private String descripciondoc="";
 	@NotNull
 	private String urldoc="";
+	private long idpersona=0;
+	private long idcertificado=0;
+	
+	
+	/**
+	 * @return the idpersona
+	 */
+	public long getIdpersona() {
+		return idpersona;
+	}
+	/**
+	 * @param idpersona the idpersona to set
+	 */
+	public void setIdpersona(long idpersona) {
+		this.idpersona = idpersona;
+	}
+	/**
+	 * @return the idcertificado
+	 */
+	public long getIdcertificado() {
+		return idcertificado;
+	}
+	/**
+	 * @param idcertificado the idcertificado to set
+	 */
+	public void setIdcertificado(long idcertificado) {
+		this.idcertificado = idcertificado;
+	}
 	/**
 	 * @return the nombrecertificado
 	 */
