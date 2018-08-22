@@ -5,6 +5,8 @@ package com.vector.BO.Impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.vector.BO.BODatosPistaAuditora;
 import com.vector.Beans.DatosPistaAuditoraBean;
 import com.vector.Beans.MsgBean;
@@ -13,6 +15,7 @@ import com.vector.Beans.MsgBean;
  * @author vectormx
  *
  */
+@Service
 public class BODatosPistaAuditorasImpl implements BODatosPistaAuditora {
 
 	/* (non-Javadoc)

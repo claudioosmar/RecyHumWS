@@ -13,7 +13,7 @@ import com.vector.BO.BODatosLogin;
 import com.vector.Beans.DatosInicioSesionBean;
 import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosSesion;
-import com.vector.DAO.Impl.EnvioMensaje;
+import com.vector.Utileria.EnvioMensaje;
 
 /**
  * @author vectormx

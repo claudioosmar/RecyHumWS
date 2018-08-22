@@ -12,7 +12,7 @@ import com.vector.BO.BODatosEstudio;
 import com.vector.Beans.DatosEstudioBean;
 import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosEstudio;
-import com.vector.DAO.Impl.EnvioMensaje;
+import com.vector.Utileria.EnvioMensaje;
 
 /**
  * @author vectormx

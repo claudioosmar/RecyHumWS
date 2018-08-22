@@ -5,6 +5,7 @@ package com.vector.BO;
 
 import java.util.List;
 
+import com.vector.Beans.MsgBean;
 import com.vector.Beans.DatosPersonales.DatosPersonalesBean;
 
 /**
@@ -13,8 +14,8 @@ import com.vector.Beans.DatosPersonales.DatosPersonalesBean;
  */
 public interface BODatosPersonales {
 	
-	DatosPersonalesBean Crear(DatosPersonalesBean datos);
-	DatosPersonalesBean Actualizar(DatosPersonalesBean datos);
+	MsgBean Crear(DatosPersonalesBean datos);
+	MsgBean Actualizar(DatosPersonalesBean datos);
 	String Eliminar (int id);
 	DatosPersonalesBean Buscar(DatosPersonalesBean datos);
 	List<DatosPersonalesBean> Listar ();

@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.vector.BO.BODatosIdiomas;
 import com.vector.Beans.DatosIdiomasBean;
+import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosIdiomas;
+import com.vector.Utileria.EnvioMensaje;
 
 /**
  * @author vectormx
@@ -18,41 +20,46 @@ import com.vector.DAO.DAODatosIdiomas;
 @Service
 public class BODatosIdiomaImpl implements BODatosIdiomas {
 	@Autowired
-	private DAODatosIdiomas idiomas;
+	private DAODatosIdiomas daoidiomas;
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BOIdiomas#Crear(com.vector.Beans.DatosIdiomasBean)
 	 */
 	@Override
-	public String Crear(DatosIdiomasBean datos) {
-		int respuesta = idiomas.Crear(datos);
+	public MsgBean Crear(DatosIdiomasBean datos) {
 		// TODO Auto-generated method stub
-		if (respuesta == 1) {
-			return "se agrego correctamente";
+		MsgBean mensaje = new MsgBean();
+		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		int resultado = daoidiomas.Crear(datos);
+		if(resultado == 1) {
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 		}else {
-		return "fallo al ingresar";
-	}
+			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		}
+		return mensaje;
 	}
 
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BOIdiomas#Modificar(com.vector.Beans.DatosIdiomasBean)
 	 */
 	@Override
-	public String Modificar(DatosIdiomasBean datos) {
+	public MsgBean Modificar(DatosIdiomasBean datos) {
 		// TODO Auto-generated method stub
-		int respuesta = idiomas.Modificar(datos);
-		// TODO Auto-generated method stub
-		if (respuesta == 1) {
-			return "se agrego correctamente";
+		MsgBean mensaje = new MsgBean();
+		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		int resultado = daoidiomas.Modificar(datos);
+		if(resultado == 1) {
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 		}else {
-		return "fallo al ingresar";
-	}
+			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		}
+		return mensaje;
 	}
 
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BOIdiomas#Eliminar(int)
 	 */
 	@Override
-	public String Eliminar(int id) {
+	public MsgBean Eliminar(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

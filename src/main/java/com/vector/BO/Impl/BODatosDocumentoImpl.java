@@ -5,11 +5,14 @@ package com.vector.BO.Impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vector.BO.BODatosDocumentos;
 import com.vector.Beans.DatosDocumentoBean;
 import com.vector.Beans.MsgBean;
+import com.vector.DAO.DAODatosDocumento;
+import com.vector.Utileria.EnvioMensaje;
 
 /**
  * @author vectormx
@@ -17,14 +20,23 @@ import com.vector.Beans.MsgBean;
  */
 @Service
 public class BODatosDocumentoImpl implements BODatosDocumentos {
-
+	@Autowired
+	private DAODatosDocumento daodoc;
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BODatosDocumentos#Crear(com.vector.Beans.DatosDocumentoBean)
 	 */
 	@Override
 	public MsgBean Crear(DatosDocumentoBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		MsgBean mensaje = new MsgBean();
+		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		int resultado = daodoc.Crear(datos);
+		if(resultado == 1) {
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+		}else {
+			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		}
+		return mensaje;
 	}
 
 	/* (non-Javadoc)

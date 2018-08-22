@@ -9,16 +9,16 @@ package com.vector.Beans.DatosPersonales;
  */
 public class DatosPersonalesBean2 extends DatosPersonalesBean3 {
 	
-	private String numerointerior;
-	private String numeroexterior;
-	private long idcodigopostal;
-	private String urlfoto;
-	private String resumen;
-	private String objetivolaboral;
-	private int ididioma;
-	private int pcjescrito;
-	private int pcjhablado;
-	private int pcjentendido;
+	private String numerointerior="";
+	private String numeroexterior="";
+	private long idcodigopostal=0;
+	private String urlfoto="";
+	private String resumen="";
+	private String objetivolaboral="";
+	private int ididioma=0;
+	private int pcjescrito=0;
+	private int pcjhablado=0;
+	private int pcjentendido=0;
 	/**
 	 * @return the numerointerior
 	 */

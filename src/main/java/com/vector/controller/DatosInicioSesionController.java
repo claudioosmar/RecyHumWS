@@ -3,6 +3,7 @@
  */
 package com.vector.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vector.BO.BODatosLogin;
+import com.vector.Beans.DatosFormularioBean;
 import com.vector.Beans.DatosInicioSesionBean;
 import com.vector.Beans.MsgBean;
 
@@ -65,5 +67,20 @@ public class DatosInicioSesionController {
 			return new ResponseEntity<List<DatosInicioSesionBean>>(usuarios, HttpStatus.OK);
 		}
 	}
+	
+	@RequestMapping(path = "/SGRHWebService/DatosSesion/VerificarPrueba", method = RequestMethod.POST)
+	public ResponseEntity<List<DatosFormularioBean>> consultaprueba(){
+		System.out.println("Ingresando a listar formularios ");
+		List<DatosFormularioBean> retorno = new ArrayList<DatosFormularioBean>();
+		DatosFormularioBean form= new DatosFormularioBean();
+		form.setNomformulario("DatosPersonales");
+		form.setStatus(true);
+		retorno.add(form);
+		form = new DatosFormularioBean();
+		form.setNomformulario("Idiomas");
+		form.setStatus(true);
+		retorno.add(form);
+			return new ResponseEntity<List<DatosFormularioBean>>(retorno, HttpStatus.OK);
+		}
 	
 }

@@ -11,9 +11,9 @@ import javax.validation.constraints.NotNull;
  */
 public class DatosTelefonoAltBean extends LogBean implements Model{
 	@NotNull
-	private int idtipotelefono;
+	private int idtipotelefono=0;
 	@NotNull
-	private String telefono;
+	private String telefono="";
 	/**
 	 * @return the idtipotelefono
 	 */

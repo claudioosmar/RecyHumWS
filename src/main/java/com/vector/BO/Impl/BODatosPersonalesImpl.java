@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vector.BO.BODatosPersonales;
+import com.vector.Beans.MsgBean;
 import com.vector.Beans.DatosPersonales.DatosPersonalesBean;
 import com.vector.DAO.DAODatosPersonales;
+import com.vector.Utileria.EnvioMensaje;
 
 /**
  * @author vectormx
@@ -25,18 +27,34 @@ public class BODatosPersonalesImpl implements BODatosPersonales {
 	 * @see com.vector.BO.BODatosPersonales#Crear(com.vector.Beans.DatosPersonales.DatosPersonalesBean)
 	 */
 	@Override
-	public DatosPersonalesBean Crear(DatosPersonalesBean datos) {
+	public MsgBean Crear(DatosPersonalesBean datos) {
 		// TODO Auto-generated method stub
-		return datospersonales.Crear(datos);
+		MsgBean mensaje = new MsgBean();
+		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		int resultado = datospersonales.Crear(datos);
+		if(resultado == 1) {
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+		}else {
+			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		}
+		return mensaje;
 	}
 
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BODatosPersonales#Actualizar(com.vector.Beans.DatosPersonales.DatosPersonalesBean)
 	 */
 	@Override
-	public DatosPersonalesBean Actualizar(DatosPersonalesBean datos) {
+	public MsgBean Actualizar(DatosPersonalesBean datos) {
 		// TODO Auto-generated method stub
-		return datospersonales.Actualizar(datos);
+		MsgBean mensaje = new MsgBean();
+		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		int resultado = datospersonales.Modificar(datos);
+		if(resultado == 1) {
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+		}else {
+			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		}
+		return mensaje;
 	}
 
 	/* (non-Javadoc)

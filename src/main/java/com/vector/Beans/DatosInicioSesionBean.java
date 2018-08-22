@@ -12,27 +12,27 @@ import javax.validation.constraints.NotNull;
 public class DatosInicioSesionBean extends LogBean implements Model {
 	/*Atributos del inicio de sesion*/
 	@NotNull
-	private long ID_User;
+	private long ID_User=0;
 	@NotNull
-	private String IP;
+	private String IP="";
 	@NotNull
-	private String usuario;
+	private String usuario="";
 	@NotNull
-	private String contraseña;
+	private String contraseña="";
 	@NotNull
-	private String Status;
+	private String Status="";
 	@NotNull
-	private String token;
+	private String token="";
 	@NotNull
-	private String movimiento;
+	private String movimiento="";
 	@NotNull
-	private int idtipouser;
+	private int idtipouser=0;
 	@NotNull
-	private long idpersonaalta;
+	private long idpersonaalta=0;
 	@NotNull
-	private long idpersona;
+	private long idpersona=0;
 	@NotNull
-	private String observacion;
+	private String observacion="";
 
 	
 	

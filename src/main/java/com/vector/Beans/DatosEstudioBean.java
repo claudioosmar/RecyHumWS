@@ -13,19 +13,19 @@ public class DatosEstudioBean extends LogBean implements Model {
 /*atributos para ingresar ddatos estudio*/
 	
 	@NotNull
-	private int idgrado;
+	private int idgrado=0;
 	@NotNull
-	private int idlocalidad;
+	private int idlocalidad=0;
 	@NotNull
-	private String institutoestudio;
+	private String institutoestudio="";
 	@NotNull
-	private String periodoinicial;
+	private String periodoinicial="";
 	@NotNull
-	private String periodofinal;
+	private String periodofinal="";
 	@NotNull
-	private String nombrecorrera;
+	private String nombrecorrera="";
 	@NotNull
-	private long idpersona;
+	private long idpersona=0;
 	
 	
 	/**

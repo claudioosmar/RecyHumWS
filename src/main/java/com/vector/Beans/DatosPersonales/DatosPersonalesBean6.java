@@ -3,21 +3,48 @@
  */
 package com.vector.Beans.DatosPersonales;
 
-import com.vector.Beans.LogBean;
 
 /**
  * @author vectormx
  *
  */
-public class DatosPersonalesBean6 extends LogBean{
-	private String actividadesrealizadas;
-	private String logros;
-	private int idtipocontrato;
-	private String descripcionmotivo;
-	private int idherramientau;
-	private int porcentajeu;
-	private int añosexpu;
-	private String descripcionherram;
+public class DatosPersonalesBean6 extends DatosPersonalesBean7{
+	private String actividadesrealizadas="";
+	private String logros="";
+	private int idtipocontrato=0;
+	private String descripcionmotivo="";
+	private int idherramientau=0;
+	private int porcentajeu=0;
+	private int añosexpu=0;
+	private String descripcionherram="";
+	private long iddireccion=0;
+	private long idpersona=0;
+	
+	
+	/**
+	 * @return the iddireccion
+	 */
+	public long getIddireccion() {
+		return iddireccion;
+	}
+	/**
+	 * @param iddireccion the iddireccion to set
+	 */
+	public void setIddireccion(long iddireccion) {
+		this.iddireccion = iddireccion;
+	}
+	/**
+	 * @return the idpersona
+	 */
+	public long getIdpersona() {
+		return idpersona;
+	}
+	/**
+	 * @param idpersona the idpersona to set
+	 */
+	public void setIdpersona(long idpersona) {
+		this.idpersona = idpersona;
+	}
 	/**
 	 * @return the actividadesrealizadas
 	 */

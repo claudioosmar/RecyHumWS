@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vector.BO.BODatosIdiomas;
 import com.vector.Beans.DatosIdiomasBean;
+import com.vector.Beans.MsgBean;
 
 /**
  * @author vectormx
@@ -27,18 +28,18 @@ public class DatosIdiomasController {
 	private BODatosIdiomas idioma;
 	
 	@RequestMapping(path = "/SGRHWebService/DatosIdiomas/Crear", method = RequestMethod.POST)
-	public ResponseEntity<String> insertar(@RequestBody DatosIdiomasBean datos){
-		return new ResponseEntity<String>(idioma.Crear(datos),HttpStatus.OK);
+	public ResponseEntity<MsgBean> insertar(@RequestBody DatosIdiomasBean datos){
+		return new ResponseEntity<MsgBean>(idioma.Crear(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosIdiomas/Modificar",method = RequestMethod.POST)
-	public ResponseEntity<String>actualizar(@RequestBody DatosIdiomasBean datos){
-		return new ResponseEntity<String>(idioma.Modificar(datos),HttpStatus.OK);
+	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosIdiomasBean datos){
+		return new ResponseEntity<MsgBean>(idioma.Modificar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosIdiomas/Eliminar",method = RequestMethod.POST)
-	public ResponseEntity<String> eliminar(@RequestBody int id){
-		return new ResponseEntity<String>(idioma.Eliminar(id),HttpStatus.OK);
+	public ResponseEntity<MsgBean> eliminar(@RequestBody int id){
+		return new ResponseEntity<MsgBean>(idioma.Eliminar(id),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path =  "/SGRHWebService/DatosIdiomas/Buscar",method=RequestMethod.POST)

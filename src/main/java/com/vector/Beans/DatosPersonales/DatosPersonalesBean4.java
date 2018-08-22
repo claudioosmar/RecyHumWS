@@ -8,16 +8,16 @@ package com.vector.Beans.DatosPersonales;
  *
  */
 public class DatosPersonalesBean4 extends DatosPersonalesBean5 {
-	private int idherramienta;
-	private int porcentaje;
-	private int años;
-	private String descripcion;
-	private int idgrado;
-	private int idlocalidad;
-	private String institutoestudio;
-	private String periodoinicial;
-	private String periodofinal;
-	private String nombrecarrera;
+	private int idherramienta=0;
+	private int porcentaje=0;
+	private int años=0;
+	private String descripcion="";
+	private int idgrado=0;
+	private int idlocalidad=0;
+	private String institutoestudio="";
+	private String periodoinicial="";
+	private String periodofinal="";
+	private String nombrecarrera="";
 	/**
 	 * @return the idherramienta
 	 */

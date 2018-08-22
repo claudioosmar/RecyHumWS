@@ -11,31 +11,31 @@ import javax.validation.constraints.NotNull;
  */
 public class DatosLaboralesBean extends LogBean implements Model{
 	@NotNull
-	private int idmotivotermino;
+	private int idmotivotermino=0;
 	@NotNull
-	private String puesto;
+	private String puesto="";
 	@NotNull
-	private String fechainicioexp;
+	private String fechainicioexp="";
 	@NotNull
-	private String fechafinalexp;
+	private String fechafinalexp="";
 	@NotNull
-	private String actividadesreal;
+	private String actividadesreal="";
 	@NotNull
-	private String logros;
+	private String logros="";
 	@NotNull
-	private int idtipocontrato;
+	private int idtipocontrato=0;
 	@NotNull
-	private String descripcionexp;
+	private String descripcionexp="";
 	@NotNull
-	private String nombreempresa;
+	private String nombreempresa="";
 	@NotNull
-	private long idpersona;
+	private long idpersona=0;
 	@NotNull
-	private int idherramienta;
+	private int idherramienta=0;
 	@NotNull
-	private int porsentajeherra;
+	private int porsentajeherra=0;
 	@NotNull
-	private int añosexp;
+	private int añosexp=0;
 	/**
 	 * @return the idmotivotermino
 	 */

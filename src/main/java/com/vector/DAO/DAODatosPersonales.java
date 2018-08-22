@@ -13,8 +13,8 @@ import com.vector.Beans.DatosPersonales.DatosPersonalesBean;
  */
 public interface DAODatosPersonales {
 
-	DatosPersonalesBean Crear (DatosPersonalesBean datos);
-	DatosPersonalesBean Actualizar (DatosPersonalesBean datos);
+	int Crear (DatosPersonalesBean datos);
+	int Modificar (DatosPersonalesBean datos);
 	String Eliminar (int id);
 	DatosPersonalesBean Buscar (DatosPersonalesBean datos);
 	List<DatosPersonalesBean> Listar ();

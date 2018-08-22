@@ -11,13 +11,13 @@ import javax.validation.constraints.NotNull;
  */
 public class DatosHerramientasBean extends LogBean implements Model{
 	@NotNull
-	private int idherramienta;
+	private int idherramienta=0;
 	@NotNull
-	private int porcentajeherra;
+	private int porcentajeherra=0;
 	@NotNull
-	private int añosexpherra;
+	private int añosexpherra=0;
 	@NotNull
-	private String descripcionherra;
+	private String descripcionherra="";
 	/**
 	 * @return the idherramienta
 	 */

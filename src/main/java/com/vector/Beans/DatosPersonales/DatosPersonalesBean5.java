@@ -11,16 +11,16 @@ package com.vector.Beans.DatosPersonales;
  */
 public class DatosPersonalesBean5 extends DatosPersonalesBean6{
 	
-	private String nombrecurso;
-	private String institutocurso;
-	private String fechainicioc;
-	private String fechaterminoc;
-	private String nombrecertificado;
-	private String nombreempresa;
-	private int idmotivotermino;
-	private String puesto;
-	private String fechainical;
-	private String fechafinal;
+	private String nombrecurso="";
+	private String institutocurso="";
+	private String fechainicioc="";
+	private String fechaterminoc="";
+	private String nombrecertificado="";
+	private String nombreempresa="";
+	private int idmotivotermino=0;
+	private String puesto="";
+	private String fechainical="";
+	private String fechafinal="";
 	/**
 	 * @return the nombrecurso
 	 */

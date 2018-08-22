@@ -11,15 +11,15 @@ import javax.validation.constraints.NotNull;
  */
 public class DatosPistaAuditoraBean implements Model{
 	@NotNull
-	private int iduser;
+	private int iduser=0;
 	@NotNull
-	private String formulario;
+	private String formulario="";
 	@NotNull
-	private String accion;
+	private String accion="";
 	@NotNull
-	private String ip;
+	private String ip="";
 	@NotNull
-	private int idtipousuario;
+	private int idtipousuario=0;
 	
 	
 	public int getIduser() {

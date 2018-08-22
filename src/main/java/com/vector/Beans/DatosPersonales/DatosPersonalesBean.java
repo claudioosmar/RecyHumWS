@@ -6,16 +6,16 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 implements Model {
 
 	/** The variable formulario*/
 
-	private int idestadocivil;
-	private String nombrepersona;
-	private String segundonombre;
-	private String apellidopaterno;
-	private String apellidomaterno;
-	private String sexo;
-	private String fechanacimiento;
-	private String nacionalidad;
-	private String calle;
-	private String colonia;
+	private int idestadocivil=0;
+	private String nombrepersona="";
+	private String segundonombre="";
+	private String apellidopaterno="";
+	private String apellidomaterno="";
+	private String sexo="";
+	private String fechanacimiento="";
+	private String nacionalidad="";
+	private String calle="";
+	private String colonia="";
 	/**
 	 * @return the idestadocivil
 	 */

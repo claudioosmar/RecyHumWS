@@ -5,8 +5,8 @@ package com.vector.DAO.Impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -31,22 +31,72 @@ private JdbcTemplate jdbctemplate;
 	@Override
 	public String agregaracceso(DatosPistaAuditoraBean datos) {
 		// TODO Auto-generated method stub
-		final String sql = "execute sp_agregaracceso(?,?,?,?,?,?)";
-		
-		jdbctemplate.update(new PreparedStatementCreator() {
+		return null;
+	}
+	/* (non-Javadoc)
+	 * @see com.vector.DAO.DAODatosPistaAuditora#Crear(com.vector.Beans.DatosPistaAuditoraBean)
+	 */
+	@Override
+	public int Crear(DatosPistaAuditoraBean datos) {
+		// TODO Auto-generated method stub
+		final String sql="execute sp_agregarpistaaudit(?,?,?,?)";		
+		int respuesta = jdbctemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
-				/*ps.setString(1, datos.);
-				ps.setString(2, datos.getContra());
-				ResultSet rs = ps.executeQuery();
-				rs.next();
-				bean.setResp(rs.getString(1));*/
+				ps.setLong(1, datos.getIduser());
+				ps.setString(2, datos.getFormulario());
+				ps.setString(3, datos.getAccion());
+				ps.setString(4, datos.getIp());
+				
 				return ps;
 			}
 		});
-		
-		
+		return respuesta;
+	}
+	/* (non-Javadoc)
+	 * @see com.vector.DAO.DAODatosPistaAuditora#Modificar(com.vector.Beans.DatosPistaAuditoraBean)
+	 */
+	@Override
+	public int Modificar(DatosPistaAuditoraBean datos) {
+		// TODO Auto-generated method stub
+		final String sql="execute sp_modificarpistaaudit(?,?,?,?)";		
+		int respuesta = jdbctemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setLong(1, datos.getIduser());
+				ps.setString(2, datos.getFormulario());
+				ps.setString(3, datos.getAccion());
+				ps.setString(4, datos.getIp());
+				
+				return ps;
+			}
+		});
+		return respuesta;
+	}
+	/* (non-Javadoc)
+	 * @see com.vector.DAO.DAODatosPistaAuditora#Eliminar(int)
+	 */
+	@Override
+	public int Eliminar(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	/* (non-Javadoc)
+	 * @see com.vector.DAO.DAODatosPistaAuditora#Buscar(com.vector.Beans.DatosPistaAuditoraBean)
+	 */
+	@Override
+	public DatosPistaAuditoraBean Buscar(DatosPistaAuditoraBean datos) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	/* (non-Javadoc)
+	 * @see com.vector.DAO.DAODatosPistaAuditora#Listar()
+	 */
+	@Override
+	public List<DatosPistaAuditoraBean> Listar() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

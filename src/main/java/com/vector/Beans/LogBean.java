@@ -11,13 +11,13 @@ import javax.validation.constraints.NotNull;
  */
 public class LogBean {
 	@NotNull
- private long iduser;
+ private long iduser=0;
 	@NotNull
- private String formulario;
+ private String formulario="";
 	@NotNull
- private String accion;
+ private String accion="";
 	@NotNull
- private String ipequipo;
+ private String ipequipo="";
 /**
  * @return the iduser
  */

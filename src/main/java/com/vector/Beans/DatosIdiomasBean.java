@@ -13,19 +13,19 @@ import javax.validation.constraints.NotNull;
 public class DatosIdiomasBean extends LogBean implements Model {
 	/*atributos para ingresar los datos de estudio*/
 	@NotNull
-	private int ididioma;
+	private int ididioma=0;
 	@NotNull
-	private int pcjescrito;
+	private int pcjescrito=0;
 	@NotNull
-	private int pcjhablado;
+	private int pcjhablado=0;
 	@NotNull
-	private int pcjentendido;
+	private int pcjentendido=0;
 	@NotNull
-	private String descripciondominio;
+	private String descripciondominio="";
 	@NotNull
-	private String idiomanativa;
+	private String idiomanativa="";
 	@NotNull
-	private long idpersona;
+	private long idpersona=0;
 	
 	/**
 	 * @return the ididioma

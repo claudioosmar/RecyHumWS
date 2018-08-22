@@ -11,11 +11,11 @@ import javax.validation.constraints.NotNull;
  */
 public class DatosDocumentoBean extends LogBean implements Model{
 	@NotNull
-	private int iddocumento;
+	private int iddocumento=0;
 	@NotNull
-	private String descripciondoc;
+	private String descripciondoc="";
 	@NotNull
-	private String urldoc;
+	private String urldoc="";
 	/**
 	 * @return the iddocumento
 	 */

@@ -12,7 +12,7 @@ import com.vector.BO.BODatosCertificado;
 import com.vector.Beans.DatosCertificadoBean;
 import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosCertificado;
-import com.vector.DAO.Impl.EnvioMensaje;
+import com.vector.Utileria.EnvioMensaje;
 
 /**
  * @author vectormx
@@ -45,7 +45,15 @@ public class BODatosCertificadoImpl implements BODatosCertificado {
 	@Override
 	public MsgBean Modificar(DatosCertificadoBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		MsgBean mensaje = new MsgBean();
+		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		int resultado = daocertificado.Modificar(datos);
+		if(resultado == 1) {
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+		}else {
+			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		}
+		return mensaje;
 	}
 
 	/* (non-Javadoc)

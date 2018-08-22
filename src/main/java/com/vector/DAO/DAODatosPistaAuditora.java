@@ -3,6 +3,9 @@
  */
 package com.vector.DAO;
 
+import java.util.List;
+
+
 import com.vector.Beans.DatosPistaAuditoraBean;
 
 /**
@@ -10,6 +13,10 @@ import com.vector.Beans.DatosPistaAuditoraBean;
  *
  */
 public interface DAODatosPistaAuditora {
-String agregaracceso(DatosPistaAuditoraBean datos);
-	
+	String agregaracceso(DatosPistaAuditoraBean datos);
+	int  Crear(DatosPistaAuditoraBean datos);
+	int  Modificar(DatosPistaAuditoraBean datos);
+	int  Eliminar(int id);
+	DatosPistaAuditoraBean Buscar(DatosPistaAuditoraBean datos);
+	List<DatosPistaAuditoraBean> Listar();
 }
