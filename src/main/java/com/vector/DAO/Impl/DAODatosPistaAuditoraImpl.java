@@ -5,6 +5,7 @@ package com.vector.DAO.Impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.stereotype.Service;
 
+import com.vector.Beans.DatosLaboralesBean;
 import com.vector.Beans.DatosPistaAuditoraBean;
 import com.vector.DAO.DAODatosPistaAuditora;
 
@@ -23,7 +25,7 @@ import com.vector.DAO.DAODatosPistaAuditora;
 @Service
 public class DAODatosPistaAuditoraImpl implements DAODatosPistaAuditora {
 @Autowired
-private JdbcTemplate jdbctemplate;
+private JdbcTemplate jdbcTemplate;
 	/* (non-Javadoc)
 	 * @
 	 * see com.vector.DAO.DAOPistaAuditora#agregaracceso(com.vector.Beans.PistaAuditoraBean)
@@ -40,7 +42,7 @@ private JdbcTemplate jdbctemplate;
 	public int Crear(DatosPistaAuditoraBean datos) {
 		// TODO Auto-generated method stub
 		final String sql="execute sp_agregarpistaaudit(?,?,?,?)";		
-		int respuesta = jdbctemplate.update(new PreparedStatementCreator() {
+		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
@@ -61,7 +63,7 @@ private JdbcTemplate jdbctemplate;
 	public int Modificar(DatosPistaAuditoraBean datos) {
 		// TODO Auto-generated method stub
 		final String sql="execute sp_modificarpistaaudit(?,?,?,?)";		
-		int respuesta = jdbctemplate.update(new PreparedStatementCreator() {
+		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
@@ -89,7 +91,20 @@ private JdbcTemplate jdbctemplate;
 	@Override
 	public DatosPistaAuditoraBean Buscar(DatosPistaAuditoraBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		final String sql = "indefinido";
+		DatosPistaAuditoraBean respuesta = new DatosPistaAuditoraBean();
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setLong(1, datos.getIduser());
+				ResultSet rs = ps.executeQuery();
+				
+				
+				return ps;
+			}
+		});
+		return respuesta;
 	}
 	/* (non-Javadoc)
 	 * @see com.vector.DAO.DAODatosPistaAuditora#Listar()

@@ -16,6 +16,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.vector.Beans.DatosHerramientasBean;
 import com.vector.Beans.DatosIdiomasBean;
 import com.vector.DAO.DAODatosIdiomas;
 
@@ -108,7 +109,20 @@ public class DAODatosIdiomasImpl implements DAODatosIdiomas {
 	@Override
 	public DatosIdiomasBean Buscar(DatosIdiomasBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		final String sql = "indefinido";
+		DatosIdiomasBean respuesta = new DatosIdiomasBean();
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setLong(1, datos.getIduser());
+				ResultSet rs = ps.executeQuery();
+				respuesta.setIdidioma(rs.getInt(1));
+				respuesta.setIdiomanativa(rs.getString(2));
+				return ps;
+			}
+		});
+		return respuesta;
 	}
 
 	/* (non-Javadoc)
@@ -119,11 +133,11 @@ public class DAODatosIdiomasImpl implements DAODatosIdiomas {
 	public List<DatosIdiomasBean> Listar() {
 		// TODO Auto-generated method stub
 		final String sql = "select * from tbldominios";
-		return jdbcTemplate.query(sql, new SesionRowMapper());
+		return jdbcTemplate.query(sql, new IdiomaRowMapper());
 		
 	}
 	
-	class SesionRowMapper implements RowMapper<DatosIdiomasBean> {
+	class IdiomaRowMapper implements RowMapper<DatosIdiomasBean> {
 		@Override
 		public DatosIdiomasBean mapRow(ResultSet rs, int rowNum) throws SQLException {
 			DatosIdiomasBean idioma = new DatosIdiomasBean();

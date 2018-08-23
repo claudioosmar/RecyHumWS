@@ -5,14 +5,17 @@ package com.vector.DAO.Impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
+import com.vector.Beans.DatosCorreoAltBean;
 import com.vector.Beans.DatosDocumentoBean;
 import com.vector.DAO.DAODatosDocumento;
 
@@ -92,7 +95,21 @@ public class DAODatosDocumentosImpl implements DAODatosDocumento {
 	@Override
 	public DatosDocumentoBean Buscar(DatosDocumentoBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		final String sql = "indefinido";
+		DatosDocumentoBean respuesta = new DatosDocumentoBean();
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setLong(1, datos.getIduser());
+				ResultSet rs = ps.executeQuery();
+				respuesta.setIddocumento(rs.getInt(2));
+				respuesta.setDescripciondoc(rs.getString(3));
+				respuesta.setUrldoc(rs.getString(4));
+				return ps;
+			}
+		});
+		return respuesta;
 	}
 
 	/* (non-Javadoc)
@@ -101,7 +118,24 @@ public class DAODatosDocumentosImpl implements DAODatosDocumento {
 	@Override
 	public List<DatosDocumentoBean> Listar() {
 		// TODO Auto-generated method stub
-		return null;
+		final String sql = "select * from tblpiv03";
+		return jdbcTemplate.query(sql, new DocRowMapper());
 	}
 
+}
+class DocRowMapper implements RowMapper<DatosDocumentoBean>{
+
+	/* (non-Javadoc)
+	 * @see org.springframework.jdbc.core.RowMapper#mapRow(java.sql.ResultSet, int)
+	 */
+	@Override
+	public DatosDocumentoBean mapRow(ResultSet rs, int rowNum) throws SQLException {
+		// TODO Auto-generated method stub
+		DatosDocumentoBean retorno= new DatosDocumentoBean();
+		retorno.setIddocumento(rs.getInt(2));
+		retorno.setDescripciondoc(rs.getString(3));
+		retorno.setUrldoc(rs.getString(4));
+		return retorno;
+	}
+	
 }

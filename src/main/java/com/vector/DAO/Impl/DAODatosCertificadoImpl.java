@@ -105,7 +105,21 @@ public class DAODatosCertificadoImpl implements DAODatosCertificado {
 	@Transactional(readOnly = true)
 	public DatosCertificadoBean Buscar(DatosCertificadoBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		DatosCertificadoBean retorno = new DatosCertificadoBean();
+		final String sql="no definida";		
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setLong(1, datos.getIdpersona());
+				ResultSet rs = ps.executeQuery();
+				retorno.setIdcertificado(rs.getLong(1));
+				retorno.setIddocumento(rs.getInt(2));
+				retorno.setNombrecertificado(rs.getString(3));
+				return ps;
+			}
+		});
+		return retorno;
 	}
 
 	/* (non-Javadoc)

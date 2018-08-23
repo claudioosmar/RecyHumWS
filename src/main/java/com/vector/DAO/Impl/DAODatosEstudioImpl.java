@@ -16,6 +16,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.vector.Beans.DatosDocumentoBean;
 import com.vector.Beans.DatosEstudioBean;
 import com.vector.Beans.DatosInicioSesionBean;
 import com.vector.DAO.DAODatosEstudio;
@@ -27,7 +28,7 @@ import com.vector.DAO.DAODatosEstudio;
 @Service
 public class DAODatosEstudioImpl implements DAODatosEstudio {
 	@Autowired
-	private JdbcTemplate jdbctemplate;
+	private JdbcTemplate jdbcTemplate;
 
 	/* (non-Javadoc)
 	 * @see com.vector.DAO.DAODatosEstudio#Crear(com.vector.Beans.DatosEstudioBean)
@@ -38,7 +39,7 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 		// TODO Auto-generated method stub
 		
 		final String sql = "begin sp_agregareducacion(?,?,?,?,?,?,?,?,?,?,?); end;";
-		int respuesta = jdbctemplate.update(new PreparedStatementCreator() {
+		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
@@ -71,7 +72,7 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 	public int Modificar(DatosEstudioBean datos) {
 		// TODO Auto-generated method stub
 		final String sql = "begin sp_modificareducacion(?,?,?,?,?,?,?,?,?,?,?,?,?); end;";
-		int respuesta = jdbctemplate.update(new PreparedStatementCreator() {
+		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
@@ -113,7 +114,25 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 	@Override
 	public DatosEstudioBean Buscar(DatosEstudioBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		final String sql = "indefinido";
+		DatosEstudioBean respuesta = new DatosEstudioBean();
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setLong(1, datos.getIduser());
+				ResultSet rs = ps.executeQuery();
+				respuesta.setIdestudio(rs.getLong(1));
+				respuesta.setIdgrado(rs.getInt(2));
+				respuesta.setIdcarrera(rs.getInt(3));
+				respuesta.setIdlocalidad(rs.getInt(4));
+				respuesta.setInstitutoestudio(rs.getString(5));
+				respuesta.setPeriodoinicial(rs.getString(6));
+				respuesta.setPeriodofinal(rs.getString(7));
+				return ps;
+			}
+		});
+		return respuesta;
 	}
 
 	/* (non-Javadoc)
@@ -122,23 +141,23 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 	@Override
 	public List<DatosEstudioBean> Listar() {
 		// TODO Auto-generated method stub
-		return null;
+		final String sql = "select * from tblestudios";
+		return jdbcTemplate.query(sql, new EstudioRowMapper());
 	}
 
 }
 
-class CrearRowMapper implements RowMapper<DatosInicioSesionBean> {
+class EstudioRowMapper implements RowMapper<DatosEstudioBean> {
 	@Override
-	public DatosInicioSesionBean mapRow(ResultSet rs, int rowNum) throws SQLException {
-		DatosInicioSesionBean user = new DatosInicioSesionBean();
-		user.setID_User(rs.getInt(1));
-		user.setIP(rs.getString(4));
-		user.setUsuario(rs.getString(2));
-		user.setContraseña("unsigned");
-		user.setStatus(rs.getString(8));
-		user.setToken(rs.getString(3));
-		user.setMovimiento(rs.getString(7));
-		user.setIdtipouser(rs.getInt(6));
-		return user;
+	public DatosEstudioBean mapRow(ResultSet rs, int rowNum) throws SQLException {
+		DatosEstudioBean respuesta = new DatosEstudioBean();
+		respuesta.setIdestudio(rs.getLong(1));
+		respuesta.setIdgrado(rs.getInt(2));
+		respuesta.setIdcarrera(rs.getInt(3));
+		respuesta.setIdlocalidad(rs.getInt(4));
+		respuesta.setInstitutoestudio(rs.getString(5));
+		respuesta.setPeriodoinicial(rs.getString(6));
+		respuesta.setPeriodofinal(rs.getString(7));
+		return respuesta;
 	}
 }

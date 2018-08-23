@@ -5,16 +5,20 @@ package com.vector.DAO.Impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
+import com.vector.Beans.DatosIdiomasBean;
 import com.vector.Beans.DatosLaboralesBean;
 import com.vector.DAO.DAODatosLaborales;
+import com.vector.DAO.Impl.DAODatosIdiomasImpl.IdiomaRowMapper;
 
 /**
  * @author vectormx
@@ -113,7 +117,28 @@ public class DAODatosLaboralesImpl implements DAODatosLaborales {
 	@Override
 	public DatosLaboralesBean Buscar(DatosLaboralesBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		final String sql = "indefinido";
+		DatosLaboralesBean respuesta = new DatosLaboralesBean();
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setLong(1, datos.getIduser());
+				ResultSet rs = ps.executeQuery();
+				respuesta.setIdexplaborl(rs.getInt(1));
+				respuesta.setIdmotivotermino(rs.getInt(2));
+				respuesta.setIdempresa(rs.getInt(3));
+				respuesta.setPuesto(rs.getString(4));
+				respuesta.setFechainicioexp(rs.getString(5));
+				respuesta.setFechafinalexp(rs.getString(6));
+				respuesta.setActividadesreal(rs.getString(7));
+				respuesta.setLogros(rs.getString(8));
+				respuesta.setIdtipocontrato(rs.getInt(9));
+				
+				return ps;
+			}
+		});
+		return respuesta;
 	}
 
 	/* (non-Javadoc)
@@ -122,7 +147,26 @@ public class DAODatosLaboralesImpl implements DAODatosLaborales {
 	@Override
 	public List<DatosLaboralesBean> Listar() {
 		// TODO Auto-generated method stub
-		return null;
+		final String sql = "select * from tblexpslaborales";
+		return jdbcTemplate.query(sql, new labRowMapper());
+	}
+}class labRowMapper implements RowMapper<DatosLaboralesBean> {
+	@Override
+	public DatosLaboralesBean mapRow(ResultSet rs, int rowNum) throws SQLException {
+		DatosLaboralesBean respuesta = new DatosLaboralesBean();
+		respuesta.setIdexplaborl(rs.getInt(1));
+		respuesta.setIdmotivotermino(rs.getInt(2));
+		respuesta.setIdempresa(rs.getInt(3));
+		respuesta.setPuesto(rs.getString(4));
+		respuesta.setFechainicioexp(rs.getString(5));
+		respuesta.setFechafinalexp(rs.getString(6));
+		respuesta.setActividadesreal(rs.getString(7));
+		respuesta.setLogros(rs.getString(8));
+		respuesta.setIdtipocontrato(rs.getInt(9));
+
+		return respuesta;
 	}
 
 }
+
+
