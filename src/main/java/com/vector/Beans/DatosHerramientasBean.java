@@ -20,6 +20,9 @@ public class DatosHerramientasBean extends LogBean implements Model{
 	private String descripcionherra="";
 	@NotNull
 	private String version;
+	@NotNull
+	//Si la ruta es 0 se envia Herramientas conocidas si es 1 se envia a herramientas utilizadas
+	private int ruta=0;
 	
 	
 	

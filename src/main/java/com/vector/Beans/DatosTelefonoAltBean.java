@@ -17,9 +17,9 @@ public class DatosTelefonoAltBean extends LogBean implements Model{
 	@NotNull
 	private long idpersona=0;
 	@NotNull
-	private String telefonoLt;
+	private String telefonoLt="";
 	@NotNull
-	private String NombreCompleto;
+	private String NombreCompleto="";
 	
 	
 	
