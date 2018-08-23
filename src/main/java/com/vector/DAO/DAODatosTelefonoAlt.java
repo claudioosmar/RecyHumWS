@@ -16,7 +16,7 @@ import com.vector.Beans.DatosTelefonoAltBean;
 public interface DAODatosTelefonoAlt {
 	int  Crear(DatosTelefonoAltBean datos);
 	int  Modificar(DatosTelefonoAltBean datos);
-	int  Eliminar(int id);
+	int  Eliminar(String id);
 	DatosTelefonoAltBean Buscar(DatosTelefonoAltBean datos);
-	List<DatosTelefonoAltBean> Listar();
+	List<DatosTelefonoAltBean> Listar(long id);
 }

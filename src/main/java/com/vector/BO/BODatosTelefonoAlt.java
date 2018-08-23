@@ -15,7 +15,7 @@ import com.vector.Beans.MsgBean;
 public interface BODatosTelefonoAlt {
 	MsgBean Crear(DatosTelefonoAltBean datos);
 	MsgBean Modificar(DatosTelefonoAltBean datos);
-	MsgBean Eliminar(int id);
+	MsgBean Eliminar(String id);
 	DatosTelefonoAltBean Buscar(DatosTelefonoAltBean datos);
-	List<DatosTelefonoAltBean> Listar();
+	List<DatosTelefonoAltBean> Listar(long id);
 }

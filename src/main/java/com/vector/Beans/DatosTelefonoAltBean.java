@@ -13,9 +13,40 @@ public class DatosTelefonoAltBean extends LogBean implements Model{
 	@NotNull
 	private int idtipotelefono=0;
 	@NotNull
-	private String telefono="";
+	private String telefonoNw="";
+	@NotNull
 	private long idpersona=0;
+	@NotNull
+	private String telefonoLt;
+	@NotNull
+	private String NombreCompleto;
 	
+	
+	
+	/**
+	 * @return the nombreCompleto
+	 */
+	public String getNombreCompleto() {
+		return NombreCompleto;
+	}
+	/**
+	 * @param nombreCompleto the nombreCompleto to set
+	 */
+	public void setNombreCompleto(String nombreCompleto) {
+		NombreCompleto = nombreCompleto;
+	}
+	/**
+	 * @return the telefonoLt
+	 */
+	public String getTelefonoLt() {
+		return telefonoLt;
+	}
+	/**
+	 * @param telefonoLt the telefonoLt to set
+	 */
+	public void setTelefonoLt(String telefonoLt) {
+		this.telefonoLt = telefonoLt;
+	}
 	/**
 	 * @return the idpersona
 	 */
@@ -43,14 +74,14 @@ public class DatosTelefonoAltBean extends LogBean implements Model{
 	/**
 	 * @return the telefono
 	 */
-	public String getTelefono() {
-		return telefono;
+	public String getTelefonoNw() {
+		return telefonoNw;
 	}
 	/**
 	 * @param telefono the telefono to set
 	 */
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setTelefonoNw(String telefono) {
+		this.telefonoNw = telefono;
 	}
 	
 	
