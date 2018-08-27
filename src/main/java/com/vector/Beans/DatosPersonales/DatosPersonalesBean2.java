@@ -1,143 +1,208 @@
 /**
- * 
+ * DatosPersonalesBean2.java -- 25/08/2018
  */
 package com.vector.Beans.DatosPersonales;
 
+import javax.validation.constraints.NotNull;
+
 /**
- * @author vectormx
- *
+ * @author Claudio
+ *RecyHumWS2--com.vector.Beans.DatosPersonales--DatosPersonalesBean2
  */
 public class DatosPersonalesBean2 extends DatosPersonalesBean3 {
+	/*Variables de DatosPersonales*/
+	@NotNull
+	private String urlRfc="";
+	@NotNull
+	private String cURP="";
+	@NotNull
+	private String urlcURP="";
+	@NotNull
+	private int idpasaporte=0;
+	@NotNull
+	private int idVisa=0;
+	@NotNull
+	private int idEdoCivil=0;
+	@NotNull
+	private String seguroSocial="";
+	@NotNull
+	private String urlSeguroSocial="";
+	@NotNull
+	private int idInfonavit=0;
+	@NotNull
+	private int idDisponibilidadViajar=0;
 	
-	private String numerointerior="";
-	private String numeroexterior="";
-	private long idcodigopostal=0;
-	private String urlfoto="";
-	private String resumen="";
-	private String objetivolaboral="";
-	private int ididioma=0;
-	private int pcjescrito=0;
-	private int pcjhablado=0;
-	private int pcjentendido=0;
+	
+	/*Seccion de getters*/
 	/**
-	 * @return the numerointerior
+	 * @return Obtienes el valor de urlRfc
 	 */
-	public String getNumerointerior() {
-		return numerointerior;
+	
+	public String getUrlRfc() {
+		return urlRfc;
 	}
+	
 	/**
-	 * @param numerointerior the numerointerior to set
+	 * @return Obtienes el valor de cURP
 	 */
-	public void setNumerointerior(String numerointerior) {
-		this.numerointerior = numerointerior;
+	
+	public String getcURP() {
+		return cURP;
 	}
+	
 	/**
-	 * @return the numeroexterior
+	 * @return Obtienes el valor de urlcURP
 	 */
-	public String getNumeroexterior() {
-		return numeroexterior;
+	
+	public String getUrlcURP() {
+		return urlcURP;
 	}
+	
 	/**
-	 * @param numeroexterior the numeroexterior to set
+	 * @return Obtienes el valor de idpasaporte
 	 */
-	public void setNumeroexterior(String numeroexterior) {
-		this.numeroexterior = numeroexterior;
+	
+	public int getIdpasaporte() {
+		return idpasaporte;
 	}
+	
 	/**
-	 * @return the idcodigopostal
+	 * @return Obtienes el valor de idVisa
 	 */
-	public long getIdcodigopostal() {
-		return idcodigopostal;
+	
+	public int getIdVisa() {
+		return idVisa;
 	}
+	
 	/**
-	 * @param idcodigopostal the idcodigopostal to set
+	 * @return Obtienes el valor de idEdoCivil
 	 */
-	public void setIdcodigopostal(long idcodigopostal) {
-		this.idcodigopostal = idcodigopostal;
+	
+	public int getIdEdoCivil() {
+		return idEdoCivil;
 	}
+	
 	/**
-	 * @return the urlfoto
+	 * @return Obtienes el valor de seguroSocial
 	 */
-	public String getUrlfoto() {
-		return urlfoto;
+	
+	public String getSeguroSocial() {
+		return seguroSocial;
 	}
+	
 	/**
-	 * @param urlfoto the urlfoto to set
+	 * @return Obtienes el valor de urlSeguroSocial
 	 */
-	public void setUrlfoto(String urlfoto) {
-		this.urlfoto = urlfoto;
+	
+	public String getUrlSeguroSocial() {
+		return urlSeguroSocial;
 	}
+	
 	/**
-	 * @return the resumen
+	 * @return Obtienes el valor de idInfonavit
 	 */
-	public String getResumen() {
-		return resumen;
+	
+	public int getIdInfonavit() {
+		return idInfonavit;
 	}
+	
 	/**
-	 * @param resumen the resumen to set
+	 * @return Obtienes el valor de idDisponibilidadViajar
 	 */
-	public void setResumen(String resumen) {
-		this.resumen = resumen;
+	
+	public int getIdDisponibilidadViajar() {
+		return idDisponibilidadViajar;
 	}
+
+	/*Seccion se Setters*/
+	
 	/**
-	 * @return the objetivolaboral
+	 * @param Agregar el valor a urlRfc
 	 */
-	public String getObjetivolaboral() {
-		return objetivolaboral;
+	
+	public void setUrlRfc(String urlRfc) {
+		this.urlRfc = urlRfc;
 	}
+
+	
 	/**
-	 * @param objetivolaboral the objetivolaboral to set
+	 * @param Agregar el valor a cURP
 	 */
-	public void setObjetivolaboral(String objetivolaboral) {
-		this.objetivolaboral = objetivolaboral;
+	
+	public void setcURP(String cURP) {
+		this.cURP = cURP;
 	}
+
+	
 	/**
-	 * @return the ididioma
+	 * @param Agregar el valor a urlcURP
 	 */
-	public int getIdidioma() {
-		return ididioma;
+	
+	public void setUrlcURP(String urlcURP) {
+		this.urlcURP = urlcURP;
 	}
+
+	
 	/**
-	 * @param ididioma the ididioma to set
+	 * @param Agregar el valor a idpasaporte
 	 */
-	public void setIdidioma(int ididioma) {
-		this.ididioma = ididioma;
+	
+	public void setIdpasaporte(int idpasaporte) {
+		this.idpasaporte = idpasaporte;
 	}
+
+	
 	/**
-	 * @return the pcjescrito
+	 * @param Agregar el valor a idVisa
 	 */
-	public int getPcjescrito() {
-		return pcjescrito;
+	
+	public void setIdVisa(int idVisa) {
+		this.idVisa = idVisa;
 	}
+
+	
 	/**
-	 * @param pcjescrito the pcjescrito to set
+	 * @param Agregar el valor a idEdoCivil
 	 */
-	public void setPcjescrito(int pcjescrito) {
-		this.pcjescrito = pcjescrito;
+	
+	public void setIdEdoCivil(int idEdoCivil) {
+		this.idEdoCivil = idEdoCivil;
 	}
+
+	
 	/**
-	 * @return the pcjhablado
+	 * @param Agregar el valor a seguroSocial
 	 */
-	public int getPcjhablado() {
-		return pcjhablado;
+	
+	public void setSeguroSocial(String seguroSocial) {
+		this.seguroSocial = seguroSocial;
 	}
+
+	
 	/**
-	 * @param pcjhablado the pcjhablado to set
+	 * @param Agregar el valor a urlSeguroSocial
 	 */
-	public void setPcjhablado(int pcjhablado) {
-		this.pcjhablado = pcjhablado;
+	
+	public void setUrlSeguroSocial(String urlSeguroSocial) {
+		this.urlSeguroSocial = urlSeguroSocial;
 	}
+
+	
 	/**
-	 * @return the pcjentendido
+	 * @param Agregar el valor a idInfonavit
 	 */
-	public int getPcjentendido() {
-		return pcjentendido;
+	
+	public void setIdInfonavit(int idInfonavit) {
+		this.idInfonavit = idInfonavit;
 	}
+
+	
 	/**
-	 * @param pcjentendido the pcjentendido to set
+	 * @param Agregar el valor a idDisponibilidadViajar
 	 */
-	public void setPcjentendido(int pcjentendido) {
-		this.pcjentendido = pcjentendido;
+	
+	public void setIdDisponibilidadViajar(int idDisponibilidadViajar) {
+		this.idDisponibilidadViajar = idDisponibilidadViajar;
 	}
 	
 	

@@ -27,8 +27,8 @@ public class DatosTelefonoAltController {
 	private BODatosTelefonoAlt telefono;
 	
 	@RequestMapping(path = "/SGRHWebService/DatosTelefono/Crear", method = RequestMethod.POST)
-	public ResponseEntity<MsgBean> insertar(@RequestBody DatosTelefonoAltBean datos){
-		System.out.print("Se agrego el telefono "+datos.getTelefonoNw()+" al ID de persona "+datos.getIdpersona() );
+	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosTelefonoAltBean> datos){
+		System.out.print("Se agrego el telefono "+datos.get(0).getTelefonoNw()+" al ID de persona "+datos.get(0).getIdpersona() );
 		return new ResponseEntity<MsgBean>(telefono.Crear(datos),HttpStatus.OK);
 	}
 	

@@ -13,7 +13,7 @@ import com.vector.Beans.MsgBean;
  *
  */
 public interface BODatosTelefonoAlt {
-	MsgBean Crear(DatosTelefonoAltBean datos);
+	MsgBean Crear(List<DatosTelefonoAltBean> datos);
 	MsgBean Modificar(DatosTelefonoAltBean datos);
 	MsgBean Eliminar(String id);
 	DatosTelefonoAltBean Buscar(DatosTelefonoAltBean datos);

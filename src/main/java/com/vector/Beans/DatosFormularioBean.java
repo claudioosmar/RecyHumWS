@@ -10,7 +10,25 @@ package com.vector.Beans;
 public class DatosFormularioBean {
 	private String Nomformulario="";
 	private boolean status=false;
+	private long idpersona=0;
 	
+	
+	
+	/**
+	 * @return Obtienes el valor de idpersona
+	 */
+	
+	public long getIdpersona() {
+		return idpersona;
+	}
+	
+	/**
+	 * @param Agregar el valor a idpersona
+	 */
+	
+	public void setIdpersona(long idpersona) {
+		this.idpersona = idpersona;
+	}
 	/**
 	 * @return the nomformulario
 	 */

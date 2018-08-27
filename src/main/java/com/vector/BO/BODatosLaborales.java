@@ -13,9 +13,9 @@ import com.vector.Beans.MsgBean;
  *
  */
 public interface BODatosLaborales {
-	MsgBean Crear(DatosLaboralesBean datos);
+	MsgBean Crear(List<DatosLaboralesBean> datos);
 	MsgBean Modificar(DatosLaboralesBean datos);
 	MsgBean Eliminar(int id);
-	DatosLaboralesBean Buscar(DatosLaboralesBean datos);
+	List<DatosLaboralesBean> Buscar(DatosLaboralesBean datos);
 	List<DatosLaboralesBean> Listar();
 }

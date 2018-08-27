@@ -5,15 +5,19 @@ package com.vector.BO.Impl;
 
 import java.util.List;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import com.vector.BO.BODatosTelefonoAlt;
 import com.vector.Beans.DatosTelefonoAltBean;
 import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosTelefonoAlt;
 import com.vector.Utileria.EnvioMensaje;
-import com.vector.Utileria.comandoSQL;
+
+import java.util.logging.Logger;
 
 /**
  * @author vectormx
@@ -23,14 +27,27 @@ import com.vector.Utileria.comandoSQL;
 public class BODatosTelefonoAltImpl implements BODatosTelefonoAlt {
 @Autowired
 private DAODatosTelefonoAlt telefone;
+
+private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BOTelefonAlt#Crear(com.vector.Beans.DatosTelefonoAltBean)
 	 */
 	@Override
-	public MsgBean Crear(DatosTelefonoAltBean datos) {
+	public MsgBean Crear(List<DatosTelefonoAltBean> datos) {
 		// TODO Auto-generated method stub
-		int respuesta = telefone.Crear(datos);
+		int respuesta=0;
+	
+		for (int i = 0; i < datos.size(); i++) {
+			respuesta = telefone.Crear(datos.get(i));
+			if(respuesta==0) {
+				System.out.println("Fallo en la insersion"+i+1);
+				break;
+			}
+		}
+		
 		MsgBean msj = new MsgBean();
+		LOGGER.info("Este es la respuesta: " + Integer.valueOf(respuesta).toString());
+		
 		if(respuesta==1) {
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
 			return msj;

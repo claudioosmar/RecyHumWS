@@ -16,6 +16,6 @@ public interface DAODatosLaborales {
 	int  Crear(DatosLaboralesBean datos);
 	int  Modificar(DatosLaboralesBean datos);
 	int  Eliminar(int id);
-	DatosLaboralesBean Buscar(DatosLaboralesBean datos);
+	List<DatosLaboralesBean> Buscar(DatosLaboralesBean datos);
 	List<DatosLaboralesBean> Listar();
 }

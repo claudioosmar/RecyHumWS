@@ -26,11 +26,15 @@ public class BODatosLaboralesImpl implements BODatosLaborales {
 	 * @see com.vector.BO.BODatosLaborales#Crear(com.vector.Beans.DatosLaboralesBean)
 	 */
 	@Override
-	public MsgBean Crear(DatosLaboralesBean datos) {
+	public MsgBean Crear(List<DatosLaboralesBean> datos) {
 		// TODO Auto-generated method stub
 		MsgBean mensaje = new MsgBean();
+		int resultado=0;
+		System.out.println("Tamaño del arreglo"+ datos.size());
+		for (int i = 0; i < datos.size(); i++) {
+			resultado = daolabor.Crear(datos.get(i));
+		}
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
-		int resultado = daolabor.Crear(datos);
 		if(resultado == 1) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 		}else {
@@ -45,7 +49,16 @@ public class BODatosLaboralesImpl implements BODatosLaborales {
 	@Override
 	public MsgBean Modificar(DatosLaboralesBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		int respuesta = daolabor.Modificar(datos);
+		MsgBean mensaje = new MsgBean();
+		if(respuesta==1) {
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+			return mensaje;
+		}else {
+			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+			return mensaje;
+		}
+		
 	}
 
 	/* (non-Javadoc)
@@ -54,16 +67,24 @@ public class BODatosLaboralesImpl implements BODatosLaborales {
 	@Override
 	public MsgBean Eliminar(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		int respuesta = daolabor.Eliminar(id);
+		MsgBean mensaje = new MsgBean();
+		if(respuesta==1) {
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+			return mensaje;
+		}else {
+			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+			return mensaje;
+		}
 	}
 
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BODatosLaborales#Buscar(com.vector.Beans.DatosLaboralesBean)
 	 */
 	@Override
-	public DatosLaboralesBean Buscar(DatosLaboralesBean datos) {
+	public List<DatosLaboralesBean> Buscar(DatosLaboralesBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		return daolabor.Buscar(datos);
 	}
 
 	/* (non-Javadoc)

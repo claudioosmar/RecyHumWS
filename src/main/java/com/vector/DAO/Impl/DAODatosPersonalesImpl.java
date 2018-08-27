@@ -19,94 +19,208 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.vector.Beans.DatosPersonales.DatosPersonalesBean;
 import com.vector.DAO.DAODatosPersonales;
+import com.vector.Utileria.AutoIncrementablesBDOracle;
+
 
 /**
  * @author Claudio
  *
  */
 @Service
-public class DAODatosPersonalesImpl implements DAODatosPersonales  {
+public class DAODatosPersonalesImpl implements DAODatosPersonales {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	AutoIncrementablesBDOracle ultimoid;
 
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see com.vector.service.ModelABCLD#Create(com.vector.model.Modelo)
 	 */
-	
+
 	@Transactional(readOnly = true)
 	public int Crear(DatosPersonalesBean datos) {
-		
-		final String sql="execute SP_AGREGARPERSONA(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";		
+		ultimoid = new AutoIncrementablesBDOracle();
+		// Ultimas ID´s en la base de datos
+		int iDpersona = ultimoid.PersonaIDUltimo(jdbcTemplate);
+		int IDpersonadetalle = ultimoid.PersonaDetalleIDUltimo(jdbcTemplate);
+		int IDDireccion = ultimoid.DireccionIDUltimo(jdbcTemplate);
+
+		// Sentencias SQL a ejecutar
+		final String sql = "INSERT INTO TBLPERSONAS VALUES(?,?,?,?,?,?,?,?)";
+		final String sql2 = "INSERT INTO TBLDETSPERSONAS VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+		final String sql3 = "INSERT INTO TBLDIRECCIONES VALUES(?,?,?,?,?,?)";
+		final String sql4 = "INSERT INTO TBLpiv03 VALUES(?,?,?,?)";
+		final String sql5 = "INSERT INTO TBLPIV11 VALUES(?,?)";
+		final String sql6 = "INSERT INTO TBLPIV01 VALUES(?,?,?)";
+		final String sql7 = "INSERT INTO TBLPIV02 VALUES(?,?,?)";
+
+		// Apartado de execuciones
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setLong(1, datos.getIduser());
-				ps.setString(2, datos.getFormulario());
-				ps.setString(3, datos.getAccion());
-				ps.setString(4, datos.getIpequipo());
-				ps.setInt(5, datos.getIdestadocivil());
-				ps.setString(6, datos.getNombrepersona());
-				ps.setString(7, datos.getSegundonombre());
-				ps.setString(8, datos.getApellidopaterno());
-				ps.setString(9, datos.getApellidomaterno());
-				ps.setString(10, datos.getSexo());
-				ps.setString(11, datos.getFechanacimiento());
-				ps.setString(12, datos.getNacionalidad());
-				ps.setString(13, datos.getCalle());
-				ps.setString(14, datos.getColonia());
-				ps.setString(15, datos.getNumerointerior());
-				ps.setString(16, datos.getNumeroexterior());
-				ps.setLong(17, datos.getIdcodigopostal());
-				ps.setString(18, datos.getUrlfoto());
-				ps.setString(19, datos.getResumen());
-				ps.setString(20, datos.getObjetivolaboral());
-				ps.setInt(21,datos.getIdidioma());
-				ps.setInt(22,datos.getPcjescrito());
-				ps.setInt(23,datos.getPcjhablado());
-				ps.setInt(24,datos.getPcjentendido());
-				ps.setString(25,datos.getDescripciondominio());
-				ps.setString(26,datos.getIdiomanativa());
-				ps.setInt(27, datos.getIdtipotelefono());
-				ps.setString(28, datos.getTelefono());
-				ps.setString(29, datos.getCorreo());
-				ps.setInt(30, datos.getIdtipocorreo());	
-				ps.setInt(31, datos.getIddocumento());
-				ps.setString(32, datos.getDescripciondoc());
-				ps.setString(33, datos.getUrldoc());
-				ps.setInt(34, datos.getIdotrodocs());
-				ps.setInt(35, datos.getIdherramienta());
-				ps.setInt(36, datos.getPorcentaje());
-				ps.setInt(37, datos.getAños());
-				ps.setString(38, datos.getDescripcion());
-				ps.setInt(39, datos.getIdgrado());
-				ps.setInt(40, datos.getIdlocalidad());
-				ps.setString(41, datos.getInstitutoestudio());
-				ps.setString(42, datos.getPeriodoinicial());
-				ps.setString(43, datos.getPeriodofinal());
-				ps.setString(44, datos.getNombrecarrera());
-				ps.setString(45, datos.getNombrecurso());
-				ps.setString(46, datos.getInstitutocurso());
-				ps.setString(47, datos.getFechainicioc());
-				ps.setString(48, datos.getFechaterminoc());
-				ps.setString(49, datos.getNombrecertificado());
-				ps.setString(50, datos.getNombreempresa());
-				ps.setInt(51, datos.getIdmotivotermino());
-				ps.setString(52, datos.getPuesto());
-				ps.setString(53, datos.getFechainical());
-				ps.setString(54, datos.getFechafinal());
-				ps.setString(55, datos.getActividadesrealizadas());
-				ps.setString(56, datos.getLogros());
-				ps.setInt(57, datos.getIdtipocontrato());
-				ps.setString(58, datos.getDescripcionmotivo());
-				ps.setInt(59, datos.getIdherramientau());
-				ps.setInt(60, datos.getPorcentajeu());
-				ps.setInt(61, datos.getAñosexpu());
-				ps.setString(62, datos.getDescripcionherram());
-				
-				return ps;
+				// Primera Insersion TBLPersonas
+				ps.setLong(1, iDpersona);
+				ps.setInt(2, 1);
+				ps.setString(3, datos.getUrlFoto());
+				ps.setInt(4, 1);
+				ps.setString(5, datos.getResumen());
+				ps.setString(6, datos.getObjetivoLaboral());
+				ps.setString(7, "0.0");
+				ps.setString(8, "sin asignar");
+				ResultSet rs = ps.executeQuery();
+				rs.next();
+
+				// Segunda Insersion tbldireccion
+				PreparedStatement ps3 = con.prepareStatement(sql3);
+				ps3.setInt(1, IDDireccion);
+				ps3.setString(2, datos.getCalle());
+				ps3.setString(3, datos.getColonia());
+				ps3.setString(4, datos.getNumeroInterior());
+				ps3.setString(5, datos.getNumeroExterior());
+				ps3.setInt(6, datos.getCodigoPostal());
+				ResultSet rs3 = ps3.executeQuery();
+				rs3.next();
+				// Tercera insersion tbldetspersona
+				PreparedStatement ps2 = con.prepareStatement(sql2);
+				ps2.setInt(1, IDpersonadetalle);
+				ps2.setLong(2, iDpersona);
+				ps2.setLong(3, IDDireccion);
+				ps2.setLong(4, datos.getIdEdoCivil());
+				ps2.setString(5, datos.getPrimerNombre());
+				ps2.setString(6, datos.getSegundoNombre());
+				ps2.setString(7, datos.getApellidPterno());
+				ps2.setString(8, datos.getApellidMaterno());
+				ps2.setString(9, datos.getIdSexo());
+				ps2.setString(10, datos.getFechaNacimiento());
+				ps2.setString(11, datos.getNacionalidad());
+				ResultSet rs2 = ps2.executeQuery();
+				rs2.next();
+				// Cuartar insersion piv03 --Documentos -- RFC
+				PreparedStatement ps4 = con.prepareStatement(sql4);
+				ps4.setInt(1, iDpersona);
+				ps4.setInt(2, 2);
+				ps4.setString(3, datos.getRfc());
+				ps4.setString(4, datos.getUrlRfc());
+				ResultSet rs4 = ps4.executeQuery();
+				rs4.next();
+
+				// Quinta insersion piv03 --Documentos -- Curp
+				PreparedStatement ps5 = con.prepareStatement(sql4);
+				ps5.setInt(1, iDpersona);
+				ps5.setInt(2, 4);
+				ps5.setString(3, datos.getcURP());
+				ps5.setString(4, datos.getUrlcURP());
+				ResultSet rs5 = ps5.executeQuery();
+				rs5.next();
+
+				// Sexta insersion piv03 --Documentos -- Acta de nacimiento
+				PreparedStatement ps6 = con.prepareStatement(sql4);
+				ps6.setInt(1, iDpersona);
+				ps6.setInt(2, 1);
+				ps6.setString(3, datos.getFechaNacimiento());
+				ps6.setString(4, datos.getUrlFechaNacimiento());
+				ResultSet rs6 = ps6.executeQuery();
+				rs6.next();
+
+				// Septima insersion piv03 --Documentos -- Numero del Seguro Social
+				PreparedStatement ps7 = con.prepareStatement(sql4);
+				ps7.setInt(1, iDpersona);
+				ps7.setInt(2, 5);
+				ps7.setString(3, datos.getSeguroSocial());
+				ps7.setString(4, datos.getUrlSeguroSocial());
+				ResultSet rs7 = ps7.executeQuery();
+				rs7.next();
+				// Octava Insersion --Documentos -- Domicilio --nulo
+				if (!datos.getUrlComprobanteDomicilio().equals(" ")) {
+					PreparedStatement ps8 = con.prepareStatement(sql4);
+					ps8.setInt(1, iDpersona);
+					ps8.setInt(2, 3);
+					ps8.setString(3, datos.getColonia());
+					ps8.setString(4, datos.getUrlComprobanteDomicilio());
+					ResultSet rs8 = ps8.executeQuery();
+					rs8.next();
+				}
+				// novena Insersion -- Otros Documentos -- infonavit --nulos
+				if (datos.getIdInfonavit() != 0) {
+					PreparedStatement ps9 = con.prepareStatement(sql5);
+					ps9.setInt(2, iDpersona);
+					System.out.println("Piv 11 IDPersona= " + iDpersona + " ID Documento=" + datos.getIdInfonavit());
+					ps9.setInt(1, 5);
+					ResultSet rs9 = ps9.executeQuery();
+					rs9.next();
+				}
+				// Decima insersion -- Otros Documentos -- Disponibilidad de viajar --nulos
+				if (datos.getIdDisponibilidadViajar() != 0) {
+					PreparedStatement ps10 = con.prepareStatement(sql5);
+					ps10.setInt(2, iDpersona);
+					ps10.setInt(1, 1);
+					ResultSet rs10 = ps10.executeQuery();
+					rs10.next();
+				}
+				// Onceava insersion -- Otros Documentos -- Disponibilidad de Cambio --nulos
+				if (datos.getIdDisponibilidadCambio() != 0) {
+					PreparedStatement ps11 = con.prepareStatement(sql5);
+					ps11.setInt(2, iDpersona);
+					ps11.setInt(1, 2);
+					ResultSet rs11 = ps11.executeQuery();
+					rs11.next();
+				}
+				// Doceava insersion -- Telefonos -- Telefono Principal
+				PreparedStatement ps12 = con.prepareStatement(sql6);
+				ps12.setInt(1, iDpersona);
+				ps12.setInt(2, datos.getIdTelefonoPrincipal());
+				ps12.setString(3, datos.getTelefonoPrincipal());
+				ResultSet rs12 = ps12.executeQuery();
+				rs12.next();
+				// Treceava insersion -- Telefonos -- Telefono Secundario --nulos
+				if (!datos.getTelefonoSecundario().equals(" ")) {
+					PreparedStatement ps13 = con.prepareStatement(sql6);
+					ps13.setInt(1, iDpersona);
+					ps13.setInt(2, datos.getIdTelefonoSecundario());
+					ps13.setString(3, datos.getTelefonoSecundario());
+					ResultSet rs13 = ps13.executeQuery();
+					rs13.next();
+				}
+				// Catorceava insersion -- Telefonos -- Telefono de Emergencia
+				PreparedStatement ps14 = con.prepareStatement(sql6);
+				ps14.setInt(1, iDpersona);
+				ps14.setInt(2, datos.getIdTelefonoEmergencia());
+				ps14.setString(3, datos.getTelefonoEmergencia());
+				ResultSet rs14 = ps14.executeQuery();
+				rs14.next();
+				// Quinteava insersion -- Correos -- Correo Principal
+				PreparedStatement ps15 = con.prepareStatement(sql7);
+				ps15.setInt(1, iDpersona);
+				ps15.setInt(2, datos.getIdCorreoPrincipal());
+				ps15.setString(3, datos.getCorreoPrincipal());
+				ResultSet rs15 = ps15.executeQuery();
+				rs15.next();
+				// dieciseisava insersion -- Correos -- Correo Secundario --nulos
+				if (!datos.getCorreoSecundario().equals(" ")) {
+					PreparedStatement ps16 = con.prepareStatement(sql7);
+					ps16.setInt(1, iDpersona);
+					ps16.setInt(2, datos.getIdCorreoSecundario());
+					ps16.setString(3, datos.getCorreoSecundario());
+					ResultSet rs16 = ps16.executeQuery();
+					rs16.next();
+				}
+				// Diesieteava insersion -- Otros Documentos -- Pasaporte --nulos
+				if (datos.getIdpasaporte() != 0) {
+					PreparedStatement ps17 = con.prepareStatement(sql5);
+					ps17.setInt(2, iDpersona);
+					ps17.setInt(1, 3);
+					ResultSet rs17 = ps17.executeQuery();
+					rs17.next();
+				}
+				// Dieciochoava insersion -- Otros Documentos -- Visa --nulos
+				PreparedStatement ps18 = con.prepareStatement(sql5);
+				if (datos.getIdVisa() != 0) {
+					ps18.setInt(2, iDpersona);
+					ps18.setInt(1, 4);
+				}
+				return ps18;
 			}
 		});
 		return respuesta;
@@ -118,10 +232,18 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales  {
 	 * @see com.vector.service.ModelABCLD#Delete(int)
 	 */
 	@Transactional(readOnly = true)
-	public int Eliminar(int id) {
-		//final String  sql = "";
-		
-		return 0;
+	public int Eliminar(long id) {
+		final String sql = "DELETE TBLPERSONAS WHERE IDPERSONA = ?";
+		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setLong(1, id);
+				return ps;
+
+			}
+		});
+		return respuesta;
 	}
 
 	/*
@@ -132,38 +254,58 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales  {
 	@Transactional(readOnly = true)
 	public DatosPersonalesBean Buscar(DatosPersonalesBean datos) {
 		DatosPersonalesBean retorno = new DatosPersonalesBean();
-		final String sql="select * from datospersonales where idpersona = ?";		
+		/* Sentencias SQL a ejecutar*/
+		final String sql = "SELECT * FROM TBLPERSONAS PERS, TBLAREAS ARS, tbldetspersonas dts, tblestadosciviles edo, tbldirecciones dir WHERE dir.iddireccion = dts.iddireccion and dts.idedocivil=edo.idedocivil and PERS.IDAREA=ARS.IDAREA and pers.idpersona=dts.idpersona AND PERS.IDPERSONA= (?)";
+	/*
+		final String sql4 = "INSERT INTO TBLpiv03 VALUES(?,?,?,?)";
+		final String sql5 = "INSERT INTO TBLPIV11 VALUES(?,?)";
+		final String sql6 = "INSERT INTO TBLPIV01 VALUES(?,?,?)";
+		final String sql7 = "INSERT INTO TBLPIV02 VALUES(?,?,?)";*/
+
+		/*
+		 * final String
+		 * sql="SELECT * FROM TBLPERSONAS pr, TBLDETSPERSONAS dts,TBLDIRECCIONES dir, TBLPIV01 piv01, TBLPIV02 piv02, TBLPIV03 piv03"
+		 * +
+		 * "WHERE pr.IDPERSONA=dts.IDPERSONA AND dts.IDDIRECCION=dir.IDDIRECCION AND piv01.IDPERSONA=pr.IDPERSONA AND piv02.IDPERSONA=pr.IDPERSONA"
+		 * + "AND piv03.IDPERSONA=pr.IDPERSONA AND pr.IDPERSONA = (?)";
+		 */
+
+		// Apartado de execuciones
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setLong(1, datos.getIdpersona());
+				// Primera Insersion TBLPersonas
+				ps.setLong(1,datos.getIdpersona());
 				ResultSet rs = ps.executeQuery();
-				retorno.setIdpersona(rs.getLong(1));
-				retorno.setNombrepersona(rs.getString(2));
-				retorno.setSegundonombre(rs.getString(3));
-				retorno.setApellidopaterno(rs.getString(4));
-				retorno.setApellidomaterno(rs.getString(5));
-				retorno.setSexo(rs.getString(6));
-				retorno.setFechanacimiento(rs.getString(7));
-				retorno.setNacionalidad(rs.getString(8));
-				retorno.setResumen(rs.getString(9));
-				retorno.setIdtipotelefono(rs.getInt(16));
-				retorno.setTelefono(rs.getString(17));
-				retorno.setCorreo(rs.getString(18));
-				retorno.setIdtipocorreo(rs.getInt(19));
-				retorno.setDescripciondoc(rs.getString(21));
-				retorno.setUrldoc(rs.getString(22));
-				retorno.setPorcentaje(rs.getInt(25));
-				retorno.setAños(rs.getInt(26));
-				retorno.setCalle(rs.getString(31));
-				retorno.setColonia(rs.getString(32));
-				retorno.setNumerointerior(rs.getString(33));
-				retorno.setNumeroexterior(rs.getString(34));
+				rs.next();
+				retorno.setUrlFoto(rs.getString(3));
+				retorno.setStatus(rs.getString(4));
+				retorno.setResumen(rs.getString(5));
+				retorno.setObjetivoLaboral(rs.getString(6));
+				retorno.setSueldo(rs.getInt(7));
+				retorno.setNcontrol(rs.getString(8));
+				retorno.setNombreArea(rs.getString(10));
+				retorno.setCodArea(rs.getString(11));
+				retorno.setPrimerNombre(rs.getString(17));
+				retorno.setSegundoNombre(rs.getString(18));
+				retorno.setApellidPterno(rs.getString(19));
+				retorno.setApellidMaterno(rs.getString(20));
+				retorno.setIdSexo(rs.getString(21));
+				retorno.setFechaNacimiento(rs.getString(22));
+				retorno.setNacionalidad(rs.getString(23));
+				retorno.setIdEdoCivil(rs.getInt(24));
+				retorno.setEstadoCivil(rs.getString(25));
+				retorno.setCalle(rs.getString(28));
+				retorno.setColonia(rs.getString(29));
+				retorno.setNumeroInterior(rs.getString(30));
+				retorno.setNumeroExterior(rs.getString(31));
+				retorno.setCodigoPostal(rs.getInt(32));
 				return ps;
 			}
 		});
 		return retorno;
+
 	}
 
 	/*
@@ -174,174 +316,211 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales  {
 	@Transactional(readOnly = true)
 	public List<DatosPersonalesBean> Listar() {
 		// TODO Auto-generated method stub
-		return jdbcTemplate.query("select * from datospersonales", new DatPerRowMapper());
+		return jdbcTemplate.query("SELECT * FROM TBLPERSONAS PERS, TBLAREAS ARS, tbldetspersonas dts, tblestadosciviles edo, tbldirecciones dir WHERE dir.iddireccion = dts.iddireccion and dts.idedocivil=edo.idedocivil and PERS.IDAREA=ARS.IDAREA and pers.idpersona=dts.idpersona", new DatPerRowMapper());
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosPersonales#Actualizar(com.vector.Beans.DatosPersonales.DatosPersonalesBean)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.vector.DAO.DAODatosPersonales#Actualizar(com.vector.Beans.DatosPersonales
+	 * .DatosPersonalesBean)
 	 */
 	@Override
 	public int Modificar(DatosPersonalesBean datos) {
 		// TODO Auto-generated method stub
-		final String sql="execute sp_modificarpersona01(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";		
+		final String sql = "UPDATE TBLPERSONAS SET IDAREA = (?), URLFOTO=(?), STATUS=(?), RESUMEN =(?), OBJLABORAL =(?) WHERE IDPERSONA=(?) ";
+		final String sql2 = "UPDATE TBLDETSPERSONAS SET IDDIRECCION =(?), IDEDOCIVIL=(?), NOMBRE=(?), SEGNOMBRE=(?), APELLIDOP=(?), APELLIDOM=(?), SEXO=(?), FECHANAC=(?), NACIONALIDAD=(?) WHERE IDPERSONA=(?)";
+		// Sentencias SQL a ejecutar
+		//final String sql = "INSERT INTO TBLPERSONAS VALUES(?,?,?,?,?,?,?,?)";
+		//final String sql2 = "INSERT INTO TBLDETSPERSONAS VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+		final String sql3 = "INSERT INTO TBLDIRECCIONES VALUES(?,?,?,?,?,?)";
+		final String sql4 = "INSERT INTO TBLpiv03 VALUES(?,?,?,?)";
+		final String sql5 = "INSERT INTO TBLPIV11 VALUES(?,?)";
+		final String sql6 = "INSERT INTO TBLPIV01 VALUES(?,?,?)";
+		final String sql7 = "INSERT INTO TBLPIV02 VALUES(?,?,?)";
+
+		// Apartado de execuciones
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setLong(1, datos.getIduser());
-				ps.setString(2, datos.getFormulario());
-				ps.setString(3, datos.getAccion());
-				ps.setString(4, datos.getIpequipo());
-				ps.setInt(5, datos.getIdestadocivil());
-				ps.setString(6, datos.getNombrepersona());
-				ps.setString(7, datos.getSegundonombre());
-				ps.setString(8, datos.getApellidopaterno());
-				ps.setString(9, datos.getApellidomaterno());
-				ps.setString(10, datos.getSexo());
-				ps.setString(11, datos.getFechanacimiento());
-				ps.setString(12, datos.getNacionalidad());
-				ps.setString(13, datos.getCalle());
-				ps.setString(14, datos.getColonia());
-				ps.setString(15, datos.getNumerointerior());
-				ps.setString(16, datos.getNumeroexterior());
-				ps.setLong(17, datos.getIdcodigopostal());
-				ps.setString(18, datos.getUrlfoto());
-				ps.setString(19, datos.getResumen());
-				ps.setString(20, datos.getObjetivolaboral());
-				ps.setInt(21,datos.getIdidioma());
-				ps.setInt(22,datos.getPcjescrito());
-				ps.setInt(23,datos.getPcjhablado());
-				ps.setInt(24,datos.getPcjentendido());
-				ps.setString(25,datos.getDescripciondominio());
-				ps.setString(26,datos.getIdiomanativa());
-				ps.setInt(27, datos.getIdtipotelefono());
-				ps.setString(28, datos.getTelefono());
-				ps.setString(29, datos.getCorreo());
-				ps.setInt(30, datos.getIdtipocorreo());	
-				ps.setInt(31, datos.getIddocumento());
-				ps.setString(32, datos.getDescripciondoc());
-				ps.setString(33, datos.getUrldoc());
-				ps.setInt(34, datos.getIdotrodocs());
-				ps.setInt(35, datos.getIdherramienta());
-				ps.setInt(36, datos.getPorcentaje());
-				ps.setInt(37, datos.getAños());
-				ps.setString(38, datos.getDescripcion());
-				ps.setInt(39, datos.getIdgrado());
-				ps.setInt(40, datos.getIdlocalidad());
-				ps.setString(41, datos.getInstitutoestudio());
-				ps.setString(42, datos.getPeriodoinicial());
-				ps.setString(43, datos.getPeriodofinal());
-				ps.setString(44, datos.getNombrecarrera());
-				ps.setString(45, datos.getNombrecurso());
-				ps.setString(46, datos.getInstitutocurso());
-				ps.setString(47, datos.getFechainicioc());
-				ps.setString(48, datos.getFechaterminoc());
-				ps.setString(49, datos.getNombrecertificado());
-				ps.setString(50, datos.getNombreempresa());
-				ps.setInt(51, datos.getIdmotivotermino());
-				ps.setString(52, datos.getPuesto());
-				ps.setString(53, datos.getFechainical());
-				ps.setString(54, datos.getFechafinal());
-				ps.setString(55, datos.getActividadesrealizadas());
-				ps.setString(56, datos.getLogros());
-				ps.setInt(57, datos.getIdtipocontrato());
-				ps.setString(58, datos.getDescripcionmotivo());
-				ps.setInt(59, datos.getIdherramientau());
-				ps.setInt(60, datos.getPorcentajeu());
-				ps.setInt(61, datos.getAñosexpu());
-				ps.setString(62, datos.getDescripcionherram());
-				ps.setLong(63, datos.getIddireccion());
-				ps.setLong(64, datos.getIdpersona());
-				ps.setInt(65, datos.getIddetallepersona());
-				ps.setInt(66, datos.getIdcarrera());
-				ps.setInt(67, datos.getIdcurso());
-				ps.setInt(68, datos.getIdcertificado());
-				ps.setInt(69, datos.getIdestudio());
-				ps.setInt(70, datos.getIddominio());
-				ps.setInt(71, datos.getIdexplaboral());
-				ps.setInt(72, datos.getIdempresa());
-				ps.setInt(73, datos.getIddescmotivo());
-				ps.setInt(74, datos.getIddocumento());
-				ps.setInt(75, datos.getIdherramientacon());
-				ps.setInt(76, datos.getIdherramientausa());
-				ps.setInt(77, datos.getIdtipotelefono());
-				ps.setInt(78, datos.getIdtipocorreo());
-				
-				return ps;
+				// Primera Actualizacion TBLPersonas
+				ps.setLong(1, datos.getIdpersona());
+				ps.setInt(2, 1);
+				ps.setString(3, datos.getUrlFoto());
+				ps.setInt(4, 1);
+				ps.setString(5, datos.getResumen());
+				ps.setString(6, datos.getObjetivoLaboral());
+				ps.setString(7, "0.0");
+				ps.setString(8, "sin asignar");
+				ResultSet rs = ps.executeQuery();
+				rs.next();
+
+				// Segunda Insersion tbldetspersonas
+				PreparedStatement ps2 = con.prepareStatement(sql2);
+				//ps2.setInt(1, IDpersonadetalle);
+				ps2.setLong(2, datos.getIdpersona());
+				//ps2.setLong(3, IDDireccion);
+				ps2.setLong(4, datos.getIdEdoCivil());
+				ps2.setString(5, datos.getPrimerNombre());
+				ps2.setString(6, datos.getSegundoNombre());
+				ps2.setString(7, datos.getApellidPterno());
+				ps2.setString(8, datos.getApellidMaterno());
+				ps2.setString(9, datos.getIdSexo());
+				ps2.setString(10, datos.getFechaNacimiento());
+				ps2.setString(11, datos.getNacionalidad());
+
+				// Tercera insersion tbldirecciones
+				PreparedStatement ps3 = con.prepareStatement(sql3);
+				//ps3.setInt(1, IDDireccion);
+				ps3.setString(2, datos.getCalle());
+				ps3.setString(3, datos.getColonia());
+				ps3.setString(4, datos.getNumeroInterior());
+				ps3.setString(5, datos.getNumeroExterior());
+				ps3.setInt(6, datos.getCodigoPostal());
+				ResultSet rs3 = ps3.executeQuery();
+				rs3.next();
+				// Cuartar insersion piv03 --Documentos -- RFC
+				PreparedStatement ps4 = con.prepareStatement(sql4);
+				ps4.setInt(1, datos.getIdpersona());
+				ps4.setInt(2, 2);
+				ps4.setString(3, datos.getRfc());
+				ps4.setString(5, datos.getUrlRfc());
+				ResultSet rs4 = ps4.executeQuery();
+				rs4.next();
+
+				// Quinta insersion piv03 --Documentos -- Curp
+				PreparedStatement ps5 = con.prepareStatement(sql4);
+				ps4.setInt(1, datos.getIdpersona());
+				ps4.setInt(2, 4);
+				ps4.setString(3, datos.getcURP());
+				ps4.setString(5, datos.getUrlcURP());
+				ResultSet rs5 = ps5.executeQuery();
+				rs5.next();
+
+				// Sexta insersion piv03 --Documentos -- Acta de nacimiento
+				PreparedStatement ps6 = con.prepareStatement(sql4);
+				ps4.setInt(1, datos.getIdpersona());
+				ps4.setInt(2, 1);
+				ps4.setString(3, datos.getFechaNacimiento());
+				ps4.setString(5, datos.getUrlFechaNacimiento());
+				ResultSet rs6 = ps6.executeQuery();
+				rs6.next();
+
+				// Septima insersion piv03 --Documentos -- Numero del Seguro Social
+				PreparedStatement ps7 = con.prepareStatement(sql4);
+				ps7.setInt(1, datos.getIdpersona());
+				ps7.setInt(2, 5);
+				ps7.setString(3, datos.getSeguroSocial());
+				ps7.setString(4, datos.getUrlSeguroSocial());
+				ResultSet rs7 = ps7.executeQuery();
+				rs7.next();
+				// Octava Insersion --Documentos -- Domicilio
+				PreparedStatement ps8 = con.prepareStatement(sql4);
+				ps8.setInt(1, datos.getIdpersona());
+				ps8.setInt(2, 3);
+				ps8.setString(3, datos.getColonia());
+				ps8.setString(4, datos.getUrlComprobanteDomicilio());
+				ResultSet rs8 = ps8.executeQuery();
+				rs8.next();
+				// novena Insersion -- Otros Documentos -- infonavit
+				PreparedStatement ps9 = con.prepareStatement(sql5);
+				ps9.setInt(1, datos.getIdpersona());
+				ps9.setInt(2, datos.getIdInfonavit());
+				ResultSet rs9 = ps9.executeQuery();
+				rs9.next();
+				// Decima insersion -- Otros Documentos -- Disponibilidad de viajar
+				PreparedStatement ps10 = con.prepareStatement(sql5);
+				ps10.setInt(1, datos.getIdpersona());
+				ps10.setInt(2, datos.getIdDisponibilidadViajar());
+				ResultSet rs10 = ps10.executeQuery();
+				rs10.next();
+				// Onceava insersion -- Otros Documentos -- Disponibilidad de Cambio
+				PreparedStatement ps11 = con.prepareStatement(sql5);
+				ps11.setInt(1, datos.getIdpersona());
+				ps11.setInt(2, datos.getIdDisponibilidadCambio());
+				ResultSet rs11 = ps11.executeQuery();
+				rs11.next();
+				// Doceava insersion -- Telefonos -- Telefono Principal
+				PreparedStatement ps12 = con.prepareStatement(sql6);
+				ps12.setInt(1, datos.getIdpersona());
+				ps12.setInt(2, datos.getIdTelefonoPrincipal());
+				ps12.setString(3, datos.getTelefonoPrincipal());
+				ResultSet rs12 = ps12.executeQuery();
+				rs12.next();
+				// Treceava insersion -- Telefonos -- Telefono Secundario
+				PreparedStatement ps13 = con.prepareStatement(sql6);
+				ps13.setInt(1, datos.getIdpersona());
+				ps13.setInt(2, datos.getIdTelefonoSecundario());
+				ps13.setString(3, datos.getTelefonoSecundario());
+				ResultSet rs13 = ps13.executeQuery();
+				rs13.next();
+				// Catorceava insersion -- Telefonos -- Telefono de Emergencia
+				PreparedStatement ps14 = con.prepareStatement(sql6);
+				ps14.setInt(1, datos.getIdpersona());
+				ps14.setInt(2, datos.getIdTelefonoEmergencia());
+				ps14.setString(3, datos.getTelefonoEmergencia());
+				ResultSet rs14 = ps14.executeQuery();
+				rs14.next();
+				// Quinteava insersion -- Correos -- Correo Principal
+				PreparedStatement ps15 = con.prepareStatement(sql7);
+				ps15.setInt(1, datos.getIdpersona());
+				ps15.setInt(2, datos.getIdCorreoPrincipal());
+				ps15.setString(3, datos.getCorreoPrincipal());
+				ResultSet rs15 = ps15.executeQuery();
+				rs15.next();
+				// dieciseisava insersion -- Correos -- Correo Secundario
+				PreparedStatement ps16 = con.prepareStatement(sql7);
+				ps16.setInt(1, datos.getIdpersona());
+				ps16.setInt(2, datos.getIdCorreoSecundario());
+				ps16.setString(3, datos.getCorreoSecundario());
+				ResultSet rs16 = ps16.executeQuery();
+				rs16.next();
+				// Diesieteava insersion -- Otros Documentos -- Pasaporte
+				PreparedStatement ps17 = con.prepareStatement(sql5);
+				ps17.setInt(1, datos.getIdpersona());
+				ps17.setInt(2, datos.getIdpasaporte());
+				ResultSet rs17 = ps17.executeQuery();
+				rs17.next();
+				// Dieciochoava insersion -- Otros Documentos -- Visa
+				PreparedStatement ps18 = con.prepareStatement(sql5);
+				ps18.setInt(1, datos.getIdpersona());
+				ps18.setInt(2, datos.getIdVisa());
+				return ps18;
 			}
 		});
 		return respuesta;
 	}
 
-
 }
+
 class DatPerRowMapper implements RowMapper<DatosPersonalesBean> {
 	@Override
 	public DatosPersonalesBean mapRow(ResultSet rs, int rowNum) throws SQLException {
-		DatosPersonalesBean datos = new DatosPersonalesBean();
-		datos.setIduser(rs.getInt(1));
-		datos.setFormulario(rs.getString(2));
-		datos.setAccion(rs.getString(3));
-		datos.setIpequipo(rs.getString(4));
-		datos.setIdestadocivil(rs.getInt(5));
-		datos.setNombrepersona(rs.getString(6));
-		datos.setSegundonombre(rs.getString(7));
-		datos.setApellidopaterno(rs.getString(8));
-		datos.setApellidomaterno(rs.getString(9));
-		datos.setSexo(rs.getString(10));
-		datos.setFechanacimiento(rs.getString(11));
-		datos.setNacionalidad(rs.getString(12));
-		datos.setCalle(rs.getString(13));
-		datos.setColonia(rs.getString(14));
-		datos.setNumerointerior(rs.getString(15));
-		datos.setNumeroexterior(rs.getString(16));
-		datos.setIdcodigopostal(rs.getLong(17));
-		datos.setUrlfoto(rs.getString(18));
-		datos.setResumen(rs.getString(19));
-		datos.setObjetivolaboral(rs.getString(20));
-		datos.setIdidioma(rs.getInt(21));
-		datos.setPcjescrito(rs.getInt(22));
-		datos.setPcjhablado(rs.getInt(23));
-		datos.setPcjentendido(rs.getInt(24));
-		datos.setDescripciondominio(rs.getString(25));
-		datos.setIdiomanativa(rs.getString(26));
-		datos.setIdtipotelefono(rs.getInt(27));
-		datos.setTelefono(rs.getString(28));
-		datos.setCorreo(rs.getString(29));
-		datos.setIdtipocorreo(rs.getInt(30));	
-		datos.setIddocumento(rs.getInt(31));
-		datos.setDescripciondoc(rs.getString(32));
-		datos.setUrldoc(rs.getString(33));
-		datos.setIdotrodocs(rs.getInt(34));
-		datos.setIdherramienta(rs.getInt(35));
-		datos.setPorcentaje(rs.getInt(36));
-		datos.setAños(rs.getInt(37));
-		datos.setDescripcion(rs.getString(38));
-		datos.setIdgrado(rs.getInt(39));
-		datos.setIdlocalidad(rs.getInt(40));
-		datos.setInstitutoestudio(rs.getString(41));
-		datos.setPeriodoinicial(rs.getString(42));
-		datos.setPeriodofinal(rs.getString(43));
-		datos.setNombrecarrera(rs.getString(44));
-		datos.setNombrecurso(rs.getString(45));
-		datos.setInstitutocurso(rs.getString(46));
-		datos.setFechainicioc(rs.getString(47));
-		datos.setFechaterminoc(rs.getString(48));
-		datos.setNombrecertificado(rs.getString(49));
-		datos.setNombreempresa(rs.getString(50));
-		datos.setIdmotivotermino(rs.getInt(51));
-		datos.setPuesto(rs.getString(52));
-		datos.setFechainical(rs.getString(53));
-		datos.setFechafinal(rs.getString(54));
-		datos.setActividadesrealizadas(rs.getString(55));
-		datos.setLogros(rs.getString(56));
-		datos.setIdtipocontrato(rs.getInt(57));
-		datos.setDescripcionmotivo(rs.getString(58));
-		datos.setIdherramientau(rs.getInt(59));
-		datos.setPorcentajeu(rs.getInt(60));
-		datos.setAñosexpu(rs.getInt(61));
-		datos.setDescripcionherram(rs.getString(62));
-
-		return datos;
+		DatosPersonalesBean retorno = new DatosPersonalesBean();
+		retorno.setUrlFoto(rs.getString(3));
+		retorno.setStatus(rs.getString(4));
+		retorno.setResumen(rs.getString(5));
+		retorno.setObjetivoLaboral(rs.getString(6));
+		retorno.setSueldo(rs.getInt(7));
+		retorno.setNcontrol(rs.getString(8));
+		retorno.setNombreArea(rs.getString(10));
+		retorno.setCodArea(rs.getString(11));
+		retorno.setPrimerNombre(rs.getString(17));
+		retorno.setSegundoNombre(rs.getString(18));
+		retorno.setApellidPterno(rs.getString(19));
+		retorno.setApellidMaterno(rs.getString(20));
+		retorno.setIdSexo(rs.getString(21));
+		retorno.setFechaNacimiento(rs.getString(22));
+		retorno.setNacionalidad(rs.getString(23));
+		retorno.setIdEdoCivil(rs.getInt(24));
+		retorno.setEstadoCivil(rs.getString(25));
+		retorno.setCalle(rs.getString(28));
+		retorno.setColonia(rs.getString(29));
+		retorno.setNumeroInterior(rs.getString(30));
+		retorno.setNumeroExterior(rs.getString(31));
+		retorno.setCodigoPostal(rs.getInt(32));
+		return retorno;
 	}
 }

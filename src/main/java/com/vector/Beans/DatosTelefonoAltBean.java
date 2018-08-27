@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
  * @author vectormx
  *
  */
-public class DatosTelefonoAltBean extends LogBean implements Model{
+public class DatosTelefonoAltBean {
 	@NotNull
 	private int idtipotelefono=0;
 	@NotNull

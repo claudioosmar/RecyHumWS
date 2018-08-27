@@ -21,20 +21,20 @@ public class DatosPersonalesController {
 		
 	@RequestMapping(path = "/SGRHWebService/DatosPersonales/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody DatosPersonalesBean datos){
-		System.out.print("Se creo un historial academico");
+		System.out.print("Se creo un Datos personales "+ datos.getPrimerNombre()+"\n");
 		return new ResponseEntity<MsgBean>(bodatos.Crear(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosPersonales/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosPersonalesBean datos){
-		System.out.print("Se modifico historial academico");
+		System.out.print("Se modifico historial Datos Laborales ");
 		return new ResponseEntity<MsgBean>(bodatos.Modificar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosPersonales/Eliminar",method = RequestMethod.POST)
-	public ResponseEntity<MsgBean> eliminar(@RequestBody int id){
-		System.out.print("se elimo historial academico");
-		return new ResponseEntity<MsgBean>(bodatos.Eliminar(id),HttpStatus.OK);
+	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosPersonalesBean datos){
+		System.out.print("se elimo Datos laborales");
+		return new ResponseEntity<MsgBean>(bodatos.Eliminar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosPersonales/Buscar",method=RequestMethod.POST)
@@ -42,7 +42,7 @@ public class DatosPersonalesController {
 		System.out.print("se busco historial acdemico");
 		return new ResponseEntity<DatosPersonalesBean>(bodatos.Buscar(datos),HttpStatus.OK);
 	}
-	@RequestMapping("/SGRHWebService/DatosPersonales/listar")
+	@RequestMapping("/SGRHWebService/DatosPersonales/Listar")
 	public ResponseEntity<List<DatosPersonalesBean>> Listar(){
 		List<DatosPersonalesBean> resp = bodatos.Listar();
 		if(resp.isEmpty()) {

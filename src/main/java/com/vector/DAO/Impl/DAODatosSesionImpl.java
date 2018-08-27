@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.vector.Beans.DatosFormularioBean;
 import com.vector.Beans.DatosInicioSesionBean;
-import com.vector.Beans.Model;
 import com.vector.DAO.DAODatosSesion;
 import com.vector.Utileria.*;
 
@@ -33,7 +32,7 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	private List<DatosFormularioBean> listaform;
-
+	private AutoIncrementablesBDOracle autoin;
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -42,22 +41,25 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 	@Override
 	@Transactional(readOnly = true)
 	public int Create(DatosInicioSesionBean datos) {
-		final String sql = "begin sp_agregarusuario(?,?,?,?,?,?,?,?,?); end;";
+		autoin = new AutoIncrementablesBDOracle();
+		int IDUser = autoin.UsuarioIDUltimo(jdbcTemplate);
+		datos.setContraseña(new Encriptarsha1().Encriptar(datos.getContraseña()));
+		final String sql = "INSERT INTO TBLUSERS VALUES(?,?,?,?,?,?,?,?,?,?)";
 		datos.setContraseña(new Encriptarsha1().Encriptar(datos.getContraseña()));
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
-				
-				ps.setLong(1, datos.getIduser());
-				ps.setString(2, datos.getFormulario());
-				ps.setString(3,datos.getAccion());
-				ps.setString(4, datos.getIpequipo());
-				ps.setInt(5, datos.getIdtipouser());
-				ps.setLong(6, datos.getIdpersonaalta());
-				ps.setString(7, datos.getContraseña());
-				ps.setLong(8, datos.getIdpersona());
-				ps.setString(9, datos.getObservacion());
+				ps.setLong(1, IDUser);
+				ps.setInt(2, datos.getIdtipouser());
+				ps.setLong(3,datos.getIdpersonaalta());
+				ps.setString(4, datos.getNombre());
+				ps.setString(5, datos.getContraseña());
+				ps.setLong(6, 1);
+				ps.setString(7, datos.getFechaCreacion());
+				ps.setString(8, datos.getFechaTermino());
+				ps.setLong(9, datos.getIdpersona());
+				ps.setString(10, datos.getObservacion());
 							
 				return ps;
 			}
@@ -74,6 +76,16 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 	@Transactional(readOnly = true)
 	public String Delete(int id) {
 		// TODO Auto-generated method stub
+		final String sql = "DELETE TBLUSERS WHERE IDUSER=(?)";
+		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setLong(1, id);
+				
+				return ps; 
+			}
+		});
 		return null;
 	}
 
@@ -84,7 +96,7 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public Model Buscar(DatosInicioSesionBean datos) {
+	public DatosInicioSesionBean Buscar(DatosInicioSesionBean datos) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -125,12 +137,15 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
+				List<DatosFormularioBean> resp = new ArrayList<DatosFormularioBean>();
 				ps.setString(1, datos.getUsuario());
 				ps.setString(2, datos.getContraseña());
 				System.out.println("DAO Datos Usuario "+datos.getUsuario()+" "+datos.getContraseña());
 				ResultSet rs = ps.executeQuery();
 				rs.next();
 				datos.setIdtipouser(rs.getInt(2));
+				datos.setIdpersona(rs.getLong(9));
+				System.out.println("ID de Persona logueada "+datos.getIdpersona());
 				PreparedStatement ps2 = con.prepareStatement("select * from tblpiv12 where idtipouser=(?)");
 				ps2.setInt(1, datos.getIdtipouser());
 				System.out.println("DAO TipoUser "+datos.getIdtipouser());
@@ -142,7 +157,7 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 				System.out.println("Dao ArrayList de privilegios "+ idprivilegio);
 				System.out.println("Privilegio 1 "+ idprivilegio.get(0));
 				DatosFormularioBean var2 =new DatosFormularioBean();
-				List<DatosFormularioBean> resp = new ArrayList<DatosFormularioBean>();
+				
 				PreparedStatement ps3 = con.prepareStatement("select * from tblpiv10 where idprivilegio =(?)");
 				for (int i = 0; i < idprivilegio.size(); i++) {
 					ps3.setInt(1, idprivilegio.get(i));
@@ -152,6 +167,7 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 					var2 = new DatosFormularioBean();
 					var2.setNomformulario(String.valueOf(rs3.getInt(2)));
 					var2.setStatus(rs3.getBoolean(3));
+					var2.setIdpersona(datos.getIdpersona());
 					System.out.println("NomFormulario(int) "+ rs3.getInt(2)+" "+"Status "+rs3.getBoolean(3));
 					resp.add(var2);
 				}

@@ -27,16 +27,21 @@ public class BODatosPersonalesImpl implements BODatosPersonales {
 	 * @see com.vector.BO.BODatosPersonales#Crear(com.vector.Beans.DatosPersonales.DatosPersonalesBean)
 	 */
 	@Override
+	//Creacion de datos Personales
 	public MsgBean Crear(DatosPersonalesBean datos) {
 		// TODO Auto-generated method stub
 		MsgBean mensaje = new MsgBean();
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		int resultado = datospersonales.Crear(datos);
+		//La creacion fue exitosa
 		if(resultado == 1) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
-		}else {
+		}
+		//Fallo en la creacion
+		else {
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		}
+		//regreso de mensaje
 		return mensaje;
 	}
 
@@ -44,16 +49,21 @@ public class BODatosPersonalesImpl implements BODatosPersonales {
 	 * @see com.vector.BO.BODatosPersonales#Actualizar(com.vector.Beans.DatosPersonales.DatosPersonalesBean)
 	 */
 	@Override
+	//Modificacion de DatosPersonales
 	public MsgBean Modificar(DatosPersonalesBean datos) {
 		// TODO Auto-generated method stub
 		MsgBean mensaje = new MsgBean();
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		int resultado = datospersonales.Modificar(datos);
+		//Se genera mensaje de modificacion exitosa
 		if(resultado == 1) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
-		}else {
+		}
+		//Se genera mensaje de modificacion fallida
+		else {
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		}
+		//Se regresa el mensaje
 		return mensaje;
 	}
 
@@ -61,11 +71,11 @@ public class BODatosPersonalesImpl implements BODatosPersonales {
 	 * @see com.vector.BO.BODatosPersonales#Eliminar(int)
 	 */
 	@Override
-	public MsgBean Eliminar(int id) {
+	public MsgBean Eliminar(DatosPersonalesBean datos) {
 		// TODO Auto-generated method stub
 		MsgBean mensaje = new MsgBean();
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
-		int resultado = datospersonales.Eliminar(id);
+		int resultado = datospersonales.Eliminar(datos.getIdpersona());
 		if(resultado == 1) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 		}else {

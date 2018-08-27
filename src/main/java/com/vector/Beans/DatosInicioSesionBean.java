@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
  * @author Claudio
  *
  */
-public class DatosInicioSesionBean extends LogBean implements Model {
+public class DatosInicioSesionBean  {
 	/*Atributos del inicio de sesion*/
 	@NotNull
 	private long ID_User=0;
@@ -33,7 +33,14 @@ public class DatosInicioSesionBean extends LogBean implements Model {
 	private long idpersona=0;
 	@NotNull
 	private String observacion="";
+	@NotNull
 	private String nombre="";
+	@NotNull
+	private String fechaCreacion="";
+	@NotNull
+	private String fechaTermino="";
+	@NotNull
+	
 
 	
 	
@@ -141,6 +148,38 @@ public class DatosInicioSesionBean extends LogBean implements Model {
 	 */
 	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
+	}
+	
+	/**
+	 * @return Obtienes el valor de fechaCreacion
+	 */
+	
+	public String getFechaCreacion() {
+		return fechaCreacion;
+	}
+	
+	/**
+	 * @return Obtienes el valor de fechaTermino
+	 */
+	
+	public String getFechaTermino() {
+		return fechaTermino;
+	}
+	
+	/**
+	 * @param Agregar el valor a fechaCreacion
+	 */
+	
+	public void setFechaCreacion(String fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+	
+	/**
+	 * @param Agregar el valor a fechaTermino
+	 */
+	
+	public void setFechaTermino(String fechaTermino) {
+		this.fechaTermino = fechaTermino;
 	}
 	
 }

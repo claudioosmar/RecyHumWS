@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +16,11 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
-import com.vector.Beans.DatosFormularioBean;
+
 import com.vector.Beans.DatosTelefonoAltBean;
 import com.vector.DAO.DAODatosTelefonoAlt;
-import com.vector.Utileria.comandoSQL;
+
+
 
 /**
  * @author vectormx
@@ -78,8 +79,7 @@ public class DAODatosTelefonoAltImpl implements DAODatosTelefonoAlt {
 	@Override
 	public int Eliminar(String id) {
 		// TODO Auto-generated method stub
-final String sql="delete tblpiv01 where telefono = (?)";
-		
+		final String sql="delete tblpiv01 where telefono = (?)";
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {

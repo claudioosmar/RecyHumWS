@@ -27,32 +27,32 @@ public class DatosLaboralesController {
 	private BODatosLaborales laborales;
 	
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Crear", method = RequestMethod.POST)
-	public ResponseEntity<MsgBean> insertar(@RequestBody DatosLaboralesBean datos){
-		System.out.print("Se creo un historial academico");
+	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosLaboralesBean> datos){
+		System.out.print("Se creo un registro laboral"+datos.get(0).getIdpersona());
 		return new ResponseEntity<MsgBean>(laborales.Crear(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosLaboralesBean datos){
-		System.out.print("Se modifico historial academico");
+		System.out.print("Se modifico un regristro laboral"+datos.getIdmotivotermino());
 		return new ResponseEntity<MsgBean>(laborales.Modificar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Eliminar",method = RequestMethod.POST)
-	public ResponseEntity<MsgBean> eliminar(@RequestBody int id){
-		System.out.print("se elimo historial academico");
-		return new ResponseEntity<MsgBean>(laborales.Eliminar(id),HttpStatus.OK);
+	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosLaboralesBean datos){
+		System.out.print("se elimino un registro laboral de "+datos.getIdexplaborl()+"\n");
+		return new ResponseEntity<MsgBean>(laborales.Eliminar(datos.getIdexplaborl()),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Buscar",method=RequestMethod.POST)
-	public ResponseEntity<DatosLaboralesBean>buscar(@RequestBody DatosLaboralesBean datos){
-		System.out.print("se busco historial acdemico");
-		return new ResponseEntity<DatosLaboralesBean>(laborales.Buscar(datos),HttpStatus.OK);
+	public ResponseEntity<List<DatosLaboralesBean>>buscar(@RequestBody DatosLaboralesBean datos){
+		System.out.print("se busco un registro laboral");
+		return new ResponseEntity<List<DatosLaboralesBean>>(laborales.Buscar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosLaboralesBean>> consulta(){
-		System.out.println("Ingresando a listar estudio ");
+		System.out.println("Ingresando a listar de datos laborales ");
 		List<DatosLaboralesBean> laboral = laborales.Listar();
 		if(laboral.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

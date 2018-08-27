@@ -16,7 +16,7 @@ public interface BODatosPersonales {
 	
 	MsgBean Crear(DatosPersonalesBean datos);
 	MsgBean Modificar(DatosPersonalesBean datos);
-	MsgBean Eliminar (int id);
+	MsgBean Eliminar (DatosPersonalesBean datos);
 	DatosPersonalesBean Buscar(DatosPersonalesBean datos);
 	List<DatosPersonalesBean> Listar ();
 

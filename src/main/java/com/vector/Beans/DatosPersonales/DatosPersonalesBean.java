@@ -1,140 +1,162 @@
+/**
+ * DatosPersonalesBean.java -- 25/08/2018
+ */
 package com.vector.Beans.DatosPersonales;
 
-import com.vector.Beans.Model;
+import javax.validation.constraints.NotNull;
 
-public class DatosPersonalesBean extends DatosPersonalesBean2 implements Model {
-
-	/** The variable formulario*/
-
-	private int idestadocivil=0;
-	private String nombrepersona="";
-	private String segundonombre="";
-	private String apellidopaterno="";
-	private String apellidomaterno="";
-	private String sexo="";
-	private String fechanacimiento="";
-	private String nacionalidad="";
-	private String calle="";
-	private String colonia="";
+/**
+ * @author Claudio
+ *RecyHumWS2--com.vector.Beans.DatosPersonales--DatosPersonalesBean
+ */
+public class DatosPersonalesBean extends DatosPersonalesBean2 {
+	/*Variables de DatosPersonales*/
+	@NotNull
+	private int idpersona=0;
+	@NotNull
+	private String primerNombre="";
+	@NotNull
+	private String segundoNombre="";
+	@NotNull
+	private String apellidPterno="";
+	@NotNull
+	private String apellidMaterno="";
+	@NotNull
+	private String idSexo="";
+	@NotNull
+	private String fechaNacimiento="";
+	@NotNull
+	private String urlFechaNacimiento="";
+	@NotNull
+	private String urlFoto="";
+	@NotNull
+	private String rfc="";
+	
+	/*Seccion de getters*/
 	/**
-	 * @return the idestadocivil
+	 * @return Obtienes el valor de idpersona
 	 */
-	public int getIdestadocivil() {
-		return idestadocivil;
+	public int getIdpersona() {
+		return idpersona;
 	}
 	/**
-	 * @param idestadocivil the idestadocivil to set
+	 * @return Obtienes el valor de primerNombre
 	 */
-	public void setIdestadocivil(int idestadocivil) {
-		this.idestadocivil = idestadocivil;
+	public String getPrimerNombre() {
+		return primerNombre;
 	}
 	/**
-	 * @return the nombrepersona
+	 * @return Obtienes el valor de segundoNombre
 	 */
-	public String getNombrepersona() {
-		return nombrepersona;
+	public String getSegundoNombre() {
+		return segundoNombre;
 	}
 	/**
-	 * @param nombrepersona the nombrepersona to set
+	 * @return Obtienes el valor de apellidPterno
 	 */
-	public void setNombrepersona(String nombrepersona) {
-		this.nombrepersona = nombrepersona;
+	public String getApellidPterno() {
+		return apellidPterno;
 	}
 	/**
-	 * @return the segundonombre
+	 * @return Obtienes el valor de apellidMaterno
 	 */
-	public String getSegundonombre() {
-		return segundonombre;
+	public String getApellidMaterno() {
+		return apellidMaterno;
 	}
 	/**
-	 * @param segundonombre the segundonombre to set
+	 * @return Obtienes el valor de idSexo
 	 */
-	public void setSegundonombre(String segundonombre) {
-		this.segundonombre = segundonombre;
+	public String getIdSexo() {
+		return idSexo;
 	}
 	/**
-	 * @return the apellidopaterno
+	 * @return Obtienes el valor de fechaNacimiento
 	 */
-	public String getApellidopaterno() {
-		return apellidopaterno;
+	public String getFechaNacimiento() {
+		return fechaNacimiento;
 	}
 	/**
-	 * @param apellidopaterno the apellidopaterno to set
+	 * @return Obtienes el valor de urlFechaNacimiento
 	 */
-	public void setApellidopaterno(String apellidopaterno) {
-		this.apellidopaterno = apellidopaterno;
+	public String getUrlFechaNacimiento() {
+		return urlFechaNacimiento;
 	}
 	/**
-	 * @return the apellidomaterno
+	 * @return Obtienes el valor de urlFoto
 	 */
-	public String getApellidomaterno() {
-		return apellidomaterno;
+	public String getUrlFoto() {
+		return urlFoto;
 	}
 	/**
-	 * @param apellidomaterno the apellidomaterno to set
+	 * @return Obtienes el valor de rfc
 	 */
-	public void setApellidomaterno(String apellidomaterno) {
-		this.apellidomaterno = apellidomaterno;
+	public String getRfc() {
+		return rfc;
+	}
+	
+	
+	/*Seccion se Setters*/
+	
+	
+	/**
+	 * @param Agregar el valor a idpersona
+	 */
+	public void setIdpersona(int idpersona) {
+		this.idpersona = idpersona;
 	}
 	/**
-	 * @return the sexo
+	 * @param Agregar el valor a primerNombre
 	 */
-	public String getSexo() {
-		return sexo;
+	public void setPrimerNombre(String primerNombre) {
+		this.primerNombre = primerNombre;
 	}
 	/**
-	 * @param sexo the sexo to set
+	 * @param Agregar el valor a segundoNombre
 	 */
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
+	public void setSegundoNombre(String segundoNombre) {
+		this.segundoNombre = segundoNombre;
 	}
 	/**
-	 * @return the fechanacimiento
+	 * @param Agregar el valor a apellidPterno
 	 */
-	public String getFechanacimiento() {
-		return fechanacimiento;
+	public void setApellidPterno(String apellidPterno) {
+		this.apellidPterno = apellidPterno;
 	}
 	/**
-	 * @param fechanacimiento the fechanacimiento to set
+	 * @param Agregar el valor a apellidMaterno
 	 */
-	public void setFechanacimiento(String fechanacimiento) {
-		this.fechanacimiento = fechanacimiento;
+	public void setApellidMaterno(String apellidMaterno) {
+		this.apellidMaterno = apellidMaterno;
 	}
 	/**
-	 * @return the nacionalidad
+	 * @param Agregar el valor a idSexo
 	 */
-	public String getNacionalidad() {
-		return nacionalidad;
+	public void setIdSexo(String idSexo) {
+		this.idSexo = idSexo;
 	}
 	/**
-	 * @param nacionalidad the nacionalidad to set
+	 * @param Agregar el valor a fechaNacimiento
 	 */
-	public void setNacionalidad(String nacionalidad) {
-		this.nacionalidad = nacionalidad;
+	public void setFechaNacimiento(String fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
 	}
 	/**
-	 * @return the calle
+	 * @param Agregar el valor a urlFechaNacimiento
 	 */
-	public String getCalle() {
-		return calle;
+	public void setUrlFechaNacimiento(String urlFechaNacimiento) {
+		this.urlFechaNacimiento = urlFechaNacimiento;
 	}
 	/**
-	 * @param calle the calle to set
+	 * @param Agregar el valor a urlFoto
 	 */
-	public void setCalle(String calle) {
-		this.calle = calle;
+	public void setUrlFoto(String urlFoto) {
+		this.urlFoto = urlFoto;
 	}
 	/**
-	 * @return the colonia
+	 * @param Agregar el valor a rfc
 	 */
-	public String getColonia() {
-		return colonia;
-	}
-	/**
-	 * @param colonia the colonia to set
-	 */
-	public void setColonia(String colonia) {
-		this.colonia = colonia;
+	public void setRfc(String rfc) {
+		this.rfc = rfc;
 	}
 	
 	
