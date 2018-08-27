@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Service
 public class AutoIncrementablesBDOracle {
-	@Autowired
-	int respuesta = 0;
+
+	private int respuesta = 0;
 	
 	@RequestMapping(value = "/UltimoID/Dominio",method=RequestMethod.POST)
 	public int DominioIDUltimo(JdbcTemplate jdbcTemplate) {

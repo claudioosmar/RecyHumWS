@@ -3,7 +3,7 @@
  */
 package com.vector.Beans;
 
-import com.sun.istack.internal.NotNull;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author Jair
