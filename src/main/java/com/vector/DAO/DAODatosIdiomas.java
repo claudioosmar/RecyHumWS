@@ -14,7 +14,7 @@ import com.vector.Beans.DatosIdiomasBean;
 public interface DAODatosIdiomas {
 	int Crear(DatosIdiomasBean datos);
 	int Modificar(DatosIdiomasBean datos);
-	int Eliminar(int id);
-	DatosIdiomasBean Buscar(DatosIdiomasBean datos);
+	int Eliminar(DatosIdiomasBean datos);
+	List<DatosIdiomasBean> Buscar(DatosIdiomasBean datos);
 	List<DatosIdiomasBean> Listar();
 }

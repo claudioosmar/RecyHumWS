@@ -26,11 +26,18 @@ public class BODatosHerramientasImpl implements BODatosHerramientas {
 	 * @see com.vector.BO.BODatosHerramientas#Crear(com.vector.Beans.DatosHerramientasBean)
 	 */
 	@Override
-	public MsgBean Crear(DatosHerramientasBean datos) {
+	public MsgBean Crear(List<DatosHerramientasBean> datos) {
 		// TODO Auto-generated method stub
+		int resultado=0;
+		
+		for (int i = 0; i < datos.size(); i++) {
+			resultado = daoherrm.Crear(datos.get(i));
+			if(resultado==0) {
+				System.out.println("Fallo en la insercion de herramientas "+i+1);
+			}
+		}
 		MsgBean mensaje = new MsgBean();
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
-		int resultado = daoherrm.Crear(datos);
 		if(resultado == 1) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 		}else {
@@ -45,25 +52,45 @@ public class BODatosHerramientasImpl implements BODatosHerramientas {
 	@Override
 	public MsgBean Modificar(DatosHerramientasBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		int respuesta = daoherrm.Modificar(datos);
+		MsgBean msj = new MsgBean();
+		if(respuesta==1) {
+			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
+			
+			return msj;
+		}else {
+			msj.setMsjAccion(new EnvioMensaje().getFallo());
+			
+			return msj;
+		}
 	}
 
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BODatosHerramientas#Eliminar(int)
 	 */
 	@Override
-	public MsgBean Eliminar(int id) {
+	public MsgBean Eliminar(DatosHerramientasBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		int respuesta=daoherrm.Eliminar(datos);
+		MsgBean msj = new MsgBean();
+		if(respuesta==1) {
+			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
+			
+			return msj;
+		}else {
+			msj.setMsjAccion(new EnvioMensaje().getFallo());
+			
+			return msj;
+		}
 	}
 
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BODatosHerramientas#Buscar(com.vector.Beans.DatosHerramientasBean)
 	 */
 	@Override
-	public DatosHerramientasBean Buscar(DatosHerramientasBean datos) {
+	public List<DatosHerramientasBean> Buscar(DatosHerramientasBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		return daoherrm.Buscar(datos);
 	}
 
 	/* (non-Javadoc)
@@ -72,7 +99,7 @@ public class BODatosHerramientasImpl implements BODatosHerramientas {
 	@Override
 	public List<DatosHerramientasBean> Listar() {
 		// TODO Auto-generated method stub
-		return null;
+		return daoherrm.Listar();
 	}
 
 }

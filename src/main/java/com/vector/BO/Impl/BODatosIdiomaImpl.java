@@ -25,11 +25,18 @@ public class BODatosIdiomaImpl implements BODatosIdiomas {
 	 * @see com.vector.BO.BOIdiomas#Crear(com.vector.Beans.DatosIdiomasBean)
 	 */
 	@Override
-	public MsgBean Crear(DatosIdiomasBean datos) {
+	public MsgBean Crear(List<DatosIdiomasBean> datos) {
 		// TODO Auto-generated method stub
+		int resultado=0;
+				
+		for (int i = 0; i < datos.size(); i++) {
+			resultado = daoidiomas.Crear(datos.get(i));
+			if(resultado==1) {
+				System.out.println("Fallo en la insercion de herramientas "+i+1);
+			}
+		}
 		MsgBean mensaje = new MsgBean();
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
-		int resultado = daoidiomas.Crear(datos);
 		if(resultado == 1) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 		}else {
@@ -44,33 +51,45 @@ public class BODatosIdiomaImpl implements BODatosIdiomas {
 	@Override
 	public MsgBean Modificar(DatosIdiomasBean datos) {
 		// TODO Auto-generated method stub
-		MsgBean mensaje = new MsgBean();
-		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
-		int resultado = daoidiomas.Modificar(datos);
-		if(resultado == 1) {
-			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+		int respuesta = daoidiomas.Modificar(datos);
+		MsgBean msj = new MsgBean();
+		if(respuesta==1) {
+			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
+			
+			return msj;
 		}else {
-			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+			msj.setMsjAccion(new EnvioMensaje().getFallo());
+			
+			return msj;
 		}
-		return mensaje;
 	}
 
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BOIdiomas#Eliminar(int)
 	 */
 	@Override
-	public MsgBean Eliminar(int id) {
+	public MsgBean Eliminar(DatosIdiomasBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		int respuesta=daoidiomas.Eliminar(datos);
+		MsgBean msj = new MsgBean();
+		if(respuesta==1) {
+			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
+			
+			return msj;
+		}else {
+			msj.setMsjAccion(new EnvioMensaje().getFallo());
+			
+			return msj;
+		}
 	}
 
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BOIdiomas#Buscar(com.vector.Beans.DatosIdiomasBean)
 	 */
 	@Override
-	public DatosIdiomasBean Buscar(DatosIdiomasBean datos) {
+	public List<DatosIdiomasBean> Buscar(DatosIdiomasBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		return daoidiomas.Buscar(datos);
 	}
 
 	/* (non-Javadoc)
@@ -79,7 +98,7 @@ public class BODatosIdiomaImpl implements BODatosIdiomas {
 	@Override
 	public List<DatosIdiomasBean> Listar() {
 		// TODO Auto-generated method stub
-		return null;
+		return daoidiomas.Listar();
 	}
 
 }

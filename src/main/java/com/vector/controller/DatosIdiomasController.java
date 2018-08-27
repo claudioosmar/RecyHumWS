@@ -28,28 +28,32 @@ public class DatosIdiomasController {
 	private BODatosIdiomas idioma;
 	
 	@RequestMapping(path = "/SGRHWebService/DatosIdiomas/Crear", method = RequestMethod.POST)
-	public ResponseEntity<MsgBean> insertar(@RequestBody DatosIdiomasBean datos){
+	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosIdiomasBean> datos){
+		System.out.print("Se agrego el idioma "+datos.get(0).getIdidioma()+" al ID de persona "+datos.get(0).getIdpersona()+"\n ");
 		return new ResponseEntity<MsgBean>(idioma.Crear(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosIdiomas/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosIdiomasBean datos){
+		System.out.print("Se actializo el idioma "+datos.getIdidioma()+" al ID de persona "+datos.getIdpersona()+"\n ");
 		return new ResponseEntity<MsgBean>(idioma.Modificar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosIdiomas/Eliminar",method = RequestMethod.POST)
-	public ResponseEntity<MsgBean> eliminar(@RequestBody int id){
-		return new ResponseEntity<MsgBean>(idioma.Eliminar(id),HttpStatus.OK);
+	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosIdiomasBean datos){
+		System.out.print("Se elimino el idioma "+datos.getIddominio()+"\n ");
+		return new ResponseEntity<MsgBean>(idioma.Eliminar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path =  "/SGRHWebService/DatosIdiomas/Buscar",method=RequestMethod.POST)
-	public ResponseEntity<DatosIdiomasBean>buscar(@RequestBody DatosIdiomasBean datos){
-		return new ResponseEntity<DatosIdiomasBean>(idioma.Buscar(datos),HttpStatus.OK);
+	public ResponseEntity<List<DatosIdiomasBean>>buscar(@RequestBody DatosIdiomasBean datos){
+		System.out.print("Se listo los idiomas de la persona con id de dominio "+datos.getIddominio()+" al ID de persona "+datos.getIdpersona()+"\n ");
+		return new ResponseEntity<List<DatosIdiomasBean>>(idioma.Buscar(datos),HttpStatus.OK);
 	}
 	
     @RequestMapping(value = "/SGRHWebService/DatosIdiomas/Listar",method=RequestMethod.POST)
-	public ResponseEntity<List<DatosIdiomasBean>> consulta(){
-		System.out.println("Ingresando a listar estudio ");
+	public ResponseEntity<List<DatosIdiomasBean>> consulta(@RequestBody DatosIdiomasBean datos){
+		System.out.println("Ingresando a listar idiomas "+"\n");
 		List<DatosIdiomasBean> idiomas = idioma.Listar();
 		if(idiomas.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -27,32 +27,32 @@ public class DatosHerramientasController {
 	private BODatosHerramientas herramientas;
 	
 	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Crear", method = RequestMethod.POST)
-	public ResponseEntity<MsgBean> insertar(@RequestBody DatosHerramientasBean datos){
-		System.out.print("Se creo un historial academico");
+	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosHerramientasBean> datos){
+		System.out.print("Se agrego herramienta conocida "+datos.get(0).getIdherramienta()+"\n ");
 		return new ResponseEntity<MsgBean>(herramientas.Crear(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosHerramientasBean datos){
-		System.out.print("Se modifico historial academico");
+		System.out.print("Se actualizo herramienta conocida "+datos.getNombreherramienta()+"con id "+datos.getIdherramienta()+"\n ");
 		return new ResponseEntity<MsgBean>(herramientas.Modificar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Eliminar",method = RequestMethod.POST)
-	public ResponseEntity<MsgBean> eliminar(@RequestBody int id){
-		System.out.print("se elimo historial academico");
-		return new ResponseEntity<MsgBean>(herramientas.Eliminar(id),HttpStatus.OK);
+	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosHerramientasBean datos){
+		System.out.print("Se elimino herramienta conocida con id "+datos.getIdherramienta()+"y persona id "+datos.getIdpersona()+"\n ");
+		return new ResponseEntity<MsgBean>(herramientas.Eliminar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Buscar",method=RequestMethod.POST)
-	public ResponseEntity<DatosHerramientasBean>buscar(@RequestBody DatosHerramientasBean datos){
-		System.out.print("se busco historial acdemico");
-		return new ResponseEntity<DatosHerramientasBean>(herramientas.Buscar(datos),HttpStatus.OK);
+	public ResponseEntity<List<DatosHerramientasBean>>buscar(@RequestBody DatosHerramientasBean datos){
+		System.out.print("Se buscaron las herramientas conocidas con id de persona "+datos.getIdpersona()+"\n ");
+		return new ResponseEntity<List<DatosHerramientasBean>>(herramientas.Buscar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Listar",method=RequestMethod.POST)
-	public ResponseEntity<List<DatosHerramientasBean>> consulta(){
-		System.out.println("Ingresando a listar estudio ");
+	public ResponseEntity<List<DatosHerramientasBean>> consulta(@RequestBody DatosHerramientasBean datos){
+		System.out.print("Se listaton herramientas conocidas "+"\n ");
 		List<DatosHerramientasBean> herramienta = herramientas.Listar();
 		if(herramienta.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

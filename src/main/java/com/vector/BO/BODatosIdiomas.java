@@ -13,9 +13,9 @@ import com.vector.Beans.MsgBean;
  *
  */
 public interface BODatosIdiomas {
-	MsgBean Crear(DatosIdiomasBean datos);
+	MsgBean Crear(List<DatosIdiomasBean> datos);
 	MsgBean Modificar(DatosIdiomasBean datos);
-	MsgBean Eliminar(int id);
-	DatosIdiomasBean Buscar(DatosIdiomasBean datos);
+	MsgBean Eliminar(DatosIdiomasBean datos);
+	List<DatosIdiomasBean> Buscar(DatosIdiomasBean datos);
 	List<DatosIdiomasBean> Listar();
 }

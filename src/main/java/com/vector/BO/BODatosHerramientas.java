@@ -13,9 +13,9 @@ import com.vector.Beans.MsgBean;
  *
  */
 public interface BODatosHerramientas {
-	MsgBean Crear(DatosHerramientasBean datos);
+	MsgBean Crear(List<DatosHerramientasBean> datos);
 	MsgBean Modificar(DatosHerramientasBean datos);
-	MsgBean Eliminar(int id);
-	DatosHerramientasBean Buscar(DatosHerramientasBean datos);
+	MsgBean Eliminar(DatosHerramientasBean datos);
+	List<DatosHerramientasBean> Buscar(DatosHerramientasBean datos);
 	List<DatosHerramientasBean> Listar();
 }

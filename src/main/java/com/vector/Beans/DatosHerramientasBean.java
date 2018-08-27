@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
  * @author vectormx
  *
  */
-public class DatosHerramientasBean extends LogBean implements Model{
+public class DatosHerramientasBean{
 	@NotNull
 	private int idherramienta=0;
 	@NotNull
@@ -19,10 +19,65 @@ public class DatosHerramientasBean extends LogBean implements Model{
 	@NotNull
 	private String descripcionherra="";
 	@NotNull
-	private String version;
+	private String version="";
+	@NotNull
+	private long idpersona=0;
+	@NotNull
+	private String nombreherramienta="";
+	@NotNull
+	private String nombrecompleto="";
+	@NotNull
+	private int idherramientaNw=0;
 	
 	
-	
+	/**
+	 * @return the idherramientaNw
+	 */
+	public int getIdherramientaNw() {
+		return idherramientaNw;
+	}
+	/**
+	 * @param idherramientaNw the idherramientaNw to set
+	 */
+	public void setIdherramientaNw(int idherramientaNw) {
+		this.idherramientaNw = idherramientaNw;
+	}
+	/**
+	 * @return the nombrecompleto
+	 */
+	public String getNombrecompleto() {
+		return nombrecompleto;
+	}
+	/**
+	 * @param nombrecompleto the nombrecompleto to set
+	 */
+	public void setNombrecompleto(String nombrecompleto) {
+		this.nombrecompleto = nombrecompleto;
+	}
+	/**
+	 * @return the nombreherramienta
+	 */
+	public String getNombreherramienta() {
+		return nombreherramienta;
+	}
+	/**
+	 * @param nombreherramienta the nombreherramienta to set
+	 */
+	public void setNombreherramienta(String nombreherramienta) {
+		this.nombreherramienta = nombreherramienta;
+	}
+	/**
+	 * @return the idpersona
+	 */
+	public long getIdpersona() {
+		return idpersona;
+	}
+	/**
+	 * @param idpersona the idpersona to set
+	 */
+	public void setIdpersona(long idpersona) {
+		this.idpersona = idpersona;
+	}
 	/**
 	 * @return the version
 	 */

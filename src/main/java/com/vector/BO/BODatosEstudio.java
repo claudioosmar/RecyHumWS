@@ -14,10 +14,10 @@ import com.vector.Beans.MsgBean;
  */
 public interface BODatosEstudio {
 	
-	MsgBean Crear(DatosEstudioBean datos);
+	MsgBean Crear(List<DatosEstudioBean> datos);
 	MsgBean Modificar(DatosEstudioBean datos);
-	MsgBean Eliminar(int id);
-	DatosEstudioBean Buscar(DatosEstudioBean datos);
+	MsgBean Eliminar(DatosEstudioBean datos);
+	List<DatosEstudioBean> Buscar(DatosEstudioBean datos);
 	List<DatosEstudioBean> Listar();
 
 }

@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
  *
  */
 /*clase publica de los beans para idiomas extendiendo de logbean*/
-public class DatosIdiomasBean extends LogBean implements Model {
+public class DatosIdiomasBean{
 	/*atributos para ingresar los datos de estudio*/
 	@NotNull
 	private int ididioma=0;
@@ -26,10 +26,38 @@ public class DatosIdiomasBean extends LogBean implements Model {
 	private String idiomanativa="";
 	@NotNull
 	private long idpersona=0;
+	@NotNull
 	private int iddominio=0;
+	@NotNull
+	private String nombrecompleto="";
+	@NotNull
+	private String nombreidioma="";
 	
 	
-	
+	/**
+	 * @return the nombreidioma
+	 */
+	public String getNombreidioma() {
+		return nombreidioma;
+	}
+	/**
+	 * @param nombreidioma the nombreidioma to set
+	 */
+	public void setNombreidioma(String nombreidioma) {
+		this.nombreidioma = nombreidioma;
+	}
+	/**
+	 * @return the nombrecompleto
+	 */
+	public String getNombrecompleto() {
+		return nombrecompleto;
+	}
+	/**
+	 * @param nombrecompleto the nombrecompleto to set
+	 */
+	public void setNombrecompleto(String nombrecompleto) {
+		this.nombrecompleto = nombrecompleto;
+	}
 	/**
 	 * @return the iddominio
 	 */

@@ -27,11 +27,18 @@ public class BODatosEstudioImpl implements BODatosEstudio {
 	 */
 	@Override
 
-	public MsgBean Crear(DatosEstudioBean datos) {
+	public MsgBean Crear(List<DatosEstudioBean> datos) {
 		// TODO Auto-generated method stub
+		int resultado=0;
+		
+		for (int i = 0; i < datos.size(); i++) {
+			resultado = daoestudio.Crear(datos.get(i));
+			if(resultado==0) {
+				System.out.println("Fallo en la insercion de estudio "+i+1);
+			}
+		}
 		MsgBean mensaje = new MsgBean();
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
-		int resultado = daoestudio.Crear(datos);
 		if(resultado == 1) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 		}else {
@@ -45,39 +52,43 @@ public class BODatosEstudioImpl implements BODatosEstudio {
 	@Override
 	public MsgBean Modificar(DatosEstudioBean datos) {
 		// TODO Auto-generated method stub
-		MsgBean mensaje = new MsgBean();
-		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
-		int resultado = daoestudio.Modificar(datos);
-		if(resultado == 1) {
-			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+		int respuesta = daoestudio.Modificar(datos);
+		MsgBean msj = new MsgBean();
+		if(respuesta==1) {
+			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
+			
+			return msj;
 		}else {
-			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+			msj.setMsjAccion(new EnvioMensaje().getFallo());
+			
+			return msj;
 		}
-		return mensaje;
 	}
 
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BOEstudios#Eliminar(int)
 	 */
 	@Override
-	public MsgBean Eliminar(int id) {
+	public MsgBean Eliminar(DatosEstudioBean datos) {
 		// TODO Auto-generated method stub
-		MsgBean mensaje = new MsgBean();
-		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
-		int resultado = daoestudio.Eliminar(id);
-		if(resultado == 1) {
-			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+		int respuesta=daoestudio.Eliminar(datos);
+		MsgBean msj = new MsgBean();
+		if(respuesta==0) {
+			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
+	
+			return msj;
 		}else {
-			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+			msj.setMsjAccion(new EnvioMensaje().getFallo());
+			
+			return msj;
 		}
-		return mensaje;
 	}
 
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BOEstudios#Buscar(com.vector.Beans.DatosEstudioBean)
 	 */
 	@Override
-	public DatosEstudioBean Buscar(DatosEstudioBean datos) {
+	public List<DatosEstudioBean> Buscar(DatosEstudioBean datos) {
 		// TODO Auto-generated method stub
 		return daoestudio.Buscar(datos);
 	}

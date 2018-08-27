@@ -15,7 +15,7 @@ import com.vector.Beans.DatosHerramientasBean;
 public interface DAODatosHerramientas {
 	int  Crear(DatosHerramientasBean datos);
 	int  Modificar(DatosHerramientasBean datos);
-	int  Eliminar(int id);
-	DatosHerramientasBean Buscar(DatosHerramientasBean datos);
+	int  Eliminar(DatosHerramientasBean datos);
+	List<DatosHerramientasBean> Buscar(DatosHerramientasBean datos);
 	List<DatosHerramientasBean> Listar();
 }
