@@ -3,7 +3,6 @@
  */
 package com.vector.Utileria;
 
-import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,7 +21,7 @@ import com.vector.Beans.MsgBean;
 public class ErroresdeNegocio {
 	 
 	@ExceptionHandler(java.sql.SQLException.class) 
-	public ResponseEntity<MsgBean> SQLException (HttpServletRequest request, SQLException e) {
+	public ResponseEntity<MsgBean> SQLException (HttpServletRequest request, java.sql.SQLException e) {
         MsgBean mensaje = new MsgBean();
         System.out.println("SQLError");
         if(e.getErrorCode()==17289) {
@@ -31,6 +30,18 @@ public class ErroresdeNegocio {
         	mensaje.setMsjAccion("Error indefinido de la red");
         }else if(e.getErrorCode()==0) {
         	mensaje.setMsjAccion("Error en la conexion a la base de datos");
+        }else if(e.getErrorCode()==904){
+        	mensaje.setMsjAccion("Identificador invalido");
+        }else if(e.getErrorCode()==957){
+        	mensaje.setMsjAccion("Columnas duplicadas por el nombre");
+        }else if(e.getErrorCode()==911){
+        	mensaje.setMsjAccion("Caracter invalido");
+        }else if(e.getErrorCode()==1400){
+        	mensaje.setMsjAccion("Dato nulo que No puede ser nulo");
+        }else if(e.getErrorCode()==17014||e.getErrorCode()==17273){
+        	mensaje.setMsjAccion("Error Interno del Web Service");
+        }else if(e.getErrorCode()==17014||e.getErrorCode()==933){
+        	mensaje.setMsjAccion("Comando de SQL no apropiado revisar con tu proovedor de BD");
         }else {
         	mensaje.setMsjAccion(e.getMessage()+"--"+e.getErrorCode());	
         }

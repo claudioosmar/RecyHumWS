@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Service
 public class AutoIncrementablesBDOracle {
 	@Autowired
-	private JdbcTemplate jdbcTemplate;
 	int respuesta = 0;
 	
 	@RequestMapping(value = "/UltimoID/Dominio",method=RequestMethod.POST)
@@ -42,8 +41,8 @@ public class AutoIncrementablesBDOracle {
 		return respuesta ;
 	}
 	
-@RequestMapping(value = "/UltimoID/Estudios",method=RequestMethod.POST)
-public int EstudiosIDUltimo(JdbcTemplate jdbcTemplate) {
+@RequestMapping(value = "/UltimoID/Estudio",method=RequestMethod.POST)
+public int EstudioIDUltimo(JdbcTemplate jdbcTemplate) {
 	final String sql = "select max(idestudio) from tblestudios";
 	jdbcTemplate.update(new PreparedStatementCreator() {
 		@Override
@@ -147,10 +146,25 @@ public int EmpresasIDUltimo(JdbcTemplate jdbcTemplate) {
 	});
 	return respuesta ;
 }
+@RequestMapping(value = "/UltimoID/Direccion",method=RequestMethod.POST)
+public int DireccionIDUltimo(JdbcTemplate jdbcTemplate) {
+	final String sql = "select max(iddireccion) from tbldirecciones";
+	jdbcTemplate.update(new PreparedStatementCreator() {
+		@Override
+		public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			respuesta = (rs.getInt(1))+1;
+			return ps;
+		}
+	});
+	return respuesta ;
+}
 
-@RequestMapping(value = "/UltimoID/Estudio",method=RequestMethod.POST)
-public int EstudioIDUltimo(JdbcTemplate jdbcTemplate) {
-	final String sql = "select max(idestudio) from tblestudios";
+@RequestMapping(value = "/UltimoID/Certificado",method=RequestMethod.POST)
+public int CertificadoIDUltimo(JdbcTemplate jdbcTemplate) {
+	final String sql = "select max(idcertificado) from tblcertificado";
 	jdbcTemplate.update(new PreparedStatementCreator() {
 		@Override
 		public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
@@ -163,25 +177,27 @@ public int EstudioIDUltimo(JdbcTemplate jdbcTemplate) {
 	});
 	return respuesta ;
 }
-@RequestMapping(value = "/UltimoID/Carrera",method=RequestMethod.POST)
-public int CarreraIDUltimo(JdbcTemplate jdbcTemplate) {
-	final String sql = "select max(idcarrera) from tblcarreras";
-	jdbcTemplate.update(new PreparedStatementCreator() {
-		@Override
-		public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-			PreparedStatement ps = con.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			rs.next();
-			respuesta = (rs.getInt(1))+1;
-			return ps;
-		}
-	});
-	return respuesta ;
-}
+
 
 @RequestMapping(value = "/UltimoID/Curso",method=RequestMethod.POST)
 public int CursoIDUltimo(JdbcTemplate jdbcTemplate) {
 	final String sql = "select max(idcurso) from tblcursos";
+	jdbcTemplate.update(new PreparedStatementCreator() {
+		@Override
+		public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			respuesta = (rs.getInt(1))+1;
+			return ps;
+		}
+	});
+	return respuesta ;
+}
+
+@RequestMapping(value = "/UltimoID/Carrera",method=RequestMethod.POST)
+public int CarreraIDUltimo(JdbcTemplate jdbcTemplate) {
+	final String sql = "select max(idcarrera) from tblcarreras";
 	jdbcTemplate.update(new PreparedStatementCreator() {
 		@Override
 		public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
