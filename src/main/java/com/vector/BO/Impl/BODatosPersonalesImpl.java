@@ -76,7 +76,7 @@ public class BODatosPersonalesImpl implements BODatosPersonales {
 		MsgBean mensaje = new MsgBean();
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		int resultado = datospersonales.Eliminar(datos.getIdpersona());
-		if(resultado == 1) {
+		if(resultado == 0) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 		}else {
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());

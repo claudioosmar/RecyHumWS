@@ -80,5 +80,32 @@ public class BODatosLoginImpl implements BODatosLogin {
 		return mensaje;
 	}
 
+	/* (Claudio-Javadoc)
+	 * @see com.vector.BO.BODatosLogin#Eliminat(com.vector.Beans.DatosInicioSesionBean)
+	 */
+	@Override
+	public MsgBean Eliminar(DatosInicioSesionBean datos) {
+		// TODO Auto-generated method stub
+		int respuesta=sesion.Delete(datos);
+		MsgBean msj = new MsgBean();
+		if(respuesta==1) {
+			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
+			
+			return msj;
+		}else {
+			msj.setMsjAccion(new EnvioMensaje().getFallo());
+			
+			return msj;
+		}
+	}
+
+	/* (Claudio-Javadoc)
+	 * @see com.vector.BO.BODatosLogin#Buscar(com.vector.Beans.DatosInicioSesionBean)
+	 */
+	@Override
+	public DatosInicioSesionBean Buscar(DatosInicioSesionBean datos) {
+		// TODO Auto-generated method stub
+		return sesion.Buscar(datos);
+	}
 
 }

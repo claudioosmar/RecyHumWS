@@ -26,31 +26,31 @@ public class DatosCertificadoController {
 	
 	@RequestMapping(path = "/SGRHWebService/DatosCertificado/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosCertificadoBean> datos){
-		System.out.print("Se creo un certificado "+datos.get(0).getNomcertificadoNw()+ " al ID de documento " +" "+datos.get(0).getIddocumentoNw()+"id estudio "+datos.get(0).getIdestudio()+" ");
+		System.out.print("Se creo un certificado "+datos.get(0).getNomcertificadoNw()+ " al ID de documento " +" "+datos.get(0).getIddocumentoNw()+"id estudio "+datos.get(0).getIdestudio()+"\n ");
 		return new ResponseEntity<MsgBean>(certificado.Crear(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosCertificado/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody  DatosCertificadoBean datos){
-		System.out.print("Se modifico el certificado"+ datos.getNomcertificadoNw() + " con ID de documento " +datos.getIddocumentoNw());
+		System.out.print("Se modifico el certificado"+ datos.getNomcertificadoNw() + " con ID de documento " +datos.getIddocumentoNw()+"\n ");
 		return new ResponseEntity<MsgBean>(certificado.Modificar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosCertificado/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosCertificadoBean datos){
-		System.out.print("se elimo el certificado"+ datos.getNomcertificadoNw());
+		System.out.print("se elimo el certificado"+ datos.getNomcertificadoNw()+"\n");
 		return new ResponseEntity<MsgBean>(certificado.Eliminar(datos.getIdcertificado()),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosCertificado/Buscar",method=RequestMethod.POST)
 	public ResponseEntity< DatosCertificadoBean>buscar(@RequestBody  DatosCertificadoBean datos){
-		System.out.print("se busco el certificado "+ datos.getNomcertificadoNw()+ "con el ID " + datos.getIdcertificado());
+		System.out.print("se busco el certificado "+ datos.getNomcertificadoNw()+ "con el ID " + datos.getIdcertificado()+"\n ");
 		return new ResponseEntity< DatosCertificadoBean>(certificado.Buscar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosCertificado/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List< DatosCertificadoBean>> consulta(@RequestBody DatosCertificadoBean datos){
-		System.out.println("Ingresando a listar certificado ");
+		System.out.println("Ingresando a listar certificado "+"\n ");
 		List< DatosCertificadoBean> certificados = certificado.Listar(datos.getIdcertificado());
 		if(certificados.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

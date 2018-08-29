@@ -17,7 +17,7 @@ public class DatosHerramientasBean{
 	@NotNull
 	private int añosexpherra=0;
 	@NotNull
-	private String descripcionherra="";
+	private String descripcionherra=" ";
 	@NotNull
 	private String version="";
 	@NotNull

@@ -97,17 +97,16 @@ final String sql="delete tblpiv02 where correo = (?)";
 	@Override
 	public DatosCorreoAltBean Buscar(DatosCorreoAltBean datos) {
 		// TODO Auto-generated method stub
-		final String sql="select * from tblpiv02 where correo  = (?)";
+		final String sql="select * from tblpiv02 where idtipocorreo  = (?)";
 		DatosCorreoAltBean respuesta = new DatosCorreoAltBean();
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setString(1, datos.getCorreoNw());
+				ps.setInt(1, datos.getIdtipocorreo());
 				ResultSet rs = ps.executeQuery();
 				rs.next();
-				respuesta.setIdtipocorreo(rs.getInt(2));
-				respuesta.setIdpersona(rs.getLong(1));
+				respuesta.setCorreoLt(rs.getString(2));
 				PreparedStatement ps1 = con.prepareStatement("select * from tbldetspersonas where idpersona = (?)");
 				ps1.setLong(1, respuesta.getIdpersona());
 				ResultSet rs1 = ps1.executeQuery();

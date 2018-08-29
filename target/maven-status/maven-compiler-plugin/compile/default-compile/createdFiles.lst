@@ -20,6 +20,7 @@ com\vector\DAO\DAODatosPersonales.class
 com\vector\DAO\Impl\DAODatosHerramientasImpl$4.class
 com\vector\controller\DatosCertificadoController.class
 com\vector\DAO\Impl\DAODatosDocumentosImpl$1.class
+com\vector\Utileria\BusquedaAutomatica$3.class
 com\vector\controller\DatosTelefonoAltController.class
 com\vector\DAO\Impl\DAODatosCursoImpl$1.class
 com\vector\DAO\Impl\DAODatosCursoImpl$4.class
@@ -52,6 +53,7 @@ com\vector\DAO\Impl\DAODatosCertificadoImpl$4.class
 com\vector\Beans\DatosEstudioBean.class
 com\vector\DAO\Impl\HerrRowMapper.class
 com\vector\Utileria\AutoIncrementablesBDOracle$5.class
+com\vector\Utileria\BusquedaAutomatica.class
 com\vector\DAO\Impl\CorreosRowMapper.class
 com\vector\DAO\Impl\DAODatosPersonalesImpl$1.class
 com\vector\DAO\Impl\DAODatosCorreoAltImpl$2.class
@@ -89,6 +91,7 @@ com\vector\Utileria\AutoIncrementablesBDOracle$10.class
 com\vector\DAO\Impl\DAODatosDocumentosImpl$2.class
 com\vector\DAO\Impl\DAODatosHerramientasUsadasImpl$3.class
 com\vector\DAO\Impl\DAODatosEstudioImpl.class
+com\vector\Utileria\BusquedaAutomatica$1.class
 com\vector\DAO\Impl\DAODatosCertificadoImpl$3.class
 com\vector\DAO\Impl\DAODatosSesionImpl$2.class
 com\vector\Beans\DatosHerramientasUsadasBean.class
@@ -99,6 +102,7 @@ com\vector\BO\Impl\BODatosLoginImpl.class
 com\vector\DAO\Impl\DAODatosLaboralesImpl.class
 com\vector\DAO\Impl\DocRowMapper.class
 com\vector\BO\Impl\BODatosPersonalesImpl.class
+com\vector\DAO\Impl\DAODatosSesionImpl$5.class
 com\vector\BO\BODatosLaborales.class
 com\vector\BO\BODatosTelefonoAlt.class
 com\vector\DAO\Impl\DAODatosTelefonoAltImpl$4.class
@@ -155,3 +159,4 @@ com\vector\DAO\Impl\DAODatosCertificadoImpl$2.class
 com\vector\DAO\Impl\DAODatosSesionImpl.class
 com\vector\DAO\Impl\DAODatosTelefonoAltImpl$2.class
 com\vector\DAO\Impl\DAODatosEstudioImpl$4.class
+com\vector\Utileria\BusquedaAutomatica$2.class

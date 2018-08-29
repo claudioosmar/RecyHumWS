@@ -19,6 +19,10 @@ import org.springframework.stereotype.Service;
 import com.vector.Beans.DatosHerramientasBean;
 import com.vector.DAO.DAODatosHerramientas;
 
+
+
+
+
 /**
  * @author vectormx
  *
@@ -28,25 +32,35 @@ public class DAODatosHerramientasImpl implements DAODatosHerramientas {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	List<DatosHerramientasBean> datos ;
+
 	/* (non-Javadoc)
 	 * @see com.vector.DAO.DAODatosHerramientas#Crear(com.vector.Beans.DatosHerramientasBean)
 	 */
 	@Override
 	public int Crear(DatosHerramientasBean datos) {
 		// TODO Auto-generated method stub
-		final String sql="insert into tblpiv09 values(?,?,?,?,?)";		
+		final String sql="insert into tblpiv09 values(?,?,?,?,?)";	
+		final String sql2="select * from tblpiv09 where idpersona=(?)";
+		
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement ps = con.prepareStatement(sql);
+				
 				if(datos.getIdpersona()!=0) {
+				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setLong(1, datos.getIdpersona());
 				ps.setInt(2, datos.getIdherramienta());
 				ps.setInt(3, datos.getPorcentajeherra());
 				ps.setInt(4,datos.getAñosexpherra());
 				ps.setString(5, datos.getDescripcionherra());
+				ps.execute();
 				}
-				return ps;
+				
+				PreparedStatement ps1 = con.prepareStatement(sql2);
+				System.out.println("si esta la persona con ID: "+datos.getIdpersona());
+						ps1.setLong(1, datos.getIdpersona());
+				return ps1;
+	
 			}
 		});
 		return respuesta;
@@ -140,6 +154,7 @@ final String sql="delete tblpiv09 where idpersona =(?) and idherramienta=(?)";
 		final String sql = "select * from tblherramientas";
 		return jdbcTemplate.query(sql, new HerrRowMapper());
 	}
+	
 private void setDatosHerramientas(ResultSet rs) throws SQLException {
 	datos= new ArrayList<DatosHerramientasBean>();
 	DatosHerramientasBean respuesta ;

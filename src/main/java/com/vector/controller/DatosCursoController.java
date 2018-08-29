@@ -34,7 +34,7 @@ public class DatosCursoController {
 	
 	@RequestMapping(path = "/SGRHWebService/DatosCurso/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody  DatosCursoBean datos){
-		System.out.print("Se modifico un curso "+datos.getIdcurso()+"\n ");
+		System.out.print("Se modifico un curso en id: "+datos.getIdcurso()+", id certificado: "+datos.getIdcertificado()+", nombre curso: "+datos.getNombrecurso()+", instituto: "+ datos.getInstitutocurso()+", fecha inicio: "+datos.getFechainicioc()+", fecha final: "+datos.getFechaterminoc()+", nombre certificado: "+datos.getNombrecertificado()+"\n");
 		return new ResponseEntity<MsgBean>(curso.Modificar(datos),HttpStatus.OK);
 	}
 	

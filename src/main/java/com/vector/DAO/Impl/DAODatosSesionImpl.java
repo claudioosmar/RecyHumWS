@@ -8,8 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,8 +22,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.vector.Beans.DatosFormularioBean;
 import com.vector.Beans.DatosInicioSesionBean;
+
 import com.vector.DAO.DAODatosSesion;
 import com.vector.Utileria.*;
+
+
 
 /**
  * @author vectormx
@@ -33,6 +38,11 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 	private JdbcTemplate jdbcTemplate;
 	private List<DatosFormularioBean> listaform;
 	private AutoIncrementablesBDOracle autoin;
+	private SimpleDateFormat formateador;
+	private String fecha;
+	private Date date;
+	List<DatosInicioSesionBean> datos;
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -42,6 +52,10 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 	@Transactional(readOnly = true)
 	public int Create(DatosInicioSesionBean datos) {
 		autoin = new AutoIncrementablesBDOracle();
+		date = new Date();
+		formateador = new SimpleDateFormat ("dd/MM/yy"); 
+		fecha = formateador.format(date);
+		
 		int IDUser = autoin.UsuarioIDUltimo(jdbcTemplate);
 		datos.setContraseña(new Encriptarsha1().Encriptar(datos.getContraseña()));
 		final String sql = "INSERT INTO TBLUSERS VALUES(?,?,?,?,?,?,?,?,?,?)";
@@ -49,6 +63,7 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setLong(1, IDUser);
 				ps.setInt(2, datos.getIdtipouser());
@@ -56,8 +71,8 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 				ps.setString(4, datos.getNombre());
 				ps.setString(5, datos.getContraseña());
 				ps.setLong(6, 1);
-				ps.setString(7, datos.getFechaCreacion());
-				ps.setString(8, datos.getFechaTermino());
+				ps.setString(7, fecha);
+				ps.setString(8, fecha);
 				ps.setLong(9, datos.getIdpersona());
 				ps.setString(10, datos.getObservacion());
 							
@@ -74,19 +89,19 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public String Delete(int id) {
+	public int Delete(DatosInicioSesionBean datos) {
 		// TODO Auto-generated method stub
 		final String sql = "DELETE TBLUSERS WHERE IDUSER=(?)";
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setLong(1, id);
+				ps.setLong(1, datos.getID_User());
 				
 				return ps; 
 			}
 		});
-		return null;
+		return respuesta;
 	}
 
 	/*
@@ -98,7 +113,25 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 	@Transactional(readOnly = true)
 	public DatosInicioSesionBean Buscar(DatosInicioSesionBean datos) {
 		// TODO Auto-generated method stub
-		return null;
+		final String sql="select * from tbldetspersonas dets, tblusers us, tblpersonas pers, tblareas ar\r\n" + 
+				"where pers.idpersona = dets.idpersona and pers.idpersona=us.idpersona and pers.idarea=ar.idarea and us.idpersona =(?)";
+		DatosInicioSesionBean respuesta = new DatosInicioSesionBean();
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setLong(1, datos.getIdpersona());
+				ResultSet rs = ps.executeQuery();		
+				rs.next();
+				respuesta.setNombre(rs.getString(15));		
+				respuesta.setArea(rs.getString(31));			
+				respuesta.setNombrecompleto(rs.getString(5)+" "+rs.getString(6)+" "+rs.getString(7)+" "+rs.getString(8));
+				respuesta.setIdpersona(rs.getLong(2));
+				
+				return ps;
+			}
+		});
+		return respuesta;
 	}
 
 	/*
@@ -197,15 +230,15 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 	@Override
 	public int Modificar(DatosInicioSesionBean datos) {
 		// TODO Auto-generated method stub
-		final String sql = "begin sp_modificarusuario(?,?,?,?,?,?); end;";
+		final String sql = "update tblusers set contraseña=(?) where iduser=(?)";
 		datos.setContraseña(new Encriptarsha1().Encriptar(datos.getContraseña()));
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
-				
-				ps.setString(5, datos.getNombre());
-				ps.setString(6, datos.getContraseña());
+				System.out.println("id user: "+datos.getID_User());
+				ps.setLong(2, datos.getID_User());
+				ps.setString(1, datos.getContraseña());
 		
 							
 				return ps;
@@ -213,6 +246,7 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 		});
 		return respuesta;
 	}
+	
 }
 
 class SesionRowMapper implements RowMapper<DatosInicioSesionBean> {

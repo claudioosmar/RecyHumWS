@@ -34,19 +34,27 @@ public class DAODatosHerramientasUsadasImpl implements DAODatosHerramientasUsada
 	@Override
 	public int Crear(DatosHerramientasUsadasBean datos) {
 		// TODO Auto-generated method stub
-		final String sql="insert into tblpiv07 values(?,?,?,?,?)";		
+		final String sql="insert into tblpiv07 values(?,?,?,?,?)";	
+		final String sql2 ="select * from tblpiv07 where idexplaboral =(?)";
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement ps = con.prepareStatement(sql);
 				
+				if(datos.getIdexplaboral()!=0) {
+			
+				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setLong(2, datos.getIdexplaboral());
 				ps.setInt(1, datos.getIdherramienta());
 				ps.setInt(3, datos.getPorcentajeherra());
 				ps.setInt(4,datos.getAñosexpherra());
 				ps.setString(5, datos.getDescripcionherra());
-				
-				return ps;
+				ps.execute();
+				}
+				PreparedStatement ps1 = con.prepareStatement(sql2);
+				System.out.println("si esta la persona con ID: "+datos.getIdexplaboral());
+						ps1.setLong(1, datos.getIdexplaboral());
+				return ps1;
+
 			}
 		});
 		return respuesta;

@@ -54,6 +54,7 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 		final String sql5 = "INSERT INTO TBLPIV11 VALUES(?,?)";
 		final String sql6 = "INSERT INTO TBLPIV01 VALUES(?,?,?)";
 		final String sql7 = "INSERT INTO TBLPIV02 VALUES(?,?,?)";
+		final String sql8 ="select * from tblpersonas where idpersona=(?)";
 
 		// Apartado de execuciones
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
@@ -84,6 +85,9 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				rs3.next();
 				// Tercera insersion tbldetspersona
 				PreparedStatement ps2 = con.prepareStatement(sql2);
+				System.out.println("datos detalles"+IDpersonadetalle+datos.getIdpersona()+"  "+datos.getPrimerNombre()+
+						"  "+datos.getApellidPterno()+"  "+datos.getApellidMaterno()+"  "+ datos.getIdSexo()
+						+"  "+datos.getFechaNacimiento()+"  "+datos.getNacionalidad()+"  "+datos.getIdEdoCivil());
 				ps2.setInt(1, IDpersonadetalle);
 				ps2.setLong(2, iDpersona);
 				ps2.setLong(3, IDDireccion);
@@ -185,6 +189,7 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				}
 				// Catorceava insersion -- Telefonos -- Telefono de Emergencia
 				PreparedStatement ps14 = con.prepareStatement(sql6);
+				System.out.println("datos telefono emergencia "+iDpersona+" "+datos.getIdTelefonoEmergencia()+" "+datos.getTelefonoEmergencia());
 				ps14.setInt(1, iDpersona);
 				ps14.setInt(2, datos.getIdTelefonoEmergencia());
 				ps14.setString(3, datos.getTelefonoEmergencia());
@@ -215,12 +220,17 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 					rs17.next();
 				}
 				// Dieciochoava insersion -- Otros Documentos -- Visa --nulos
-				PreparedStatement ps18 = con.prepareStatement(sql5);
+				
 				if (datos.getIdVisa() != 0) {
+					PreparedStatement ps18 = con.prepareStatement(sql5);
 					ps18.setInt(2, iDpersona);
 					ps18.setInt(1, 4);
 				}
-				return ps18;
+				
+				PreparedStatement ps19 = con.prepareStatement(sql8);
+				System.out.println("si esta la persona con ID: "+iDpersona);
+						ps19.setLong(1, iDpersona);
+				return ps19;
 			}
 		});
 		return respuesta;
@@ -499,6 +509,7 @@ class DatPerRowMapper implements RowMapper<DatosPersonalesBean> {
 	@Override
 	public DatosPersonalesBean mapRow(ResultSet rs, int rowNum) throws SQLException {
 		DatosPersonalesBean retorno = new DatosPersonalesBean();
+		System.out.println("id persona enviado"+retorno.getIdpersona());
 		retorno.setUrlFoto(rs.getString(3));
 		retorno.setStatus(rs.getString(4));
 		retorno.setResumen(rs.getString(5));

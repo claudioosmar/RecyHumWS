@@ -36,12 +36,16 @@ public class DatosInicioSesionController {
 
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody DatosInicioSesionBean datos){
-		System.out.print("Se creo un usuario");
+		System.out.print("Se creo un usuario"+"\n ");
 		return new ResponseEntity<MsgBean>(login.CreateUser(datos),HttpStatus.OK);
 	}
 	
 	
-	
+	@RequestMapping(path = "/SGRHWebService/DatosSesion/Buscar",method=RequestMethod.POST)
+	public ResponseEntity<DatosInicioSesionBean>buscar(@RequestBody DatosInicioSesionBean datos){
+		System.out.print("se busco los estudios de la persona "+datos.getIdpersona()+"\n ");
+		return new ResponseEntity<DatosInicioSesionBean>(login.Buscar(datos),HttpStatus.OK);
+	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Verificar", method = RequestMethod.POST)
 	public ResponseEntity<List<DatosFormularioBean>> verificarlogin(@RequestBody DatosInicioSesionBean datos){
@@ -50,7 +54,7 @@ public class DatosInicioSesionController {
 			respuesta.setMsjAccion("falta usuario y/o contraseña");
 		}else {
 		
-		System.out.println("Usuario "+datos.getUsuario()+" Contra "+datos.getContraseña());
+		System.out.println("Usuario "+datos.getUsuario()+" Contra "+datos.getContraseña()+"\n ");
 	}
 		return new ResponseEntity<List<DatosFormularioBean>>(login.VerificarUsuario(datos),HttpStatus.OK);
 		
@@ -59,7 +63,7 @@ public class DatosInicioSesionController {
 	
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Listar", method = RequestMethod.POST)
 	public ResponseEntity<List<DatosInicioSesionBean>> consulta(){
-		System.out.println("Ingresando a listar usuarios ");
+		System.out.println("Ingresando a listar usuarios "+"\n ");
 		List<DatosInicioSesionBean> usuarios = login.ListarUsuarios();
 		if(usuarios.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -70,7 +74,7 @@ public class DatosInicioSesionController {
 	
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/VerificarPrueba", method = RequestMethod.POST)
 	public ResponseEntity<List<DatosFormularioBean>> consultaprueba(){
-		System.out.println("Ingresando a listar formularios ");
+		System.out.println("Ingresando a listar formularios "+"\n ");
 		List<DatosFormularioBean> retorno = new ArrayList<DatosFormularioBean>();
 		DatosFormularioBean form= new DatosFormularioBean();
 		form.setNomformulario("DatosPersonales");
@@ -82,5 +86,11 @@ public class DatosInicioSesionController {
 		retorno.add(form);
 			return new ResponseEntity<List<DatosFormularioBean>>(retorno, HttpStatus.OK);
 		}
+	
+	@RequestMapping(path = "/SGRHWebService/DatosSesion/Modificar",method = RequestMethod.POST)
+	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosInicioSesionBean datos){
+		System.out.print("Se modifico el usuario con id"+datos.getID_User()+"\n ");
+		return new ResponseEntity<MsgBean>(login.Modificar(datos),HttpStatus.OK);
+	}
 	
 }

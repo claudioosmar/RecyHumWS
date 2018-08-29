@@ -17,7 +17,7 @@ import com.vector.Beans.DatosInicioSesionBean;
 public interface DAODatosSesion {
 	
 	int Create(DatosInicioSesionBean datos);
-	String Delete (int id);
+	int Delete (DatosInicioSesionBean datos);
 	int Modificar (DatosInicioSesionBean datos);
 	DatosInicioSesionBean Buscar(DatosInicioSesionBean datos);
 	List<DatosInicioSesionBean> Listar ();

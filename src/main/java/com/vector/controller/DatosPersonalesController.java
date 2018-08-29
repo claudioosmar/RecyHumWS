@@ -27,23 +27,24 @@ public class DatosPersonalesController {
 	
 	@RequestMapping(path = "/SGRHWebService/DatosPersonales/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosPersonalesBean datos){
-		System.out.print("Se modifico historial Datos Laborales ");
+		System.out.print("Se modifico datos personales "+datos.getIdpersona()+"\n ");
 		return new ResponseEntity<MsgBean>(bodatos.Modificar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosPersonales/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosPersonalesBean datos){
-		System.out.print("se elimo Datos laborales");
+		System.out.print("se elimino Datos personales "+datos.getIdpersona()+"\n ");
 		return new ResponseEntity<MsgBean>(bodatos.Eliminar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosPersonales/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<DatosPersonalesBean>buscar(@RequestBody DatosPersonalesBean datos){
-		System.out.print("se busco historial acdemico");
+		System.out.print("se busco datos personales "+datos.getIdpersona()+"\n ");
 		return new ResponseEntity<DatosPersonalesBean>(bodatos.Buscar(datos),HttpStatus.OK);
 	}
 	@RequestMapping("/SGRHWebService/DatosPersonales/Listar")
 	public ResponseEntity<List<DatosPersonalesBean>> Listar(){
+		System.out.println("Ingresando a listar de datos personales "+"\n ");
 		List<DatosPersonalesBean> resp = bodatos.Listar();
 		if(resp.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

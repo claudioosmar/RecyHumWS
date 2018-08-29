@@ -9,26 +9,44 @@ import javax.validation.constraints.NotNull;
  * @author Jair
  *
  */
-public class DatosCursoBean{
+public class DatosCursoBean {
 	@NotNull
-	private int idcurso;
+	private int idcurso=0;
 	@NotNull
-	private String nombrecurso;
+	private String nombrecurso="";
 	@NotNull
-	private String institutocurso;
+	private String institutocurso="";
 	@NotNull
-	private String fechainicioc;
+	private String fechainicioc="";
 	@NotNull
-	private String fechaterminoc;
+	private String fechaterminoc="";
 	@NotNull
-	private int idcertificado;
+	private int idcertificado=0;
 	@NotNull
-	private long idestudio;
+	private int idestudio=0;
 	@NotNull
-	private long idpersona;
+	private long idpersona =0;
+	@NotNull
+	private String nombrecertificado="";
 	
 	
 	
+	
+	/**
+	 * @return Obtienes el valor de nombrecertificado
+	 */
+	
+	public String getNombrecertificado() {
+		return nombrecertificado;
+	}
+	
+	/**
+	 * @param Agregar el valor a nombrecertificado
+	 */
+	
+	public void setNombrecertificado(String nombrecertificado) {
+		this.nombrecertificado = nombrecertificado;
+	}
 	/**
 	 * @return Obtines el valor de idpersona
 	 */
@@ -113,18 +131,21 @@ public class DatosCursoBean{
 	public void setIdcertificado(int idcertificado) {
 		this.idcertificado = idcertificado;
 	}
+	
 	/**
-	 * @return Obtines el valor de idestudio
+	 * @return Obtienes el valor de idestudio
 	 */
-	public long getIdestudio() {
+	
+	public int getIdestudio() {
 		return idestudio;
 	}
+	
 	/**
-	 * @param Agrega el parametro a idestudio
+	 * @param Agregar el valor a idestudio
 	 */
-	public void setIdestudio(long idestudio) {
+	
+	public void setIdestudio(int idestudio) {
 		this.idestudio = idestudio;
 	}
-	
 	
 }

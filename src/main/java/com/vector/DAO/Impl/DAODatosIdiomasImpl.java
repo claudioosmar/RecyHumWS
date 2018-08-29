@@ -49,7 +49,7 @@ public class DAODatosIdiomasImpl implements DAODatosIdiomas {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
-			
+			System.out.println("datos enviados: "+iddominio+" id persona "+datos.getIdpersona()+" id idioma "+datos.getIdidioma()+" pcjescritura "+datos.getPcjescrito()+" pcjhabla "+datos.getPcjhablado()+" pcjentendido "+datos.getPcjentendido()+" Descripcion "+datos.getDescripciondominio()+" nativo "+datos.getIdiomanativa());
 				ps.setLong(1, iddominio);
 				ps.setLong(5, datos.getIdpersona());	
 				ps.setInt(8, datos.getIdidioma());
@@ -119,7 +119,7 @@ public class DAODatosIdiomasImpl implements DAODatosIdiomas {
 	@Transactional(readOnly = true)
 	public List<DatosIdiomasBean> Buscar(DatosIdiomasBean datos) {
 		// TODO Auto-generated method stub
-		final String sql="select * from tbldominio dom, tbldetspersonas dts, tblidiomas ido where dom.ididioma=ido.ididioma and dts.idpersona = (?)";
+		final String sql="select * from tbldominio dom, tbldetspersonas dts, tblidiomas ido where dom.ididioma=ido.ididioma and dts.idpersona=dom.idpersona and dom.idpersona = (?)";
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
@@ -157,7 +157,7 @@ public class DAODatosIdiomasImpl implements DAODatosIdiomas {
 				respuesta.setDescripciondominio(rs.getNString(6));
 				respuesta.setIdiomanativa(rs.getString(7));
 				respuesta.setIdidioma(rs.getInt(8));
-				respuesta.setNombrecompleto(rs.getString(13)+" "+rs.getString(14)+" "+rs.getString(15)+" "+rs.getString(15));
+				respuesta.setNombrecompleto(rs.getString(13)+" "+rs.getString(14)+" "+rs.getString(15)+" "+rs.getString(16));
 				respuesta.setNombreidioma(rs.getString(21));
 				this.datos.add(respuesta);
 				}

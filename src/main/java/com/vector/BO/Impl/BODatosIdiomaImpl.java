@@ -31,8 +31,8 @@ public class BODatosIdiomaImpl implements BODatosIdiomas {
 				
 		for (int i = 0; i < datos.size(); i++) {
 			resultado = daoidiomas.Crear(datos.get(i));
-			if(resultado==1) {
-				System.out.println("Fallo en la insercion de herramientas "+i+1);
+			if(resultado==0) {
+				System.out.println("Fallo en la insercion de idioma "+i+1);
 			}
 		}
 		MsgBean mensaje = new MsgBean();
