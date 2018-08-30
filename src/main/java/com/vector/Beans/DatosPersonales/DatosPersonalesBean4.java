@@ -1,15 +1,16 @@
 /**
- * DatosPersonalesBean4.java -- 25/08/2018
+ * DatosPersonalesBean4.java -- 30/08/2018
  */
 package com.vector.Beans.DatosPersonales;
 
-import javax.validation.constraints.NotNull;
+import com.sun.istack.internal.NotNull;
 
 /**
  * @author Claudio
  *RecyHumWS2--com.vector.Beans.DatosPersonales--DatosPersonalesBean4
  */
-public class DatosPersonalesBean4 extends DatosPersonalesBean5 {
+//Clase Bean de datos personales 4 extendido de datos personales 5
+public class DatosPersonalesBean4 extends DatosPersonalesBean5{
 	/*Variables de DatosPersonales*/
 	@NotNull
 	private String colonia="";
@@ -33,8 +34,9 @@ public class DatosPersonalesBean4 extends DatosPersonalesBean5 {
 	private int idCorreoSecundario=0;
 	
 	/*Seccion de getters*/
+	
 	/**
-	 * @return Obtienes el valor de colonia
+	 * @return Obtienes el valor de colonia del tipo String
 	 */
 	
 	public String getColonia() {
@@ -42,81 +44,7 @@ public class DatosPersonalesBean4 extends DatosPersonalesBean5 {
 	}
 	
 	/**
-	 * @return Obtienes el valor de idTelefonoPrincipal
-	 */
-	
-	public int getIdTelefonoPrincipal() {
-		return idTelefonoPrincipal;
-	}
-	
-	/**
-	 * @return Obtienes el valor de telefonoPrincipal
-	 */
-	
-	public String getTelefonoPrincipal() {
-		return telefonoPrincipal;
-	}
-	
-	/**
-	 * @return Obtienes el valor de idTelefonoSecundario
-	 */
-	
-	public int getIdTelefonoSecundario() {
-		return idTelefonoSecundario;
-	}
-	
-	/**
-	 * @return Obtienes el valor de telefonoSecundario
-	 */
-	
-	public String getTelefonoSecundario() {
-		return telefonoSecundario;
-	}
-	
-	/**
-	 * @return Obtienes el valor de idTelefonoEmergencia
-	 */
-	
-	public int getIdTelefonoEmergencia() {
-		return idtelefonoEmergencia;
-	}
-	
-	/**
-	 * @return Obtienes el valor de telefonoEmergencia
-	 */
-	
-	public String getTelefonoEmergencia() {
-		return TelefonoEmergencia;
-	}
-	
-	/**
-	 * @return Obtienes el valor de idCorreoPrincipal
-	 */
-	
-	public int getIdCorreoPrincipal() {
-		return idCorreoPrincipal;
-	}
-	
-	/**
-	 * @return Obtienes el valor de correoPrincipal
-	 */
-	
-	public String getCorreoPrincipal() {
-		return correoPrincipal;
-	}
-	
-	/**
-	 * @return Obtienes el valor de idCorreoSecundario
-	 */
-	
-	public int getIdCorreoSecundario() {
-		return idCorreoSecundario;
-	}
-	
-	/*Seccion se Setters*/
-	
-	/**
-	 * @param Agregar el valor a colonia
+	 * @param Agregar el valor a colonia del tipo String
 	 */
 	
 	public void setColonia(String colonia) {
@@ -124,7 +52,15 @@ public class DatosPersonalesBean4 extends DatosPersonalesBean5 {
 	}
 	
 	/**
-	 * @param Agregar el valor a idTelefonoPrincipal
+	 * @return Obtienes el valor de idTelefonoPrincipal del tipo int
+	 */
+	
+	public int getIdTelefonoPrincipal() {
+		return idTelefonoPrincipal;
+	}
+	
+	/**
+	 * @param Agregar el valor a idTelefonoPrincipal del tipo int
 	 */
 	
 	public void setIdTelefonoPrincipal(int idTelefonoPrincipal) {
@@ -132,7 +68,15 @@ public class DatosPersonalesBean4 extends DatosPersonalesBean5 {
 	}
 	
 	/**
-	 * @param Agregar el valor a telefonoPrincipal
+	 * @return Obtienes el valor de telefonoPrincipal del tipo String
+	 */
+	
+	public String getTelefonoPrincipal() {
+		return telefonoPrincipal;
+	}
+	
+	/**
+	 * @param Agregar el valor a telefonoPrincipal del tipo String
 	 */
 	
 	public void setTelefonoPrincipal(String telefonoPrincipal) {
@@ -140,7 +84,15 @@ public class DatosPersonalesBean4 extends DatosPersonalesBean5 {
 	}
 	
 	/**
-	 * @param Agregar el valor a idTelefonoSecundario
+	 * @return Obtienes el valor de idTelefonoSecundario del tipo int
+	 */
+	
+	public int getIdTelefonoSecundario() {
+		return idTelefonoSecundario;
+	}
+	
+	/**
+	 * @param Agregar el valor a idTelefonoSecundario del tipo int
 	 */
 	
 	public void setIdTelefonoSecundario(int idTelefonoSecundario) {
@@ -148,7 +100,15 @@ public class DatosPersonalesBean4 extends DatosPersonalesBean5 {
 	}
 	
 	/**
-	 * @param Agregar el valor a telefonoSecundario
+	 * @return Obtienes el valor de telefonoSecundario del tipo String
+	 */
+	
+	public String getTelefonoSecundario() {
+		return telefonoSecundario;
+	}
+	
+	/**
+	 * @param Agregar el valor a telefonoSecundario del tipo String
 	 */
 	
 	public void setTelefonoSecundario(String telefonoSecundario) {
@@ -156,15 +116,31 @@ public class DatosPersonalesBean4 extends DatosPersonalesBean5 {
 	}
 	
 	/**
-	 * @param Agregar el valor a idTelefonoEmergencia
+	 * @return Obtienes el valor de idtelefonoEmergencia del tipo int
 	 */
 	
-	public void setIdTelefonoEmergencia(int idTelefonoEmergencia) {
-		this.idtelefonoEmergencia = idTelefonoEmergencia;
+	public int getIdtelefonoEmergencia() {
+		return idtelefonoEmergencia;
 	}
 	
 	/**
-	 * @param Agregar el valor a telefonoEmergencia
+	 * @param Agregar el valor a idtelefonoEmergencia del tipo int
+	 */
+	
+	public void setIdtelefonoEmergencia(int idtelefonoEmergencia) {
+		this.idtelefonoEmergencia = idtelefonoEmergencia;
+	}
+	
+	/**
+	 * @return Obtienes el valor de telefonoEmergencia del tipo String
+	 */
+	
+	public String getTelefonoEmergencia() {
+		return TelefonoEmergencia;
+	}
+	
+	/**
+	 * @param Agregar el valor a telefonoEmergencia del tipo String
 	 */
 	
 	public void setTelefonoEmergencia(String telefonoEmergencia) {
@@ -172,7 +148,15 @@ public class DatosPersonalesBean4 extends DatosPersonalesBean5 {
 	}
 	
 	/**
-	 * @param Agregar el valor a idCorreoPrincipal
+	 * @return Obtienes el valor de idCorreoPrincipal del tipo int
+	 */
+	
+	public int getIdCorreoPrincipal() {
+		return idCorreoPrincipal;
+	}
+	
+	/**
+	 * @param Agregar el valor a idCorreoPrincipal del tipo int
 	 */
 	
 	public void setIdCorreoPrincipal(int idCorreoPrincipal) {
@@ -180,7 +164,15 @@ public class DatosPersonalesBean4 extends DatosPersonalesBean5 {
 	}
 	
 	/**
-	 * @param Agregar el valor a correoPrincipal
+	 * @return Obtienes el valor de correoPrincipal del tipo String
+	 */
+	
+	public String getCorreoPrincipal() {
+		return correoPrincipal;
+	}
+	
+	/**
+	 * @param Agregar el valor a correoPrincipal del tipo String
 	 */
 	
 	public void setCorreoPrincipal(String correoPrincipal) {
@@ -188,7 +180,15 @@ public class DatosPersonalesBean4 extends DatosPersonalesBean5 {
 	}
 	
 	/**
-	 * @param Agregar el valor a idCorreoSecundario
+	 * @return Obtienes el valor de idCorreoSecundario del tipo int
+	 */
+	
+	public int getIdCorreoSecundario() {
+		return idCorreoSecundario;
+	}
+	
+	/**
+	 * @param Agregar el valor a idCorreoSecundario del tipo int
 	 */
 	
 	public void setIdCorreoSecundario(int idCorreoSecundario) {

@@ -54,9 +54,12 @@ public class BODatosLoginImpl implements BODatosLogin {
 		MsgBean mensaje = new MsgBean();
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		int resultado = sesion.Create(datos);
+		//condicional para el inicio de sesion que genera el mensaje correcto
 		if(resultado == 1) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
-		}else {
+		}
+		//mensaje de respuesta en caso de que la condicional no se cumpla mande mensaje fallo
+		else {
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		}
 		return mensaje;
@@ -72,9 +75,12 @@ public class BODatosLoginImpl implements BODatosLogin {
 		MsgBean mensaje = new MsgBean();
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		int resultado = sesion.Modificar(datos);
+		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
 		if(resultado == 1) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
-		}else {
+		}
+		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
+		else {
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		}
 		return mensaje;
@@ -88,11 +94,14 @@ public class BODatosLoginImpl implements BODatosLogin {
 		// TODO Auto-generated method stub
 		int respuesta=sesion.Delete(datos);
 		MsgBean msj = new MsgBean();
+		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
 		if(respuesta==1) {
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
 			
 			return msj;
-		}else {
+		}
+		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
+		else {
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
 			
 			return msj;

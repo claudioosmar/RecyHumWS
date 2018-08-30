@@ -9,9 +9,9 @@ import com.sun.istack.internal.NotNull;
  * @author Claudio
  *RecyHumWS2--com.vector.Beans--DatosCertificadoBean
  */
-// CLASE QUE CONTIENE LAS VARIABLES PARA INGRESAR DATOS EN LA BASE DE DATOS
+// Clase Bean para los datos de certificado 
 public class DatosCertificadoBean {
-	//ATRIBUTOS PARA INGRESAR LOS DATOS DE CERTIFICADOS
+	//Variable para declara los getter y setter de certificado
 	@NotNull
 	private String nomcertificadoNw=""; 
 	@NotNull
@@ -27,10 +27,8 @@ public class DatosCertificadoBean {
 	@NotNull
 	private long idpersona;
 	
-	
-	//DECLARACIÓN DE GETTERS Y SETTERS
 	/**
-	 * @return Obtienes el valor de nomcertificadoNw
+	 * @return Obtienes el valor de nomcertificadoNw del tipo String
 	 */
 	
 	public String getNomcertificadoNw() {
@@ -38,7 +36,7 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a nomcertificadoNw
+	 * @param Agregar el valor a nomcertificadoNw del tipo String
 	 */
 	
 	public void setNomcertificadoNw(String nomcertificadoNw) {
@@ -46,7 +44,7 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @return Obtienes el valor de iddocumentoNw
+	 * @return Obtienes el valor de iddocumentoNw del tipo int
 	 */
 	
 	public int getIddocumentoNw() {
@@ -54,7 +52,7 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a iddocumentoNw
+	 * @param Agregar el valor a iddocumentoNw del tipo int
 	 */
 	
 	public void setIddocumentoNw(int iddocumentoNw) {
@@ -62,7 +60,7 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @return Obtienes el valor de idcertificado
+	 * @return Obtienes el valor de idcertificado del tipo int
 	 */
 	
 	public int getIdcertificado() {
@@ -70,7 +68,7 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idcertificado
+	 * @param Agregar el valor a idcertificado del tipo int
 	 */
 	
 	public void setIdcertificado(int idcertificado) {
@@ -78,7 +76,7 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @return Obtienes el valor de nomcertificadoLt
+	 * @return Obtienes el valor de nomcertificadoLt del tipo String
 	 */
 	
 	public String getNomcertificadoLt() {
@@ -86,7 +84,7 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a nomcertificadoLt
+	 * @param Agregar el valor a nomcertificadoLt del tipo String
 	 */
 	
 	public void setNomcertificadoLt(String nomcertificadoLt) {
@@ -94,7 +92,7 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @return Obtienes el valor de iddocumentoLt
+	 * @return Obtienes el valor de iddocumentoLt del tipo int
 	 */
 	
 	public int getIddocumentoLt() {
@@ -102,7 +100,7 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a iddocumentoLt
+	 * @param Agregar el valor a iddocumentoLt del tipo int
 	 */
 	
 	public void setIddocumentoLt(int iddocumentoLt) {
@@ -110,7 +108,7 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @return Obtienes el valor de idestudio
+	 * @return Obtienes el valor de idestudio del tipo int
 	 */
 	
 	public int getIdestudio() {
@@ -118,7 +116,7 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idestudio
+	 * @param Agregar el valor a idestudio del tipo int
 	 */
 	
 	public void setIdestudio(int idestudio) {
@@ -126,7 +124,7 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @return Obtienes el valor de idpersona
+	 * @return Obtienes el valor de idpersona del tipo long
 	 */
 	
 	public long getIdpersona() {
@@ -134,12 +132,10 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idpersona
+	 * @param Agregar el valor a idpersona del tipo long
 	 */
 	
 	public void setIdpersona(long idpersona) {
 		this.idpersona = idpersona;
 	}
-	
-	
 }

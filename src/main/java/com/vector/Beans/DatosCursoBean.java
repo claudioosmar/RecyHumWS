@@ -1,15 +1,17 @@
 /**
- * DatosCursoBean.java -- 25/08/2018
+ * DatosCursoBean.java -- 29/08/2018
  */
 package com.vector.Beans;
 
-import javax.validation.constraints.NotNull;
+import com.sun.istack.internal.NotNull;
 
 /**
- * @author Jair
- *
+ * @author Claudio
+ *RecyHumWS2--com.vector.Beans--DatosCursoBean
  */
+//Clase Bean para los datos de Cursos
 public class DatosCursoBean {
+	//Variable para declara los getter y setter de certificado
 	@NotNull
 	private int idcurso=0;
 	@NotNull
@@ -30,110 +32,105 @@ public class DatosCursoBean {
 	private String nombrecertificado="";
 	
 	
-	
-	
+	//declaracion de getters y setters
 	/**
-	 * @return Obtienes el valor de nombrecertificado
+	 * @return Obtienes el valor de idcurso del tipo int
 	 */
 	
-	public String getNombrecertificado() {
-		return nombrecertificado;
-	}
-	
-	/**
-	 * @param Agregar el valor a nombrecertificado
-	 */
-	
-	public void setNombrecertificado(String nombrecertificado) {
-		this.nombrecertificado = nombrecertificado;
-	}
-	/**
-	 * @return Obtines el valor de idpersona
-	 */
-	public long getIdpersona() {
-		return idpersona;
-	}
-	/**
-	 * @param Agrega el parametro a idpersona
-	 */
-	public void setIdpersona(long idpersona) {
-		this.idpersona = idpersona;
-	}
-	/**
-	 * @return Obtines el valor de idcurso
-	 */
 	public int getIdcurso() {
 		return idcurso;
 	}
+	
 	/**
-	 * @param Agrega el parametro a idcurso
+	 * @param Agregar el valor a idcurso del tipo int
 	 */
+	
 	public void setIdcurso(int idcurso) {
 		this.idcurso = idcurso;
 	}
+	
 	/**
-	 * @return Obtines el valor de nombrecurso
+	 * @return Obtienes el valor de nombrecurso del tipo String
 	 */
+	
 	public String getNombrecurso() {
 		return nombrecurso;
 	}
+	
 	/**
-	 * @param Agrega el parametro a nombrecurso
+	 * @param Agregar el valor a nombrecurso del tipo String
 	 */
+	
 	public void setNombrecurso(String nombrecurso) {
 		this.nombrecurso = nombrecurso;
 	}
+	
 	/**
-	 * @return Obtines el valor de institutocurso
+	 * @return Obtienes el valor de institutocurso del tipo String
 	 */
+	
 	public String getInstitutocurso() {
 		return institutocurso;
 	}
+	
 	/**
-	 * @param Agrega el parametro a institutocurso
+	 * @param Agregar el valor a institutocurso del tipo String
 	 */
+	
 	public void setInstitutocurso(String institutocurso) {
 		this.institutocurso = institutocurso;
 	}
+	
 	/**
-	 * @return Obtines el valor de fechainicioc
+	 * @return Obtienes el valor de fechainicioc del tipo String
 	 */
+	
 	public String getFechainicioc() {
 		return fechainicioc;
 	}
+	
 	/**
-	 * @param Agrega el parametro a fechainicioc
+	 * @param Agregar el valor a fechainicioc del tipo String
 	 */
+	
 	public void setFechainicioc(String fechainicioc) {
 		this.fechainicioc = fechainicioc;
 	}
+	
 	/**
-	 * @return Obtines el valor de fechaterminoc
+	 * @return Obtienes el valor de fechaterminoc del tipo String
 	 */
+	
 	public String getFechaterminoc() {
 		return fechaterminoc;
 	}
+	
 	/**
-	 * @param Agrega el parametro a fechaterminoc
+	 * @param Agregar el valor a fechaterminoc del tipo String
 	 */
+	
 	public void setFechaterminoc(String fechaterminoc) {
 		this.fechaterminoc = fechaterminoc;
 	}
+	
 	/**
-	 * @return Obtines el valor de idcertificado
+	 * @return Obtienes el valor de idcertificado del tipo int
 	 */
+	
 	public int getIdcertificado() {
 		return idcertificado;
 	}
+	
 	/**
-	 * @param Agrega el parametro a idcertificado
+	 * @param Agregar el valor a idcertificado del tipo int
 	 */
+	
 	public void setIdcertificado(int idcertificado) {
 		this.idcertificado = idcertificado;
 	}
 	
 	/**
-	 * @return Obtienes el valor de idestudio
+	 * @return Obtienes el valor de idestudio del tipo int
 	 */
 	
 	public int getIdestudio() {
@@ -141,11 +138,42 @@ public class DatosCursoBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idestudio
+	 * @param Agregar el valor a idestudio del tipo int
 	 */
 	
 	public void setIdestudio(int idestudio) {
 		this.idestudio = idestudio;
 	}
 	
+	/**
+	 * @return Obtienes el valor de idpersona del tipo long
+	 */
+	
+	public long getIdpersona() {
+		return idpersona;
+	}
+	
+	/**
+	 * @param Agregar el valor a idpersona del tipo long
+	 */
+	
+	public void setIdpersona(long idpersona) {
+		this.idpersona = idpersona;
+	}
+	
+	/**
+	 * @return Obtienes el valor de nombrecertificado del tipo String
+	 */
+	
+	public String getNombrecertificado() {
+		return nombrecertificado;
+	}
+	
+	/**
+	 * @param Agregar el valor a nombrecertificado del tipo String
+	 */
+	
+	public void setNombrecertificado(String nombrecertificado) {
+		this.nombrecertificado = nombrecertificado;
+	}
 }

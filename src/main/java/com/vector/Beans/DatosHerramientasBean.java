@@ -1,15 +1,17 @@
 /**
- * 
+ * DatosHerramientasBean.java -- 29/08/2018
  */
 package com.vector.Beans;
 
-import javax.validation.constraints.NotNull;
+import com.sun.istack.internal.NotNull;
 
 /**
- * @author vectormx
- *
+ * @author Claudio
+ *RecyHumWS2--com.vector.Beans--DatosHerramientasBean
  */
-public class DatosHerramientasBean{
+//Clase Bean para los datos de Herramientas conocidas
+public class DatosHerramientasBean {
+	//Variable para declara los getter y setter de herramientas conocidas
 	@NotNull
 	private int idherramienta=0;
 	@NotNull
@@ -29,114 +31,148 @@ public class DatosHerramientasBean{
 	@NotNull
 	private int idherramientaNw=0;
 	
+	// declaracion de getters y setters
+	/**
+	 * @return Obtienes el valor de idherramienta del tipo int
+	 */
 	
-	/**
-	 * @return the idherramientaNw
-	 */
-	public int getIdherramientaNw() {
-		return idherramientaNw;
-	}
-	/**
-	 * @param idherramientaNw the idherramientaNw to set
-	 */
-	public void setIdherramientaNw(int idherramientaNw) {
-		this.idherramientaNw = idherramientaNw;
-	}
-	/**
-	 * @return the nombrecompleto
-	 */
-	public String getNombrecompleto() {
-		return nombrecompleto;
-	}
-	/**
-	 * @param nombrecompleto the nombrecompleto to set
-	 */
-	public void setNombrecompleto(String nombrecompleto) {
-		this.nombrecompleto = nombrecompleto;
-	}
-	/**
-	 * @return the nombreherramienta
-	 */
-	public String getNombreherramienta() {
-		return nombreherramienta;
-	}
-	/**
-	 * @param nombreherramienta the nombreherramienta to set
-	 */
-	public void setNombreherramienta(String nombreherramienta) {
-		this.nombreherramienta = nombreherramienta;
-	}
-	/**
-	 * @return the idpersona
-	 */
-	public long getIdpersona() {
-		return idpersona;
-	}
-	/**
-	 * @param idpersona the idpersona to set
-	 */
-	public void setIdpersona(long idpersona) {
-		this.idpersona = idpersona;
-	}
-	/**
-	 * @return the version
-	 */
-	public String getVersion() {
-		return version;
-	}
-	/**
-	 * @param version the version to set
-	 */
-	public void setVersion(String version) {
-		this.version = version;
-	}
-	/**
-	 * @return the idherramienta
-	 */
 	public int getIdherramienta() {
 		return idherramienta;
 	}
+	
 	/**
-	 * @param idherramienta the idherramienta to set
+	 * @param Agregar el valor a idherramienta del tipo int
 	 */
+	
 	public void setIdherramienta(int idherramienta) {
 		this.idherramienta = idherramienta;
 	}
+	
 	/**
-	 * @return the porcentajeherra
+	 * @return Obtienes el valor de porcentajeherra del tipo int
 	 */
+	
 	public int getPorcentajeherra() {
 		return porcentajeherra;
 	}
+	
 	/**
-	 * @param porcentajeherra the porcentajeherra to set
+	 * @param Agregar el valor a porcentajeherra del tipo int
 	 */
+	
 	public void setPorcentajeherra(int porcentajeherra) {
 		this.porcentajeherra = porcentajeherra;
 	}
+	
 	/**
-	 * @return the añosexpherra
+	 * @return Obtienes el valor de añosexpherra del tipo int
 	 */
+	
 	public int getAñosexpherra() {
 		return añosexpherra;
 	}
+	
 	/**
-	 * @param añosexpherra the añosexpherra to set
+	 * @param Agregar el valor a añosexpherra del tipo int
 	 */
+	
 	public void setAñosexpherra(int añosexpherra) {
 		this.añosexpherra = añosexpherra;
 	}
+	
 	/**
-	 * @return the descripcionherra
+	 * @return Obtienes el valor de descripcionherra del tipo String
 	 */
+	
 	public String getDescripcionherra() {
 		return descripcionherra;
 	}
+	
 	/**
-	 * @param descripcionherra the descripcionherra to set
+	 * @param Agregar el valor a descripcionherra del tipo String
 	 */
+	
 	public void setDescripcionherra(String descripcionherra) {
 		this.descripcionherra = descripcionherra;
 	}
 	
+	/**
+	 * @return Obtienes el valor de version del tipo String
+	 */
+	
+	public String getVersion() {
+		return version;
+	}
+	
+	/**
+	 * @param Agregar el valor a version del tipo String
+	 */
+	
+	public void setVersion(String version) {
+		this.version = version;
+	}
+	
+	/**
+	 * @return Obtienes el valor de idpersona del tipo long
+	 */
+	
+	public long getIdpersona() {
+		return idpersona;
+	}
+	
+	/**
+	 * @param Agregar el valor a idpersona del tipo long
+	 */
+	
+	public void setIdpersona(long idpersona) {
+		this.idpersona = idpersona;
+	}
+	
+	/**
+	 * @return Obtienes el valor de nombreherramienta del tipo String
+	 */
+	
+	public String getNombreherramienta() {
+		return nombreherramienta;
+	}
+	
+	/**
+	 * @param Agregar el valor a nombreherramienta del tipo String
+	 */
+	
+	public void setNombreherramienta(String nombreherramienta) {
+		this.nombreherramienta = nombreherramienta;
+	}
+	
+	/**
+	 * @return Obtienes el valor de nombrecompleto del tipo String
+	 */
+	
+	public String getNombrecompleto() {
+		return nombrecompleto;
+	}
+	
+	/**
+	 * @param Agregar el valor a nombrecompleto del tipo String
+	 */
+	
+	public void setNombrecompleto(String nombrecompleto) {
+		this.nombrecompleto = nombrecompleto;
+	}
+	
+	/**
+	 * @return Obtienes el valor de idherramientaNw del tipo int
+	 */
+	
+	public int getIdherramientaNw() {
+		return idherramientaNw;
+	}
+	
+	/**
+	 * @param Agregar el valor a idherramientaNw del tipo int
+	 */
+	
+	public void setIdherramientaNw(int idherramientaNw) {
+		this.idherramientaNw = idherramientaNw;
+	}
 }

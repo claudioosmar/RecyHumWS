@@ -1,17 +1,17 @@
 /**
- * DatosEstudioBean.java -- 25/08/2018
+ * DatosEstudioBean.java -- 29/08/2018
  */
 package com.vector.Beans;
 
-import javax.validation.constraints.NotNull;
+import com.sun.istack.internal.NotNull;
 
 /**
- * @author Jair
- *
+ * @author Claudio
+ *RecyHumWS2--com.vector.Beans--DatosEstudioBean
  */
-public class DatosEstudioBean{
-/*atributos para ingresar ddatos estudio*/
-	
+//Clase Bean para los datos academicos
+public class DatosEstudioBean {
+///Variable para declara los getter y setter de estudios
 	@NotNull
 	private int idgrado=0;
 	@NotNull
@@ -47,211 +47,277 @@ public class DatosEstudioBean{
 	@NotNull
 	private int idcarrera2=0;
 	
+	//declaracion de setters y getters
+	/**
+	 * @return Obtienes el valor de idgrado del tipo int
+	 */
 	
-	
-	/**
-	 * @return Obtines el valor de idcarrera2
-	 */
-	public int getIdcarrera2() {
-		return idcarrera2;
-	}
-	/**
-	 * @param Agrega el parametro a idcarrera2
-	 */
-	public void setIdcarrera2(int idcarrera2) {
-		this.idcarrera2 = idcarrera2;
-	}
-	/**
-	 * @return Obtines el valor de idgrado
-	 */
 	public int getIdgrado() {
 		return idgrado;
 	}
+	
 	/**
-	 * @param Agrega el parametro a idgrado
+	 * @param Agregar el valor a idgrado del tipo int
 	 */
+	
 	public void setIdgrado(int idgrado) {
 		this.idgrado = idgrado;
 	}
+	
 	/**
-	 * @return Obtines el valor de idlocalidad
+	 * @return Obtienes el valor de idlocalidad del tipo int
 	 */
+	
 	public int getIdlocalidad() {
 		return idlocalidad;
 	}
+	
 	/**
-	 * @param Agrega el parametro a idlocalidad
+	 * @param Agregar el valor a idlocalidad del tipo int
 	 */
+	
 	public void setIdlocalidad(int idlocalidad) {
 		this.idlocalidad = idlocalidad;
 	}
+	
 	/**
-	 * @return Obtines el valor de institutoestudio
+	 * @return Obtienes el valor de institutoestudio del tipo String
 	 */
+	
 	public String getInstitutoestudio() {
 		return institutoestudio;
 	}
+	
 	/**
-	 * @param Agrega el parametro a institutoestudio
+	 * @param Agregar el valor a institutoestudio del tipo String
 	 */
+	
 	public void setInstitutoestudio(String institutoestudio) {
 		this.institutoestudio = institutoestudio;
 	}
+	
 	/**
-	 * @return Obtines el valor de periodoinicial
+	 * @return Obtienes el valor de periodoinicial del tipo String
 	 */
+	
 	public String getPeriodoinicial() {
 		return periodoinicial;
 	}
+	
 	/**
-	 * @param Agrega el parametro a periodoinicial
+	 * @param Agregar el valor a periodoinicial del tipo String
 	 */
+	
 	public void setPeriodoinicial(String periodoinicial) {
 		this.periodoinicial = periodoinicial;
 	}
+	
 	/**
-	 * @return Obtines el valor de periodofinal
+	 * @return Obtienes el valor de periodofinal del tipo String
 	 */
+	
 	public String getPeriodofinal() {
 		return periodofinal;
 	}
+	
 	/**
-	 * @param Agrega el parametro a periodofinal
+	 * @param Agregar el valor a periodofinal del tipo String
 	 */
+	
 	public void setPeriodofinal(String periodofinal) {
 		this.periodofinal = periodofinal;
 	}
+	
 	/**
-	 * @return Obtines el valor de nombrecorrera
+	 * @return Obtienes el valor de nombrecorrera del tipo String
 	 */
+	
 	public String getNombrecorrera() {
 		return nombrecorrera;
 	}
+	
 	/**
-	 * @param Agrega el parametro a nombrecorrera
+	 * @param Agregar el valor a nombrecorrera del tipo String
 	 */
+	
 	public void setNombrecorrera(String nombrecorrera) {
 		this.nombrecorrera = nombrecorrera;
 	}
+	
 	/**
-	 * @return Obtines el valor de idpersona
+	 * @return Obtienes el valor de idpersona del tipo long
 	 */
+	
 	public long getIdpersona() {
 		return idpersona;
 	}
+	
 	/**
-	 * @param Agrega el parametro a idpersona
+	 * @param Agregar el valor a idpersona del tipo long
 	 */
+	
 	public void setIdpersona(long idpersona) {
 		this.idpersona = idpersona;
 	}
+	
 	/**
-	 * @return Obtines el valor de idcarrera
+	 * @return Obtienes el valor de idcarrera del tipo int
 	 */
+	
 	public int getIdcarrera() {
 		return idcarrera;
 	}
+	
 	/**
-	 * @param Agrega el parametro a idcarrera
+	 * @param Agregar el valor a idcarrera del tipo int
 	 */
+	
 	public void setIdcarrera(int idcarrera) {
 		this.idcarrera = idcarrera;
 	}
+	
 	/**
-	 * @return Obtines el valor de idestudio
+	 * @return Obtienes el valor de idestudio del tipo long
 	 */
+	
 	public long getIdestudio() {
 		return idestudio;
 	}
+	
 	/**
-	 * @param Agrega el parametro a idestudio
+	 * @param Agregar el valor a idestudio del tipo long
 	 */
+	
 	public void setIdestudio(long idestudio) {
 		this.idestudio = idestudio;
 	}
+	
 	/**
-	 * @return Obtines el valor de idcertificado
+	 * @return Obtienes el valor de idcertificado del tipo long
 	 */
+	
 	public long getIdcertificado() {
 		return idcertificado;
 	}
+	
 	/**
-	 * @param Agrega el parametro a idcertificado
+	 * @param Agregar el valor a idcertificado del tipo long
 	 */
+	
 	public void setIdcertificado(long idcertificado) {
 		this.idcertificado = idcertificado;
 	}
+	
 	/**
-	 * @return Obtines el valor de idcurso
+	 * @return Obtienes el valor de idcurso del tipo long
 	 */
+	
 	public long getIdcurso() {
 		return idcurso;
 	}
+	
 	/**
-	 * @param Agrega el parametro a idcurso
+	 * @param Agregar el valor a idcurso del tipo long
 	 */
+	
 	public void setIdcurso(long idcurso) {
 		this.idcurso = idcurso;
 	}
+	
 	/**
-	 * @return Obtines el valor de nombrelocalidad
+	 * @return Obtienes el valor de nombrelocalidad del tipo String
 	 */
+	
 	public String getNombrelocalidad() {
 		return nombrelocalidad;
 	}
+	
 	/**
-	 * @param Agrega el parametro a nombrelocalidad
+	 * @param Agregar el valor a nombrelocalidad del tipo String
 	 */
+	
 	public void setNombrelocalidad(String nombrelocalidad) {
 		this.nombrelocalidad = nombrelocalidad;
 	}
+	
 	/**
-	 * @return Obtines el valor de nombregrado
+	 * @return Obtienes el valor de nombregrado del tipo String
 	 */
+	
 	public String getNombregrado() {
 		return nombregrado;
 	}
+	
 	/**
-	 * @param Agrega el parametro a nombregrado
+	 * @param Agregar el valor a nombregrado del tipo String
 	 */
+	
 	public void setNombregrado(String nombregrado) {
 		this.nombregrado = nombregrado;
 	}
+	
 	/**
-	 * @return Obtines el valor de nombrecompleto
+	 * @return Obtienes el valor de nombrecompleto del tipo String
 	 */
+	
 	public String getNombrecompleto() {
 		return nombrecompleto;
 	}
+	
 	/**
-	 * @param Agrega el parametro a nombrecompleto
+	 * @param Agregar el valor a nombrecompleto del tipo String
 	 */
+	
 	public void setNombrecompleto(String nombrecompleto) {
 		this.nombrecompleto = nombrecompleto;
 	}
+	
 	/**
-	 * @return Obtines el valor de nombreestado
+	 * @return Obtienes el valor de nombreestado del tipo String
 	 */
+	
 	public String getNombreestado() {
 		return nombreestado;
 	}
+	
 	/**
-	 * @param Agrega el parametro a nombreestado
+	 * @param Agregar el valor a nombreestado del tipo String
 	 */
+	
 	public void setNombreestado(String nombreestado) {
 		this.nombreestado = nombreestado;
 	}
+	
 	/**
-	 * @return Obtines el valor de nombremunicipio
+	 * @return Obtienes el valor de nombremunicipio del tipo String
 	 */
+	
 	public String getNombremunicipio() {
 		return nombremunicipio;
 	}
+	
 	/**
-	 * @param Agrega el parametro a nombremunicipio
+	 * @param Agregar el valor a nombremunicipio del tipo String
 	 */
+	
 	public void setNombremunicipio(String nombremunicipio) {
 		this.nombremunicipio = nombremunicipio;
+	}
+	
+	/**
+	 * @return Obtienes el valor de idcarrera2 del tipo int
+	 */
+	
+	public int getIdcarrera2() {
+		return idcarrera2;
+	}
+	
+	/**
+	 * @param Agregar el valor a idcarrera2 del tipo int
+	 */
+	
+	public void setIdcarrera2(int idcarrera2) {
+		this.idcarrera2 = idcarrera2;
 	}
 	
 	

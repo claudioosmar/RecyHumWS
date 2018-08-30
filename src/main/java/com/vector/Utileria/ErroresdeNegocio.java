@@ -56,6 +56,8 @@ public class ErroresdeNegocio {
         	mensaje.setMsjAccion("Tabla o vista no existente");
         }else if(e.getErrorCode()==957){
         	mensaje.setMsjAccion("Columnas duplicadas por el nombre");
+        }else if(e.getErrorCode()==1847){
+        	mensaje.setMsjAccion("el dia del mes debe estar entre el 1 y el ultimo dia del mes");
         }else if(e.getErrorCode()==911){
         	mensaje.setMsjAccion("Caracter invalido");
         }else if(e.getErrorCode()==01722){
@@ -101,5 +103,4 @@ public class ErroresdeNegocio {
         mensaje.setMsjAccion(e.getMessage()+"--"+e.getLocalizedMessage());
 		return new ResponseEntity<MsgBean>(mensaje,HttpStatus.BAD_REQUEST);
 	}*/
-	
 }

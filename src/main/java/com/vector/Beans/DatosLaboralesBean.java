@@ -1,16 +1,17 @@
 /**
- * DatosLaboralesBean.java -- 25/08/2018
+ * DatosLaboralesBean.java -- 30/08/2018
  */
 package com.vector.Beans;
 
-import javax.validation.constraints.NotNull;
+import com.sun.istack.internal.NotNull;
 
 /**
  * @author Claudio
- *RecyHumWS2--com.vector.Beans.DatosLaborales--DatosLaboralesBean
+ *RecyHumWS2--com.vector.Beans--DatosLaboralesBean
  */
+//Clase Bean para los datos de experiencias laborales
 public class DatosLaboralesBean {
-	/*Atributos de Experiencias Laborales*/
+	//Variable para declara los getter y setter de experiencias laborales
 	@NotNull
 	private int idmotivotermino=0;
 	@NotNull
@@ -46,211 +47,275 @@ public class DatosLaboralesBean {
 	@NotNull
 	private int idempresa=0;
 	
-	//Seccion de Getters
+	// declaracion de getters y setters
 	/**
-	 * @return Obtienes el valor de idmotivotermino
+	 * @return Obtienes el valor de idmotivotermino del tipo int
 	 */
+	
 	public int getIdmotivotermino() {
 		return idmotivotermino;
 	}
+	
 	/**
-	 * @return Obtienes el valor de puesto
+	 * @param Agregar el valor a idmotivotermino del tipo int
 	 */
+	
+	public void setIdmotivotermino(int idmotivotermino) {
+		this.idmotivotermino = idmotivotermino;
+	}
+	
+	/**
+	 * @return Obtienes el valor de puesto del tipo String
+	 */
+	
 	public String getPuesto() {
 		return puesto;
 	}
+	
 	/**
-	 * @return Obtienes el valor de fechainicioexp
+	 * @param Agregar el valor a puesto del tipo String
 	 */
+	
+	public void setPuesto(String puesto) {
+		this.puesto = puesto;
+	}
+	
+	/**
+	 * @return Obtienes el valor de fechainicioexp del tipo String
+	 */
+	
 	public String getFechainicioexp() {
 		return fechainicioexp;
 	}
+	
 	/**
-	 * @return Obtienes el valor de fechafinalexp
+	 * @param Agregar el valor a fechainicioexp del tipo String
 	 */
+	
+	public void setFechainicioexp(String fechainicioexp) {
+		this.fechainicioexp = fechainicioexp;
+	}
+	
+	/**
+	 * @return Obtienes el valor de fechafinalexp del tipo String
+	 */
+	
 	public String getFechafinalexp() {
 		return fechafinalexp;
 	}
+	
 	/**
-	 * @return Obtienes el valor de actividadesreal
+	 * @param Agregar el valor a fechafinalexp del tipo String
 	 */
+	
+	public void setFechafinalexp(String fechafinalexp) {
+		this.fechafinalexp = fechafinalexp;
+	}
+	
+	/**
+	 * @return Obtienes el valor de actividadesreal del tipo String
+	 */
+	
 	public String getActividadesreal() {
 		return actividadesreal;
 	}
+	
 	/**
-	 * @return Obtienes el valor de logros
+	 * @param Agregar el valor a actividadesreal del tipo String
 	 */
+	
+	public void setActividadesreal(String actividadesreal) {
+		this.actividadesreal = actividadesreal;
+	}
+	
+	/**
+	 * @return Obtienes el valor de logros del tipo String
+	 */
+	
 	public String getLogros() {
 		return logros;
 	}
+	
 	/**
-	 * @return Obtienes el valor de idtipocontrato
+	 * @param Agregar el valor a logros del tipo String
 	 */
+	
+	public void setLogros(String logros) {
+		this.logros = logros;
+	}
+	
+	/**
+	 * @return Obtienes el valor de idtipocontrato del tipo int
+	 */
+	
 	public int getIdtipocontrato() {
 		return idtipocontrato;
 	}
+	
 	/**
-	 * @return Obtienes el valor de descripcionexp
+	 * @param Agregar el valor a idtipocontrato del tipo int
 	 */
+	
+	public void setIdtipocontrato(int idtipocontrato) {
+		this.idtipocontrato = idtipocontrato;
+	}
+	
+	/**
+	 * @return Obtienes el valor de descripcionexp del tipo String
+	 */
+	
 	public String getDescripcionexp() {
 		return descripcionexp;
 	}
+	
 	/**
-	 * @return Obtienes el valor de nombreempresa
+	 * @param Agregar el valor a descripcionexp del tipo String
 	 */
+	
+	public void setDescripcionexp(String descripcionexp) {
+		this.descripcionexp = descripcionexp;
+	}
+	
+	/**
+	 * @return Obtienes el valor de nombreempresa del tipo String
+	 */
+	
 	public String getNombreempresa() {
 		return nombreempresa;
 	}
+	
 	/**
-	 * @return Obtienes el valor de idpersona
+	 * @param Agregar el valor a nombreempresa del tipo String
 	 */
+	
+	public void setNombreempresa(String nombreempresa) {
+		this.nombreempresa = nombreempresa;
+	}
+	
+	/**
+	 * @return Obtienes el valor de idpersona del tipo long
+	 */
+	
 	public long getIdpersona() {
 		return idpersona;
 	}
+	
 	/**
-	 * @return Obtienes el valor de idherramienta
+	 * @param Agregar el valor a idpersona del tipo long
 	 */
+	
+	public void setIdpersona(long idpersona) {
+		this.idpersona = idpersona;
+	}
+	
+	/**
+	 * @return Obtienes el valor de idherramienta del tipo int
+	 */
+	
 	public int getIdherramienta() {
 		return idherramienta;
 	}
+	
 	/**
-	 * @return Obtienes el valor de porsentajeherra
+	 * @param Agregar el valor a idherramienta del tipo int
 	 */
+	
+	public void setIdherramienta(int idherramienta) {
+		this.idherramienta = idherramienta;
+	}
+	
+	/**
+	 * @return Obtienes el valor de porsentajeherra del tipo int
+	 */
+	
 	public int getPorsentajeherra() {
 		return porsentajeherra;
 	}
+	
 	/**
-	 * @return Obtienes el valor de añosexp
+	 * @param Agregar el valor a porsentajeherra del tipo int
 	 */
+	
+	public void setPorsentajeherra(int porsentajeherra) {
+		this.porsentajeherra = porsentajeherra;
+	}
+	
+	/**
+	 * @return Obtienes el valor de añosexp del tipo int
+	 */
+	
 	public int getAñosexp() {
 		return añosexp;
 	}
+	
 	/**
-	 * @return Obtienes el valor de descripcionherrm
+	 * @param Agregar el valor a añosexp del tipo int
 	 */
+	
+	public void setAñosexp(int añosexp) {
+		this.añosexp = añosexp;
+	}
+	
+	/**
+	 * @return Obtienes el valor de descripcionherrm del tipo String
+	 */
+	
 	public String getDescripcionherrm() {
 		return descripcionherrm;
 	}
+	
 	/**
-	 * @return Obtienes el valor de iddescmotivo
+	 * @param Agregar el valor a descripcionherrm del tipo String
 	 */
+	
+	public void setDescripcionherrm(String descripcionherrm) {
+		this.descripcionherrm = descripcionherrm;
+	}
+	
+	/**
+	 * @return Obtienes el valor de iddescmotivo del tipo int
+	 */
+	
 	public int getIddescmotivo() {
 		return iddescmotivo;
 	}
+	
 	/**
-	 * @return Obtienes el valor de idexplaborl
+	 * @param Agregar el valor a iddescmotivo del tipo int
 	 */
+	
+	public void setIddescmotivo(int iddescmotivo) {
+		this.iddescmotivo = iddescmotivo;
+	}
+	
+	/**
+	 * @return Obtienes el valor de idexplaborl del tipo int
+	 */
+	
 	public int getIdexplaborl() {
 		return idexplaborl;
 	}
+	
 	/**
-	 * @return Obtienes el valor de idempresa
+	 * @param Agregar el valor a idexplaborl del tipo int
 	 */
+	
+	public void setIdexplaborl(int idexplaborl) {
+		this.idexplaborl = idexplaborl;
+	}
+	
+	/**
+	 * @return Obtienes el valor de idempresa del tipo int
+	 */
+	
 	public int getIdempresa() {
 		return idempresa;
 	}
 	
+	/**
+	 * @param Agregar el valor a idempresa del tipo int
+	 */
 	
-	//Seccion de Setters
-	/**
-	 * @param Agregar el valor a idmotivotermino
-	 */
-	public void setIdmotivotermino(int idmotivotermino) {
-		this.idmotivotermino = idmotivotermino;
-	}
-	/**
-	 * @param Agregar el valor a puesto
-	 */
-	public void setPuesto(String puesto) {
-		this.puesto = puesto;
-	}
-	/**
-	 * @param Agregar el valor a fechainicioexp
-	 */
-	public void setFechainicioexp(String fechainicioexp) {
-		this.fechainicioexp = fechainicioexp;
-	}
-	/**
-	 * @param Agregar el valor a fechafinalexp
-	 */
-	public void setFechafinalexp(String fechafinalexp) {
-		this.fechafinalexp = fechafinalexp;
-	}
-	/**
-	 * @param Agregar el valor a actividadesreal
-	 */
-	public void setActividadesreal(String actividadesreal) {
-		this.actividadesreal = actividadesreal;
-	}
-	/**
-	 * @param Agregar el valor a logros
-	 */
-	public void setLogros(String logros) {
-		this.logros = logros;
-	}
-	/**
-	 * @param Agregar el valor a idtipocontrato
-	 */
-	public void setIdtipocontrato(int idtipocontrato) {
-		this.idtipocontrato = idtipocontrato;
-	}
-	/**
-	 * @param Agregar el valor a descripcionexp
-	 */
-	public void setDescripcionexp(String descripcionexp) {
-		this.descripcionexp = descripcionexp;
-	}
-	/**
-	 * @param Agregar el valor a nombreempresa
-	 */
-	public void setNombreempresa(String nombreempresa) {
-		this.nombreempresa = nombreempresa;
-	}
-	/**
-	 * @param Agregar el valor a idpersona
-	 */
-	public void setIdpersona(long idpersona) {
-		this.idpersona = idpersona;
-	}
-	/**
-	 * @param Agregar el valor a idherramienta
-	 */
-	public void setIdherramienta(int idherramienta) {
-		this.idherramienta = idherramienta;
-	}
-	/**
-	 * @param Agregar el valor a porsentajeherra
-	 */
-	public void setPorsentajeherra(int porsentajeherra) {
-		this.porsentajeherra = porsentajeherra;
-	}
-	/**
-	 * @param Agregar el valor a añosexp
-	 */
-	public void setAñosexp(int añosexp) {
-		this.añosexp = añosexp;
-	}
-	/**
-	 * @param Agregar el valor a descripcionherrm
-	 */
-	public void setDescripcionherrm(String descripcionherrm) {
-		this.descripcionherrm = descripcionherrm;
-	}
-	/**
-	 * @param Agregar el valor a iddescmotivo
-	 */
-	public void setIddescmotivo(int iddescmotivo) {
-		this.iddescmotivo = iddescmotivo;
-	}
-	/**
-	 * @param Agregar el valor a idexplaborl
-	 */
-	public void setIdexplaborl(int idexplaborl) {
-		this.idexplaborl = idexplaborl;
-	}
-	/**
-	 * @param Agregar el valor a idempresa
-	 */
 	public void setIdempresa(int idempresa) {
 		this.idempresa = idempresa;
 	}

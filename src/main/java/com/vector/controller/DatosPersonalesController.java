@@ -18,30 +18,35 @@ import com.vector.Beans.DatosPersonales.DatosPersonalesBean;
 public class DatosPersonalesController {
 	@Autowired
 	private BODatosPersonales bodatos;
-		
+	//Ruta utilizada para la llamada de la funcion crear datos personales	
 	@RequestMapping(path = "/SGRHWebService/DatosPersonales/Crear", method = RequestMethod.POST)
 	public ResponseEntity<DatosPersonalesBean> insertar(@RequestBody DatosPersonalesBean datos){
-		System.out.print("Se creo un Datos personales "+ datos.getPrimerNombre()+"\n");
+		//Linea de impresion en consola que muestra datos de los datos personales al ser creados
+		System.out.print("Se creo un Datos personales "+ datos.getPrimerNombre()+" id localidad "+datos.getIdlocalidad()+"\n");
 		return new ResponseEntity<DatosPersonalesBean>(bodatos.Crear(datos),HttpStatus.OK);
 	}
-	
+	//Ruta utilizada para la llamada de la funcion Modificar datos personales
 	@RequestMapping(path = "/SGRHWebService/DatosPersonales/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosPersonalesBean datos){
+		//Linea de impresion en consola que muestra datos de los datos personales al ser modificados
 		System.out.print("Se modifico datos personales ");
 		return new ResponseEntity<MsgBean>(bodatos.Modificar(datos),HttpStatus.OK);
 	}
-	
+	//Ruta utilizada para la llamada de la funcion eliminar datos personales
 	@RequestMapping(path = "/SGRHWebService/DatosPersonales/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosPersonalesBean datos){
+		//Linea de impresion en consola que muestra datos de los datos personales al ser eliminados
 		System.out.print("se elimino datos personales");
 		return new ResponseEntity<MsgBean>(bodatos.Eliminar(datos),HttpStatus.OK);
 	}
-	
+	//Ruta utilizada para la llamada de la funcion buscar datos personales
 	@RequestMapping(path = "/SGRHWebService/DatosPersonales/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<DatosPersonalesBean>buscar(@RequestBody DatosPersonalesBean datos){
+		//mensaje de impresion en la consola que muestra los datos que relacionan la consulta
 		System.out.print("se busco los datos personales "+datos.getIdpersona()+"\n");
 		return new ResponseEntity<DatosPersonalesBean>(bodatos.Buscar(datos),HttpStatus.OK);
 	}
+	//Ruta utilizada para la llamada de la funcion listar idiomas
 	@RequestMapping("/SGRHWebService/DatosPersonales/Listar")
 	public ResponseEntity<List<DatosPersonalesBean>> Listar(){
 		List<DatosPersonalesBean> resp = bodatos.Listar();
@@ -51,5 +56,6 @@ public class DatosPersonalesController {
 			return new ResponseEntity<List<DatosPersonalesBean>>(resp, HttpStatus.OK);
 		}
 	}
+
 
 }

@@ -43,10 +43,11 @@ public class BODatosPersonalesImpl implements BODatosPersonales {
 	//Modificacion de DatosPersonales
 	public MsgBean Modificar(DatosPersonalesBean datos) {
 		// TODO Auto-generated method stub
+		//Condicional para el envio del mensaje de respuesta
 		MsgBean mensaje = new MsgBean();
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		int resultado = datospersonales.Modificar(datos);
-		//Se genera mensaje de modificacion exitosa
+		//condicion que genera mensaje de modificacion exitosa
 		if(resultado == 1) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 		}
@@ -64,12 +65,16 @@ public class BODatosPersonalesImpl implements BODatosPersonales {
 	@Override
 	public MsgBean Eliminar(DatosPersonalesBean datos) {
 		// TODO Auto-generated method stub
+		//Condicional para el envio del mensaje de respuesta
 		MsgBean mensaje = new MsgBean();
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		int resultado = datospersonales.Eliminar(datos.getIdpersona());
+		//Condicion para el resultado donde sea igual a 1 mandar mensaje de eliminacion correcta
 		if(resultado == 1) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
-		}else {
+		}
+		//mensaje en respuesta si la condicional no se cumple mandar mensaje de eliminacion fallida
+		else {
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		}
 		return mensaje;

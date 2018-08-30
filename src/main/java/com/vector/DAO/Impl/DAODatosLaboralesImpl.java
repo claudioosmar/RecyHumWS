@@ -144,7 +144,6 @@ public class DAODatosLaboralesImpl implements DAODatosLaborales {
 	public List<DatosLaboralesBean> Buscar(DatosLaboralesBean datos) {
 		// TODO Auto-generated method stub
 		final String sql = "SELECT * FROM TBLEXPSLABORALES expa,tblempresas emp WHERE expa.idempresa=emp.idempresa and  expa.IDEXPLABORAL =?";
-		final String sql2 = "SELECT * FROM TBLEMPRESAS WHERE IDEMPRESA =?";
 		final String sql3 = "SELECT * FROM TBLPIV06 WHERE IDPERSONA =?";
 		
 		DatosLaboralesBean respuesta = new DatosLaboralesBean();

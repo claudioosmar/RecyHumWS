@@ -1,15 +1,16 @@
 /**
- * DatosPersonalesBean.java -- 25/08/2018
+ * DatosPersonalesBean.java -- 30/08/2018
  */
 package com.vector.Beans.DatosPersonales;
 
-import javax.validation.constraints.NotNull;
+import com.sun.istack.internal.NotNull;
 
 /**
  * @author Claudio
  *RecyHumWS2--com.vector.Beans.DatosPersonales--DatosPersonalesBean
  */
-public class DatosPersonalesBean extends DatosPersonalesBean2 {
+//Clase Bean de datos personales extendiendo de datos personales bean 2
+public class DatosPersonalesBean extends DatosPersonalesBean2{
 	/*Variables de DatosPersonales*/
 	@NotNull
 	private int idpersona=0;
@@ -34,130 +35,162 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	
 	/*Seccion de getters*/
 	/**
-	 * @return Obtienes el valor de idpersona
+	 * @return Obtienes el valor de idpersona del tipo int
 	 */
+	
 	public int getIdpersona() {
 		return idpersona;
 	}
+	
 	/**
-	 * @return Obtienes el valor de primerNombre
+	 * @param Agregar el valor a idpersona del tipo int
 	 */
+	
+	public void setIdpersona(int idpersona) {
+		this.idpersona = idpersona;
+	}
+	
+	/**
+	 * @return Obtienes el valor de primerNombre del tipo String
+	 */
+	
 	public String getPrimerNombre() {
 		return primerNombre;
 	}
+	
 	/**
-	 * @return Obtienes el valor de segundoNombre
+	 * @param Agregar el valor a primerNombre del tipo String
 	 */
+	
+	public void setPrimerNombre(String primerNombre) {
+		this.primerNombre = primerNombre;
+	}
+	
+	/**
+	 * @return Obtienes el valor de segundoNombre del tipo String
+	 */
+	
 	public String getSegundoNombre() {
 		return segundoNombre;
 	}
+	
 	/**
-	 * @return Obtienes el valor de apellidPterno
+	 * @param Agregar el valor a segundoNombre del tipo String
 	 */
+	
+	public void setSegundoNombre(String segundoNombre) {
+		this.segundoNombre = segundoNombre;
+	}
+	
+	/**
+	 * @return Obtienes el valor de apellidPterno del tipo String
+	 */
+	
 	public String getApellidPterno() {
 		return apellidPterno;
 	}
+	
 	/**
-	 * @return Obtienes el valor de apellidMaterno
+	 * @param Agregar el valor a apellidPterno del tipo String
 	 */
+	
+	public void setApellidPterno(String apellidPterno) {
+		this.apellidPterno = apellidPterno;
+	}
+	
+	/**
+	 * @return Obtienes el valor de apellidMaterno del tipo String
+	 */
+	
 	public String getApellidMaterno() {
 		return apellidMaterno;
 	}
+	
 	/**
-	 * @return Obtienes el valor de idSexo
+	 * @param Agregar el valor a apellidMaterno del tipo String
 	 */
+	
+	public void setApellidMaterno(String apellidMaterno) {
+		this.apellidMaterno = apellidMaterno;
+	}
+	
+	/**
+	 * @return Obtienes el valor de idSexo del tipo String
+	 */
+	
 	public String getIdSexo() {
 		return idSexo;
 	}
+	
 	/**
-	 * @return Obtienes el valor de fechaNacimiento
+	 * @param Agregar el valor a idSexo del tipo String
 	 */
+	
+	public void setIdSexo(String idSexo) {
+		this.idSexo = idSexo;
+	}
+	
+	/**
+	 * @return Obtienes el valor de fechaNacimiento del tipo String
+	 */
+	
 	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
+	
 	/**
-	 * @return Obtienes el valor de urlFechaNacimiento
+	 * @param Agregar el valor a fechaNacimiento del tipo String
 	 */
+	
+	public void setFechaNacimiento(String fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+	
+	/**
+	 * @return Obtienes el valor de urlFechaNacimiento del tipo String
+	 */
+	
 	public String getUrlFechaNacimiento() {
 		return urlFechaNacimiento;
 	}
+	
 	/**
-	 * @return Obtienes el valor de urlFoto
+	 * @param Agregar el valor a urlFechaNacimiento del tipo String
 	 */
+	
+	public void setUrlFechaNacimiento(String urlFechaNacimiento) {
+		this.urlFechaNacimiento = urlFechaNacimiento;
+	}
+	
+	/**
+	 * @return Obtienes el valor de urlFoto del tipo String
+	 */
+	
 	public String getUrlFoto() {
 		return urlFoto;
 	}
+	
 	/**
-	 * @return Obtienes el valor de rfc
+	 * @param Agregar el valor a urlFoto del tipo String
 	 */
+	
+	public void setUrlFoto(String urlFoto) {
+		this.urlFoto = urlFoto;
+	}
+	
+	/**
+	 * @return Obtienes el valor de rfc del tipo String
+	 */
+	
 	public String getRfc() {
 		return rfc;
 	}
 	
+	/**
+	 * @param Agregar el valor a rfc del tipo String
+	 */
 	
-	/*Seccion se Setters*/
-	
-	
-	/**
-	 * @param Agregar el valor a idpersona
-	 */
-	public void setIdpersona(int idpersona) {
-		this.idpersona = idpersona;
-	}
-	/**
-	 * @param Agregar el valor a primerNombre
-	 */
-	public void setPrimerNombre(String primerNombre) {
-		this.primerNombre = primerNombre;
-	}
-	/**
-	 * @param Agregar el valor a segundoNombre
-	 */
-	public void setSegundoNombre(String segundoNombre) {
-		this.segundoNombre = segundoNombre;
-	}
-	/**
-	 * @param Agregar el valor a apellidPterno
-	 */
-	public void setApellidPterno(String apellidPterno) {
-		this.apellidPterno = apellidPterno;
-	}
-	/**
-	 * @param Agregar el valor a apellidMaterno
-	 */
-	public void setApellidMaterno(String apellidMaterno) {
-		this.apellidMaterno = apellidMaterno;
-	}
-	/**
-	 * @param Agregar el valor a idSexo
-	 */
-	public void setIdSexo(String idSexo) {
-		this.idSexo = idSexo;
-	}
-	/**
-	 * @param Agregar el valor a fechaNacimiento
-	 */
-	public void setFechaNacimiento(String fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
-	/**
-	 * @param Agregar el valor a urlFechaNacimiento
-	 */
-	public void setUrlFechaNacimiento(String urlFechaNacimiento) {
-		this.urlFechaNacimiento = urlFechaNacimiento;
-	}
-	/**
-	 * @param Agregar el valor a urlFoto
-	 */
-	public void setUrlFoto(String urlFoto) {
-		this.urlFoto = urlFoto;
-	}
-	/**
-	 * @param Agregar el valor a rfc
-	 */
 	public void setRfc(String rfc) {
 		this.rfc = rfc;
 	}
-	
-	
 }

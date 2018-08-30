@@ -48,10 +48,12 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 		final String sql3 ="insert into tblpiv05 values(?,?)";
 		final String sql4 ="insert into tblpiv14 values(?,?)";
 		final String sql5 ="insert into tblpiv15 values(?,?)";
+		final String sql6="select * from tblestudios where idestudio=(?)";
 		
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				System.out.println("datos de estudio a ingresar: "+idestudio+" id grado:"+datos.getIdgrado()+" id localidad:"+datos.getIdlocalidad()+" periodo inicial:"+datos.getPeriodoinicial()+" periodo final:"+datos.getPeriodofinal()+" id carrera:"+idcarrera+" nombre carrera:"+datos.getNombrecorrera());
 				/*primera insercion*/
 				PreparedStatement ps1 = con.prepareStatement(sql2);
 				ps1.setLong(1, idcarrera);
@@ -68,25 +70,37 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 				ps.setString(7, datos.getPeriodofinal());
 				ps.execute();
 				/*tercera insercion*/
+				if(datos.getIdcertificado()!=0) {
+					System.out.println("id certificado:"+datos.getIdcertificado());
 				PreparedStatement ps3 = con.prepareStatement(sql3);
 				ps3.setLong(1,idestudio);
 				ps3.setLong(2, datos.getIdcertificado());
 				ps3.execute();
+				}
 				/*cuarta insercion*/
+				if(datos.getIdcurso()!=0) {
+					System.out.println("id curso:"+datos.getIdcurso());
 				PreparedStatement ps4 = con.prepareStatement(sql4);
 				ps4.setLong(1,idestudio);
 				ps4.setLong(2, datos.getIdcurso());
 				ps4.execute();
+				}
 				/*quinta insercion*/
 				PreparedStatement ps5 = con.prepareStatement(sql5);
 				ps5.setLong(1,idestudio);
 				ps5.setLong(2, datos.getIdpersona());
-	
-				return ps5;
+				ps5.execute();
+				
+				PreparedStatement ps6 = con.prepareStatement(sql6);
+				System.out.println("se encontro la persona con id: "+idestudio);
+				ps6.setLong(1, idestudio);
+				return ps6;
 			}
 		});
-		if (respuesta==1) {
+		if(respuesta==1) {
+			System.out.println("id de estudio que se devuelve:"+idestudio);
 			return idestudio;
+			
 		}else {
 			return 0;
 		}

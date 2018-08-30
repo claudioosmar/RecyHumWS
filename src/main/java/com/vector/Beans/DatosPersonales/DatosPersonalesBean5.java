@@ -1,14 +1,15 @@
 /**
- * DatosPersonalesBean5.java -- 25/08/2018
+ * DatosPersonalesBean5.java -- 30/08/2018
  */
 package com.vector.Beans.DatosPersonales;
 
-import javax.validation.constraints.NotNull;
+import com.sun.istack.internal.NotNull;
 
 /**
  * @author Claudio
  *RecyHumWS2--com.vector.Beans.DatosPersonales--DatosPersonalesBean5
  */
+//Clase Bean de datos personoles 5
 public class DatosPersonalesBean5 {
 	/*Variables de DatosPersonales*/
 	@NotNull
@@ -26,108 +27,95 @@ public class DatosPersonalesBean5 {
 	@NotNull
 	private String ncontrol="";
 	@NotNull
-	private String estadoCivil;
+	private String estadoCivil="";
+	@NotNull
+	private int codpost=0;
+	@NotNull
+	private int idlocalidad=0;
 	/*Seccion de getters*/
 	
 	
-	/**
-	 * @return Obtienes el valor de nombreArea
-	 */
-	
-	public String getNombreArea() {
-		return nombreArea;
-	}
-	
-	
 	
 	/**
-	 * @return Obtienes el valor de estadoCivil
-	 */
-	
-	public String getEstadoCivil() {
-		return estadoCivil;
-	}
-
-
-	
-	/**
-	 * @param Agregar el valor a estadoCivil
-	 */
-	
-	public void setEstadoCivil(String estadoCivil) {
-		this.estadoCivil = estadoCivil;
-	}
-
-
-	/**
-	 * @return Obtienes el valor de sueldo
-	 */
-	
-	public int getSueldo() {
-		return sueldo;
-	}
-
-	/**
-	 * @return Obtienes el valor de status
-	 */
-	
-	public String getStatus() {
-		return Status;
-	}
-
-	/**
-	 * @return Obtienes el valor de codArea
-	 */
-	
-	public String getCodArea() {
-		return codArea;
-	}
-	
-	/**
-	 * @return Obtienes el valor de correoSecundario
+	 * @return Obtienes el valor de correoSecundario del tipo String
 	 */
 	
 	public String getCorreoSecundario() {
 		return CorreoSecundario;
 	}
+	
+	
+	
 	/**
-	 * @return Obtienes el valor de urlComprobanteDomicilio
+	 * @return Obtienes el valor de idlocalidad del tipo int
+	 */
+	
+	public int getIdlocalidad() {
+		return idlocalidad;
+	}
+
+
+	
+	/**
+	 * @param Agregar el valor a idlocalidad del tipo int
+	 */
+	
+	public void setIdlocalidad(int idlocalidad) {
+		this.idlocalidad = idlocalidad;
+	}
+
+
+	/**
+	 * @return Obtienes el valor de codpost del tipo int
+	 */
+	
+	public int getCodpost() {
+		return codpost;
+	}
+
+	
+	/**
+	 * @param Agregar el valor a codpost del tipo int
+	 */
+	
+	public void setCodpost(int codpost) {
+		this.codpost = codpost;
+	}
+
+	/**
+	 * @param Agregar el valor a correoSecundario del tipo String
+	 */
+	
+	public void setCorreoSecundario(String correoSecundario) {
+		CorreoSecundario = correoSecundario;
+	}
+	
+	/**
+	 * @return Obtienes el valor de urlComprobanteDomicilio del tipo String
 	 */
 	
 	public String getUrlComprobanteDomicilio() {
 		return urlComprobanteDomicilio;
 	}
 	
-	/*Seccion se Setters*/
-	
-	
-	
 	/**
-	 * @return Obtienes el valor de ncontrol
-	 */
-	
-	public String getNcontrol() {
-		return ncontrol;
-	}
-
-
-	/**
-	 * @param Agregar el valor a urlComprobanteDomicilio
+	 * @param Agregar el valor a urlComprobanteDomicilio del tipo String
 	 */
 	
 	public void setUrlComprobanteDomicilio(String urlComprobanteDomicilio) {
 		this.urlComprobanteDomicilio = urlComprobanteDomicilio;
 	}
-
+	
 	/**
-	 * @param Agregar el valor a correoSecundario
+	 * @return Obtienes el valor de nombreArea del tipo String
 	 */
 	
-	public void setCorreoSecundario(String correoSecundario) {
-		CorreoSecundario = correoSecundario;
+	public String getNombreArea() {
+		return nombreArea;
 	}
+	
 	/**
-	 * @param Agregar el valor a nombreArea
+	 * @param Agregar el valor a nombreArea del tipo String
 	 */
 	
 	public void setNombreArea(String nombreArea) {
@@ -135,7 +123,15 @@ public class DatosPersonalesBean5 {
 	}
 	
 	/**
-	 * @param Agregar el valor a codArea
+	 * @return Obtienes el valor de codArea del tipo String
+	 */
+	
+	public String getCodArea() {
+		return codArea;
+	}
+	
+	/**
+	 * @param Agregar el valor a codArea del tipo String
 	 */
 	
 	public void setCodArea(String codArea) {
@@ -143,27 +139,67 @@ public class DatosPersonalesBean5 {
 	}
 	
 	/**
-	 * @param Agregar el valor a status
+	 * @return Obtienes el valor de status del tipo String
+	 */
+	
+	public String getStatus() {
+		return Status;
+	}
+	
+	/**
+	 * @param Agregar el valor a status del tipo String
 	 */
 	
 	public void setStatus(String status) {
 		Status = status;
 	}
-
+	
 	/**
-	 * @param Agregar el valor a sueldo
+	 * @return Obtienes el valor de sueldo del tipo int
+	 */
+	
+	public int getSueldo() {
+		return sueldo;
+	}
+	
+	/**
+	 * @param Agregar el valor a sueldo del tipo int
 	 */
 	
 	public void setSueldo(int sueldo) {
 		this.sueldo = sueldo;
 	}
-
+	
 	/**
-	 * @param Agregar el valor a ncontrol
+	 * @return Obtienes el valor de ncontrol del tipo String
+	 */
+	
+	public String getNcontrol() {
+		return ncontrol;
+	}
+	
+	/**
+	 * @param Agregar el valor a ncontrol del tipo String
 	 */
 	
 	public void setNcontrol(String ncontrol) {
 		this.ncontrol = ncontrol;
+	}
+	
+	/**
+	 * @return Obtienes el valor de estadoCivil del tipo String
+	 */
+	
+	public String getEstadoCivil() {
+		return estadoCivil;
+	}
+	
+	/**
+	 * @param Agregar el valor a estadoCivil del tipo String
+	 */
+	
+	public void setEstadoCivil(String estadoCivil) {
+		this.estadoCivil = estadoCivil;
 	}
 	
 }

@@ -13,9 +13,14 @@ import com.vector.Beans.MsgBean;
  *
  */
 public interface BODatosHerramientas {
+	//MENSAJE DE CREACION DE LOS DATOS DE HERRAMIENTAS
 	MsgBean Crear(List<DatosHerramientasBean> datos);
+	//MENSAJE DE MODIFICACION DE LOS DATOS DE HERRAMIENTAS
 	MsgBean Modificar(DatosHerramientasBean datos);
+	//MENSAJE DE ELIMINACION DE LOS DATOS DE HERRAMIENTAS
 	MsgBean Eliminar(DatosHerramientasBean datos);
+	//REGRESA UNA BUSQUEDA DE LOS DATOS HERRAMIENTAS
 	List<DatosHerramientasBean> Buscar(DatosHerramientasBean datos);
+	//LISTADO DE DATOS DE HERRAMIENTAS
 	List<DatosHerramientasBean> Listar();
 }

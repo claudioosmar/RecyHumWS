@@ -52,7 +52,7 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 		// Sentencias SQL a ejecutar
 		final String sql = "INSERT INTO TBLPERSONAS VALUES(?,?,?,?,?,?,?,?)";
 		final String sql2 = "INSERT INTO TBLDETSPERSONAS VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-		final String sql3 = "INSERT INTO TBLDIRECCIONES VALUES(?,?,?,?,?,?)";
+		final String sql3 = "INSERT INTO TBLDIRECCIONES VALUES(?,?,?,?,?,?,?)";
 		final String sql4 = "INSERT INTO TBLpiv03 VALUES(?,?,?,?)";
 		final String sql5 = "INSERT INTO TBLPIV11 VALUES(?,?)";
 		final String sql6 = "INSERT INTO TBLPIV01 VALUES(?,?,?)";
@@ -77,12 +77,14 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 
 				// Segunda Insersion tbldireccion
 				PreparedStatement ps3 = con.prepareStatement(sql3);
+				System.out.println("id localidad "+datos.getIdlocalidad());
 				ps3.setInt(1, IDDireccion);
 				ps3.setString(2, datos.getCalle());
 				ps3.setString(3, datos.getColonia());
 				ps3.setString(4, datos.getNumeroInterior());
 				ps3.setString(5, datos.getNumeroExterior());
-				ps3.setInt(6, datos.getCodigoPostal());
+				ps3.setInt(6, datos.getCodpost());
+				ps3.setInt(7, datos.getIdlocalidad());
 				ResultSet rs3 = ps3.executeQuery();
 				rs3.next();
 				// Tercera insersion tbldetspersona
@@ -189,14 +191,14 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				// Catorceava insersion -- Telefonos -- Telefono de Emergencia
 				PreparedStatement ps14 = con.prepareStatement(sql6);
 				ps14.setInt(1, iDpersona);
-				ps14.setInt(2, datos.getIdTelefonoEmergencia());
+				ps14.setInt(2, 3);
 				ps14.setString(3, datos.getTelefonoEmergencia());
 				ResultSet rs14 = ps14.executeQuery();
 				rs14.next();
 				// Quinteava insersion -- Correos -- Correo Principal
 				PreparedStatement ps15 = con.prepareStatement(sql7);
 				ps15.setInt(1, iDpersona);
-				ps15.setInt(2, datos.getIdCorreoPrincipal());
+				ps15.setInt(2, 1);
 				ps15.setString(3, datos.getCorreoPrincipal());
 				ResultSet rs15 = ps15.executeQuery();
 				rs15.next();
@@ -267,12 +269,13 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 		DatosPersonalesBean retorno = new DatosPersonalesBean();
 		/* Sentencias SQL a ejecutar*/
 		//final String sql = "SELECT * FROM TBLPERSONAS PERS, TBLAREAS ARS, tbldetspersonas dts, tblestadosciviles edo, tbldirecciones dir WHERE dir.iddireccion = dts.iddireccion and dts.idedocivil=edo.idedocivil and PERS.IDAREA=ARS.IDAREA and pers.idpersona=dts.idpersona AND PERS.IDPERSONA= (?)";
-		final String sql2 ="SELECT * FROM TBLPERSONAS WHERE IDPERSONA=(?)";
+		final String sql2 ="SELECT * FROM TBLPERSONAS per, tblareas ars WHERE per.idarea=ars.idarea and IDPERSONA=(?)";
 		final String sql3 ="SELECT * FROM TBLDETSPERSONAS DTS, tblestadosciviles EDO WHERE DTS.IDEDOCIVIL=edo.idedocivil AND IDPERSONA=(?)";
 		final String sql4 ="SELECT * FROM TBLPIV03 WHERE IDPERSONA=(?) AND IDDOC =(?)";
 		final String sql5 ="SELECT * FROM TBLPIV11 WHERE IDPERSONA=(?) AND IDOTROSDOC =(?)";
-		final String sql6 ="SELECT * FROM TBLDETSPERSONAS DTS,TBLDIRECCIONES TDS WHERE DTS.IDDIRECCION=TDS.IDDIRECCION AND IDPERSONA=(?)";
+		final String sql6 ="SELECT * FROM TBLDETSPERSONAS DTS,TBLDIRECCIONES TDS, tbllocalidades loc WHERE DTS.IDDIRECCION=TDS.IDDIRECCION and tds.idlocalidad=loc.idlocalidad AND IDPERSONA=(?)";
 		final String sql7="SELECT * FROM TBLPIV11  WHERE IDPERSONA =(?) AND IDOTROSDOC=(?)";
+		final String sql8="select * from tblpiv01 where idpersona=(?) and idtipotelefono =(?)";
 		
 		// Apartado de execuciones
 		jdbcTemplate.update(new PreparedStatementCreator() {
@@ -286,6 +289,7 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				rs0.next();
 				retorno.setResumen(rs0.getString(5));
 				retorno.setObjetivoLaboral(rs0.getString(6));
+				retorno.setNombreArea(rs0.getString(10));
 				
 				
 				//consulta la tabla detalle persona
@@ -410,13 +414,39 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				ps10.setLong(1,datos.getIdpersona());
 				ResultSet rs10 = ps10.executeQuery();
 				rs10.next();
-				retorno.setCalle(rs10.getString(8));
-				retorno.setColonia(rs10.getString(9));
-				retorno.setNumeroInterior(rs10.getString(10));
-				retorno.setNumeroExterior(rs10.getString(11));
-				retorno.setCodigoPostal(rs10.getInt(12));
+				retorno.setCalle(rs10.getString(13));
+				retorno.setColonia(rs10.getString(14));
+				retorno.setNumeroInterior(rs10.getString(15));
+				retorno.setNumeroExterior(rs10.getString(16));
+				retorno.setCodpost(rs10.getInt(17));
+				retorno.setIdlocalidad(rs10.getInt(18));
 				
-				return ps10;
+				//consulta la tabla piv01 para obterner el telefono principal
+				PreparedStatement ps11 = con.prepareStatement(sql8);
+				ps11.setLong(1, datos.getIdpersona());
+				ps11.setInt(2,1);
+				ResultSet rs11 = ps11.executeQuery();
+				if(rs11.next()) {
+				retorno.setTelefonoPrincipal(rs11.getString(3));
+				}
+				
+				//consulta la tabla piv01 para obterner el telefono secundario
+				PreparedStatement ps12 = con.prepareStatement(sql8);
+				ps12.setLong(1, datos.getIdpersona());
+				ps12.setInt(2,2);
+				ResultSet rs12 = ps12.executeQuery();
+				rs12.next();
+				retorno.setTelefonoSecundario(rs12.getString(3));
+				
+				//consulta la tabla piv01 para obterner el telefono emergente
+				PreparedStatement ps13 = con.prepareStatement(sql8);
+				ps13.setLong(1, datos.getIdpersona());
+				ps13.setInt(2,3);
+				ResultSet rs13 = ps13.executeQuery();
+				rs13.next();
+				retorno.setTelefonoEmergencia(rs13.getString(3));
+				
+				return ps13;
 			}
 		});
 		return retorno;
@@ -498,7 +528,7 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				
 				// segunda actualizacion tbldirecciones
 				PreparedStatement ps2 = con.prepareStatement(sql2);
-				ps2.setLong(1, datos.getCodigoPostal());
+				ps2.setLong(1, datos.getIdCodigoPostal());
 				ps2.setString(2, datos.getCalle());
 				ps2.setString(3, datos.getColonia());
 				ps2.setString(4, datos.getNumeroInterior());
@@ -716,7 +746,7 @@ class DatPerRowMapper implements RowMapper<DatosPersonalesBean> {
 		retorno.setColonia(rs.getString(29));
 		retorno.setNumeroInterior(rs.getString(30));
 		retorno.setNumeroExterior(rs.getString(31));
-		retorno.setCodigoPostal(rs.getInt(32));
+		retorno.setIdCodigoPostal(rs.getInt(32));
 		return retorno;
 	}
 }

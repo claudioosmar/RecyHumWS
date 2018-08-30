@@ -62,7 +62,7 @@ public class DAODatosCursoImpl implements DAODatosCurso {
 				ps1.execute();
 				
 				if(datos.getIdcertificado()!=0) {
-					/*segunda insercion si se cumple*/
+					/*segunda insercion si se cumple y prerara la sentencia de insertan*/
 						PreparedStatement ps3 = con.prepareStatement(sql4);
 						System.out.println("datos de certificado: "+idcertificado+" "+datos.getNombrecertificado()+"\n");
 						ps3.setLong(1, idcertificado);

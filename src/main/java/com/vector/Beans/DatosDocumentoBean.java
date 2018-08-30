@@ -1,16 +1,17 @@
 /**
- * 
+ * DatosDocumentoBean.java -- 29/08/2018
  */
 package com.vector.Beans;
 
-import javax.validation.constraints.NotNull;
+import com.sun.istack.internal.NotNull;
 
 /**
- * @author JESUS ALEJANDRO CARRILLO SANCHEZ
- *
+ * @author Claudio
+ *RecyHumWS2--com.vector.Beans--DatosDocumentoBean
  */
+//Clase Bean para los datos de documentos
 public class DatosDocumentoBean {
-	//ATRIBUTOS DE DOCUMENTOS
+	//Variable para declara los getter y setter de documento
 	@NotNull
 	private int iddocumentoNw=0;
 	@NotNull
@@ -27,107 +28,132 @@ public class DatosDocumentoBean {
 	
 	@NotNull
 	private String urldocLt="";
-//SECCION DE GETTERS AND SETTERS
+
+	
 	/**
-	 * @return the iddocumentoNw
+	 * @return Obtienes el valor de iddocumentoNw del tipo int
 	 */
+	
 	public int getIddocumentoNw() {
 		return iddocumentoNw;
 	}
 
+	
 	/**
-	 * @param iddocumentoNw the iddocumentoNw to set
+	 * @param Agregar el valor a iddocumentoNw del tipo int
 	 */
+	
 	public void setIddocumentoNw(int iddocumentoNw) {
 		this.iddocumentoNw = iddocumentoNw;
 	}
 
+	
 	/**
-	 * @return the descripciondocNw
+	 * @return Obtienes el valor de descripciondocNw del tipo String
 	 */
+	
 	public String getDescripciondocNw() {
 		return descripciondocNw;
 	}
 
+	
 	/**
-	 * @param descripciondocNw the descripciondocNw to set
+	 * @param Agregar el valor a descripciondocNw del tipo String
 	 */
+	
 	public void setDescripciondocNw(String descripciondocNw) {
 		this.descripciondocNw = descripciondocNw;
 	}
 
+	
 	/**
-	 * @return the urldocNw
+	 * @return Obtienes el valor de urldocNw del tipo String
 	 */
+	
 	public String getUrldocNw() {
 		return urldocNw;
 	}
 
+	
 	/**
-	 * @param urldocNw the urldocNw to set
+	 * @param Agregar el valor a urldocNw del tipo String
 	 */
+	
 	public void setUrldocNw(String urldocNw) {
 		this.urldocNw = urldocNw;
 	}
 
+	
 	/**
-	 * @return the idpersona
+	 * @return Obtienes el valor de idpersona del tipo int
 	 */
+	
 	public int getIdpersona() {
 		return idpersona;
 	}
 
+	
 	/**
-	 * @param idpersona the idpersona to set
+	 * @param Agregar el valor a idpersona del tipo int
 	 */
+	
 	public void setIdpersona(int idpersona) {
 		this.idpersona = idpersona;
 	}
 
+	
 	/**
-	 * @return the iddocumentoLt
+	 * @return Obtienes el valor de iddocumentoLt del tipo int
 	 */
+	
 	public int getIddocumentoLt() {
 		return iddocumentoLt;
 	}
 
+	
 	/**
-	 * @param iddocumentoLt the iddocumentoLt to set
+	 * @param Agregar el valor a iddocumentoLt del tipo int
 	 */
+	
 	public void setIddocumentoLt(int iddocumentoLt) {
 		this.iddocumentoLt = iddocumentoLt;
 	}
 
+	
 	/**
-	 * @return the descripciondocLt
+	 * @return Obtienes el valor de descripciondocLt del tipo String
 	 */
+	
 	public String getDescripciondocLt() {
 		return descripciondocLt;
 	}
 
+	
 	/**
-	 * @param descripciondocLt the descripciondocLt to set
+	 * @param Agregar el valor a descripciondocLt del tipo String
 	 */
+	
 	public void setDescripciondocLt(String descripciondocLt) {
 		this.descripciondocLt = descripciondocLt;
 	}
 
+	
 	/**
-	 * @return the urldocLt
+	 * @return Obtienes el valor de urldocLt del tipo String
 	 */
+	
 	public String getUrldocLt() {
 		return urldocLt;
 	}
 
+	
 	/**
-	 * @param urldocLt the urldocLt to set
+	 * @param Agregar el valor a urldocLt del tipo String
 	 */
+	
 	public void setUrldocLt(String urldocLt) {
 		this.urldocLt = urldocLt;
 	}
-
-	
-	
 	
 	
 }

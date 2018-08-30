@@ -31,7 +31,7 @@ public class DatosEstudioController {
 	
 	@RequestMapping(path = "/SGRHWebService/DatosEstudio/Crear", method = RequestMethod.POST)
 	public ResponseEntity<DatosEstudioBean> insertar(@RequestBody List<DatosEstudioBean> datos){
-		System.out.print("Se agrego un estudio "+datos.get(0).getIdestudio()+" id de carrera"+datos.get(0).getIdcarrera()+"\n ");
+		System.out.println("datos  de estudio a ingresar desde controller: id grado:"+datos.get(0).getIdgrado()+" id localidad:"+datos.get(0).getIdlocalidad()+" periodo inicial:"+datos.get(0).getPeriodoinicial()+" periodo final:"+datos.get(0).getPeriodofinal()+" "+ "nombre carrera:"+datos.get(0).getNombrecorrera());
 		return new ResponseEntity<DatosEstudioBean>(estudio.Crear(datos),HttpStatus.OK);
 	}
 	

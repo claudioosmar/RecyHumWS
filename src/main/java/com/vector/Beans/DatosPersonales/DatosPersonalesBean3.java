@@ -1,15 +1,16 @@
 /**
- * DatosPersonalesBean3.java -- 25/08/2018
+ * DatosPersonalesBean3.java -- 30/08/2018
  */
 package com.vector.Beans.DatosPersonales;
 
-import javax.validation.constraints.NotNull;
+import com.sun.istack.internal.NotNull;
 
 /**
  * @author Claudio
  *RecyHumWS2--com.vector.Beans.DatosPersonales--DatosPersonalesBean3
  */
-public class DatosPersonalesBean3 extends DatosPersonalesBean4 {
+//Clase Bean de datos personales 3 extendido de datos personales 4
+public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	/*Variables de DatosPersonales*/
 	@NotNull
 	private int idDisponibilidadCambio=0;
@@ -34,7 +35,7 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4 {
 	
 	/*Seccion de getters*/
 	/**
-	 * @return Obtienes el valor de idDisponibilidadCambio
+	 * @return Obtienes el valor de idDisponibilidadCambio del tipo int
 	 */
 	
 	public int getIdDisponibilidadCambio() {
@@ -42,7 +43,15 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4 {
 	}
 	
 	/**
-	 * @return Obtienes el valor de nacionalidad
+	 * @param Agregar el valor a idDisponibilidadCambio del tipo int
+	 */
+	
+	public void setIdDisponibilidadCambio(int idDisponibilidadCambio) {
+		this.idDisponibilidadCambio = idDisponibilidadCambio;
+	}
+	
+	/**
+	 * @return Obtienes el valor de nacionalidad del tipo String
 	 */
 	
 	public String getNacionalidad() {
@@ -50,7 +59,15 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4 {
 	}
 	
 	/**
-	 * @return Obtienes el valor de resumen
+	 * @param Agregar el valor a nacionalidad del tipo String
+	 */
+	
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
+	}
+	
+	/**
+	 * @return Obtienes el valor de resumen del tipo String
 	 */
 	
 	public String getResumen() {
@@ -58,7 +75,15 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4 {
 	}
 	
 	/**
-	 * @return Obtienes el valor de objetivoLaboral
+	 * @param Agregar el valor a resumen del tipo String
+	 */
+	
+	public void setResumen(String resumen) {
+		this.resumen = resumen;
+	}
+	
+	/**
+	 * @return Obtienes el valor de objetivoLaboral del tipo String
 	 */
 	
 	public String getObjetivoLaboral() {
@@ -66,7 +91,15 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4 {
 	}
 	
 	/**
-	 * @return Obtienes el valor de calle
+	 * @param Agregar el valor a objetivoLaboral del tipo String
+	 */
+	
+	public void setObjetivoLaboral(String objetivoLaboral) {
+		ObjetivoLaboral = objetivoLaboral;
+	}
+	
+	/**
+	 * @return Obtienes el valor de calle del tipo String
 	 */
 	
 	public String getCalle() {
@@ -74,7 +107,15 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4 {
 	}
 	
 	/**
-	 * @return Obtienes el valor de numeroExterior
+	 * @param Agregar el valor a calle del tipo String
+	 */
+	
+	public void setCalle(String calle) {
+		this.calle = calle;
+	}
+	
+	/**
+	 * @return Obtienes el valor de numeroExterior del tipo String
 	 */
 	
 	public String getNumeroExterior() {
@@ -82,7 +123,15 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4 {
 	}
 	
 	/**
-	 * @return Obtienes el valor de numeroInterior
+	 * @param Agregar el valor a numeroExterior del tipo String
+	 */
+	
+	public void setNumeroExterior(String numeroExterior) {
+		this.numeroExterior = numeroExterior;
+	}
+	
+	/**
+	 * @return Obtienes el valor de numeroInterior del tipo String
 	 */
 	
 	public String getNumeroInterior() {
@@ -90,15 +139,31 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4 {
 	}
 	
 	/**
-	 * @return Obtienes el valor de codigoPostal
+	 * @param Agregar el valor a numeroInterior del tipo String
 	 */
 	
-	public int getCodigoPostal() {
+	public void setNumeroInterior(String numeroInterior) {
+		this.numeroInterior = numeroInterior;
+	}
+	
+	/**
+	 * @return Obtienes el valor de idCodigoPostal del tipo int
+	 */
+	
+	public int getIdCodigoPostal() {
 		return idCodigoPostal;
 	}
 	
 	/**
-	 * @return Obtienes el valor de pais
+	 * @param Agregar el valor a idCodigoPostal del tipo int
+	 */
+	
+	public void setIdCodigoPostal(int idCodigoPostal) {
+		this.idCodigoPostal = idCodigoPostal;
+	}
+	
+	/**
+	 * @return Obtienes el valor de pais del tipo String
 	 */
 	
 	public String getPais() {
@@ -106,98 +171,23 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4 {
 	}
 	
 	/**
-	 * @return Obtienes el valor de idmunicipio
-	 */
-	
-	public String getIdmunicipio() {
-		return idmunicipio;
-	}
-
-	/*Seccion se Setters*/
-	
-	/**
-	 * @param Agregar el valor a idDisponibilidadCambio
-	 */
-	
-	public void setIdDisponibilidadCambio(int idDisponibilidadCambio) {
-		this.idDisponibilidadCambio = idDisponibilidadCambio;
-	}
-
-	
-	/**
-	 * @param Agregar el valor a nacionalidad
-	 */
-	
-	public void setNacionalidad(String nacionalidad) {
-		this.nacionalidad = nacionalidad;
-	}
-
-	
-	/**
-	 * @param Agregar el valor a resumen
-	 */
-	
-	public void setResumen(String resumen) {
-		this.resumen = resumen;
-	}
-
-	
-	/**
-	 * @param Agregar el valor a objetivoLaboral
-	 */
-	
-	public void setObjetivoLaboral(String objetivoLaboral) {
-		ObjetivoLaboral = objetivoLaboral;
-	}
-
-	
-	/**
-	 * @param Agregar el valor a calle
-	 */
-	
-	public void setCalle(String calle) {
-		this.calle = calle;
-	}
-
-	
-	/**
-	 * @param Agregar el valor a numeroExterior
-	 */
-	
-	public void setNumeroExterior(String numeroExterior) {
-		this.numeroExterior = numeroExterior;
-	}
-
-	
-	/**
-	 * @param Agregar el valor a numeroInterior
-	 */
-	
-	public void setNumeroInterior(String numeroInterior) {
-		this.numeroInterior = numeroInterior;
-	}
-
-	
-	/**
-	 * @param Agregar el valor a codigoPostal
-	 */
-	
-	public void setCodigoPostal(int codigoPostal) {
-		idCodigoPostal = codigoPostal;
-	}
-
-	
-	/**
-	 * @param Agregar el valor a pais
+	 * @param Agregar el valor a pais del tipo String
 	 */
 	
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
-
 	
 	/**
-	 * @param Agregar el valor a idmunicipio
+	 * @return Obtienes el valor de idmunicipio del tipo String
+	 */
+	
+	public String getIdmunicipio() {
+		return idmunicipio;
+	}
+	
+	/**
+	 * @param Agregar el valor a idmunicipio del tipo String
 	 */
 	
 	public void setIdmunicipio(String idmunicipio) {

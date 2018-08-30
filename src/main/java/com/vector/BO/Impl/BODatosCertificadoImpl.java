@@ -27,6 +27,7 @@ public class BODatosCertificadoImpl implements BODatosCertificado {
 	public MsgBean Crear(List<DatosCertificadoBean> datos) {
 		// TODO Auto-generated method stub
 		int respuesta=0;
+		//Sentencia for para la validacion del tamaño de los datos del bean
 		for (int i = 0; i < datos.size(); i++) {
 			respuesta = daocertificado.Crear(datos.get(i));
 			if (respuesta==0) {
@@ -34,13 +35,16 @@ public class BODatosCertificadoImpl implements BODatosCertificado {
 		
 			}
 		}
-
+		//Condicional para el envio del mensaje de respuesta
 		MsgBean mensaje = new MsgBean();
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
 		if(respuesta == 1) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 			return mensaje;
-		}else {
+		}
+		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
+		else {
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		return mensaje;
 	}
@@ -52,12 +56,16 @@ public class BODatosCertificadoImpl implements BODatosCertificado {
 	@Override
 	public MsgBean Modificar(DatosCertificadoBean datos) {
 		// TODO Auto-generated method stub
+		//Condicional para el envio del mensaje de respuesta
 		MsgBean mensaje = new MsgBean();
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		int resultado = daocertificado.Modificar(datos);
+		//Condicion que genera mensaje de modificacion exitosa
 		if(resultado == 1) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
-		}else {
+		}
+		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
+		else {
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		}
 		return mensaje;
@@ -70,12 +78,16 @@ public class BODatosCertificadoImpl implements BODatosCertificado {
 	public MsgBean Eliminar(DatosCertificadoBean datos) {
 		// TODO Auto-generated method stub
 		int respuesta=daocertificado.Eliminar(datos);
+		//Condicional para el envio del mensaje de respuesta
 		MsgBean msj = new MsgBean();
+		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
 		if(respuesta==1) {
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
 			
 			return msj;
-		}else {
+		}
+		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
+		else {
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
 			
 			return msj;

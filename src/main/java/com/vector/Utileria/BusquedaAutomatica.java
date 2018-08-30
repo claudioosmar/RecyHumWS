@@ -43,20 +43,28 @@ public class BusquedaAutomatica {
 	/*metodo para enlistar los estados desde la base de datos*/
 	@RequestMapping(value = "/SGRHWebService/BusquedaAutomatica/ListarEstado",method=RequestMethod.POST)
 	public List<BusquedaAutomatica>Busqueda(BusquedaAutomatica datos) {
+		//sentencia sql para recuperar los estados
 		final String sql = "select * from tblestados";
 		
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				//preparacion de la sentencia
 				PreparedStatement ps = con.prepareStatement(sql);	
+				//mensaje en consola
 				System.out.println("se enlistaron los estados");
+				// recuperando los datos
 				ResultSet rs = ps.executeQuery();
+				//metodo set que retorna las filas de la sentencia
 				setDatosBusquedaEstados(rs);
+				//retorna la sentencia
 				return ps;
 		
 			}
 		});
+		//variable de retorno que obtiene la lista de la opbencion de datos
 		List<BusquedaAutomatica> retorno = getDatosBusquedaEstados();
+		//retorna retorno
 		return retorno;
 	}
 	

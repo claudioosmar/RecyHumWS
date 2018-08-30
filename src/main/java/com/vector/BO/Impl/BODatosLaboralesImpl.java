@@ -28,9 +28,9 @@ public class BODatosLaboralesImpl implements BODatosLaborales {
 	@Override
 	public DatosLaboralesBean Crear(List<DatosLaboralesBean> datos) {
 		// TODO Auto-generated method stub
-		
 		DatosLaboralesBean retorno = new DatosLaboralesBean();
 		System.out.println("Tamaño del arreglo"+ datos.size());
+		//Sentencia for para la validacion del tamaño de los datos del bean
 		for (int i = 0; i < datos.size(); i++) {
 			retorno.setIdexplaborl(daolabor.Crear(datos.get(i))); 
 		}
@@ -45,11 +45,15 @@ public class BODatosLaboralesImpl implements BODatosLaborales {
 	public MsgBean Modificar(DatosLaboralesBean datos) {
 		// TODO Auto-generated method stub
 		int respuesta = daolabor.Modificar(datos);
+		//Condicional para el envio del mensaje de respuesta
 		MsgBean mensaje = new MsgBean();
+		//Condicion que genera mensaje de modificacion exitosa
 		if(respuesta==1) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 			return mensaje;
-		}else {
+		}
+		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
+		else {
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 			return mensaje;
 		}
@@ -64,10 +68,13 @@ public class BODatosLaboralesImpl implements BODatosLaborales {
 		// TODO Auto-generated method stub
 		int respuesta = daolabor.Eliminar(id);
 		MsgBean mensaje = new MsgBean();
+		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
 		if(respuesta==1) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 			return mensaje;
-		}else {
+		}
+		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
+		else {
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 			return mensaje;
 		}
