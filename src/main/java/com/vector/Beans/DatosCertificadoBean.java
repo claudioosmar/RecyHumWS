@@ -1,15 +1,17 @@
 /**
- * 
+ * DatosCertificadoBean.java -- 29/08/2018
  */
 package com.vector.Beans;
 
-import javax.validation.constraints.NotNull;
+import com.sun.istack.internal.NotNull;
 
 /**
- * @author vectormx
- *
+ * @author Claudio
+ *RecyHumWS2--com.vector.Beans--DatosCertificadoBean
  */
+// CLASE QUE CONTIENE LAS VARIABLES PARA INGRESAR DATOS EN LA BASE DE DATOS
 public class DatosCertificadoBean {
+	//ATRIBUTOS PARA INGRESAR LOS DATOS DE CERTIFICADOS
 	@NotNull
 	private String nomcertificadoNw=""; 
 	@NotNull
@@ -22,82 +24,122 @@ public class DatosCertificadoBean {
 	private int iddocumentoLt=0;
 	@NotNull
 	private int idestudio=0;
+	@NotNull
+	private long idpersona;
 	
 	
+	//DECLARACIÓN DE GETTERS Y SETTERS
 	/**
-	 * @return the iddocumentoLt
+	 * @return Obtienes el valor de nomcertificadoNw
 	 */
-	public int getIddocumentoLt() {
-		return iddocumentoLt;
-	}
-	/**
-	 * @param iddocumentoLt the iddocumentoLt to set
-	 */
-	public void setIddocumentoLt(int iddocumentoLt) {
-		this.iddocumentoLt = iddocumentoLt;
-	}
-	/**
-	 * @return the idestudio
-	 */
-	public int getIdestudio() {
-		return idestudio;
-	}
-	/**
-	 * @param idestudio the idestudio to set
-	 */
-	public void setIdestudio(int idestudio) {
-		this.idestudio = idestudio;
-	}
-	/**
-	 * @return the idcertificado
-	 */
-	public int getIdcertificado() {
-		return idcertificado;
-	}
-	/**
-	 * @param idcertificado the idcertificado to set
-	 */
-	public void setIdcertificado(int idcertificado) {
-		this.idcertificado = idcertificado;
-	}
-	/**
-	 * @return the nombrecertificado
-	 */
+	
 	public String getNomcertificadoNw() {
 		return nomcertificadoNw;
 	}
+	
 	/**
-	 * @param nombrecertificado the nombrecertificado to set
+	 * @param Agregar el valor a nomcertificadoNw
 	 */
-	public void setNomcertificadoNw(String nomcertificado) {
-		this.nomcertificadoNw = nomcertificado;
+	
+	public void setNomcertificadoNw(String nomcertificadoNw) {
+		this.nomcertificadoNw = nomcertificadoNw;
 	}
+	
 	/**
-	 * @return the nomcertificadoLt
+	 * @return Obtienes el valor de iddocumentoNw
 	 */
-	public String getNomcertificadoLt() {
-		return nomcertificadoLt;
-	}
-	/**
-	 * @param nomcertificadoLt the nomcertificadoLt to set
-	 */
-	public void setNomcertificadoLt(String nomcertificadoLt) {
-		this.nomcertificadoLt = nomcertificadoLt;
-	}
-	/**
-	 * @return the iddocumento
-	 */
+	
 	public int getIddocumentoNw() {
 		return iddocumentoNw;
 	}
+	
 	/**
-	 * @param iddocumento the iddocumento to set
+	 * @param Agregar el valor a iddocumentoNw
 	 */
-	public void setIddocumentoNw(int iddocumento) {
-		this.iddocumentoNw = iddocumento;
+	
+	public void setIddocumentoNw(int iddocumentoNw) {
+		this.iddocumentoNw = iddocumentoNw;
 	}
-
-
+	
+	/**
+	 * @return Obtienes el valor de idcertificado
+	 */
+	
+	public int getIdcertificado() {
+		return idcertificado;
+	}
+	
+	/**
+	 * @param Agregar el valor a idcertificado
+	 */
+	
+	public void setIdcertificado(int idcertificado) {
+		this.idcertificado = idcertificado;
+	}
+	
+	/**
+	 * @return Obtienes el valor de nomcertificadoLt
+	 */
+	
+	public String getNomcertificadoLt() {
+		return nomcertificadoLt;
+	}
+	
+	/**
+	 * @param Agregar el valor a nomcertificadoLt
+	 */
+	
+	public void setNomcertificadoLt(String nomcertificadoLt) {
+		this.nomcertificadoLt = nomcertificadoLt;
+	}
+	
+	/**
+	 * @return Obtienes el valor de iddocumentoLt
+	 */
+	
+	public int getIddocumentoLt() {
+		return iddocumentoLt;
+	}
+	
+	/**
+	 * @param Agregar el valor a iddocumentoLt
+	 */
+	
+	public void setIddocumentoLt(int iddocumentoLt) {
+		this.iddocumentoLt = iddocumentoLt;
+	}
+	
+	/**
+	 * @return Obtienes el valor de idestudio
+	 */
+	
+	public int getIdestudio() {
+		return idestudio;
+	}
+	
+	/**
+	 * @param Agregar el valor a idestudio
+	 */
+	
+	public void setIdestudio(int idestudio) {
+		this.idestudio = idestudio;
+	}
+	
+	/**
+	 * @return Obtienes el valor de idpersona
+	 */
+	
+	public long getIdpersona() {
+		return idpersona;
+	}
+	
+	/**
+	 * @param Agregar el valor a idpersona
+	 */
+	
+	public void setIdpersona(long idpersona) {
+		this.idpersona = idpersona;
+	}
 	
 	
 }

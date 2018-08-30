@@ -37,7 +37,7 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 	 */
 
 	@Transactional(readOnly = true)
-	public int Crear(DatosEstudioBean datos) {
+	public long Crear(DatosEstudioBean datos) {
 		// TODO Auto-generated method stub
 		autoin= new AutoIncrementablesBDOracle();
 		long idcarrera=autoin.CarreraIDUltimo(jdbcTemplate);
@@ -85,7 +85,12 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 				return ps5;
 			}
 		});
-		return respuesta;
+		if (respuesta==1) {
+			return idestudio;
+		}else {
+			return 0;
+		}
+		
 	}
 	
 

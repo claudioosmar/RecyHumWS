@@ -26,21 +26,16 @@ public class BODatosLaboralesImpl implements BODatosLaborales {
 	 * @see com.vector.BO.BODatosLaborales#Crear(com.vector.Beans.DatosLaboralesBean)
 	 */
 	@Override
-	public MsgBean Crear(List<DatosLaboralesBean> datos) {
+	public DatosLaboralesBean Crear(List<DatosLaboralesBean> datos) {
 		// TODO Auto-generated method stub
-		MsgBean mensaje = new MsgBean();
-		int resultado=0;
+		
+		DatosLaboralesBean retorno = new DatosLaboralesBean();
 		System.out.println("Tamaño del arreglo"+ datos.size());
 		for (int i = 0; i < datos.size(); i++) {
-			resultado = daolabor.Crear(datos.get(i));
+			retorno.setIdexplaborl(daolabor.Crear(datos.get(i))); 
 		}
-		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
-		if(resultado == 1) {
-			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
-		}else {
-			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
-		}
-		return mensaje;
+		
+		return retorno;
 	}
 
 	/* (non-Javadoc)

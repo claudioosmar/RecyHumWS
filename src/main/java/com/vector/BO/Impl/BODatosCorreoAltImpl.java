@@ -59,15 +59,19 @@ public class BODatosCorreoAltImpl implements BODatosCorreoAlt {
 	public MsgBean Modificar(DatosCorreoAltBean datos) {
 		// TODO Auto-generated method stub
 		int respuesta = daocorreo.Modificar(datos);
-		MsgBean msj = new MsgBean();
-		if(respuesta==1) {
-			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
+		//MENSAJE DE MODIFICACION EXITOSA
+		MsgBean mensaje = new MsgBean();
+		if(respuesta == 1) {
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 			
-			return msj;
-		}else {
-			msj.setMsjAccion(new EnvioMensaje().getFallo());
+			return mensaje;
+		}
+		//MENSAJE DE MODIFICACION FALLIDA
+		else {
+			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 			
-			return msj;
+			//SE CREA EL MENSAJE
+			return mensaje;
 		}
 	}
 
@@ -75,9 +79,9 @@ public class BODatosCorreoAltImpl implements BODatosCorreoAlt {
 	 * @see com.vector.BO.BODatosCorreoAlt#Eliminar(int)
 	 */
 	@Override
-	public MsgBean Eliminar(String id) {
+	public MsgBean Eliminar(DatosCorreoAltBean datos) {
 		// TODO Auto-generated method stub
-		int respuesta=daocorreo.Eliminar(id);
+		int respuesta=daocorreo.Eliminar(datos);
 		MsgBean msj = new MsgBean();
 		if(respuesta==1) {
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());

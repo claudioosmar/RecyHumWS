@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
-
-
 import com.vector.Beans.DatosDocumentoBean;
 import com.vector.DAO.DAODatosDocumento;
 
@@ -27,6 +26,7 @@ import com.vector.DAO.DAODatosDocumento;
 public class DAODatosDocumentosImpl implements DAODatosDocumento {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	List<DatosDocumentoBean> datos;
 	
 	/* (non-Javadoc)
 	 * @see com.vector.DAO.DAODatosDocumento#Crear(com.vector.Beans.DatosDocumentoBean)
@@ -35,6 +35,7 @@ public class DAODatosDocumentosImpl implements DAODatosDocumento {
 	@Override
 	public int Crear(DatosDocumentoBean datos) {
 		// TODO Auto-generated method stub
+		//SENTENCIA SQL PARA INSERSION DE DATOS!
 		final String sql="INSERT INTO TBLPIV03 VALUES(?,?,?,?)";		
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
@@ -57,6 +58,7 @@ public class DAODatosDocumentosImpl implements DAODatosDocumento {
 	@Override
 	public int Modificar(DatosDocumentoBean datos) {
 		// TODO Auto-generated method stub
+		//SENTENCIA SQL PARA LA MODIFICACION O ACTUALIZACION DE DATOS
 		final String sql="update tblpiv03 set iddoc =(?), descripcion = (?), urldoc = (?) where idpersona = (?) and iddoc = (?)";		
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
@@ -78,16 +80,18 @@ public class DAODatosDocumentosImpl implements DAODatosDocumento {
 	 * @see com.vector.DAO.DAODatosDocumento#Eliminar(int)
 	 */
 	@Override
-	public int Eliminar(int id) {
+	public int Eliminar(DatosDocumentoBean datos) {
 		// TODO Auto-generated method stub
-final String sql="delete tblpiv03 where iddoc = (?)";
+		//SENTENCIA SQL DE ELIIMINACION DE DATOS
+		final String sql="delete tblpiv03 where iddoc = (?) and idpersona = (?)";
 		
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				//ELIMINACION DE DATOS DE LA TABLA PIVOTE 03
 				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setInt(1, id);
+				ps.setInt(1, datos.getIddocumentoNw());
+				ps.setInt(2, datos.getIdpersona());
 				return ps;
 			}
 		});
@@ -98,24 +102,24 @@ final String sql="delete tblpiv03 where iddoc = (?)";
 	 * @see com.vector.DAO.DAODatosDocumento#Buscar(com.vector.Beans.DatosDocumentoBean)
 	 */
 	@Override
-	public DatosDocumentoBean Buscar(DatosDocumentoBean datos) {
+	public List<DatosDocumentoBean> Buscar(DatosDocumentoBean datos) {
 		// TODO Auto-generated method stub
+		//SENTENCIA SQL PARA LA GENERACION DE UNA CONSULTA
 		final String sql = "select * from tblpiv03 where iddoc = (?) and idpersona = (?)";
-		DatosDocumentoBean respuesta = new DatosDocumentoBean();
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				//CONSULTA DE DATOS DE LA TABLA PIVOTE 03
 				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setInt(1, datos.getIddocumentoNw());
 				ps.setInt(2, datos.getIdpersona());
+				ps.setInt(1, datos.getIddocumentoNw());
 				ResultSet rs = ps.executeQuery();
-				rs.next();
-				respuesta.setDescripciondocNw(rs.getString(3));
-				respuesta.setUrldocNw(rs.getString(4));
+				setDatosDocumento(rs);
 				return ps;
 			}
 		});
-		return respuesta;
+		List<DatosDocumentoBean> retorno = getDatosDocumento();
+		return retorno;
 	}
 
 	/* (non-Javadoc)
@@ -128,7 +132,22 @@ final String sql="delete tblpiv03 where iddoc = (?)";
 		System.out.println(sql);
 		return jdbcTemplate.query(sql, new DocRowMapper());
 	}
+	private void setDatosDocumento(ResultSet rs) throws SQLException{
+		datos= new ArrayList<DatosDocumentoBean>();
+		DatosDocumentoBean respuesta;
+		while(rs.next()) {
+			respuesta = new DatosDocumentoBean();
+			respuesta.setDescripciondocNw(rs.getString(3));
+			respuesta.setIdpersona(rs.getInt(1));
+			
+			
+			this.datos.add(respuesta);
+			}
+	}
 
+	private List<DatosDocumentoBean>getDatosDocumento(){
+		return this.datos;
+	}
 }
 class DocRowMapper implements RowMapper<DatosDocumentoBean>{
 

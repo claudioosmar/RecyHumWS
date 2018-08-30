@@ -14,7 +14,7 @@ import com.vector.Beans.MsgBean;
  */
 public interface BODatosEstudio {
 	
-	MsgBean Crear(List<DatosEstudioBean> datos);
+	DatosEstudioBean Crear(List<DatosEstudioBean> datos);
 	MsgBean Modificar(DatosEstudioBean datos);
 	MsgBean Eliminar(DatosEstudioBean datos);
 	List<DatosEstudioBean> Buscar(DatosEstudioBean datos);

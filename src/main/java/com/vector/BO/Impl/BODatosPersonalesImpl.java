@@ -28,21 +28,12 @@ public class BODatosPersonalesImpl implements BODatosPersonales {
 	 */
 	@Override
 	//Creacion de datos Personales
-	public MsgBean Crear(DatosPersonalesBean datos) {
+	public DatosPersonalesBean Crear(DatosPersonalesBean datos) {
 		// TODO Auto-generated method stub
-		MsgBean mensaje = new MsgBean();
-		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
-		int resultado = datospersonales.Crear(datos);
-		//La creacion fue exitosa
-		if(resultado == 1) {
-			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
-		}
-		//Fallo en la creacion
-		else {
-			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
-		}
-		//regreso de mensaje
-		return mensaje;
+		DatosPersonalesBean retorno = new DatosPersonalesBean();
+		int respuesta = datospersonales.Crear(datos);
+		retorno.setIdpersona(respuesta);
+		return retorno;
 	}
 
 	/* (non-Javadoc)
@@ -76,7 +67,7 @@ public class BODatosPersonalesImpl implements BODatosPersonales {
 		MsgBean mensaje = new MsgBean();
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		int resultado = datospersonales.Eliminar(datos.getIdpersona());
-		if(resultado == 0) {
+		if(resultado == 1) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 		}else {
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());

@@ -15,7 +15,7 @@ import com.vector.Beans.MsgBean;
 public interface BODatosCertificado {
 	MsgBean Crear(List<DatosCertificadoBean> datos);
 	MsgBean Modificar(DatosCertificadoBean datos);
-	MsgBean Eliminar(int id);
-	DatosCertificadoBean Buscar(DatosCertificadoBean datos);
-	List<DatosCertificadoBean> Listar(int id);
+	MsgBean Eliminar(DatosCertificadoBean datos);
+	List<DatosCertificadoBean> Buscar(DatosCertificadoBean datos);
+	List<DatosCertificadoBean> Listar();
 }

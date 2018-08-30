@@ -27,9 +27,9 @@ public class DatosLaboralesController {
 	private BODatosLaborales laborales;
 	
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Crear", method = RequestMethod.POST)
-	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosLaboralesBean> datos){
+	public ResponseEntity<DatosLaboralesBean> insertar(@RequestBody List<DatosLaboralesBean> datos){
 		System.out.print("Se creo un registro laboral"+datos.get(0).getIdpersona()+"\n ");
-		return new ResponseEntity<MsgBean>(laborales.Crear(datos),HttpStatus.OK);
+		return new ResponseEntity<DatosLaboralesBean>(laborales.Crear(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Modificar",method = RequestMethod.POST)

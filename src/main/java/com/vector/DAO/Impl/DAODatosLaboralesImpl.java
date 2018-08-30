@@ -76,7 +76,12 @@ public class DAODatosLaboralesImpl implements DAODatosLaborales {
 				return ps2;
 			}
 		});
-		return respuesta;
+		if (respuesta==1) {
+			return IDExpLaboral;
+		}else {
+			return 0;
+		}
+		
 	}
 
 	/* (non-Javadoc)

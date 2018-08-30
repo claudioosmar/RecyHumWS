@@ -151,6 +151,7 @@ public class DAODatosIdiomasImpl implements DAODatosIdiomas {
 			DatosIdiomasBean respuesta;
 			while(rs.next()) {
 				respuesta = new DatosIdiomasBean();
+				respuesta.setIddominio(rs.getInt(1));
 				respuesta.setPcjescrito(rs.getInt(2));
 				respuesta.setPcjhablado(rs.getInt(3));
 				respuesta.setPcjentendido(rs.getInt(4));

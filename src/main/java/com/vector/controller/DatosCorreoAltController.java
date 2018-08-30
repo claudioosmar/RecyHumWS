@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vector.BO.BODatosCorreoAlt;
 import com.vector.Beans.DatosCorreoAltBean;
 import com.vector.Beans.MsgBean;
-
 /**
  * @author JESUS ALEJANDRO CARRILLO SANCHEZ
  *
@@ -28,31 +27,31 @@ public class DatosCorreoAltController {
 	
 	@RequestMapping(path = "/SGRHWebService/DatosCorreo/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosCorreoAltBean> datos){
-		System.out.print("Se creo un correo "+datos.get(0).getCorreoNw()+ "al ID de persona" +datos.get(0).getIdpersona()+"\n ");
+		System.out.print("Se creo un correo "+datos.get(0).getCorreoNw()+ "al ID de persona" +datos.get(0).getIdpersona());
 		return new ResponseEntity<MsgBean>(correo.Crear(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosCorreo/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosCorreoAltBean datos){
-		System.out.print("Se modifico el correo"+datos.getCorreoNw()+" al ID de persona "+datos.getIdpersona()+"\n ");
+		System.out.print("Se modifico el correo "+datos.getCorreoNw()+" al ID de persona "+datos.getIdpersona());
 		return new ResponseEntity<MsgBean>(correo.Modificar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosCorreo/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosCorreoAltBean datos){
-		System.out.print("se elimino el correo "+datos.getCorreoNw()+"\n ");
-		return new ResponseEntity<MsgBean>(correo.Eliminar(datos.getCorreoNw()),HttpStatus.OK);
+		System.out.print("se elimino el correo "+datos.getCorreoNw());
+		return new ResponseEntity<MsgBean>(correo.Eliminar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosCorreo/Buscar",method=RequestMethod.POST)
-	public ResponseEntity<DatosCorreoAltBean>buscar(@RequestBody DatosCorreoAltBean datos){
-		System.out.print("se busco el correo"+datos.getCorreoNw()+" al ID persona "+datos.getIdpersona()+"\n ");
+	public ResponseEntity<DatosCorreoAltBean> buscar(@RequestBody DatosCorreoAltBean datos){
+		System.out.print("se busco el correo"+datos.getCorreoNw()+" al ID persona "+datos.getIdpersona());
 		return new ResponseEntity<DatosCorreoAltBean>(correo.Buscar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosCorreo/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosCorreoAltBean>> consulta(@RequestBody DatosCorreoAltBean datos){
-		System.out.println("Ingresando a listar estudio "+"\n ");
+		System.out.println("Ingresando a listar estudio ");
 		List<DatosCorreoAltBean> correos = correo.Listar(datos.getIdpersona());
 		if(correos.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

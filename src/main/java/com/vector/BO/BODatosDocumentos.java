@@ -15,7 +15,7 @@ import com.vector.Beans.MsgBean;
 public interface BODatosDocumentos {
 	MsgBean Crear(List<DatosDocumentoBean> datos);
 	MsgBean Modificar(DatosDocumentoBean datos);
-	MsgBean Eliminar(int id);
-	DatosDocumentoBean Buscar(DatosDocumentoBean datos);
+	MsgBean Eliminar(DatosDocumentoBean datos);
+	List<DatosDocumentoBean> Buscar(DatosDocumentoBean datos);
 	List<DatosDocumentoBean> Listar(long id);
 }

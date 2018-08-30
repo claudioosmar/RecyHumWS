@@ -12,7 +12,7 @@ import com.vector.Beans.DatosEstudioBean;
  *
  */
 public interface DAODatosEstudio {
-	int  Crear(DatosEstudioBean datos);
+	long  Crear(DatosEstudioBean datos);
 	int  Modificar(DatosEstudioBean datos);
 	int  Eliminar(DatosEstudioBean datos);
 	List<DatosEstudioBean> Buscar(DatosEstudioBean datos);

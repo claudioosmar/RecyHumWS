@@ -9,8 +9,9 @@ import javax.validation.constraints.NotNull;
  * @author JESUS ALEJANDRO CARRILLO SANCHEZ
  *
  */
-
+//CLASE PUBLICA DE LOS BEANS PARA COREEOS EXTENDIENDO DESDE LOGBEAN
 public class DatosCorreoAltBean {
+	//ATRIBUTOS PARA INGRESAR LOS DATOS DE CORREO
 	@NotNull
 	private int idtipocorreo=0;
 	@NotNull
@@ -22,6 +23,7 @@ public class DatosCorreoAltBean {
 	@NotNull
 	private String NombreCompleto = "";
 	
+	//SECCION DE GETTERS AND SETTERS
 	/**
 	 * @return the nombreCompleto
 	 */
@@ -85,9 +87,6 @@ public void setIdpersona(long idpersona) {
 		this.correoNw = correoNw;
 	}
 
-
-	
-	
 
 	}	
 

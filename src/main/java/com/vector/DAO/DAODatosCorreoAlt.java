@@ -15,7 +15,7 @@ import com.vector.Beans.DatosCorreoAltBean;
 public interface DAODatosCorreoAlt {
 	int  Crear(DatosCorreoAltBean datos);
 	int  Modificar(DatosCorreoAltBean datos);
-	int  Eliminar(String id);
+	int  Eliminar(DatosCorreoAltBean datos);
 	DatosCorreoAltBean Buscar(DatosCorreoAltBean datos);
 	List<DatosCorreoAltBean> Listar(long id);
 }

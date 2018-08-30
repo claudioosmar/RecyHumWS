@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
  *
  */
 public class DatosDocumentoBean {
+	//ATRIBUTOS DE DOCUMENTOS
 	@NotNull
 	private int iddocumentoNw=0;
 	@NotNull
@@ -26,7 +27,7 @@ public class DatosDocumentoBean {
 	
 	@NotNull
 	private String urldocLt="";
-
+//SECCION DE GETTERS AND SETTERS
 	/**
 	 * @return the iddocumentoNw
 	 */

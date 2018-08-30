@@ -15,7 +15,7 @@ import com.vector.Beans.DatosCertificadoBean;
 public interface DAODatosCertificado {
 	int  Crear(DatosCertificadoBean datos);
 	int  Modificar(DatosCertificadoBean datos);
-	int  Eliminar(int id);
-	DatosCertificadoBean Buscar(DatosCertificadoBean datos);
-	List<DatosCertificadoBean> Listar(int id);
+	int  Eliminar(DatosCertificadoBean datos);
+	List<DatosCertificadoBean> Buscar(DatosCertificadoBean datos);
+	List<DatosCertificadoBean> Listar();
 }

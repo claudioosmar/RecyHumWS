@@ -14,14 +14,12 @@ import com.vector.Beans.DatosDocumentoBean;
 import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosDocumento;
 import com.vector.Utileria.EnvioMensaje;
-
 /**
  * @author JESUS ALEJANDRO CARRILLO SANCHEZ
  *
  */
 @Service
 public class BODatosDocumentoImpl implements BODatosDocumentos {
-	
 	@Autowired
 	private DAODatosDocumento daodoc;
 	
@@ -79,9 +77,9 @@ public class BODatosDocumentoImpl implements BODatosDocumentos {
 	 * @see com.vector.BO.BODatosDocumentos#Eliminar(int)
 	 */
 	@Override
-	public MsgBean Eliminar(int id) {
+	public MsgBean Eliminar(DatosDocumentoBean datos) {
 		// TODO Auto-generated method stub
-		int respuesta=daodoc.Eliminar(id);
+		int respuesta=daodoc.Eliminar(datos);
 		MsgBean msj = new MsgBean();
 		if(respuesta==1) {
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
@@ -98,7 +96,7 @@ public class BODatosDocumentoImpl implements BODatosDocumentos {
 	 * @see com.vector.BO.BODatosDocumentos#Buscar(com.vector.Beans.DatosDocumentoBean)
 	 */
 	@Override
-	public DatosDocumentoBean Buscar(DatosDocumentoBean datos) {
+	public List<DatosDocumentoBean> Buscar(DatosDocumentoBean datos) {
 		// TODO Auto-generated method stub
 		return daodoc.Buscar(datos);
 	}

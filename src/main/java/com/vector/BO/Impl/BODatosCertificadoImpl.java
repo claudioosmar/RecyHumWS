@@ -12,8 +12,6 @@ import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosCertificado;
 import com.vector.Utileria.EnvioMensaje;
 
-
-
 /**
  * @author vectormx
  *
@@ -22,9 +20,6 @@ import com.vector.Utileria.EnvioMensaje;
 public class BODatosCertificadoImpl implements BODatosCertificado {
 	@Autowired
 	private DAODatosCertificado daocertificado;
-	
-	
-	
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BODatosCertificado#Crear(com.vector.Beans.DatosCertificadoBean)
 	 */
@@ -72,9 +67,9 @@ public class BODatosCertificadoImpl implements BODatosCertificado {
 	 * @see com.vector.BO.BODatosCertificado#Eliminar(int)
 	 */
 	@Override
-	public MsgBean Eliminar(int id) {
+	public MsgBean Eliminar(DatosCertificadoBean datos) {
 		// TODO Auto-generated method stub
-		int respuesta=daocertificado.Eliminar(id);
+		int respuesta=daocertificado.Eliminar(datos);
 		MsgBean msj = new MsgBean();
 		if(respuesta==1) {
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
@@ -91,7 +86,7 @@ public class BODatosCertificadoImpl implements BODatosCertificado {
 	 * @see com.vector.BO.BODatosCertificado#Buscar(com.vector.Beans.DatosCertificadoBean)
 	 */
 	@Override
-	public DatosCertificadoBean Buscar(DatosCertificadoBean datos) {
+	public List<DatosCertificadoBean> Buscar(DatosCertificadoBean datos) {
 		// TODO Auto-generated method stub
 		return daocertificado.Buscar(datos);
 	}
@@ -100,9 +95,9 @@ public class BODatosCertificadoImpl implements BODatosCertificado {
 	 * @see com.vector.BO.BODatosCertificado#Listar()
 	 */
 	@Override
-	public List<DatosCertificadoBean> Listar(int id) {
+	public List<DatosCertificadoBean> Listar() {
 		// TODO Auto-generated method stub
-		return daocertificado.Listar(id);
+		return daocertificado.Listar();
 	}
 
 }

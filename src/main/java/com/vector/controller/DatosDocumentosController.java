@@ -28,31 +28,31 @@ public class DatosDocumentosController {
 	
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosDocumentoBean> datos){
-		System.out.print("Se agrego el doc "+datos.get(0).getDescripciondocNw()+ " al ID de persona" +datos.get(0).getIdpersona()+"\n ");
+		System.out.print("Se agrego el doc "+datos.get(0).getDescripciondocNw()+ " al ID de persona" +datos.get(0).getIdpersona());
 		return new ResponseEntity<MsgBean>(documento.Crear(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosDocumentoBean datos){
-		System.out.print("Se modifico el documento "+datos.getDescripciondocNw()+" con id "+datos.getIddocumentoLt()+" " + "al ID de persona "+datos.getIdpersona()+" con id nuevo documento "+datos.getIddocumentoNw()+"\n ");
+		System.out.print("Se modifico el documento "+datos.getDescripciondocNw()+" con id "+datos.getIddocumentoLt()+" " + "al ID de persona "+datos.getIdpersona()+" con id nuevo documento "+datos.getIddocumentoNw()+" ");
 		return new ResponseEntity<MsgBean>(documento.Modificar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosDocumentoBean datos){
-		System.out.print("se elimino el documento "+datos.getDescripciondocNw()+ "con el ID de documento "+datos.getIddocumentoNw()+"\n ");
-		return new ResponseEntity<MsgBean>(documento.Eliminar(datos.getIddocumentoNw()),HttpStatus.OK);
+		System.out.print("se elimino el documento "+datos.getDescripciondocNw()+ "con el ID de documento "+datos.getIddocumentoNw());
+		return new ResponseEntity<MsgBean>(documento.Eliminar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Buscar",method=RequestMethod.POST)
-	public ResponseEntity<DatosDocumentoBean>buscar(@RequestBody DatosDocumentoBean datos){
-		System.out.print("se busco el documento "+datos.getDescripciondocNw()+ "con el ID de documento "+datos.getIddocumentoNw()+"\n ");
-		return new ResponseEntity<DatosDocumentoBean>(documento.Buscar(datos),HttpStatus.OK);
+	public ResponseEntity<List<DatosDocumentoBean>>buscar(@RequestBody DatosDocumentoBean datos){
+		System.out.print("se busco el documento "+datos.getDescripciondocNw()+ "con el ID de documento "+datos.getIddocumentoNw()+" ");
+		return new ResponseEntity<List<DatosDocumentoBean>>(documento.Buscar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosDocumentoBean>> consulta(@RequestBody DatosDocumentoBean datos){
-		System.out.println("Ingresando a listar documento "+"\n ");
+		System.out.println("Ingresando a listar documento ");
 		List<DatosDocumentoBean> documentos = documento.Listar(datos.getIdpersona());
 		if(documentos.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

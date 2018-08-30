@@ -3,6 +3,7 @@
  */
 package com.vector.BO.Impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,24 +28,14 @@ public class BODatosEstudioImpl implements BODatosEstudio {
 	 */
 	@Override
 
-	public MsgBean Crear(List<DatosEstudioBean> datos) {
+	public DatosEstudioBean Crear(List<DatosEstudioBean> datos) {
 		// TODO Auto-generated method stub
-		int resultado=0;
-		
+		DatosEstudioBean retorno = new DatosEstudioBean();
 		for (int i = 0; i < datos.size(); i++) {
-			resultado = daoestudio.Crear(datos.get(i));
-			if(resultado==0) {
-				System.out.println("Fallo en la insercion de estudio "+i+1);
-			}
+			 retorno.setIdestudio(daoestudio.Crear(datos.get(i)));	
 		}
-		MsgBean mensaje = new MsgBean();
-		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
-		if(resultado == 1) {
-			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
-		}else {
-			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
-		}
-		return mensaje;
+		
+		return retorno;
 	}
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BOEstudios#Modificar(com.vector.Beans.DatosEstudioBean)

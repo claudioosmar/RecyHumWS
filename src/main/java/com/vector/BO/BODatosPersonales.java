@@ -14,7 +14,7 @@ import com.vector.Beans.DatosPersonales.DatosPersonalesBean;
  */
 public interface BODatosPersonales {
 	
-	MsgBean Crear(DatosPersonalesBean datos);
+	DatosPersonalesBean Crear(DatosPersonalesBean datos);
 	MsgBean Modificar(DatosPersonalesBean datos);
 	MsgBean Eliminar (DatosPersonalesBean datos);
 	DatosPersonalesBean Buscar(DatosPersonalesBean datos);
