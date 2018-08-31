@@ -276,6 +276,7 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 		final String sql6 ="SELECT * FROM TBLDETSPERSONAS DTS,TBLDIRECCIONES TDS, tbllocalidades loc WHERE DTS.IDDIRECCION=TDS.IDDIRECCION and tds.idlocalidad=loc.idlocalidad AND IDPERSONA=(?)";
 		final String sql7="SELECT * FROM TBLPIV11  WHERE IDPERSONA =(?) AND IDOTROSDOC=(?)";
 		final String sql8="select * from tblpiv01 where idpersona=(?) and idtipotelefono =(?)";
+		final String sql9="select * from tblpiv02 where idpersona=(?) and idtipocorreo =(?)";
 		
 		// Apartado de execuciones
 		jdbcTemplate.update(new PreparedStatementCreator() {
@@ -446,7 +447,53 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				rs13.next();
 				retorno.setTelefonoEmergencia(rs13.getString(3));
 				
-				return ps13;
+				
+				//consulta la tabla piv02 para obterner el correo principal (vector)
+				PreparedStatement ps14 = con.prepareStatement(sql9);
+				ps14.setLong(1, datos.getIdpersona());
+				ps14.setInt(2,4);
+				ResultSet rs14 = ps14.executeQuery();
+				PreparedStatement ps15 = con.prepareStatement(sql9);
+				ps15.setLong(1, datos.getIdpersona());
+				ps15.setInt(2,6);
+				ResultSet rs15 = ps15.executeQuery();
+				if(rs14.next()) {
+				retorno.setCorreoPrincipal(rs14.getString(3));
+				}else if(rs15.next()){
+					retorno.setCorreoPrincipal(rs15.getString(3));
+				}
+				
+				//consulta la tabla piv02 para obterner el correo secundario (personal)
+				PreparedStatement ps16 = con.prepareStatement(sql9);
+				ps16.setLong(1, datos.getIdpersona());
+				ps16.setInt(2,1);	
+				ResultSet rs16 = ps16.executeQuery();
+				if(rs16.next()) {
+				retorno.setCorreoSecundario(rs16.getString(3));
+				}
+				PreparedStatement ps17 = con.prepareStatement(sql9);
+				ps17.setLong(1, datos.getIdpersona());
+				ps17.setInt(2,2);	
+				ResultSet rs17 = ps17.executeQuery();
+				if(rs17.next()) {
+				retorno.setCorreoSecundario(rs17.getString(3));
+				}
+				PreparedStatement ps18 = con.prepareStatement(sql9);
+				ps18.setLong(1, datos.getIdpersona());
+				ps18.setInt(2,3);	
+				ResultSet rs18 = ps18.executeQuery();
+				if(rs18.next()) {
+				retorno.setCorreoSecundario(rs18.getString(3));
+				}
+				PreparedStatement ps19 = con.prepareStatement(sql9);
+				ps19.setLong(1, datos.getIdpersona());
+				ps19.setInt(2,5);	
+				ResultSet rs19 = ps19.executeQuery();
+				if(rs19.next()) {
+				retorno.setCorreoSecundario(rs19.getString(3));
+				}
+					
+				return ps01;
 			}
 		});
 		return retorno;
@@ -566,11 +613,6 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				ps5.setInt(5,4);
 				ResultSet rs5 = ps5.executeQuery();
 				rs5.next();
-				
-				
-				
-				
-				
 				
 				//seleccion para saber si hay valor en piv11 de id=3
 				PreparedStatement psAux3 = con.prepareStatement(sqlAux3);
