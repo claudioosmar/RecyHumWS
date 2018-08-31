@@ -27,6 +27,7 @@ import com.vector.DAO.DAODatosHerramientas;
  * @author vectormx
  *
  */
+// clase de herramientas conocidas implements 
 @Service
 public class DAODatosHerramientasImpl implements DAODatosHerramientas {
 	@Autowired
@@ -51,14 +52,14 @@ public class DAODatosHerramientasImpl implements DAODatosHerramientas {
 				ps.setLong(1, datos.getIdpersona());
 				ps.setInt(2, datos.getIdherramienta());
 				ps.setInt(3, datos.getPorcentajeherra());
-				ps.setInt(4,datos.getAñosexpherra());
+				ps.setInt(4,datos.getAnosexpherra());
 				ps.setString(5, datos.getDescripcionherra());
 				ps.execute();
 				}
 				
 				PreparedStatement ps1 = con.prepareStatement(sql2);
 				System.out.println("si esta la persona con ID: "+datos.getIdpersona());
-						ps1.setLong(1, datos.getIdpersona());
+				ps1.setLong(1, datos.getIdpersona());
 				return ps1;
 	
 			}
@@ -80,7 +81,7 @@ public class DAODatosHerramientasImpl implements DAODatosHerramientas {
 				ps.setLong(5, datos.getIdpersona());
 				ps.setInt(6, datos.getIdherramienta());
 				ps.setInt(2, datos.getPorcentajeherra());
-				ps.setInt(3,datos.getAñosexpherra());
+				ps.setInt(3,datos.getAnosexpherra());
 				ps.setString(4, datos.getDescripcionherra());
 				ps.setInt(1, datos.getIdherramientaNw());
 				
@@ -97,14 +98,31 @@ public class DAODatosHerramientasImpl implements DAODatosHerramientas {
 	public int Eliminar(DatosHerramientasBean datos) {
 		// TODO Auto-generated method stub
 final String sql="delete tblpiv09 where idpersona =(?) and idherramienta=(?)";
+final String sql2 = "delete tblpiv09 where idherramienta=(?) and idpersona=(?) and descripcion=(?)";
+final String sql3 ="select * from tblpiv09";
 		
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setLong(1, datos.getIdpersona());
-				ps.setInt(2, datos.getIdherramienta());
-				return ps;
+				
+				if(datos.getIdherramienta()!=6) {
+					PreparedStatement ps = con.prepareStatement(sql);
+					System.out.println("se elimino herramienta conocida por id de herramienta: "+datos.getIdherramienta());
+					ps.setLong(1, datos.getIdpersona());
+					ps.setInt(2, datos.getIdherramienta());
+					ps.execute();
+				}else{
+					PreparedStatement ps2 = con.prepareStatement(sql2);
+					System.out.println("se elimino herramienta conocida por descripción: "+datos.getDescripcionherra());
+					ps2.setInt(1, 6);
+					ps2.setLong(2, datos.getIdpersona());
+					ps2.setString(3, datos.getDescripcionherra());
+					ps2.execute();
+				}
+				PreparedStatement ps3 = con.prepareStatement(sql3);
+				
+				System.out.println("se encontro herramienta: "+datos.getIdherramienta());
+				return ps3;
 			}
 		});
 		return respuesta;
@@ -136,8 +154,6 @@ final String sql="delete tblpiv09 where idpersona =(?) and idherramienta=(?)";
 				respuesta.setNombrecompleto(rs2.getString("nombre")+" "+rs2.getString("segnombre")+" "+rs2.getString("apellidop")+" "+rs2.getString("apellidom"));
 				}
 				//PreparedStatement ps3 = con.prepareStatement(sql);
-				
-	
 				return ps;
 			}
 		});
@@ -163,7 +179,7 @@ private void setDatosHerramientas(ResultSet rs) throws SQLException {
 	respuesta.setIdpersona(rs.getLong(1));
 	respuesta.setIdherramienta(rs.getInt(2));
 	respuesta.setPorcentajeherra(rs.getInt(3));
-	respuesta.setAñosexpherra(rs.getInt(4));
+	respuesta.setAnosexpherra(rs.getInt(4));
 	respuesta.setDescripcionherra(rs.getString(5));
 	respuesta.setNombreherramienta(rs.getString(7));
 	respuesta.setVersion(rs.getString(8));

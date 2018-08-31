@@ -46,12 +46,12 @@ public class DAODatosHerramientasUsadasImpl implements DAODatosHerramientasUsada
 				ps.setLong(2, datos.getIdexplaboral());
 				ps.setInt(1, datos.getIdherramienta());
 				ps.setInt(3, datos.getPorcentajeherra());
-				ps.setInt(4,datos.getAñosexpherra());
+				ps.setInt(4,datos.getAnosexpherra());
 				ps.setString(5, datos.getDescripcionherra());
 				ps.execute();
 				}
 				PreparedStatement ps1 = con.prepareStatement(sql2);
-				System.out.println("si esta la persona con ID: "+datos.getIdexplaboral());
+				System.out.println("si esta la experiencia laboral con ID: "+datos.getIdexplaboral());
 						ps1.setLong(1, datos.getIdexplaboral());
 				return ps1;
 
@@ -74,7 +74,7 @@ public class DAODatosHerramientasUsadasImpl implements DAODatosHerramientasUsada
 				ps.setLong(5, datos.getIdexplaboral());
 				ps.setInt(6, datos.getIdherramienta());
 				ps.setInt(2, datos.getPorcentajeherra());
-				ps.setInt(3,datos.getAñosexpherra());
+				ps.setInt(3,datos.getAnosexpherra());
 				ps.setString(4, datos.getDescripcionherra());
 				ps.setInt(1, datos.getIdherramientaNw());
 				
@@ -91,14 +91,30 @@ public class DAODatosHerramientasUsadasImpl implements DAODatosHerramientasUsada
 	public int Eliminar(DatosHerramientasUsadasBean datos) {
 		// TODO Auto-generated method stub
 		final String sql="delete tblpiv07 where idexplaboral =(?) and idherramienta=(?)";
-		
+		final String sql2 = "delete tblpiv07 where idpersona=(?) and descripcion=(?)";
+		final String sql3 ="select * from tblpiv07";
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setLong(1, datos.getIdexplaboral());
-				ps.setInt(2, datos.getIdherramienta());
-				return ps;
+				if(datos.getDescripcionherra() == "") {
+					PreparedStatement ps = con.prepareStatement(sql);
+					System.out.println("se elimino herramienta usada por id de herramienta: "+datos.getIdherramienta());
+					ps.setLong(1, datos.getIdexplaboral());
+					ps.setInt(2, datos.getIdherramienta());
+					ps.execute();
+					}else {
+						PreparedStatement ps2 = con.prepareStatement(sql2);
+						System.out.println("se elimino herramiemta usada por descripción: "+datos.getDescripcionherra());
+						ps2.setLong(1, datos.getIdexplaboral());
+						ps2.setString(2, datos.getDescripcionherra());
+						ps2.execute();
+					}
+					PreparedStatement ps3 = con.prepareStatement(sql3);
+					ps3.setLong(1, datos.getIdexplaboral());
+					ResultSet rs3 = ps3.executeQuery();
+					datos.setIdherramienta(rs3.getInt(2));
+					rs3.next();
+					return ps3;
 			}
 		});
 		return respuesta;
@@ -156,7 +172,7 @@ private void setDatosHerramientasusadas(ResultSet rs) throws SQLException {
 		respuesta.setIdexplaboral(rs.getInt(2));
 		respuesta.setIdherramienta(rs.getInt(1));
 		respuesta.setPorcentajeherra(rs.getInt(3));
-		respuesta.setAñosexpherra(rs.getInt(4));
+		respuesta.setAnosexpherra(rs.getInt(4));
 		respuesta.setDescripcionherra(rs.getString(5));					
 		respuesta.setNombreherramienta(rs.getString(7));
 		respuesta.setVersion(rs.getString(8));
@@ -180,7 +196,7 @@ class Herr2RowMapper implements RowMapper<DatosHerramientasUsadasBean>{
 		retorno.setIdexplaboral(rs.getInt(2));
 		retorno.setIdherramienta(rs.getInt(1));
 		retorno.setPorcentajeherra(rs.getInt(3));
-		retorno.setAñosexpherra(rs.getInt(4));
+		retorno.setAnosexpherra(rs.getInt(4));
 		retorno.setDescripcionherra(rs.getString(5));
 		retorno.setNombreherramienta(rs.getString(7));
 		retorno.setVersion(rs.getString(8));

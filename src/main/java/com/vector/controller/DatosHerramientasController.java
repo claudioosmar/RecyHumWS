@@ -28,7 +28,7 @@ public class DatosHerramientasController {
 	
 	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosHerramientasBean> datos){
-		System.out.print("Se agrego herramienta conocida "+datos.get(0).getIdherramienta()+"\n ");
+		System.out.print("Se agrego herramienta conocida "+datos.get(0).getIdherramienta()+" despc:"+datos.get(0).getDescripcionherra()+" añosexp:"+datos.get(0).getAnosexpherra()+"\n ");
 		return new ResponseEntity<MsgBean>(herramientas.Crear(datos),HttpStatus.OK);
 	}
 	
@@ -40,7 +40,7 @@ public class DatosHerramientasController {
 	
 	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosHerramientasBean datos){
-		System.out.print("Se elimino herramienta conocida con id "+datos.getIdherramienta()+"y persona id "+datos.getIdpersona()+"\n ");
+		System.out.print("Se elimino herramienta conocida con id "+datos.getIdherramienta()+" y persona id "+datos.getIdpersona()+"\n ");
 		return new ResponseEntity<MsgBean>(herramientas.Eliminar(datos),HttpStatus.OK);
 	}
 	

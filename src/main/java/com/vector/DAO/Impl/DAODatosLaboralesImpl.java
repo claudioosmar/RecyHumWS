@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,7 +26,7 @@ import com.vector.Utileria.AutoIncrementablesBDOracle;
  */
 @Service
 public class DAODatosLaboralesImpl implements DAODatosLaborales {
-	private final static Logger LOGGER = Logger.getLogger("com.vector.DAO.Impl");
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	private AutoIncrementablesBDOracle ids;
@@ -146,8 +146,8 @@ public class DAODatosLaboralesImpl implements DAODatosLaborales {
 		final String sql = "SELECT * FROM TBLEXPSLABORALES expa,tblempresas emp WHERE expa.idempresa=emp.idempresa and  expa.IDEXPLABORAL =?";
 		final String sql3 = "SELECT * FROM TBLPIV06 WHERE IDPERSONA =?";
 		
-		DatosLaboralesBean respuesta = new DatosLaboralesBean();
-		List<DatosLaboralesBean> retorno = new ArrayList<DatosLaboralesBean>();
+	//	DatosLaboralesBean respuesta = new DatosLaboralesBean();
+	//	List<DatosLaboralesBean> retorno = new ArrayList<DatosLaboralesBean>();
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {

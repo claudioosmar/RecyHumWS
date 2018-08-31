@@ -20,7 +20,7 @@ import com.vector.Beans.MsgBean;
 @ControllerAdvice
 public class ErroresdeNegocio {
 	 
-	/*@ExceptionHandler(java.sql.SQLException.class) 
+	@ExceptionHandler(java.sql.SQLException.class) 
 	public ResponseEntity<MsgBean> SQLException (HttpServletRequest request, java.sql.SQLException e) {
         MsgBean mensaje = new MsgBean();
         System.out.println("SQLError");
@@ -102,5 +102,5 @@ public class ErroresdeNegocio {
 		System.out.println("Numverformartex");
         mensaje.setMsjAccion(e.getMessage()+"--"+e.getLocalizedMessage());
 		return new ResponseEntity<MsgBean>(mensaje,HttpStatus.BAD_REQUEST);
-	}*/
+	}
 }

@@ -38,9 +38,8 @@ public class BODatosHerramientasImpl implements BODatosHerramientas {
 		}
 		//Condicional para el envio del mensaje de respuesta
 		MsgBean mensaje = new MsgBean();
-		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
-		if(resultado == 1) {
+		if(resultado == 0) {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo

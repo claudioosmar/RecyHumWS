@@ -3,7 +3,7 @@
  */
 package com.vector.Beans;
 
-import com.sun.istack.internal.NotNull;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author Claudio
@@ -17,7 +17,7 @@ public class DatosHerramientasBean {
 	@NotNull
 	private int porcentajeherra=0;
 	@NotNull
-	private int añosexpherra=0;
+	private int anosexpherra=0;
 	@NotNull
 	private String descripcionherra=" ";
 	@NotNull
@@ -68,16 +68,16 @@ public class DatosHerramientasBean {
 	 * @return Obtienes el valor de añosexpherra del tipo int
 	 */
 	
-	public int getAñosexpherra() {
-		return añosexpherra;
+	public int getAnosexpherra() {
+		return anosexpherra;
 	}
 	
 	/**
 	 * @param Agregar el valor a añosexpherra del tipo int
 	 */
 	
-	public void setAñosexpherra(int añosexpherra) {
-		this.añosexpherra = añosexpherra;
+	public void setAnosexpherra(int anosexpherra) {
+		this.anosexpherra = anosexpherra;
 	}
 	
 	/**

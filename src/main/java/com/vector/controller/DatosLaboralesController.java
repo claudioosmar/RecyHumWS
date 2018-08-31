@@ -29,7 +29,7 @@ public class DatosLaboralesController {
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Crear", method = RequestMethod.POST)
 	public ResponseEntity<DatosLaboralesBean> insertar(@RequestBody List<DatosLaboralesBean> datos){
 		//Linea de impresion en consola que muestra datos de los datos laboralesal ser creados
-		System.out.print("Se creo un registro laboral"+datos.get(0).getIdpersona()+"\n ");
+		System.out.print("Se creo un registro laboral"+datos.get(0).getIdexplaborl()+"\n ");
 		return new ResponseEntity<DatosLaboralesBean>(laborales.Crear(datos),HttpStatus.OK);
 	}
 	//Ruta utilizada para la llamada de la funcion Modificar datos laborales

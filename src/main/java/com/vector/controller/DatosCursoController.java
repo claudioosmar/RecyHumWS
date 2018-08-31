@@ -50,7 +50,7 @@ public class DatosCursoController {
 	@RequestMapping(path = "/SGRHWebService/DatosCurso/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosCursoBean>>buscar(@RequestBody  DatosCursoBean datos){
 		//mensaje de impresion en la consola que muestra los datos que relacionan la consulta
-		System.out.print("se busco los cursos "+datos.getIdcurso()+"\n ");
+		System.out.print("se busco los cursos "+datos.getIdpersona()+"\n ");
 		return new ResponseEntity<List< DatosCursoBean>>(curso.Buscar(datos),HttpStatus.OK);
 	}
 	//Ruta utilizada para la llamada de la funcion listar cursos

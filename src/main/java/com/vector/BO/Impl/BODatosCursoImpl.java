@@ -83,7 +83,7 @@ public class BODatosCursoImpl implements BODatosCurso {
 		//Condicional para el envio del mensaje de respuesta
 		MsgBean msj = new MsgBean();
 		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
-		if(respuesta==0) {
+		if(respuesta==1) {
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
 	
 			return msj;
