@@ -21,5 +21,10 @@ public interface DAODatosPersonales {
 	int Eliminar (long id);
 	//regresa un listado de busqueda de los datos de datos personales bean
 	DatosPersonalesBean Buscar (DatosPersonalesBean datos);
+	//Lista de los datos personales basicos
 	List<DatosPersonalesBean> Listar ();
+	//tipo de dato regresado por los beans de datos personales
+	int Modificar2(DatosPersonalesBean datos);
+	//tipo de dato regresado por los beans de datos personales
+	int Modificar3(DatosPersonalesBean datos);
 }

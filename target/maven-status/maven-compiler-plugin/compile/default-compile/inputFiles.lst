@@ -28,6 +28,7 @@ C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\DAO\DAODatosTelefonoAlt
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\BO\BODatosIdiomas.java
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\controller\DatosEstudioController.java
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\Beans\DatosCorreoAltBean.java
+C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\Utileria\Log.java
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\controller\DatosDocumentosController.java
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\controller\DatosInicioSesionController.java
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\DAO\DAODatosDocumento.java
@@ -68,6 +69,7 @@ C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\DAO\DAODatosHerramienta
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\BO\Impl\BODatosCorreoAltImpl.java
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\Beans\DatosDocumentoBean.java
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\BO\Impl\BODatosHerramientasImpl.java
+C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\Utileria\MetodoError.java
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\BO\BODatosCertificado.java
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\BO\Impl\BODatosLaboralesImpl.java
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\Utileria\Encriptarsha1.java
@@ -76,6 +78,7 @@ C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\controller\DatosTelefon
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\controller\WebServiceMainController.java
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\Beans\DatosPersonales\DatosPersonalesBean3.java
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\DAO\DAODatosLaborales.java
+C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\Beans\DatosPersonales\DatosPersonalesBean6.java
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\BO\BODatosEstudio.java
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\BO\BODatosCorreoAlt.java
 C:\Users\vectormx\git\RecyHumWS\src\main\java\com\vector\BO\Impl\BODatosPersonalesImpl.java

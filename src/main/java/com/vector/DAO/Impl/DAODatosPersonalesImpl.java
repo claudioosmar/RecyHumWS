@@ -67,7 +67,7 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				ps.setLong(1, iDpersona);
 				ps.setInt(2, 1);
 				ps.setString(3, datos.getUrlFoto());
-				ps.setInt(4, 1);
+				ps.setInt(4, 0);
 				ps.setString(5, datos.getResumen());
 				ps.setString(6, datos.getObjetivoLaboral());
 				ps.setString(7, "0.0");
@@ -277,7 +277,7 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 		final String sql7="SELECT * FROM TBLPIV11  WHERE IDPERSONA =(?) AND IDOTROSDOC=(?)";
 		final String sql8="select * from tblpiv01 where idpersona=(?) and idtipotelefono =(?)";
 		final String sql9="select * from tblpiv02 where idpersona=(?) and idtipocorreo =(?)";
-		
+		final String sql10="select * from view_datospersonales where idp=(?)";
 		// Apartado de execuciones
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
@@ -287,17 +287,21 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				PreparedStatement ps0 =con.prepareStatement(sql2);
 				ps0.setLong(1,datos.getIdpersona());
 				ResultSet rs0 = ps0.executeQuery();
-				rs0.next();
+				if(rs0.next()) {
+				retorno.setUrlFoto(rs0.getString(3));
 				retorno.setResumen(rs0.getString(5));
 				retorno.setObjetivoLaboral(rs0.getString(6));
+				retorno.setSueldo(rs0.getInt(7));
+				retorno.setNcontrol(rs0.getString(8));
 				retorno.setNombreArea(rs0.getString(10));
-				
-				
+				retorno.setCodArea(rs0.getString(11));
+				}
 				//consulta la tabla detalle persona
 				PreparedStatement ps01 = con.prepareStatement(sql3);
 				ps01.setLong(1,datos.getIdpersona());
 				ResultSet rs01 = ps01.executeQuery();
-				rs01.next();
+				if(rs01.next()) {
+				retorno.setIdEdoCivil(rs01.getInt(4));
 				retorno.setPrimerNombre(rs01.getString(5));
 				retorno.setSegundoNombre(rs01.getString(6));
 				retorno.setApellidPterno(rs01.getString(7));
@@ -306,23 +310,30 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				retorno.setFechaNacimiento(rs01.getString(10));
 				retorno.setNacionalidad(rs01.getString(11));
 				retorno.setEstadoCivil(rs01.getString(13));
-				
+				}
+				//consulta la vista datos personales para la edad
+				PreparedStatement ps20 =con.prepareStatement(sql10);
+				ps20.setLong(1,datos.getIdpersona());
+				ResultSet rs20 = ps20.executeQuery();
+				if(rs20.next()) {
+				retorno.setEdad(rs20.getInt(7));
+				}
 				//consulta la tabla piv03 para obtener el RFC
 				PreparedStatement ps02 = con.prepareStatement(sql4);
 				ps02.setLong(1, datos.getIdpersona());
 				ps02.setInt(2,2);
 				ResultSet rs02 = ps02.executeQuery();
-				rs02.next();
+				if(rs02.next()) {
 				retorno.setRfc(rs02.getString(3));
-
+				}
 				//consulta la tabla piv03 para obtener el CURP
 				PreparedStatement ps03 = con.prepareStatement(sql4);
 				ps03.setLong(1, datos.getIdpersona());
 				ps03.setInt(2,4);
 				ResultSet rs03 = ps03.executeQuery();
-				rs03.next();
+				if(rs03.next()) {
 				retorno.setcURP(rs03.getString(3));
-				
+				}
 				
 				//verifica que se tenga un valor para pasaporte
 				PreparedStatement psAux004 = con.prepareStatement(sql7);
@@ -360,9 +371,9 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				ps06.setLong(1, datos.getIdpersona());
 				ps06.setInt(2,5);
 				ResultSet rs06 = ps06.executeQuery();
-				rs06.next();
+				if(rs06.next()) {
 				retorno.setcURP(rs06.getString(3));
-				
+				}
 				//verifica que se tenga un valor para infonavit
 				PreparedStatement psAux007 = con.prepareStatement(sql7);
 				psAux007.setLong(1, datos.getIdpersona());
@@ -414,14 +425,14 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				PreparedStatement ps10 = con.prepareStatement(sql6);
 				ps10.setLong(1,datos.getIdpersona());
 				ResultSet rs10 = ps10.executeQuery();
-				rs10.next();
+				if(rs10.next()) {
 				retorno.setCalle(rs10.getString(13));
 				retorno.setColonia(rs10.getString(14));
 				retorno.setNumeroInterior(rs10.getString(15));
 				retorno.setNumeroExterior(rs10.getString(16));
 				retorno.setCodpost(rs10.getInt(17));
 				retorno.setIdlocalidad(rs10.getInt(18));
-				
+				}
 				//consulta la tabla piv01 para obterner el telefono principal
 				PreparedStatement ps11 = con.prepareStatement(sql8);
 				ps11.setLong(1, datos.getIdpersona());
@@ -436,17 +447,17 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				ps12.setLong(1, datos.getIdpersona());
 				ps12.setInt(2,2);
 				ResultSet rs12 = ps12.executeQuery();
-				rs12.next();
+				if(rs12.next()) {
 				retorno.setTelefonoSecundario(rs12.getString(3));
-				
+				}
 				//consulta la tabla piv01 para obterner el telefono emergente
 				PreparedStatement ps13 = con.prepareStatement(sql8);
 				ps13.setLong(1, datos.getIdpersona());
 				ps13.setInt(2,3);
 				ResultSet rs13 = ps13.executeQuery();
-				rs13.next();
+				if(rs13.next()) {
 				retorno.setTelefonoEmergencia(rs13.getString(3));
-				
+				}
 				
 				//consulta la tabla piv02 para obterner el correo principal (vector)
 				PreparedStatement ps14 = con.prepareStatement(sql9);
@@ -458,9 +469,9 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				ps15.setInt(2,6);
 				ResultSet rs15 = ps15.executeQuery();
 				if(rs14.next()) {
-				retorno.setCorreoPrincipal(rs14.getString(3));
+				retorno.setCorreoPrincipal(rs14.getString(3)+"@ext.vectoritcgroup.com");
 				}else if(rs15.next()){
-					retorno.setCorreoPrincipal(rs15.getString(3));
+					retorno.setCorreoPrincipal(rs15.getString(3)+"@vectoritcgroup.com");
 				}
 				
 				//consulta la tabla piv02 para obterner el correo secundario (personal)
@@ -508,7 +519,7 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 	@Transactional(readOnly = true)
 	public List<DatosPersonalesBean> Listar() {
 		// TODO Auto-generated method stub
-		return jdbcTemplate.query("SELECT * FROM TBLPERSONAS PERS, TBLAREAS ARS, tbldetspersonas dts, tblestadosciviles edo, tbldirecciones dir WHERE dir.iddireccion = dts.iddireccion and dts.idedocivil=edo.idedocivil and PERS.IDAREA=ARS.IDAREA and pers.idpersona=dts.idpersona", new DatPerRowMapper());
+		return jdbcTemplate.query("SELECT * FROM view_datospersonales", new DatPerRowMapper());
 	}
 
 	/*
@@ -525,7 +536,7 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 		// TODO Auto-generated method stub
 		final String sql0 ="UPDATE TBLDETSPERSONAS SET  NOMBRE=(?), SEGNOMBRE =(?), APELLIDOP =(?), APELLIDOM=(?), SEXO=(?), FECHANAC=(?), IDEDOCIVIL=(?), NACIONALIDAD=(?) WHERE IDPERSONA=(?)";
 		final String sql = "UPDATE TBLPERSONAS SET  URLFOTO=(?), RESUMEN =(?), OBJLABORAL =(?) WHERE IDPERSONA=(?) ";
-		final String sql2 = "UPDATE TBLDIRECCIONES SET IDCODPOST=(?), CALLE=(?), COLONIA=(?), NUMINTERIOR=(?),NUMEXTERIOR=(?) WHERE IDDIRECCION=(?)";
+		final String sql2 = "UPDATE TBLDIRECCIONES SET CODPOST=(?), CALLE=(?), COLONIA=(?), NUMINTERIOR=(?),NUMEXTERIOR=(?) WHERE IDDIRECCION=(?)";
 		final String sql3 = "UPDATE TBLPIV03 SET IDDOC=(?),DESCRIPCION=(?),URLDOC=(?) WHERE IDPERSONA=(?) and IDDOC =(?)";
 		//final String sql4 = "UPDATE TBLPIV11 SET IDOTROSDOC=(?) WHERE IDPERSONA=(?),  AND IDOTROSDOC=(?)";
 		final String sql4 = "INSERT INTO TBLPIV11 VALUES(?,?)";
@@ -545,6 +556,9 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				
 				//cero actualizada tabla detalle persona				
 				PreparedStatement ps0 = con.prepareStatement(sql0);
+				System.out.println("DAO modificar -- detalle persona: nombre: "+datos.getPrimerNombre()+", segundo nombre: "+datos.getSegundoNombre()+", apellido p: "+datos.getApellidPterno()
+				+", apellido m: "+datos.getApellidMaterno()+",sexo: "+datos.getIdSexo()+",fecha: "+datos.getFechaNacimiento()+",civil: "+datos.getIdEdoCivil()
+				+",nacionalidad: "+datos.getNacionalidad()+", idpersona: "+datos.getIdpersona()+"\n");
 				ps0.setString(1, datos.getPrimerNombre());
 				ps0.setString(2, datos.getSegundoNombre());
 				ps0.setString(3, datos.getApellidPterno());
@@ -553,18 +567,24 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				ps0.setString(6, datos.getFechaNacimiento());
 				ps0.setInt(7, datos.getIdEdoCivil());
 				ps0.setString(8, datos.getNacionalidad());
-				ps0.setInt(9,datos.getIdpersona());
+				ps0.setLong(9,datos.getIdpersona());
 				ResultSet rs0 =ps0.executeQuery();
-				rs0.next();	
+				if(rs0.next()) {
+					
+				}
 
 				// primera Actualizacion TBLPersonas
 				PreparedStatement ps = con.prepareStatement(sql);
+				System.out.println("DAO modificar -- persona: Urlfoto: "+datos.getUrlFoto()+", resumen: "+datos.getResumen()+", objetivo: "+datos.getObjetivoLaboral()
+				+", idpersona: "+datos.getIdpersona()+"\n");
 				ps.setString(1, datos.getUrlFoto());
 				ps.setString(2, datos.getResumen());
 				ps.setString(3, datos.getObjetivoLaboral());
 				ps.setLong(4, datos.getIdpersona());
 				ResultSet rs = ps.executeQuery();
-				rs.next();
+				if(rs.next()) {
+					
+				}
 				
 				//seleccion de busqueda de id de direccion
 				PreparedStatement psAux = con.prepareStatement(sqlaux);
@@ -575,24 +595,31 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				
 				// segunda actualizacion tbldirecciones
 				PreparedStatement ps2 = con.prepareStatement(sql2);
-				ps2.setLong(1, datos.getIdCodigoPostal());
+				System.out.println("DAO modificar -- direccion: codigo: "+datos.getCodpost()+", calle: "+datos.getCalle()+", colonia: "+datos.getColonia()
+				+", numero interior: "+datos.getNumeroInterior()+",exterior: "+datos.getNumeroExterior()+", idpersona: "+datos.getIdpersona()+"\n");
+				ps2.setInt(1, datos.getCodpost());
 				ps2.setString(2, datos.getCalle());
 				ps2.setString(3, datos.getColonia());
 				ps2.setString(4, datos.getNumeroInterior());
 				ps2.setString(5, datos.getNumeroExterior());
 				ps2.setInt(6, idAux2);
 				ResultSet rs2 = ps2.executeQuery();
-				rs2.next();
+				if(rs2.next()) {
+					
+				}
 
 				// tercera actualizacion piv_03 --acta de nacimiento--
 				PreparedStatement ps3 = con.prepareStatement(sql3);
+			
 				ps3.setInt(1, 1);
 				ps3.setString(2, datos.getFechaNacimiento());
 				ps3.setString(3, datos.getUrlFechaNacimiento());
 				ps3.setLong(4, datos.getIdpersona());
 				ps3.setInt(5, 1);
 				ResultSet rs3 = ps3.executeQuery();
-				rs3.next();
+				if(rs3.next()) {
+					
+				}
 				
 				// cuarta actualizacion piv_03 --RFC--
 				PreparedStatement ps4 = con.prepareStatement(sql3);
@@ -602,7 +629,9 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				ps4.setLong(4, datos.getIdpersona());
 				ps4.setInt(5, 2);
 				ResultSet rs4 = ps4.executeQuery();
-				rs4.next();
+				if(rs4.next()) {
+					
+				}
 				
 				// quinta actualizacion piv_03 --CURP--
 				PreparedStatement ps5 = con.prepareStatement(sql3);
@@ -612,7 +641,9 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				ps5.setLong(4, datos.getIdpersona());
 				ps5.setInt(5,4);
 				ResultSet rs5 = ps5.executeQuery();
-				rs5.next();
+				if(rs5.next()) {
+					
+				}
 				
 				//seleccion para saber si hay valor en piv11 de id=3
 				PreparedStatement psAux3 = con.prepareStatement(sqlAux3);
@@ -652,7 +683,7 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 					}else {
 						PreparedStatement ps7 = con.prepareStatement(sql4);
 						ps7.setInt(1, 4);
-						ps7.setInt(2, datos.getIdpersona());
+						ps7.setLong(2, datos.getIdpersona());
 						ResultSet rs7 = ps7.executeQuery();
 						rs7.next();	
 					}
@@ -673,7 +704,9 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 				ps8.setLong(4, datos.getIdpersona());
 				ps8.setLong(5, 5);
 				ResultSet rs8 = ps8.executeQuery();
-				rs8.next();
+				if(rs8.next()) {
+					
+				}
 
 
 				//seleccion para saber si hay valor en piv11 de id=5
@@ -689,7 +722,7 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 					}else {
 						PreparedStatement ps9 = con.prepareStatement(sql4);
 						ps9.setInt(1, 5);
-						ps9.setInt(2, datos.getIdpersona());
+						ps9.setLong(2, datos.getIdpersona());
 						ResultSet rs9 = ps9.executeQuery();
 						rs9.next();	
 					}
@@ -714,7 +747,7 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 					}else {
 						PreparedStatement ps10 = con.prepareStatement(sql4);
 						ps10.setInt(1, 1);
-						ps10.setInt(2, datos.getIdpersona());
+						ps10.setLong(2, datos.getIdpersona());
 						ResultSet rs10 = ps10.executeQuery();
 						rs10.next();	
 					}
@@ -739,7 +772,7 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 					}else {
 						PreparedStatement ps11 = con.prepareStatement(sql4);
 						ps11.setInt(1, 2);
-						ps11.setInt(2, datos.getIdpersona());
+						ps11.setLong(2, datos.getIdpersona());
 						ResultSet rs11 = ps11.executeQuery();
 						rs11.next();	
 					}
@@ -761,34 +794,102 @@ public class DAODatosPersonalesImpl implements DAODatosPersonales {
 		return respuesta;
 	}
 
+	/* (Claudio-Javadoc)
+	 * @see com.vector.DAO.DAODatosPersonales#Modificar2(com.vector.Beans.DatosPersonales.DatosPersonalesBean)
+	 */
+	@Override
+	public int Modificar2(DatosPersonalesBean datos) {
+		// TODO Auto-generated method stub
+		final String sql0 ="UPDATE TBLDETSPERSONAS SET  NOMBRE=(?), SEGNOMBRE =(?), APELLIDOP =(?), APELLIDOM=(?), SEXO=(?), FECHANAC=(?), IDEDOCIVIL=(?), NACIONALIDAD=(?) WHERE IDPERSONA=(?)";
+		final String sql = "UPDATE TBLPERSONAS SET  URLFOTO=(?), RESUMEN =(?), OBJLABORAL =(?) WHERE IDPERSONA=(?) ";
+		// Apartado de execuciones
+		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				
+				
+				
+				//cero actualizada tabla detalle persona				
+				PreparedStatement ps0 = con.prepareStatement(sql0);
+				ps0.setString(1, datos.getPrimerNombre());
+				ps0.setString(2, datos.getSegundoNombre());
+				ps0.setString(3, datos.getApellidPterno());
+				ps0.setString(4, datos.getApellidMaterno());
+				ps0.setString(5, datos.getIdSexo());		
+				ps0.setString(6, datos.getFechaNacimiento());
+				ps0.setInt(7, datos.getIdEdoCivil());
+				ps0.setString(8, datos.getNacionalidad());
+				ps0.setInt(9,datos.getIdpersona());
+				ResultSet rs0 =ps0.executeQuery();
+				rs0.next();	
+
+				// primera Actualizacion TBLPersonas
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setString(1, datos.getUrlFoto());
+				ps.setString(2, datos.getResumen());
+				ps.setString(3, datos.getObjetivoLaboral());
+				ps.setLong(4, datos.getIdpersona());
+				//ResultSet rs = ps.executeQuery();
+				//rs.next();
+				
+				
+				return ps;
+				
+			}
+		});
+		return respuesta;
+	}
+
+	/* (Claudio-Javadoc)
+	 * @see com.vector.DAO.DAODatosPersonales#Modificar3(com.vector.Beans.DatosPersonales.DatosPersonalesBean)
+	 */
+	@Override
+	public int Modificar3(DatosPersonalesBean datos) {
+		// TODO Auto-generated method stub
+		final String sql = "UPDATE TBLPERSONAS SET  IDAREA=(?), SUELDO =(?) WHERE IDPERSONA=(?) ";
+		// Apartado de execuciones
+		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				
+
+
+				// primera Actualizacion TBLPersonas
+				PreparedStatement ps = con.prepareStatement(sql);
+				System.out.println("DAO -- se actualizo datos persona con id: "+datos.getIdpersona()+", id area: "+datos.getIdarea()+", y sueldo: "+datos.getSueldo());
+				ps.setInt(1, datos.getIdarea());
+				ps.setInt(2, datos.getSueldo());
+				ps.setLong(3, datos.getIdpersona());
+	
+				
+				return ps;
+				
+			}
+		});
+		return respuesta;
+	}
+
 }
 
 class DatPerRowMapper implements RowMapper<DatosPersonalesBean> {
 	@Override
 	public DatosPersonalesBean mapRow(ResultSet rs, int rowNum) throws SQLException {
+		
 		DatosPersonalesBean retorno = new DatosPersonalesBean();
-		retorno.setUrlFoto(rs.getString(3));
-		retorno.setStatus(rs.getString(4));
-		retorno.setResumen(rs.getString(5));
-		retorno.setObjetivoLaboral(rs.getString(6));
-		retorno.setSueldo(rs.getInt(7));
-		retorno.setNcontrol(rs.getString(8));
+
+		retorno.setIdpersona(rs.getInt(1));
+		retorno.setSueldo(rs.getInt(8));
 		retorno.setNombreArea(rs.getString(10));
-		retorno.setCodArea(rs.getString(11));
-		retorno.setPrimerNombre(rs.getString(17));
-		retorno.setSegundoNombre(rs.getString(18));
-		retorno.setApellidPterno(rs.getString(19));
-		retorno.setApellidMaterno(rs.getString(20));
-		retorno.setIdSexo(rs.getString(21));
-		retorno.setFechaNacimiento(rs.getString(22));
-		retorno.setNacionalidad(rs.getString(23));
-		retorno.setIdEdoCivil(rs.getInt(24));
-		retorno.setEstadoCivil(rs.getString(25));
-		retorno.setCalle(rs.getString(28));
-		retorno.setColonia(rs.getString(29));
-		retorno.setNumeroInterior(rs.getString(30));
-		retorno.setNumeroExterior(rs.getString(31));
-		retorno.setIdCodigoPostal(rs.getInt(32));
+		retorno.setPrimerNombre(rs.getString(2));
+		retorno.setSegundoNombre(rs.getString(3));
+		retorno.setApellidPterno(rs.getString(4));
+		retorno.setApellidMaterno(rs.getString(5));
+		retorno.setIdSexo(rs.getString(6));
+		retorno.setEdad(rs.getInt(7));
+		retorno.setStatus(rs.getString(9));
+		retorno.setUrlFoto(rs.getString(15));
+		retorno.setCorreoPrincipal(rs.getString(13)+rs.getString(14));
+		retorno.setTelefonoPrincipal(rs.getString(12));
 		return retorno;
 	}
 }

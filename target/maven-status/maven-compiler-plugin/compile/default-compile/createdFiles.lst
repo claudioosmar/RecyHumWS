@@ -25,12 +25,14 @@ com\vector\controller\DatosTelefonoAltController.class
 com\vector\DAO\Impl\DAODatosCursoImpl$1.class
 com\vector\DAO\Impl\DAODatosCursoImpl$4.class
 com\vector\DAO\Impl\DAODatosHerramientasUsadasImpl$4.class
+com\vector\DAO\Impl\DAODatosPersonalesImpl$5.class
 com\vector\DAO\DAODatosTelefonoAlt.class
 com\vector\DAO\Impl\DAODatosLaboralesImpl$1.class
 com\vector\DAO\DAODatosSesion.class
 com\vector\DAO\Impl\DAODatosDocumentosImpl$4.class
 com\vector\Beans\DatosInicioSesionBean.class
 com\vector\DAO\Impl\DAODatosHerramientasImpl.class
+com\vector\Beans\DatosPersonales\DatosPersonalesBean6.class
 com\vector\controller\DatosCorreoAltController.class
 com\vector\BO\Impl\BODatosEstudioImpl.class
 com\vector\DAO\Impl\DAODatosPersonalesImpl$2.class
@@ -61,6 +63,7 @@ com\vector\controller\DatosCursoController.class
 com\vector\controller\DatosLaboralesController.class
 com\vector\DAO\Impl\DAODatosLaboralesImpl$4.class
 com\vector\controller\DatosDocumentosController.class
+com\vector\Utileria\Log.class
 com\vector\controller\DatosPersonalesController.class
 com\vector\BO\BODatosEstudio.class
 com\vector\DAO\Impl\DAODatosHerramientasUsadasImpl$2.class
@@ -91,6 +94,7 @@ com\vector\DAO\Impl\DAODatosDocumentosImpl$2.class
 com\vector\DAO\Impl\CertificadoRowMapper.class
 com\vector\DAO\Impl\DAODatosHerramientasUsadasImpl$3.class
 com\vector\DAO\Impl\DAODatosEstudioImpl.class
+com\vector\DAO\Impl\DAODatosPersonalesImpl$6.class
 com\vector\Utileria\BusquedaAutomatica$1.class
 com\vector\DAO\Impl\DAODatosCertificadoImpl$3.class
 com\vector\DAO\Impl\DAODatosSesionImpl$2.class
@@ -138,6 +142,7 @@ com\vector\Beans\DatosCertificadoBean.class
 com\vector\DAO\Impl\DAODatosCursoImpl$3.class
 com\vector\DAO\Impl\DAODatosCorreoAltImpl.class
 com\vector\DAO\Impl\DAODatosDocumentosImpl$3.class
+com\vector\Utileria\MetodoError.class
 com\vector\BO\Impl\BODatosIdiomaImpl.class
 com\vector\DAO\Impl\DatPerRowMapper.class
 com\vector\Beans\DatosCorreoAltBean.class
@@ -159,4 +164,5 @@ com\vector\DAO\Impl\DAODatosCertificadoImpl$2.class
 com\vector\DAO\Impl\DAODatosSesionImpl.class
 com\vector\DAO\Impl\DAODatosTelefonoAltImpl$2.class
 com\vector\DAO\Impl\DAODatosEstudioImpl$4.class
+com\vector\Utileria\Levels.class
 com\vector\Utileria\BusquedaAutomatica$2.class

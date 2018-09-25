@@ -16,17 +16,17 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class Encriptarsha1 {
-public String Encriptar(String kripto) {
-	byte[] newpassword=null;
-try {
-newpassword=MessageDigest.getInstance("SHA").digest(kripto.getBytes("utf-8"));
+	public String Encriptar(String kripto) {
+		byte[] newpassword = null;
+		try {
+			newpassword = MessageDigest.getInstance("SHA-1").digest(kripto.getBytes("utf-8"));
 
-}catch(NoSuchAlgorithmException e) {
-e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
 
-}catch(UnsupportedEncodingException e) {
-e.printStackTrace();
-}
-	return Base64.getEncoder().encodeToString(newpassword);
-}
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return Base64.getEncoder().encodeToString(newpassword);
+	}
 }

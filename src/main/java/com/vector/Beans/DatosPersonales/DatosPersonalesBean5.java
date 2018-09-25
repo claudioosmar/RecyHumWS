@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
  *RecyHumWS2--com.vector.Beans.DatosPersonales--DatosPersonalesBean5
  */
 //Clase Bean de datos personoles 5
-public class DatosPersonalesBean5 {
+public class DatosPersonalesBean5 extends DatosPersonalesBean6{
 	/*Variables de DatosPersonales*/
 	@NotNull
 	private String CorreoSecundario="";

@@ -149,6 +149,7 @@ final String sql="delete tblpiv02 where correo = (?)";
 			}
 	}
 
+	@SuppressWarnings("unused")
 	private List<DatosCorreoAltBean>getDatosCorreo(){
 		return this.datos;
 	}

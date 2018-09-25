@@ -55,26 +55,28 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 		date = new Date();
 		formateador = new SimpleDateFormat ("dd/MM/yy"); 
 		fecha = formateador.format(date);
-		
+		System.out.println("DAO -- contraseña:--"+datos.getContraseña()+"--");
 		int IDUser = autoin.UsuarioIDUltimo(jdbcTemplate);
-		datos.setContraseña(new Encriptarsha1().Encriptar(datos.getContraseña()));
-		final String sql = "INSERT INTO TBLUSERS VALUES(?,?,?,?,?,?,?,?,?,?)";
-		datos.setContraseña(new Encriptarsha1().Encriptar(datos.getContraseña()));
+		String contraseña=datos.getContraseña().trim();
+		datos.setContraseña(new Encriptarsha1().Encriptar(contraseña));
+		final String sql = "INSERT INTO TBLUSERS VALUES(?,?,?,?,?,?,?,?,?)";
+		//datos.setContraseña(new Encriptarsha1().Encriptar(datos.getContraseña()));
+		System.out.println("DAO -- contraseña encrip:"+datos.getContraseña());
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				
 				PreparedStatement ps = con.prepareStatement(sql);
+				
 				ps.setLong(1, IDUser);
 				ps.setInt(2, datos.getIdtipouser());
 				ps.setLong(3,datos.getIdpersonaalta());
 				ps.setString(4, datos.getNombre());
 				ps.setString(5, datos.getContraseña());
-				ps.setLong(6, 1);
+				ps.setString(6, fecha);
 				ps.setString(7, fecha);
-				ps.setString(8, fecha);
-				ps.setLong(9, datos.getIdpersona());
-				ps.setString(10, datos.getObservacion());
+				ps.setLong(8, datos.getIdpersona());
+				ps.setString(9, " ");
 							
 				return ps;
 			}
@@ -164,61 +166,33 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 	@Override
 	public List<DatosFormularioBean> VerificarLogin(DatosInicioSesionBean datos) {
 		// TODO Auto-generated method stub
-		final String sql = "select * from tblusers where Nombre=? and contraseña=?";
-		datos.setContraseña(new Encriptarsha1().Encriptar(datos.getContraseña()));
+		System.out.println("DAO Verificar:--"+datos.getContraseña()+"--");
+		final String sql = "select * from tblusers ur, tblpersonas pr where ur.idpersona = pr.idpersona and ur.nombre = (?) and ur.contraseña =(?)";
+		String contraseña=datos.getContraseña().trim();
+		datos.setContraseña(new Encriptarsha1().Encriptar(contraseña));
+		System.out.println("DAO Verificar encrip: "+datos.getContraseña());
+		List<DatosFormularioBean> resp = new ArrayList<DatosFormularioBean>();
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
-				List<DatosFormularioBean> resp = new ArrayList<DatosFormularioBean>();
+				
 				ps.setString(1, datos.getUsuario());
 				ps.setString(2, datos.getContraseña());
+				DatosFormularioBean date = new DatosFormularioBean();
 				System.out.println("DAO Datos Usuario "+datos.getUsuario()+" "+datos.getContraseña());
 				ResultSet rs = ps.executeQuery();
-				rs.next();
-				datos.setIdtipouser(rs.getInt(2));
-				datos.setIdpersona(rs.getLong(9));
-				System.out.println("ID de Persona logueada "+datos.getIdpersona());
-				PreparedStatement ps2 = con.prepareStatement("select * from tblpiv12 where idtipouser=(?)");
-				ps2.setInt(1, datos.getIdtipouser());
-				System.out.println("DAO TipoUser "+datos.getIdtipouser());
-				ResultSet rs2 = ps2.executeQuery();
-				List<Integer> idprivilegio = new ArrayList<Integer>();
-				while(rs2.next()) {
-					idprivilegio.add(rs2.getInt(1));
-				}
-				System.out.println("Dao ArrayList de privilegios "+ idprivilegio);
-				System.out.println("Privilegio 1 "+ idprivilegio.get(0));
-				DatosFormularioBean var2 =new DatosFormularioBean();
-				
-				PreparedStatement ps3 = con.prepareStatement("select * from tblpiv10 where idprivilegio =(?)");
-				for (int i = 0; i < idprivilegio.size(); i++) {
-					ps3.setInt(1, idprivilegio.get(i));
-					System.out.println("ID Privilegio "+ i);
-					ResultSet rs3 = ps3.executeQuery();
-					rs3.next();
-					var2 = new DatosFormularioBean();
-					var2.setNomformulario(String.valueOf(rs3.getInt(2)));
-					var2.setStatus(rs3.getBoolean(3));
-					var2.setIdpersona(datos.getIdpersona());
-					System.out.println("NomFormulario(int) "+ rs3.getInt(2)+" "+"Status "+rs3.getBoolean(3));
-					resp.add(var2);
-				}
-				System.out.println("DAO Lista Formularios en bean "+resp.get(0).getNomformulario()+" "+resp.get(0).isStatus());
-				for (int i = 0; i < idprivilegio.size(); i++) {
-					PreparedStatement ps4 = con.prepareStatement("select * from tblformularios where idformulario =(?)");
-					ps4.setInt(1, Integer.parseInt(resp.get(i).getNomformulario()));
-					ResultSet rs4 = ps4.executeQuery();
-					rs4.next();
-					resp.get(i).setNomformulario(rs4.getString(2));
-				}
-				listaform = resp;
+				if(rs.next()) 
+				date.setIdtipousuario(rs.getInt(2));
+				date.setIdpersona(rs.getLong(8));
+				date.setStatus(rs.getBoolean(13));
+				resp.add(date);
 				return ps;
 			}
 		});
 		
 		
-		return listaform;
+		return resp;
 		
 	
 
@@ -260,7 +234,7 @@ class SesionRowMapper implements RowMapper<DatosInicioSesionBean> {
 		user.setIP(rs.getString(4));
 		user.setUsuario(rs.getString(2));
 		user.setContraseña("unsigned");
-		user.setStatus(rs.getString(7));
+		user.setStatus(rs.getBoolean(7));
 		user.setToken(rs.getString(3));
 		user.setMovimiento(rs.getString(6));
 		user.setIdtipouser(rs.getInt(5));

@@ -46,6 +46,21 @@ public class DatosPersonalesController {
 		System.out.print("se busco los datos personales "+datos.getIdpersona()+"\n");
 		return new ResponseEntity<DatosPersonalesBean>(bodatos.Buscar(datos),HttpStatus.OK);
 	}
+	//Ruta utilizada para la llamada de la funcion modificar datos personales v2
+	@RequestMapping(path = "/SGRHWebService/DatosPersonales/Modificar2",method = RequestMethod.POST)
+	public ResponseEntity<MsgBean>actualizar2(@RequestBody DatosPersonalesBean datos){
+		//Linea de impresion en consola que muestra datos de los datos personales al ser modificados v2
+		System.out.print("Se modifico datos personales v2 ");
+		return new ResponseEntity<MsgBean>(bodatos.Modificar2(datos),HttpStatus.OK);
+	}	
+	//Ruta utilizada para la llamada de la funcion modificar datos personales v2
+	@RequestMapping(path = "/SGRHWebService/DatosPersonales/ModificarAdmin",method = RequestMethod.POST)
+	public ResponseEntity<MsgBean>actualizar3(@RequestBody DatosPersonalesBean datos){
+		//Linea de impresion en consola que muestra datos de los datos personales al ser modificados v2
+		System.out.println("El Admin actualizo a la persona con id: "+datos.getIdpersona()+", asigno id area: "+datos.getIdarea()+", y establecio el sueldo en: "+datos.getSueldo());
+		return new ResponseEntity<MsgBean>(bodatos.Modificar3(datos),HttpStatus.OK);
+	}
+	
 	//Ruta utilizada para la llamada de la funcion listar idiomas
 	@RequestMapping("/SGRHWebService/DatosPersonales/Listar")
 	public ResponseEntity<List<DatosPersonalesBean>> Listar(){

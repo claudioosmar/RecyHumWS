@@ -18,6 +18,7 @@ import com.vector.BO.BODatosLogin;
 import com.vector.Beans.DatosFormularioBean;
 import com.vector.Beans.DatosInicioSesionBean;
 import com.vector.Beans.MsgBean;
+import com.vector.Utileria.Log;
 
 
 /**
@@ -26,7 +27,7 @@ import com.vector.Beans.MsgBean;
  */
 
 @RestController
-public class DatosInicioSesionController {
+public class DatosInicioSesionController extends Log{
 	
 	
 	
@@ -36,7 +37,7 @@ public class DatosInicioSesionController {
 
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody DatosInicioSesionBean datos){
-		System.out.print("Se creo un usuario"+"\n ");
+		info("Se creo un usuario"+"\n ");
 		return new ResponseEntity<MsgBean>(login.CreateUser(datos),HttpStatus.OK);
 	}
 	
@@ -49,13 +50,20 @@ public class DatosInicioSesionController {
 	
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Verificar", method = RequestMethod.POST)
 	public ResponseEntity<List<DatosFormularioBean>> verificarlogin(@RequestBody DatosInicioSesionBean datos){
+		info("entrando al metodo");/*letreros*/
+		debug(null);/*informacion de variables*/
+		error(null);/*errores ocurridos bajo control*/
+		warn(null);/*alertas de informacion erronea*/
+		fatal(null);/*errores fatales del programa*/
 		MsgBean respuesta = new MsgBean();
 		if(datos.getUsuario().isEmpty()&&datos.getContraseña().isEmpty()) {
+			warn("usuario y contraseña incorrecto");
 			respuesta.setMsjAccion("falta usuario y/o contraseña");
 		}else {
 		
 		System.out.println("Usuario "+datos.getUsuario()+" Contra "+datos.getContraseña()+"\n ");
 	}
+		info("se verifico usuario");
 		return new ResponseEntity<List<DatosFormularioBean>>(login.VerificarUsuario(datos),HttpStatus.OK);
 		
 	}

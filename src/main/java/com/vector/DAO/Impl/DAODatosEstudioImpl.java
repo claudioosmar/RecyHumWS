@@ -149,18 +149,18 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 	@Transactional(readOnly = true)
 	public int Eliminar(DatosEstudioBean datos) {
 		// TODO Auto-generated method stub
-		final String sql="delete tblcarreras where idcarrera = (?)";
-		final String sql2="Select * from tblcarreras where idcarrera = (?)";
+		final String sql="delete tblestudios where idestudio = (?)";
+		final String sql2="Select * from tblestudios where idestudio = (?)";
 		
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				
 				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setInt(1, datos.getIdcarrera());
+				ps.setLong(1, datos.getIdestudio());
 				ps.execute();
 				PreparedStatement ps2 = con.prepareStatement(sql2);
-				ps2.setInt(1, datos.getIdcarrera());
+				ps2.setLong(1, datos.getIdestudio());
 
 				return ps2;
 			}

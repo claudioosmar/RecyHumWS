@@ -23,7 +23,7 @@ public class ErroresdeNegocio {
 	@ExceptionHandler(java.sql.SQLException.class) 
 	public ResponseEntity<MsgBean> SQLException (HttpServletRequest request, java.sql.SQLException e) {
         MsgBean mensaje = new MsgBean();
-        System.out.println("SQLError");
+        System.out.println("SQL-- "+e.getMessage());
         if(e.getErrorCode()==17289) {
         	mensaje.setMsjAccion("No Se econtraron Datos");
         }else if(e.getErrorCode()==17002) {
@@ -77,7 +77,7 @@ public class ErroresdeNegocio {
 	@ExceptionHandler(org.springframework.http.converter.HttpMessageNotReadableException.class) 
 	public ResponseEntity<MsgBean> HttpMessageNotReadableException (HttpServletRequest request, org.springframework.http.converter.HttpMessageNotReadableException e){
 		MsgBean mensaje = new MsgBean();
-		System.out.println("HTTPMessageno");
+		System.out.println("HttpMessageNotReadable -- "+e.getMessage());
         mensaje.setMsjAccion("Falta 1 o mas datos en el JSON favor de verificar "+"--"+e.getLocalizedMessage());
 		return new ResponseEntity<MsgBean>(mensaje,HttpStatus.BAD_REQUEST);
 	}
@@ -85,21 +85,21 @@ public class ErroresdeNegocio {
 	@ExceptionHandler(java.lang.IllegalStateException.class)
 	public ResponseEntity<MsgBean> IllegalStateException (HttpServletRequest request, java.lang.IllegalStateException e){
 		MsgBean mensaje = new MsgBean();
-		System.out.println("Ilegalloli");
+		System.out.println("IllegalState -- "+e.getMessage());
         mensaje.setMsjAccion(e.getMessage()+"--"+e.getLocalizedMessage());
 		return new ResponseEntity<MsgBean>(mensaje,HttpStatus.BAD_REQUEST);
 	}
 	@ExceptionHandler(java.lang.NullPointerException.class)
 	public ResponseEntity<MsgBean> NullPointerException(HttpServletRequest request, java.lang.NullPointerException e){
 		MsgBean mensaje = new MsgBean();
-		System.out.println("NullPointer");
+		System.out.println("NullPointer -- "+e.getMessage());
         mensaje.setMsjAccion(e.getMessage()+"--"+e.getLocalizedMessage());
 		return new ResponseEntity<MsgBean>(mensaje,HttpStatus.BAD_REQUEST);
 	}
 	@ExceptionHandler(java.lang.NumberFormatException.class)
 	public ResponseEntity<MsgBean> NumberFormatException(HttpServletRequest request, java.lang.NumberFormatException e){
 		MsgBean mensaje = new MsgBean();
-		System.out.println("Numverformartex");
+		System.out.println("NumberFormat -- "+e.getMessage());
         mensaje.setMsjAccion(e.getMessage()+"--"+e.getLocalizedMessage());
 		return new ResponseEntity<MsgBean>(mensaje,HttpStatus.BAD_REQUEST);
 	}

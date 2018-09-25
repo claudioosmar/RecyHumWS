@@ -13,6 +13,27 @@ public class DatosFormularioBean {
 	private String Nomformulario="";
 	private boolean status=false;
 	private long idpersona=0;
+	private int idtipousuario=0;
+	
+	
+
+	
+	/**
+	 * @return Obtienes el valor de idtipousuario del tipo int
+	 */
+	
+	public int getIdtipousuario() {
+		return idtipousuario;
+	}
+
+	
+	/**
+	 * @param Agregar el valor a idtipousuario del tipo int
+	 */
+	
+	public void setIdtipousuario(int idtipousuario) {
+		this.idtipousuario = idtipousuario;
+	}
 
 	//declaracion de getters y setters
 	/**

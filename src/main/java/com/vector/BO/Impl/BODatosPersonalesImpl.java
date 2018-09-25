@@ -98,4 +98,47 @@ public class BODatosPersonalesImpl implements BODatosPersonales {
 		return datospersonales.Listar();
 	}
 
+	/* (Claudio-Javadoc)
+	 * @see com.vector.BO.BODatosPersonales#Modificar2(com.vector.Beans.DatosPersonales.DatosPersonalesBean)
+	 */
+	@Override
+	public MsgBean Modificar2(DatosPersonalesBean datos) {
+		// TODO Auto-generated method stub
+		MsgBean mensaje = new MsgBean();
+		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		int resultado = datospersonales.Modificar2(datos);
+		//condicion que genera mensaje de modificacion exitosa
+		if(resultado == 1) {
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+		}
+		//Se genera mensaje de modificacion fallida
+		else {
+			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		}
+		//Se regresa el mensaje
+		return mensaje;
+	}
+
+	/* (Claudio-Javadoc)
+	 * @see com.vector.BO.BODatosPersonales#Modificar3(com.vector.Beans.DatosPersonales.DatosPersonalesBean)
+	 */
+	@Override
+	public MsgBean Modificar3(DatosPersonalesBean datos) {
+		// TODO Auto-generated method stub
+		MsgBean mensaje = new MsgBean();
+		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		int resultado = datospersonales.Modificar3(datos);
+		//condicion que genera mensaje de modificacion exitosa
+		if(resultado == 1) {
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+		}
+		//Se genera mensaje de modificacion fallida
+		else {
+			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+		}
+		//Se regresa el mensaje
+		return mensaje;
+	}
+	
+
 }

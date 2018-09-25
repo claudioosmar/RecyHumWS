@@ -21,7 +21,7 @@ public class DatosInicioSesionBean {
 	@NotNull
 	private String contraseña="";
 	@NotNull
-	private String Status="";
+	private boolean Status= false;
 	@NotNull
 	private String token="";
 	@NotNull
@@ -114,7 +114,7 @@ public class DatosInicioSesionBean {
 	 * @return Obtienes el valor de status del tipo String
 	 */
 	
-	public String getStatus() {
+	public boolean getStatus() {
 		return Status;
 	}
 	
@@ -122,7 +122,7 @@ public class DatosInicioSesionBean {
 	 * @param Agregar el valor a status del tipo String
 	 */
 	
-	public void setStatus(String status) {
+	public void setStatus(boolean status) {
 		Status = status;
 	}
 	
