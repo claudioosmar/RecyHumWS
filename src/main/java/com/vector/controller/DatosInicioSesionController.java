@@ -44,7 +44,7 @@ public class DatosInicioSesionController extends Log{
 	
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<DatosInicioSesionBean>buscar(@RequestBody DatosInicioSesionBean datos){
-		System.out.print("se busco los estudios de la persona "+datos.getIdpersona()+"\n ");
+		info("Se busco los datos del usuario"+"\n");
 		return new ResponseEntity<DatosInicioSesionBean>(login.Buscar(datos),HttpStatus.OK);
 	}
 	
@@ -71,7 +71,7 @@ public class DatosInicioSesionController extends Log{
 	
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Listar", method = RequestMethod.POST)
 	public ResponseEntity<List<DatosInicioSesionBean>> consulta(){
-		System.out.println("Ingresando a listar usuarios "+"\n ");
+		info("Se ingreso a listar Usuarios");
 		List<DatosInicioSesionBean> usuarios = login.ListarUsuarios();
 		if(usuarios.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -97,7 +97,7 @@ public class DatosInicioSesionController extends Log{
 	
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosInicioSesionBean datos){
-		System.out.print("Se modifico el usuario con id"+datos.getID_User()+"\n ");
+		info("Se modifico el usuario con id de persona: "+datos.getID_User());
 		return new ResponseEntity<MsgBean>(login.Modificar(datos),HttpStatus.OK);
 	}
 	

@@ -44,7 +44,7 @@ public class BusquedaAutomatica {
 	@RequestMapping(value = "/SGRHWebService/BusquedaAutomatica/ListarEstado",method=RequestMethod.POST)
 	public List<BusquedaAutomatica>Busqueda(BusquedaAutomatica datos) {
 		//sentencia sql para recuperar los estados
-		final String sql = "select * from tblestados";
+		final String sql = "select * from tblestados order by nombre asc";
 		
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
@@ -86,7 +86,7 @@ public class BusquedaAutomatica {
 	/*metodo para enlistar los municipios desde la base de datos*/
 	@RequestMapping(value = "/SGRHWebService/BusquedaAutomatica/ListarMunicipio",method=RequestMethod.POST)
 	public List<BusquedaAutomatica>BusquedaMun(@RequestBody BusquedaAutomatica datos1) {
-		final String sql2 = "select * from tblmunicipios where idestado=(?)";
+		final String sql2 = "select * from tblmunicipios  where idestado=(?) order by nombre asc";
 		
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
@@ -122,7 +122,7 @@ public class BusquedaAutomatica {
 	/*metodo para enlistar las localidades desde la base de datos*/
 	@RequestMapping(value = "/SGRHWebService/BusquedaAutomatica/ListarLocalidad",method=RequestMethod.POST)
 	public List<BusquedaAutomatica>BusquedaLoc(@RequestBody BusquedaAutomatica datos2) {
-		final String sql3 = "select * from tbllocalidades where idmunicipio=(?)";
+		final String sql3 = "select * from tbllocalidades where idmunicipio=(?) order by nombre asc";
 		
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override

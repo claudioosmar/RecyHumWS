@@ -26,6 +26,9 @@ public interface BODatosPersonales {
 	//MENSAJE DE MODIFICACION DE LOS DATOS DEL APARTADO DE DATOS PERSONALES QUE RETORNA UN MENSAJE DE LA CLASE MSGBEAN V2
 	MsgBean Modificar2(DatosPersonalesBean datos);
 	//MENSAJE DE MODIFICACION DE LOS DATOS DEL APARTADO DE DATOS PERSONALES SALARIO/STATUS QUE RETORNA UN MENSAJE DE LA CLASE MSGBEAN V2
-		MsgBean Modificar3(DatosPersonalesBean datos);
+	MsgBean Modificar3(DatosPersonalesBean datos);
+		
+	List<DatosPersonalesBean>BusquedaArea(String area);
+	List<DatosPersonalesBean> BusquedaNombreCompleto(String parametro);
 
 }

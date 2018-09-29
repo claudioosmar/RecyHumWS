@@ -66,8 +66,8 @@ public class DAODatosCursoImpl implements DAODatosCurso {
 						PreparedStatement ps3 = con.prepareStatement(sql4);
 						System.out.println("datos de certificado: "+idcertificado+" "+datos.getNombrecertificado()+"\n");
 						ps3.setLong(1, idcertificado);
-						ps3.setString(3, datos.getNombrecertificado());
-						ps3.setInt(2, 8);
+						ps3.setString(3, datos.getNombrecurso());
+						ps3.setInt(2, 7);
 						ps3.execute();
 					/*tercera insercion si se cumple la segunda*/
 						PreparedStatement ps = con.prepareStatement(sql2);

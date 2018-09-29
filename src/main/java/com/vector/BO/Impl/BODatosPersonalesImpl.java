@@ -139,6 +139,24 @@ public class BODatosPersonalesImpl implements BODatosPersonales {
 		//Se regresa el mensaje
 		return mensaje;
 	}
+
+	/* (Claudio-Javadoc)
+	 * @see com.vector.BO.BODatosPersonales#BusquedaArea()
+	 */
+	@Override
+	public List<DatosPersonalesBean> BusquedaArea(String area) {
+		// TODO Auto-generated method stub
+		return datospersonales.BusquedaArea(area);
+	}
+
+	/* (Claudio-Javadoc)
+	 * @see com.vector.BO.BODatosPersonales#BusquedaNombreCompleto(java.lang.String)
+	 */
+	@Override
+	public List<DatosPersonalesBean> BusquedaNombreCompleto(String parametro) {
+		// TODO Auto-generated method stub
+		return datospersonales.BusquedaPersonaNombreCompleto(parametro);
+	}
 	
 
 }

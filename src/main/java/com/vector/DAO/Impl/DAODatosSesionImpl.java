@@ -55,19 +55,18 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 		date = new Date();
 		formateador = new SimpleDateFormat ("dd/MM/yy"); 
 		fecha = formateador.format(date);
-		System.out.println("DAO -- contraseña:--"+datos.getContraseña()+"--");
 		int IDUser = autoin.UsuarioIDUltimo(jdbcTemplate);
 		String contraseña=datos.getContraseña().trim();
 		datos.setContraseña(new Encriptarsha1().Encriptar(contraseña));
 		final String sql = "INSERT INTO TBLUSERS VALUES(?,?,?,?,?,?,?,?,?)";
 		//datos.setContraseña(new Encriptarsha1().Encriptar(datos.getContraseña()));
-		System.out.println("DAO -- contraseña encrip:"+datos.getContraseña());
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				
+				System.out.println(" idtipo: "+datos.getIdtipouser()+" idpersonaalta: "+datos.getIdpersonaalta()
+				+" nomnbre: "+datos.getNombre()+" contraseña: "+datos.getContraseña()
+				+" idpersona: "+datos.getIdpersona()+" observa: "+datos.getObservacion());
 				PreparedStatement ps = con.prepareStatement(sql);
-				
 				ps.setLong(1, IDUser);
 				ps.setInt(2, datos.getIdtipouser());
 				ps.setLong(3,datos.getIdpersonaalta());
@@ -75,9 +74,8 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 				ps.setString(5, datos.getContraseña());
 				ps.setString(6, fecha);
 				ps.setString(7, fecha);
-				ps.setLong(8, datos.getIdpersona());
-				ps.setString(9, " ");
-							
+				ps.setLong(8, datos.getIdpersona());	
+				ps.setString(9, datos.getObservacion());
 				return ps;
 			}
 		});
