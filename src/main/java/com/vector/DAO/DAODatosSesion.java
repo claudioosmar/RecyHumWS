@@ -19,7 +19,7 @@ public interface DAODatosSesion {
 	//tipo de dato regresado por los beans de inicio de sesion
 	int Create(DatosInicioSesionBean datos);
 	//tipo de dato regresado por los beans de inicio de sesion
-	int Delete (DatosInicioSesionBean datos);
+	int Delete (long id);
 	//tipo de dato regresado por los beans de inicio de sesion
 	int Modificar (DatosInicioSesionBean datos);
 	//regresa un listado de busqueda de los datos de herramientas usadas bean

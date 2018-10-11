@@ -14,12 +14,13 @@ import com.vector.Beans.DatosDocumentoBean;
 import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosDocumento;
 import com.vector.Utileria.EnvioMensaje;
+import com.vector.Utileria.Log;
 /**
  * @author JESUS ALEJANDRO CARRILLO SANCHEZ
  *
  */
 @Service
-public class BODatosDocumentoImpl implements BODatosDocumentos {
+public class BODatosDocumentoImpl extends Log implements BODatosDocumentos {
 	@Autowired
 	private DAODatosDocumento daodoc;
 	
@@ -31,25 +32,30 @@ public class BODatosDocumentoImpl implements BODatosDocumentos {
 	public MsgBean Crear(List<DatosDocumentoBean> datos) {
 		// TODO Auto-generated method stub
 		int respuesta=0;
+		info("entra en ciclo for");
 		//Sentencia for para la validacion del tamaño de los datos del bean
 		for (int i = 0; i < datos.size(); i++) {
+			info("envia respuesta");
 			 respuesta = daodoc.Crear(datos.get(i));
 			 if(respuesta==0) {
-				 System.out.println("fallo la insercion "+i+1);
+				 error("fallo la insercion "+i+1);
 				 break;
 			 }
 		}
 		//Condicional para el envio del mensaje de respuesta
 		MsgBean msj = new MsgBean();
 		
-		LOGGER.info("Este es la respuesta: "+ Integer.valueOf(respuesta).toString());;
+		LOGGER.info("Este es la respuesta: "+ Integer.valueOf(respuesta).toString());
+		info("entra en sentencia if");
 		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
 		if(respuesta==1) {
+			info("mensaje correcto");
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
 			return msj;
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
+			error("mensaje de error");
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
 			return msj;
 		}
@@ -65,14 +71,17 @@ public class BODatosDocumentoImpl implements BODatosDocumentos {
 		//Condicional para el envio del mensaje de respuesta
 		MsgBean msj = new MsgBean();
 		LOGGER.info("Este es la respuesta: " + Integer.valueOf(respuesta).toString());
+		info("entra en sentencia if");
 		//Condicion que genera mensaje de modificacion exitosa
 		if(respuesta==1) {
+			info("mensaje correcto");
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
 			
 			return msj;
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
+			error("mensaje de error");
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
 			
 			return msj;
@@ -88,14 +97,17 @@ public class BODatosDocumentoImpl implements BODatosDocumentos {
 		int respuesta=daodoc.Eliminar(datos);
 		//Condicional para el envio del mensaje de respuesta
 		MsgBean msj = new MsgBean();
+		info("entra en sentencia if");
 		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
 		if(respuesta==1) {
+			info("mensaje correcto");
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
 			
 			return msj;
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
+			error("mensaje de error");
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
 			
 			return msj;
@@ -108,6 +120,7 @@ public class BODatosDocumentoImpl implements BODatosDocumentos {
 	@Override
 	public List<DatosDocumentoBean> Buscar(DatosDocumentoBean datos) {
 		// TODO Auto-generated method stub
+		info("entra en metodo buscar");
 		return daodoc.Buscar(datos);
 	}
 
@@ -117,6 +130,7 @@ public class BODatosDocumentoImpl implements BODatosDocumentos {
 	@Override
 	public List<DatosDocumentoBean> Listar(long id) {
 		// TODO Auto-generated method stub
+		info("entra en metodo listar"+id);
 		return daodoc.Listar(id);
 	}
 

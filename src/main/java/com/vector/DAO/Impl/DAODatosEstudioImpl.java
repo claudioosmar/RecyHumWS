@@ -20,13 +20,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.vector.Beans.DatosEstudioBean;
 import com.vector.DAO.DAODatosEstudio;
 import com.vector.Utileria.AutoIncrementablesBDOracle;
+import com.vector.Utileria.Log;
 
 /**
  * @author vectormx
  *
  */
 @Service
-public class DAODatosEstudioImpl implements DAODatosEstudio {
+public class DAODatosEstudioImpl extends Log implements DAODatosEstudio {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	private AutoIncrementablesBDOracle autoin;
@@ -53,13 +54,15 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				System.out.println("datos de estudio a ingresar: "+idestudio+" id grado:"+datos.getIdgrado()+" id localidad:"+datos.getIdlocalidad()+" periodo inicial:"+datos.getPeriodoinicial()+" periodo final:"+datos.getPeriodofinal()+" id carrera:"+idcarrera+" nombre carrera:"+datos.getNombrecorrera());
+				debug("datos de entrada para el sql2:  IDCARRERA["+idcarrera+"], NOMBRECARRERA["+datos.getNombrecorrera()+"]");
 				/*primera insercion*/
 				PreparedStatement ps1 = con.prepareStatement(sql2);
 				ps1.setLong(1, idcarrera);
 				ps1.setString(2, datos.getNombrecorrera());
 				ps1.execute();
+				info("ejecucion de la sentencia sql2: "+sql2);
 				/*segunda insercion*/
+				debug("datos de entrada para el sql: IDESTUDIO["+idestudio+"],IDGRADO["+datos.getIdgrado()+"], IDCARRERA["+idcarrera+"], LOCALIDAD["+datos.getIdlocalidad()+"], INSTITUTO["+datos.getInstitutoestudio()+"], PERIODPINICIAL["+datos.getPeriodoinicial()+"], PERIODOFINAL["+datos.getPeriodofinal()+"]");
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setLong(1, idestudio);
 				ps.setInt(2, datos.getIdgrado());
@@ -69,39 +72,51 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 				ps.setString(6, datos.getPeriodoinicial());
 				ps.setString(7, datos.getPeriodofinal());
 				ps.execute();
+				info("ejecucion de la sentencia sql: "+sql);
+				
 				/*tercera insercion*/
 				if(datos.getIdcertificado()!=0) {
-					System.out.println("id certificado:"+datos.getIdcertificado());
+					info("entra en la sentencia if");
+					debug("datos entrantes para el sql3: IDCERTIFICADO["+datos.getIdcertificado()+"], IDESTUDIO["+idestudio+"]");
 				PreparedStatement ps3 = con.prepareStatement(sql3);
 				ps3.setLong(1,idestudio);
 				ps3.setLong(2, datos.getIdcertificado());
 				ps3.execute();
+				info("ejecucion de la sentencia sql3: "+sql3);
 				}
+				
+			
 				/*cuarta insercion*/
 				if(datos.getIdcurso()!=0) {
-					System.out.println("id curso:"+datos.getIdcurso());
+					info("entra en la sentencia if");
+					debug("datos entrantes para el sql4: IDCURSO["+datos.getIdcurso()+"], IDESTUDIO["+idestudio+"]");
 				PreparedStatement ps4 = con.prepareStatement(sql4);
 				ps4.setLong(1,idestudio);
 				ps4.setLong(2, datos.getIdcurso());
 				ps4.execute();
+				info("ejecucion de la sentencia sql4: "+sql4);
 				}
 				/*quinta insercion*/
 				PreparedStatement ps5 = con.prepareStatement(sql5);
+				debug("datos entrantes para el sql5: IDPERSONA["+datos.getIdpersona()+"], IDESTUDIO["+idestudio+"]");
 				ps5.setLong(1,idestudio);
 				ps5.setLong(2, datos.getIdpersona());
 				ps5.execute();
+				info("ejecucion de la sentencia sql5: "+sql5);
 				
 				PreparedStatement ps6 = con.prepareStatement(sql6);
-				System.out.println("se encontro la persona con id: "+idestudio);
+				debug("datos entrantes para el sql6: IDESTUDIO["+idestudio+"]");
 				ps6.setLong(1, idestudio);
+				info("ejecucion de la sentencia sql6: "+sql6);
 				return ps6;
 			}
 		});
 		if(respuesta==1) {
-			System.out.println("id de estudio que se devuelve:"+idestudio);
+			warn("datos enviados: IDESTUDIO["+idestudio+"],RESPUESTA["+respuesta+"]");
 			return idestudio;
 			
 		}else {
+			error("dato no enviado");
 			return 0;
 		}
 		
@@ -115,27 +130,38 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 	@Transactional(readOnly = true)
 	public int Modificar(DatosEstudioBean datos) {
 		// TODO Auto-generated method stub
-		final String sql = "update tblcarreras set nomcarrera =(?) where idcarrera =(?)";
-		final String sql2 ="update tblestudios set idgrado=(?),idcarrera=(?),idlocalidad=(?),instituto=(?),peinicial=(?),pefinal=(?) where idestudio =(?)";
+		final String sql = "update tblcarreras set NOMCARRERA =(?) where IDCARRERA =(?)";
+		final String sql2 ="update tblestudios set idgrado=(?),idlocalidad=(?),instituto=(?),peinicial=(?),pefinal=(?) where idestudio =(?)";
+		final String sqlaux = "select * from tblestudios where idestudio =(?)";
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				/**consulta para retornar el id de carrera para su actualizacion en tabla*/
+				debug("datos entrantes para el sqlaux: IDESTUDIO["+datos.getIdestudio()+"]");
+				PreparedStatement psaux = con.prepareStatement(sqlaux);
+				psaux.setLong(1, datos.getIdestudio());
+				ResultSet rsaux = psaux.executeQuery();
+				rsaux.next();
+				info("ejecucion de la sentencia sqlaux: "+sqlaux);
+				int idcarrera = (rsaux.getInt(3));
+				warn("datos enviados: IDCARRERA["+idcarrera+"]");
 				/*primera insercion*/
+				debug("datos entrantes para el sql: IDCARRERA["+idcarrera+"], NOMBRECARRERA["+datos.getNombrecorrera()+"]");
 				PreparedStatement ps1 = con.prepareStatement(sql);
-				ps1.setInt(2, datos.getIdcarrera());
+				ps1.setInt(2, idcarrera);
 				ps1.setString(1, datos.getNombrecorrera());
 				ps1.execute();
-				
+				info("ejecucion de la sentencia sql: "+sql);
 				/*segunda insercion*/
+				debug("datos entrantes para el sql2: IDESTUDIO["+datos.getIdestudio()+"], IDGRADO["+datos.getIdgrado()+"], IDLOCALIDAD["+datos.getIdlocalidad()+"], INSTITUTO["+ datos.getInstitutoestudio()+"],PERIODOINICIAL"+datos.getPeriodoinicial()+"], PERIODOFINAL["+datos.getPeriodofinal()+"]");
 				PreparedStatement ps = con.prepareStatement(sql2);
-				ps.setLong(7, datos.getIdestudio());
+				ps.setLong(6, datos.getIdestudio());
 				ps.setInt(1, datos.getIdgrado());
-				ps.setInt(2, datos.getIdcarrera());
-				ps.setInt(3, datos.getIdlocalidad());	
-				ps.setString(4, datos.getInstitutoestudio());	
-				ps.setString(5, datos.getPeriodoinicial());
-				ps.setString(6, datos.getPeriodofinal());				
-			
+				ps.setInt(2, datos.getIdlocalidad());	
+				ps.setString(3, datos.getInstitutoestudio());	
+				ps.setString(4, datos.getPeriodoinicial());
+				ps.setString(5, datos.getPeriodofinal());				
+				info("ejecucion de la sentencia sql2: "+sql2);
 				return ps;
 			}
 		});
@@ -149,19 +175,41 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 	@Transactional(readOnly = true)
 	public int Eliminar(DatosEstudioBean datos) {
 		// TODO Auto-generated method stub
-		final String sql="delete tblestudios where idestudio = (?)";
+		//final String sql="delete tblestudios where idestudio = (?)";
 		final String sql2="Select * from tblestudios where idestudio = (?)";
+		final String sql3="delete tblcarreras where idcarrera =(?)";
 		
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				
+				debug("datos entrates para el sql2: IDESTUDIO["+datos.getIdestudio()+"]");
+				PreparedStatement psAux = con.prepareStatement(sql2);
+				psAux.setLong(1, datos.getIdestudio());
+				ResultSet rsAux = psAux.executeQuery();
+				rsAux.next();
+				info("ejecucion de la sentencia sql2: "+sql2);
+				int idAux2 = Integer.parseInt(rsAux.getString(3));
+				info("datos enviados: IDCARRERA["+idAux2+"]");
+				if(idAux2 != 0) {
+				info("entra en la sentencia if");
+				debug("datos entrantes para el sql3: IDCARRERA["+idAux2+"]");
+				PreparedStatement ps1 = con.prepareStatement(sql3);
+				ps1.setLong(1, idAux2);
+				ps1.execute();
+				info("ejecucion de la sentencia sql3: "+sql3);
+			/*	ResultSet rs = ps1.executeQuery();
+				rs.next();
+				ps1.execute();
+				info("se elimino la carrera con id: "+idAux2+"y el estudio con id: "+datos.getIdestudio());
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setLong(1, datos.getIdestudio());
-				ps.execute();
-				PreparedStatement ps2 = con.prepareStatement(sql2);
+				ps.execute();*/
+				info("se elimino la carrera con id: "+idAux2+"y el estudio con id: "+datos.getIdestudio());
+				}
+				debug("datos entrantes para el sql2: IDESTUDIO["+datos.getIdestudio()+"]");
+				PreparedStatement ps2 = con.prepareStatement(sql2);		
 				ps2.setLong(1, datos.getIdestudio());
-
+				info("ejecucion de la sentencia sql2: "+sql2);
 				return ps2;
 			}
 		});
@@ -178,13 +226,16 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				debug("datos entrantes para el sql: IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setLong(1, datos.getIdpersona());
 				ResultSet rs = ps.executeQuery();
+				info("llamado al metodo setDatosEstudio(rs)");
 				setDatosEstudio(rs);
 				return ps;
 			}
 		});
+		info("llamado al metodo getDatosEstudio()");
 		List<DatosEstudioBean> retorno = getDatosEstudio();
 		return retorno;
 	}
@@ -196,12 +247,14 @@ public class DAODatosEstudioImpl implements DAODatosEstudio {
 	public List<DatosEstudioBean> Listar() {
 		// TODO Auto-generated method stub
 		final String sql = "select * from tblestudios est,tblcarreras carr,tblgradosests gra,tbllocalidades loc where est.idcarrera = carr.idcarrera and est.idlocalidad = loc.idlocalidad and est.idgrado = gra.idgrado";
+		info("ejecucion de la sentencia sql: "+sql);
 		return jdbcTemplate.query(sql, new EstudioRowMapper());
 	}
 
 private void setDatosEstudio(ResultSet rs) throws SQLException{
 	datos= new ArrayList<DatosEstudioBean>();
 	DatosEstudioBean respuesta;
+	info("entra en el while");
 	while(rs.next()) {
 		respuesta = new DatosEstudioBean();
 		respuesta.setIdgrado(rs.getInt(2));
@@ -216,6 +269,7 @@ private void setDatosEstudio(ResultSet rs) throws SQLException{
 	/*	respuesta.setNombreestado(rs.getString(25));
 		respuesta.setNombremunicipio(rs.getString(21));*/
 		respuesta.setIdestudio(rs.getLong(1));
+		warn("datos enviados: IDGRADO["+rs.getInt(2)+"], IDCARRERA["+rs.getInt(3)+"], IDLOCALIDAD["+rs.getInt(4)+"], INSTITUTIO["+rs.getString(5)+"], PERIODOINICIAL["+rs.getString(6)+"], PERIODOFINAL"+rs.getString(7)+"], NOMBRELOCALIDAD["+rs.getString(15)+"], NOMBREGRADO["+rs.getString(11)+"], NOMBRECARRERA["+rs.getString(9)+"], IDESTUDIO["+rs.getLong(1)+"]");
 		this.datos.add(respuesta);
 		}
 }

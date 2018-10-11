@@ -16,52 +16,55 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vector.BO.BODatosDocumentos;
 import com.vector.Beans.DatosDocumentoBean;
 import com.vector.Beans.MsgBean;
+import com.vector.Utileria.Log;
 
 /**
  * @author JESUS ALEJANDRO CARRILLO SANCHEZ
  *
  */
 @RestController
-public class DatosDocumentosController {
+public class DatosDocumentosController extends Log{
 	@Autowired
 	private BODatosDocumentos documento;
 	//Ruta utilizada para la llamada de la funcion crear documento
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosDocumentoBean> datos){
 		//Linea de impresion en consola que muestra datos del documento al ser creado
-		System.out.print("Se agrego el doc "+datos.get(0).getDescripciondocNw()+ " al ID de persona" +datos.get(0).getIdpersona());
+		info("Se agrego el doc "+datos.toString());
 		return new ResponseEntity<MsgBean>(documento.Crear(datos),HttpStatus.OK);
 	}
 	//Ruta utilizada para la llamada de la funcion Modificar documentos
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosDocumentoBean datos){
 		//Ruta utilizada para la llamada de la funcion Modificar documentos
-		System.out.print("Se modifico el documento "+datos.getDescripciondocNw()+" con id "+datos.getIddocumentoLt()+" " + "al ID de persona "+datos.getIdpersona()+" con id nuevo documento "+datos.getIddocumentoNw()+" ");
+		info("Se modifico el documento "+datos.getDescripciondocNw()+" con id "+datos.getIddocumentoLt()+" " + "al ID de persona "+datos.getIdpersona()+" con id nuevo documento "+datos.getIddocumentoNw()+" ");
 		return new ResponseEntity<MsgBean>(documento.Modificar(datos),HttpStatus.OK);
 	}
 	//Ruta utilizada para la llamada de la funcion eliminar documetos
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosDocumentoBean datos){
 		//Linea de impresion en consola que muestra datos de los documentos al ser eliminados
-		System.out.print("se elimino el documento "+datos.getDescripciondocNw()+ "con el ID de documento "+datos.getIddocumentoNw());
+		info("se elimino el documento "+datos.getDescripciondocNw()+ "con el ID de documento "+datos.getIddocumentoNw());
 		return new ResponseEntity<MsgBean>(documento.Eliminar(datos),HttpStatus.OK);
 	}
 	//Ruta utilizada para la llamada de la funcion buscar documentos
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosDocumentoBean>>buscar(@RequestBody DatosDocumentoBean datos){
 		//mensaje de impresion en la consola que muestra los datos que relacionan la consulta
-		System.out.print("se busco el documento "+datos.getDescripciondocNw()+ "con el ID de documento "+datos.getIddocumentoNw()+" ");
+		info("se busco el documento "+datos.toString());
 		return new ResponseEntity<List<DatosDocumentoBean>>(documento.Buscar(datos),HttpStatus.OK);
 	}
 	//Ruta utilizada para la llamada de la funcion listar idiomas
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosDocumentoBean>> consulta(@RequestBody DatosDocumentoBean datos){
 		//mensaje de impresion de la accion realisada
-		System.out.println("Ingresando a listar documento ");
+		info("Ingresando a listar documento ");
 		List<DatosDocumentoBean> documentos = documento.Listar(datos.getIdpersona());
 		if(documentos.isEmpty()) {
+			info("no se encontraron datos");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}else {
+			info("se enlistaron los documentos");
 			return new ResponseEntity<List<DatosDocumentoBean>>(documentos, HttpStatus.OK);
 		}
 	}

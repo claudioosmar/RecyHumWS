@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
  *RecyHumWS2--com.vector.Beans.DatosPersonales--DatosPersonalesBean6
  */
 //Clase Bean de datos personoles 6
-public class DatosPersonalesBean6 {
+public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 	/*Variables de DatosPersonales*/
 	@NotNull
 	private int edad=0;
@@ -30,8 +30,32 @@ public class DatosPersonalesBean6 {
 	private String correoprincipalNw="";
 	@NotNull
 	private String corresecundarioNw="";
+	@NotNull
+	private long iduser=0;
 	/*Seccion de getters y setters*/
 	
+	
+	/**
+	 * @return Obtienes el valor de iduser del tipo long
+	 */
+	
+	public long getIduser() {
+		return iduser;
+	}
+
+
+
+	
+	/**
+	 * @param Agregar el valor a iduser del tipo long
+	 */
+	
+	public void setIduser(long iduser) {
+		this.iduser = iduser;
+	}
+
+
+
 	/**
 	 * @return Obtienes el valor de edad del tipo int
 	 */

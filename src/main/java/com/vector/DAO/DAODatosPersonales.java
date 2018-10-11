@@ -28,6 +28,10 @@ public interface DAODatosPersonales {
 	//tipo de dato regresado por los beans de datos personales
 	int Modificar3(DatosPersonalesBean datos);
 	
-	List<DatosPersonalesBean>BusquedaArea(String area);
+	List<DatosPersonalesBean>BusquedaEstudiosPersona(long id);
+	List<DatosPersonalesBean>BusquedaHerramientasConPersona(long id);
+	List<DatosPersonalesBean>BusquedaExpLaboralPersona(long id);
+	List<DatosPersonalesBean>BusquedaIdiomasPersona(long id);
 	List<DatosPersonalesBean> BusquedaPersonaNombreCompleto(String parametro);
+	
 }

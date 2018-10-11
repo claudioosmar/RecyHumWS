@@ -14,13 +14,14 @@ import com.vector.Beans.DatosCorreoAltBean;
 import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosCorreoAlt;
 import com.vector.Utileria.EnvioMensaje;
+import com.vector.Utileria.Log;
 
 /**
  * @author JESUS ALEJANDRO CARRILLO SANCHEZ
  *
  */
 @Service
-public class BODatosCorreoAltImpl implements BODatosCorreoAlt {
+public class BODatosCorreoAltImpl extends Log implements BODatosCorreoAlt {
 	@Autowired
 	private DAODatosCorreoAlt daocorreo;
 	
@@ -34,9 +35,10 @@ public class BODatosCorreoAltImpl implements BODatosCorreoAlt {
 		int respuesta=0;
 		//Sentencia for para la validacion del tamaño de los datos del bean
 		for (int i = 0; i < datos.size(); i++) {
+			info("regresa respuesta");
 			respuesta = daocorreo.Crear(datos.get(i));
 			if (respuesta==0) {
-				System.out.println("Fallo en la insercion"+i+1);
+				error("Fallo en la insercion"+i+1);
 				break;
 			}
 			
@@ -45,12 +47,15 @@ public class BODatosCorreoAltImpl implements BODatosCorreoAlt {
 		MsgBean mensaje = new MsgBean();
 		LOGGER.info("Este es la respuesta: "+Integer.valueOf(respuesta).toString());
 		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
+		info("entra en sentencia if");
 		if(respuesta == 1) {
+			info("mensaje correcto");
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 		    return mensaje;
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
+			error("mensaje de error");
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		}
 		return mensaje;
@@ -65,14 +70,17 @@ public class BODatosCorreoAltImpl implements BODatosCorreoAlt {
 		int respuesta = daocorreo.Modificar(datos);
 		//Condicional para el envio del mensaje de respuesta
 		MsgBean mensaje = new MsgBean();
+		info("entra en sentencia if");
 		//Condicion que genera mensaje de modificacion exitosa
 		if(respuesta == 1) {
+			info("mensaje correcto");
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 			
 			return mensaje;
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
+			error("mensaje de error");
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 			
 			
@@ -89,14 +97,17 @@ public class BODatosCorreoAltImpl implements BODatosCorreoAlt {
 		int respuesta=daocorreo.Eliminar(datos);
 		//Condicional para el envio del mensaje de respuesta
 		MsgBean msj = new MsgBean();
+		info("entra en sentencia if");
 		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
 		if(respuesta==1) {
+			info("mensaje correcto");
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
 			
 			return msj;
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
+			error("mensaje de error");
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
 			
 			return msj;
@@ -109,6 +120,7 @@ public class BODatosCorreoAltImpl implements BODatosCorreoAlt {
 	@Override
 	public DatosCorreoAltBean Buscar(DatosCorreoAltBean datos) {
 		// TODO Auto-generated method stub
+		info("entra en metodo buscar");
 		return daocorreo.Buscar(datos);
 	}
 
@@ -118,6 +130,7 @@ public class BODatosCorreoAltImpl implements BODatosCorreoAlt {
 	@Override
 	public List<DatosCorreoAltBean> Listar(long id) {
 		// TODO Auto-generated method stub
+		info("entra en metodo listar"+id);
 		return daocorreo.Listar(id);
 	}
 

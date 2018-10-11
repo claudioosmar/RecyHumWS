@@ -16,47 +16,50 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vector.BO.BODatosHerramientas;
 import com.vector.Beans.DatosHerramientasBean;
 import com.vector.Beans.MsgBean;
+import com.vector.Utileria.Log;
 
 /**
  * @author vectormx
  *
  */
 @RestController
-public class DatosHerramientasController {
+public class DatosHerramientasController extends Log{
 	@Autowired
 	private BODatosHerramientas herramientas;
 	
 	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosHerramientasBean> datos){
-		System.out.print("Se agrego herramienta conocida "+datos.get(0).getIdherramienta()+" despc:"+datos.get(0).getDescripcionherra()+" añosexp:"+datos.get(0).getAnosexpherra()+"\n ");
+		info("Se agrego herramienta conocida "+datos.get(0).getIdherramienta()+" despc:"+datos.get(0).getDescripcionherra()+" añosexp:"+datos.get(0).getAnosexpherra()+"\n ");
 		return new ResponseEntity<MsgBean>(herramientas.Crear(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosHerramientasBean datos){
-		System.out.print("Se actualizo herramienta conocida "+datos.getNombreherramienta()+"con id "+datos.getIdherramienta()+"\n ");
+		info("Se actualizo herramienta conocida "+datos.getNombreherramienta()+"con id "+datos.getIdherramienta()+"\n ");
 		return new ResponseEntity<MsgBean>(herramientas.Modificar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosHerramientasBean datos){
-		System.out.print("Se elimino herramienta conocida con id "+datos.getIdherramienta()+" y persona id "+datos.getIdpersona()+"\n ");
+		info("Se elimino herramienta conocida con id "+datos.getIdherramienta()+" y persona id "+datos.getIdpersona()+"\n ");
 		return new ResponseEntity<MsgBean>(herramientas.Eliminar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosHerramientasBean>>buscar(@RequestBody DatosHerramientasBean datos){
-		System.out.print("Se buscaron las herramientas conocidas con id de persona "+datos.getIdpersona()+"\n ");
+		info("Se buscaron las herramientas conocidas con id de persona "+datos.getIdpersona()+"\n ");
 		return new ResponseEntity<List<DatosHerramientasBean>>(herramientas.Buscar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosHerramientasBean>> consulta(@RequestBody DatosHerramientasBean datos){
-		System.out.print("Se listaton herramientas conocidas "+"\n ");
+		info("Se listaton herramientas conocidas "+"\n ");
 		List<DatosHerramientasBean> herramienta = herramientas.Listar();
 		if(herramienta.isEmpty()) {
+			info("no se encontraron datos");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}else {
+			info("se enlistaron las herramientas");
 			return new ResponseEntity<List<DatosHerramientasBean>>(herramienta, HttpStatus.OK);
 		}
 	}

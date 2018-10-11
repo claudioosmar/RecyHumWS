@@ -16,6 +16,7 @@ import com.vector.Beans.DatosTelefonoAltBean;
 import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosTelefonoAlt;
 import com.vector.Utileria.EnvioMensaje;
+import com.vector.Utileria.Log;
 
 import java.util.logging.Logger;
 
@@ -24,7 +25,7 @@ import java.util.logging.Logger;
  *
  */
 @Service
-public class BODatosTelefonoAltImpl implements BODatosTelefonoAlt {
+public class BODatosTelefonoAltImpl extends Log implements BODatosTelefonoAlt {
 @Autowired
 private DAODatosTelefonoAlt telefone;
 
@@ -36,22 +37,26 @@ private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
 	public MsgBean Crear(List<DatosTelefonoAltBean> datos) {
 		// TODO Auto-generated method stub
 		int respuesta=0;
-	
+	info("entra en ciclo for");
 		for (int i = 0; i < datos.size(); i++) {
+			info("envia respuesta");
 			respuesta = telefone.Crear(datos.get(i));
 			if(respuesta==0) {
-				System.out.println("Fallo en la insersion"+i+1);
+				
+				error("Fallo en la insersion"+i+1);
 				break;
 			}
 		}
 		
 		MsgBean msj = new MsgBean();
 		LOGGER.info("Este es la respuesta: " + Integer.valueOf(respuesta).toString());
-		
+		info("entra en sentencia if");
 		if(respuesta==1) {
+			info("mensaje correcto");
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
 			return msj;
 		}else {
+			error("mensaje error");
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
 			return msj;
 		}
@@ -65,11 +70,14 @@ private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
 		// TODO Auto-generated method stub
 		int respuesta = telefone.Modificar(datos);
 		MsgBean msj = new MsgBean();
+		info("entra en sentencia if");
 		if(respuesta==1) {
+			info("mensaje correcto");
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
 			
 			return msj;
 		}else {
+			error("mensaje error");
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
 			
 			return msj;
@@ -84,11 +92,14 @@ private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
 		// TODO Auto-generated method stub
 		int respuesta=telefone.Eliminar(id);
 		MsgBean msj = new MsgBean();
+		info("entra en la sentencia if");
 		if(respuesta==1) {
+			info("mensaje correcto");
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
 			
 			return msj;
 		}else {
+			error("mensaje error");
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
 			
 			return msj;
@@ -101,6 +112,7 @@ private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
 	@Override
 	public DatosTelefonoAltBean Buscar(DatosTelefonoAltBean datos) {
 		// TODO Auto-generated method stub
+		info("mensaje correcto");
 		return telefone.Buscar(datos);
 	}
 
@@ -110,6 +122,7 @@ private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
 	@Override
 	public List<DatosTelefonoAltBean> Listar(long id) {
 		// TODO Auto-generated method stub
+		error("mensaje error");
 		return telefone.Listar(id);
 	}
 

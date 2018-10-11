@@ -13,13 +13,14 @@ import com.vector.Beans.DatosLaboralesBean;
 import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosLaborales;
 import com.vector.Utileria.EnvioMensaje;
+import com.vector.Utileria.Log;
 
 /**
  * @author vectormx
  *
  */
 @Service
-public class BODatosLaboralesImpl implements BODatosLaborales {
+public class BODatosLaboralesImpl extends Log implements BODatosLaborales {
 	@Autowired
 	private DAODatosLaborales daolabor;
 	/* (non-Javadoc)
@@ -29,9 +30,10 @@ public class BODatosLaboralesImpl implements BODatosLaborales {
 	public DatosLaboralesBean Crear(List<DatosLaboralesBean> datos) {
 		// TODO Auto-generated method stub
 		DatosLaboralesBean retorno = new DatosLaboralesBean();
-		System.out.println("Tamaño del arreglo"+ datos.size());
+		info("entra en ciclo for");
 		//Sentencia for para la validacion del tamaño de los datos del bean
 		for (int i = 0; i < datos.size(); i++) {
+			info("envia informacio");
 			retorno.setIdexplaborl(daolabor.Crear(datos.get(i))); 
 		}
 		
@@ -47,13 +49,16 @@ public class BODatosLaboralesImpl implements BODatosLaborales {
 		int respuesta = daolabor.Modificar(datos);
 		//Condicional para el envio del mensaje de respuesta
 		MsgBean mensaje = new MsgBean();
+		info("entra en sentencia if");
 		//Condicion que genera mensaje de modificacion exitosa
 		if(respuesta==1) {
+			info("mensaje correcto");
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 			return mensaje;
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
+			error("mensaje error");
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 			return mensaje;
 		}
@@ -68,13 +73,16 @@ public class BODatosLaboralesImpl implements BODatosLaborales {
 		// TODO Auto-generated method stub
 		int respuesta = daolabor.Eliminar(id);
 		MsgBean mensaje = new MsgBean();
+		info("entra en sentencia if");
 		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
 		if(respuesta==1) {
+			info("mensaje correcto");
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 			return mensaje;
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
+			error("mensaje error");
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 			return mensaje;
 		}
@@ -86,6 +94,7 @@ public class BODatosLaboralesImpl implements BODatosLaborales {
 	@Override
 	public List<DatosLaboralesBean> Buscar(DatosLaboralesBean datos) {
 		// TODO Auto-generated method stub
+		info("entra en metodo buscar ");
 		return daolabor.Buscar(datos);
 	}
 
@@ -95,6 +104,7 @@ public class BODatosLaboralesImpl implements BODatosLaborales {
 	@Override
 	public List<DatosLaboralesBean> Listar() {
 		// TODO Auto-generated method stub
+		info("entra en metodo listar");
 		return null;
 	}
 

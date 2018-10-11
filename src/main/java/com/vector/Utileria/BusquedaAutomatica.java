@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-public class BusquedaAutomatica {
+public class BusquedaAutomatica extends Log{
 /*variables*/
 	private int idestado=0;
 	private int idmunicipio=0;
@@ -52,10 +52,11 @@ public class BusquedaAutomatica {
 				//preparacion de la sentencia
 				PreparedStatement ps = con.prepareStatement(sql);	
 				//mensaje en consola
-				System.out.println("se enlistaron los estados");
+				info("ejecucion de la sentencia sql: "+sql);
 				// recuperando los datos
 				ResultSet rs = ps.executeQuery();
 				//metodo set que retorna las filas de la sentencia
+				info("llamada al metodo setDatosBusquedaEstados(rs)");
 				setDatosBusquedaEstados(rs);
 				//retorna la sentencia
 				return ps;
@@ -63,6 +64,7 @@ public class BusquedaAutomatica {
 			}
 		});
 		//variable de retorno que obtiene la lista de la opbencion de datos
+		info("llamada al metodo getDatosBusquedaEstados()");
 		List<BusquedaAutomatica> retorno = getDatosBusquedaEstados();
 		//retorna retorno
 		return retorno;
@@ -71,10 +73,12 @@ public class BusquedaAutomatica {
 	private void setDatosBusquedaEstados(ResultSet rs) throws SQLException{
 		datos= new ArrayList<BusquedaAutomatica>();
 		BusquedaAutomatica respuesta;
+		info("entra en el while");
 		while(rs.next()) {
 			respuesta = new BusquedaAutomatica();
 			respuesta.setIdestado(rs.getInt(1));
 			respuesta.setNombreestado(rs.getString(3));
+			info("se enlistaron los estados");
 			this.datos.add(respuesta);
 			}
 	}
@@ -92,13 +96,16 @@ public class BusquedaAutomatica {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps2 = con.prepareStatement(sql2);
-				System.out.println("se enlistaron los municipios del estado "+datos1.getIdestado()+"\n ");
+				debug("datos entrantes para la sentencia sql2: IDESTADO["+datos1.getIdestado()+"]");
 				ps2.setInt(1, datos1.getIdestado());
 				ResultSet rs = ps2.executeQuery();
+				info("ejecucion de la sentencia sql2: "+sql2);
+				info("llamada al metodo setDatosBusquedaMunicipio(rs)");
 				setDatosBusquedaMunicipio(rs);
 				return ps2;		
 			}
 		});
+		info("llamada al metodo getDatosBusquedaMunicipio()");
 		List<BusquedaAutomatica> retorno = getDatosBusquedaMunicipio();
 		return retorno;
 	}
@@ -106,11 +113,13 @@ public class BusquedaAutomatica {
 	private void setDatosBusquedaMunicipio(ResultSet rs) throws SQLException{
 		datos2= new ArrayList<BusquedaAutomatica>();
 		BusquedaAutomatica respuesta;
+		info("entra en el while");
 		while(rs.next()) {
 			respuesta = new BusquedaAutomatica();
 			respuesta.setIdmunicipio(rs.getInt(1));
 			respuesta.setNombremunicipio(rs.getString(4));
 			respuesta.setIdestado(rs.getInt(2));
+			info("se enlistaron los municipios");
 			this.datos2.add(respuesta);
 			}
 	}
@@ -128,15 +137,18 @@ public class BusquedaAutomatica {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps3 = con.prepareStatement(sql3);
-				System.out.println("se enlistaron las localidades del municipio "+datos2.getIdmunicipio()+"\n ");
+				debug("datos entrantes para el sql3: IDMUNICIPIO["+datos2.getIdmunicipio()+"]");
 				ps3.setInt(1, datos2.getIdmunicipio());
 				ResultSet rs = ps3.executeQuery();
+				info("ejecucion de la sentencia sql3: "+sql3);
+				info("llamada al metodo setDatosBusquedaLocalidad(rs)");
 				setDatosBusquedaLocalidad(rs);
 				return ps3;
 				
 				
 			}
 		});
+		info("llamada al metodo getDatosBusquedaLocalidad()");
 		List<BusquedaAutomatica> retorno = getDatosBusquedaLocalidad();
 		return retorno;
 	}
@@ -144,11 +156,13 @@ public class BusquedaAutomatica {
 	private void setDatosBusquedaLocalidad(ResultSet rs) throws SQLException{
 		datos3= new ArrayList<BusquedaAutomatica>();
 		BusquedaAutomatica respuesta;
+		info("entra en el while");
 		while(rs.next()) {
 			respuesta = new BusquedaAutomatica();
 			respuesta.setIdlocalidad(rs.getInt(1));
 			respuesta.setNombrelocalidad(rs.getString(4));
 			respuesta.setIdmunicipio(rs.getInt(2));
+			info("se enlistaron las localidades");
 			this.datos3.add(respuesta);
 			}
 	}

@@ -28,25 +28,55 @@ import com.vector.Utileria.*;
 
 
 
+
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: DAODatosSesionImpl.java
+ *   Descripción:  crea, modifica, elimina y verifica usuarios
+ *   
+ * 
+ *   Control de Cambios:
+ *  10/10/2018 Claudio Osmar Osorio Zuñiga - Creacion
+ *  10/10/2018 Jair de jesus Barcenas Gomez - Modificacion: Mensajes en LOG
+ *   
  */
 @Service
-public class DAODatosSesionImpl implements DAODatosSesion {
+public class DAODatosSesionImpl extends Log implements DAODatosSesion {
+	
+	/**
+	 * The jdbc template.
+	 */
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	private List<DatosFormularioBean> listaform;
+	
+	/**
+	 * The autoin.
+	 */
 	private AutoIncrementablesBDOracle autoin;
+	
+	/**
+	 * The formateador.
+	 */
 	private SimpleDateFormat formateador;
+	
+	/**
+	 * The fecha.
+	 */
 	private String fecha;
+	
+	/**
+	 * The date.
+	 */
 	private Date date;
+	
+	/**
+	 * The datos.
+	 */
 	List<DatosInicioSesionBean> datos;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.DAO.SesionDAO#Create(java.lang.Object)
+
+	/* (Claudio-Javadoc)
+	 * @see com.vector.DAO.DAODatosSesion#Create(com.vector.Beans.DatosInicioSesionBean)
 	 */
 	@Override
 	@Transactional(readOnly = true)
@@ -63,9 +93,9 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				System.out.println(" idtipo: "+datos.getIdtipouser()+" idpersonaalta: "+datos.getIdpersonaalta()
-				+" nomnbre: "+datos.getNombre()+" contraseña: "+datos.getContraseña()
-				+" idpersona: "+datos.getIdpersona()+" observa: "+datos.getObservacion());
+				debug("datos entrantes para sql: IDTIPOUSER["+datos.getIdtipouser()+"], IDPERSONAALTA"+datos.getIdpersonaalta()
+				+"], NOMBREUSER["+datos.getNombre()+"], IDPERSONA["+datos.getIdpersona()+"], OBSERVACION["+datos.getObservacion()
+				+"], FECHACREACION["+fecha+"], FECHAMODIFICACION["+fecha+"]");
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setLong(1, IDUser);
 				ps.setInt(2, datos.getIdtipouser());
@@ -76,12 +106,17 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 				ps.setString(7, fecha);
 				ps.setLong(8, datos.getIdpersona());	
 				ps.setString(9, datos.getObservacion());
+				info("ejecucion de la sentecia sql: "+sql);
 				return ps;
 			}
 		});
+		warn("datos enviados: RESPUESTA["+respuesta+"]");
 		return respuesta;
 	}
 
+	/* (Claudio-Javadoc)
+	 * @see com.vector.DAO.DAODatosSesion#Delete(long)
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -89,21 +124,29 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public int Delete(DatosInicioSesionBean datos) {
+	public int Delete(long id) {
+		
 		// TODO Auto-generated method stub
 		final String sql = "DELETE TBLUSERS WHERE IDUSER=(?)";
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				debug("datos entrantes para sql: IDSER["+id+"]");
 				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setLong(1, datos.getID_User());
-				
+				ps.setLong(1, id);
+				info("ejecucion de la sentencia sql: "+sql);
 				return ps; 
+				
 			}
 		});
+		
+		warn("datos enviados: RESPUESTA["+respuesta+ "]");
 		return respuesta;
 	}
 
+	/* (Claudio-Javadoc)
+	 * @see com.vector.DAO.DAODatosSesion#Buscar(com.vector.Beans.DatosInicioSesionBean)
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -119,21 +162,27 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				debug("datos entrantes para sql: IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setLong(1, datos.getIdpersona());
-				ResultSet rs = ps.executeQuery();		
+				ResultSet rs = ps.executeQuery();	
+				info("ejecucion de la sentencia sql: "+ sql);
 				rs.next();
 				respuesta.setNombre(rs.getString(15));		
 				respuesta.setArea(rs.getString(31));			
 				respuesta.setNombrecompleto(rs.getString(5)+" "+rs.getString(6)+" "+rs.getString(7)+" "+rs.getString(8));
 				respuesta.setIdpersona(rs.getLong(2));
-				
+				warn("datos enviados: NOMBRE["+rs.getString(15)+"], AREA["+rs.getString(31)+"],NOMBRECOMPLETO["+rs.getString(5)+" "+rs.getString(6)+" "+rs.getString(7)+" "+rs.getString(8)+"], IDPERSONA["+rs.getLong(2)+"]");
 				return ps;
 			}
 		});
+		warn("envio datos: RESPUESTA["+respuesta+"]");
 		return respuesta;
 	}
 
+	/* (Claudio-Javadoc)
+	 * @see com.vector.DAO.DAODatosSesion#Listar()
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -145,6 +194,7 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 		// TODO Auto-generated method stub
 
 		final String sql = "select * from view_usuario";
+		info("ejecucion del sql: "+ sql);
 		return jdbcTemplate.query(sql, new SesionRowMapper());
 	
 		/*jdbcTemplate.update(new PreparedStatementCreator() {
@@ -158,44 +208,50 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 		return sesion;*/
 	}
 
+	/* (Claudio-Javadoc)
+	 * @see com.vector.DAO.DAODatosSesion#VerificarLogin(com.vector.Beans.DatosInicioSesionBean)
+	 */
 	/* (non-Javadoc)
 	 * @see com.vector.DAO.SesionDAO#VerificarLogin(com.vector.Beans.InicioSesionBean)
 	 */
 	@Override
 	public List<DatosFormularioBean> VerificarLogin(DatosInicioSesionBean datos) {
 		// TODO Auto-generated method stub
-		System.out.println("DAO Verificar:--"+datos.getContraseña()+"--");
 		final String sql = "select * from tblusers ur, tblpersonas pr where ur.idpersona = pr.idpersona and ur.nombre = (?) and ur.contraseña =(?)";
 		String contraseña=datos.getContraseña().trim();
 		datos.setContraseña(new Encriptarsha1().Encriptar(contraseña));
-		System.out.println("DAO Verificar encrip: "+datos.getContraseña());
 		List<DatosFormularioBean> resp = new ArrayList<DatosFormularioBean>();
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
-				
+				debug("datos entrantes para sql: USUARIO["+datos.getUsuario()+"]");
 				ps.setString(1, datos.getUsuario());
 				ps.setString(2, datos.getContraseña());
 				DatosFormularioBean date = new DatosFormularioBean();
-				System.out.println("DAO Datos Usuario "+datos.getUsuario()+" "+datos.getContraseña());
 				ResultSet rs = ps.executeQuery();
+				info("ejecucion de la sentencia sql: "+sql);
 				if(rs.next()) 
+					info("entra en la sentencia if");
 				date.setIdtipousuario(rs.getInt(2));
 				date.setIdpersona(rs.getLong(8));
 				date.setStatus(rs.getBoolean(13));
 				resp.add(date);
+				warn("datos enviado: IDTIPOUSER["+rs.getInt(2)+"], IDPERSONA["+rs.getLong(8)+"], STATUS["+rs.getBoolean(13)+"]");
 				return ps;
 			}
 		});
 		
-		
+		warn("datos enviados: RESPUESTA["+resp+"]");
 		return resp;
 		
 	
 
 }
 
+	/* (Claudio-Javadoc)
+	 * @see com.vector.DAO.DAODatosSesion#Modificar(com.vector.Beans.DatosInicioSesionBean)
+	 */
 	/* (non-Javadoc)
 	 * @see com.vector.DAO.DAODatosSesion#Modificar(com.vector.Beans.DatosInicioSesionBean)
 	 */
@@ -208,14 +264,14 @@ public class DAODatosSesionImpl implements DAODatosSesion {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql);
-				System.out.println("id user: "+datos.getID_User());
-				ps.setLong(2, datos.getID_User());
+				debug("datos entrantes para el sql: IDUSER["+datos.getiduser()+"]");
+				ps.setLong(2, datos.getiduser());
 				ps.setString(1, datos.getContraseña());
-		
-							
+				info("ejecucion de la sentencia sql: "+sql);
 				return ps;
 			}
 		});
+		warn("datos enviado: RESPUESTA["+respuesta+"]");
 		return respuesta;
 	}
 	
@@ -228,7 +284,7 @@ class SesionRowMapper implements RowMapper<DatosInicioSesionBean> {
 		user.setIdpersona(0);
 		user.setIdpersonaalta(0);
 		user.setObservacion("unsigned");
-		user.setID_User(rs.getInt(1));
+		user.setiduser(rs.getInt(1));
 		user.setIP(rs.getString(4));
 		user.setUsuario(rs.getString(2));
 		user.setContraseña("unsigned");

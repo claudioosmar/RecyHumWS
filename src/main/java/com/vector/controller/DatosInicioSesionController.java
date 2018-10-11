@@ -37,20 +37,20 @@ public class DatosInicioSesionController extends Log{
 
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody DatosInicioSesionBean datos){
-		info("Se creo un usuario"+"\n ");
+		info("Se creo un usuario"+datos.toString());
 		return new ResponseEntity<MsgBean>(login.CreateUser(datos),HttpStatus.OK);
 	}
 	
 	
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<DatosInicioSesionBean>buscar(@RequestBody DatosInicioSesionBean datos){
-		info("Se busco los datos del usuario"+"\n");
+		info("Se busco los datos del usuario"+datos.getiduser());
 		return new ResponseEntity<DatosInicioSesionBean>(login.Buscar(datos),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Verificar", method = RequestMethod.POST)
 	public ResponseEntity<List<DatosFormularioBean>> verificarlogin(@RequestBody DatosInicioSesionBean datos){
-		info("entrando al metodo");/*letreros*/
+		info("se verifica el usuario");/*letreros*/
 		debug(null);/*informacion de variables*/
 		error(null);/*errores ocurridos bajo control*/
 		warn(null);/*alertas de informacion erronea*/
@@ -61,9 +61,9 @@ public class DatosInicioSesionController extends Log{
 			respuesta.setMsjAccion("falta usuario y/o contraseña");
 		}else {
 		
-		System.out.println("Usuario "+datos.getUsuario()+" Contra "+datos.getContraseña()+"\n ");
+		info("acceso concedido");
 	}
-		info("se verifico usuario");
+		info("verificaccion correcta");
 		return new ResponseEntity<List<DatosFormularioBean>>(login.VerificarUsuario(datos),HttpStatus.OK);
 		
 	}
@@ -74,15 +74,17 @@ public class DatosInicioSesionController extends Log{
 		info("Se ingreso a listar Usuarios");
 		List<DatosInicioSesionBean> usuarios = login.ListarUsuarios();
 		if(usuarios.isEmpty()) {
+			info("no se encontro datos");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}else {
+			info("se enlistaron los usuarios");
 			return new ResponseEntity<List<DatosInicioSesionBean>>(usuarios, HttpStatus.OK);
 		}
 	}
 	
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/VerificarPrueba", method = RequestMethod.POST)
 	public ResponseEntity<List<DatosFormularioBean>> consultaprueba(){
-		System.out.println("Ingresando a listar formularios "+"\n ");
+		info("Ingresando a listar formularios ");
 		List<DatosFormularioBean> retorno = new ArrayList<DatosFormularioBean>();
 		DatosFormularioBean form= new DatosFormularioBean();
 		form.setNomformulario("DatosPersonales");
@@ -97,8 +99,14 @@ public class DatosInicioSesionController extends Log{
 	
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosInicioSesionBean datos){
-		info("Se modifico el usuario con id de persona: "+datos.getID_User());
+		info("Se modifico el usuario con id de persona: "+datos.getiduser());
 		return new ResponseEntity<MsgBean>(login.Modificar(datos),HttpStatus.OK);
+	}
+	
+	@RequestMapping(path = "/SGRHWebService/DatosSesion/EliminarUser",method = RequestMethod.POST)
+	public ResponseEntity<MsgBean>eliminar(@RequestBody DatosInicioSesionBean datos){
+		info("Se elimino usuario: "+datos.getiduser());
+		return new ResponseEntity<MsgBean>(login.Eliminar(datos.getiduser()),HttpStatus.OK);
 	}
 	
 }

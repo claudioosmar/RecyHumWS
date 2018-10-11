@@ -217,8 +217,8 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 				+ "],[IDIDSPONIVILIDADVIAJAR=" + getIdDisponibilidadViajar() + "],[IDDISPONIVILIDADCAMBIO="
 				+ getIdDisponibilidadCambio() + "],[NACIONALIDAD=" + getNacionalidad() + "],[RESUMEN=" + getResumen()
 				+ "],[OBJETIVOLABORAL=" + getObjetivoLaboral() + "],[CALLE=" + getCalle() + "],[NUMEROEXTERIOR=" + getNumeroExterior()
-				+ "],[NUMEROINTERIOR=" + getNumeroInterior() + "],[IDCODIGOPOSTAL=" + getIdCodigoPostal() + "],[PAIS=" + getPais()
-				+ "],[IDMUNICIPIO=" + getIdmunicipio() + "],[COLONIA=" + getColonia() + "],[IDTELEFONOPRINCIPAL="
+				+ "],[NUMEROINTERIOR=" + getNumeroInterior() + "],[IDCODIGOPOSTAL=" + getIdCodigoPostal()+"],[CODPOST="+getCodpost() + "],[PAIS=" + getPais()
+				+ "],[IDMUNICIPIO=" + getIdmunicipio() +"],[IDLOCALIDAD="+getIdlocalidad() +"],[COLONIA=" + getColonia() + "],[IDTELEFONOPRINCIPAL="
 				+ getIdTelefonoPrincipal() + "],[TELEFONOPRINCIPAL=" + getIdTelefonoPrincipal() + "],[IDTELEFONOSECUNDARIO="
 				+ getIdTelefonoSecundario() + "],[TELEFONOSECUNDARIO=" + getIdTelefonoSecundario() + "],[IDTELEFONOEMERGENCIA="
 				+ getIdtelefonoEmergencia() + "],[TELEFONOEMERGENCIA=" + getIdtelefonoEmergencia() + "],[IDCORREOPRINCIPAL="
@@ -226,7 +226,11 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 				+ getIdCorreoSecundario() + "],[CORREOSECUNDARIO=" + getCorreoSecundario() + "],[URLCOMPROBANTE="
 				+ getUrlComprobanteDomicilio() + "],[NOMBREAREA=" + getNombreArea() + "],[CODIGOAREA=" + getCodArea() + "],[STATUS="
 				+ getStatus() + "],[SUELDO=" + getSueldo() + "],[NUMEROCONTROL=" + getNcontrol() + "],[ESTADOCIVIL=" + getEstadoCivil()
-				+ "],[CODIGOPOSTAL=" + getCodpost() + "],[IDLOCALIDAD=" + getIdlocalidad() + "],[EDAD=" + getEdad() + "],[IDAREA="
-				+ getIdarea() + "],[TIPOTELEFONO=" + getTipotelefono() + "]");
+				+ "],[EDAD=" + getEdad() + "],[IDAREA="	+ getIdarea() + "],[TIPOTELEFONO=" + getTipotelefono() 
+				+"],[TELEFONOPRINCIPALNW="+getTelefonoprincipalNw()	+"],[TELEFONOSECUNDARIONW="+getTelefonosecundarioNw()
+				+"],[TELEFONOEMERGENCIANW="+getTelefonoEmergenteNw()+"],[CORREOPRINCIPALNW="+getCorreoprincipalNw()
+				+"],[CORREOSECUNDARIONW="+getCorresecundarioNw()+"], [IDDIRECCION = "+getIddireccion()+"], [IDUSER ="+getIduser()+"]");
+	
+	
 	}
 }

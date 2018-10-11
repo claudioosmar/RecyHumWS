@@ -13,9 +13,9 @@ import javax.validation.constraints.NotNull;
 public class DatosInicioSesionBean {
 	//Variable para declara los getter y setter de login
 	@NotNull
-	private long ID_User=0;
+	private long iduser=0;
 	@NotNull
-	private String IP="";
+	private String ip="";
 	@NotNull
 	private String usuario="";
 	@NotNull
@@ -50,16 +50,16 @@ public class DatosInicioSesionBean {
 	 * @return Obtienes el valor de iD_User del tipo long
 	 */
 	
-	public long getID_User() {
-		return ID_User;
+	public long getiduser() {
+		return iduser;
 	}
 	
 	/**
 	 * @param Agregar el valor a iD_User del tipo long
 	 */
 	
-	public void setID_User(long iD_User) {
-		ID_User = iD_User;
+	public void setiduser(long iD_User) {
+		iduser = iD_User;
 	}
 	
 	/**
@@ -67,7 +67,7 @@ public class DatosInicioSesionBean {
 	 */
 	
 	public String getIP() {
-		return IP;
+		return ip;
 	}
 	
 	/**
@@ -75,7 +75,7 @@ public class DatosInicioSesionBean {
 	 */
 	
 	public void setIP(String iP) {
-		IP = iP;
+		ip = iP;
 	}
 	
 	/**
@@ -302,5 +302,14 @@ public class DatosInicioSesionBean {
 		this.area = area;
 	}
 	
+	@Override
+	public String toString() {
+
+		return String.format("DatosUsuarioBean [IDUSER="+iduser+ "],[IP="+ip + "],[USUARIO="+usuario + "],[CONTRASEÑA="+contraseña + "],[STATUS="
+		+Status + "],[TOKEN="+token + "],[MOVIMIENTO="+movimiento + "],[IDTIPOUSER="
+		+idtipouser + "],[IDTIPOPERSONAALTA="+idpersonaalta + "],[IDPERSONA="+idpersona + "],[OBSERVACION="
+		+observacion + "],[NOMBRE="	+nombre + "],[FECHACREACION="+fechaCreacion  + "],[FECHAMODIFICACION="
+		+fechaTermino + "],[NOMBRECOMPLETO="+nombrecompleto + "],[AREA="+area +"]");
 	
+	}
 }

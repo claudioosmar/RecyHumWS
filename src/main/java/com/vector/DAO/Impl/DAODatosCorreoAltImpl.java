@@ -17,6 +17,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 import com.vector.Beans.DatosCorreoAltBean;
 import com.vector.DAO.DAODatosCorreoAlt;
+import com.vector.Utileria.Log;
 
 
 
@@ -25,7 +26,7 @@ import com.vector.DAO.DAODatosCorreoAlt;
  *
  */
 @Service
-public class DAODatosCorreoAltImpl implements DAODatosCorreoAlt {
+public class DAODatosCorreoAltImpl extends Log implements DAODatosCorreoAlt {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	List<DatosCorreoAltBean> datos ;
@@ -42,12 +43,12 @@ public class DAODatosCorreoAltImpl implements DAODatosCorreoAlt {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				//INSERCION EN LA TABLA PIVOTE 02
+				debug("datos entrantes para el sql: IDPERSONA["+datos.getIdpersona()+"],IDTIPOCORREO["+datos.getIdtipocorreo()+"],CORREONW"+datos.getCorreoNw()+"]");
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setLong(1, datos.getIdpersona());
 				ps.setInt(2, datos.getIdtipocorreo());
 				ps.setString(3, datos.getCorreoNw());
-				
-				
+				info("ejecucion del sql insert: "+sql);
 				return ps;
 			}
 		});
@@ -66,11 +67,13 @@ public class DAODatosCorreoAltImpl implements DAODatosCorreoAlt {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				//MODIFICICACION DE LSO DATOS EN LA TABLA PIVOTE 02
+				debug("datos de entrada para el sql: IDPERSONA["+datos.getIdpersona()+"],IDTIPOCORREO["+datos.getIdtipocorreo()+"],CORREONW["+datos.getCorreoNw()+"],CORREOLT["+datos.getCorreoLt()+"]");
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setLong(2, datos.getIdtipocorreo());
 				ps.setString(1, datos.getCorreoNw());
 				ps.setString(3, datos.getCorreoLt());
 				ps.setLong(4, datos.getIdpersona());
+				info("ejecucion de la sentencia sql update: "+sql);
 				return ps;
 			}
 		});
@@ -89,8 +92,10 @@ final String sql="delete tblpiv02 where correo = (?)";
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				//ELIMINACION DE DATOS EN LA TABLA PIVOTE 02
+				debug("datos entrantes al sql: CORREONW["+datos.getCorreoNw()+"]");
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setString(1, datos.getCorreoNw());
+				info("ejecucion de la sentencia sql delete: "+sql);
 				return ps;
 			}
 		});
@@ -104,21 +109,27 @@ final String sql="delete tblpiv02 where correo = (?)";
 	public DatosCorreoAltBean Buscar(DatosCorreoAltBean datos) {
 		// TODO Auto-generated method stub
 		final String sql="select * from tblpiv02 where idpersona  = (?)";
+		final String sql2 = "select * from tbldetspersonas where idpersona = (?)";
 		DatosCorreoAltBean respuesta = new DatosCorreoAltBean();
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				debug("datos entrantes para el sql: IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setLong(1, datos.getIdpersona());
 				ResultSet rs = ps.executeQuery();
 				rs.next();
 				respuesta.setIdtipocorreo(rs.getInt(2));
 				respuesta.setIdpersona(rs.getLong(1));
-				PreparedStatement ps1 = con.prepareStatement("select * from tbldetspersonas where idpersona = (?)");
+				warn("datos enviados: IDTIPOCORREO["+rs.getInt(2)+"],IDPERSONA["+rs.getLong(1)+"]");
+				info("ejecucion de la sentencia sql: "+sql);
+				debug("datos entrantes para el sql2: IDPERSONA["+datos.getIdpersona()+"]");
+				PreparedStatement ps1 = con.prepareStatement(sql2);
 				ps1.setLong(1, respuesta.getIdpersona());
 				ResultSet rs1 = ps1.executeQuery();
 				rs1.next();
 				respuesta.setNombreCompleto(rs1.getString("nombre")+" "+rs1.getString("segnombre")+" "+rs1.getString("apellidop")+" "+rs1.getString("apellidom"));
+				warn("datos enviado: NOMBRE["+rs1.getString("nombre")+"], SEGUNDONOMBRE["+rs1.getString("segnombre")+"], APELLIDOPATERNO["+rs1.getString("apellidop")+"],APELLIDOMATERNO["+rs1.getString("apellidom")+"]");
 				setDatosCorreo(rs);
 				return ps;
 			}
@@ -134,7 +145,7 @@ final String sql="delete tblpiv02 where correo = (?)";
 	public List<DatosCorreoAltBean> Listar(long id) {
 		// TODO Auto-generated method stub
 		final String sql="select * from tblpiv02 where idpersona = '"+id+"'";
-		System.out.println(sql);
+		info("ejecucion de la sentencia sql: "+sql);
 		return jdbcTemplate.query(sql, new CorreosRowMapper());
 	}
 	private void setDatosCorreo(ResultSet rs) throws SQLException{
@@ -142,8 +153,6 @@ final String sql="delete tblpiv02 where correo = (?)";
 		DatosCorreoAltBean respuesta;
 		while(rs.next()) {
 			respuesta = new DatosCorreoAltBean();
-			
-			
 			
 			this.datos.add(respuesta);
 			}

@@ -23,7 +23,7 @@ public interface BODatosLogin  {
 	//MENSAJE DE MODIFICACION DE DATOS DE INICIO DE SESION QUE REGRESA UN MENSAJE DE LA CLASE MSGBEAN
 	MsgBean Modificar(DatosInicioSesionBean datos);
 	//MENSAJE DE ELIMINACION DE DATOS DEL INICIO DE SESION QUE REGRESA UN MENSADE DE LA CLASE MSGBEAN
-	MsgBean Eliminar(DatosInicioSesionBean datos);
+	MsgBean Eliminar(long id);
 	//REGRESA UNA BUSQUEDA DE LOS DATOS DEL BEAN INICIO DE SESION
 	DatosInicioSesionBean Buscar(DatosInicioSesionBean datos);
 	
