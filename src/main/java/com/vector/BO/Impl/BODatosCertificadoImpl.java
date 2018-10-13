@@ -13,16 +13,27 @@ import com.vector.DAO.DAODatosCertificado;
 import com.vector.Utileria.EnvioMensaje;
 import com.vector.Utileria.Log;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: BODatosCertificadoImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar y listar implementados del BO
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class BODatosCertificadoImpl extends Log implements BODatosCertificado {
+	
+	/** The daocertificado. */
 	@Autowired
 	private DAODatosCertificado daocertificado;
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosCertificado#Crear(com.vector.Beans.DatosCertificadoBean)
+	
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Crear(List<DatosCertificadoBean> datos) {
@@ -56,8 +67,8 @@ public class BODatosCertificadoImpl extends Log implements BODatosCertificado {
 	}
 }
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosCertificado#Modificar(com.vector.Beans.DatosCertificadoBean)
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Modificar(DatosCertificadoBean datos) {
@@ -80,8 +91,8 @@ public class BODatosCertificadoImpl extends Log implements BODatosCertificado {
 		return mensaje;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosCertificado#Eliminar(int)
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Eliminar(DatosCertificadoBean datos) {
@@ -106,8 +117,8 @@ public class BODatosCertificadoImpl extends Log implements BODatosCertificado {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosCertificado#Buscar(com.vector.Beans.DatosCertificadoBean)
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosCertificadoBean> Buscar(DatosCertificadoBean datos) {
@@ -116,8 +127,8 @@ public class BODatosCertificadoImpl extends Log implements BODatosCertificado {
 		return daocertificado.Buscar(datos);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosCertificado#Listar()
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosCertificadoBean> Listar() {

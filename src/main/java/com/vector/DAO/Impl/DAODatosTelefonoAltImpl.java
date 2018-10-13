@@ -20,19 +20,26 @@ import org.springframework.stereotype.Service;
 import com.vector.Beans.DatosTelefonoAltBean;
 import com.vector.DAO.DAODatosTelefonoAlt;
 
-
-
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: DAODatosTelefonoAltImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar, listar implementadas del DAO y las sentenicas sql
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class DAODatosTelefonoAltImpl implements DAODatosTelefonoAlt {
+	
+	/** The jdbc template. */
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosTelefonoAlt#Crear(com.vector.Beans.DatosTelefonoAltBean)
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Crear(DatosTelefonoAltBean datos) {
@@ -52,8 +59,8 @@ public class DAODatosTelefonoAltImpl implements DAODatosTelefonoAlt {
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosTelefonoAlt#Modificar(com.vector.Beans.DatosTelefonoAltBean)
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Modificar(DatosTelefonoAltBean datos) {
@@ -73,8 +80,9 @@ public class DAODatosTelefonoAltImpl implements DAODatosTelefonoAlt {
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosTelefonoAlt#Eliminar(int)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Eliminar(String id) {
@@ -91,8 +99,9 @@ public class DAODatosTelefonoAltImpl implements DAODatosTelefonoAlt {
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosTelefonoAlt#Buscar(com.vector.Beans.DatosTelefonoAltBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public DatosTelefonoAltBean Buscar(DatosTelefonoAltBean datos) {
@@ -119,8 +128,9 @@ public class DAODatosTelefonoAltImpl implements DAODatosTelefonoAlt {
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosTelefonoAlt#Listar()
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosTelefonoAltBean> Listar(long id) {
@@ -133,9 +143,6 @@ public class DAODatosTelefonoAltImpl implements DAODatosTelefonoAlt {
 }
 class telefonoRowMapper implements RowMapper<DatosTelefonoAltBean>{
 
-	/* (non-Javadoc)
-	 * @see org.springframework.jdbc.core.RowMapper#mapRow(java.sql.ResultSet, int)
-	 */
 	@Override
 	public DatosTelefonoAltBean mapRow(ResultSet rs, int rowNum) throws SQLException {
 		// TODO Auto-generated method stub

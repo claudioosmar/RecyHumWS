@@ -22,18 +22,35 @@ import com.vector.DAO.DAODatosCurso;
 import com.vector.Utileria.AutoIncrementablesBDOracle;
 import com.vector.Utileria.Log;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Jair
+ *   Vector México
+ *   Clase: DAODatosCursoImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar, listar implementadas del DAO y las sentenicas sql
+ *   
+ * 
+ *   Control de Cambios:
+ *  11/10/2018 Claudio Osmar Osorio Zuñiga - Creacion
+ *   
  *
+ * @author Jair
  */
 @Service
 public class DAODatosCursoImpl extends Log implements DAODatosCurso {
+	
+	/** The jdbc template. */
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	/** The autoin. */
 	private AutoIncrementablesBDOracle autoin;
+	
+	/** The datos. */
 	List<DatosCursoBean> datos ;
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosCurso#Crear(com.vector.Beans.DatosCursoBean)
+	
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
@@ -67,10 +84,10 @@ public class DAODatosCursoImpl extends Log implements DAODatosCurso {
 				if(datos.getIdcertificado()!=0) {
 					/*segunda insercion si se cumple y prerara la sentencia de insertan*/
 						PreparedStatement ps3 = con.prepareStatement(sql4);
-						debug("datos de entrada para el sql4: IDCERTIFICADO["+idcertificado+"],NOMBRECERTIFICADO["+datos.getNombrecertificado()+"]");
+						debug("datos de entrada para el sql4: IDCERTIFICADO["+idcertificado+"],NOMBRECERTIFICADO["+datos.getNombrecurso()+"]");
 						ps3.setLong(1, idcertificado);
-						ps3.setString(3, datos.getNombrecertificado());
-						ps3.setInt(2, 7);
+						ps3.setString(3, datos.getNombrecurso());
+						ps3.setInt(2, 8);
 						ps3.execute();
 						info("ejecucion de la sentencia sql4: "+sql);
 					/*tercera insercion si se cumple la segunda*/
@@ -79,7 +96,7 @@ public class DAODatosCursoImpl extends Log implements DAODatosCurso {
 						ps.setLong(1, idcurso);
 						ps.setLong(2, idcertificado);
 						ps.execute();
-						info("ejecucion de la sentencia sql2: "+sql2);
+						info("ejecucion de la sentencia sql2: "+sql4);
 				}else{
 					
 				}
@@ -103,17 +120,23 @@ public class DAODatosCursoImpl extends Log implements DAODatosCurso {
 					info("ejecucion de la sentencia sql6: "+sql6);
 					}
 				PreparedStatement ps5 = con.prepareStatement(sql5);
-				debug("dato entrante para el sql5: NOMBRECURSO["+datos.getNombrecurso()+"]");
-					ps5.setInt(1, datos.getIdcurso());
+				debug("dato entrante para el sql5: IDCURSO["+idcurso+"]");
+					ps5.setLong(1, idcurso);
+					ResultSet rts = ps5.executeQuery();
+					if(rts.next()) {
+						debug("ps lo ta haciendo");
+					}
 					info("ejecucion de la sentencia sql5: "+sql5);
 				return ps5;
 			}
 		});
+		info("resputa --> "+respuesta);
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosCurso#Modificar(com.vector.Beans.DatosCursoBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
@@ -191,8 +214,9 @@ public class DAODatosCursoImpl extends Log implements DAODatosCurso {
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosCurso#Eliminar(int)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
@@ -213,8 +237,9 @@ public class DAODatosCursoImpl extends Log implements DAODatosCurso {
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosCurso#Buscar(com.vector.Beans.DatosCursoBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
@@ -237,8 +262,9 @@ public class DAODatosCursoImpl extends Log implements DAODatosCurso {
 		List<DatosCursoBean> retorno = getDatosCurso();
 		return retorno;
 	}
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosCurso#Listar()
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosCursoBean> Listar() {
@@ -248,6 +274,12 @@ public class DAODatosCursoImpl extends Log implements DAODatosCurso {
 		return jdbcTemplate.query(sql, new CursoRowMapper());
 	}
 	
+	/**
+	 * Sets the datos curso.
+	 *
+	 * @param rs the new datos curso
+	 * @throws SQLException the SQL exception
+	 */
 	private void setDatosCurso(ResultSet rs) throws SQLException{
 		datos= new ArrayList<DatosCursoBean>();
 		DatosCursoBean respuesta;
@@ -265,6 +297,11 @@ public class DAODatosCursoImpl extends Log implements DAODatosCurso {
 			}
 	}
 
+	/**
+	 * Gets the datos curso.
+	 *
+	 * @return the datos curso
+	 */
 	private List<DatosCursoBean>getDatosCurso(){
 		return this.datos;
 	}

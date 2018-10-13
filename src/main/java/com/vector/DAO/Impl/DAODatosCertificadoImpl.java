@@ -22,19 +22,34 @@ import com.vector.DAO.DAODatosCertificado;
 import com.vector.Utileria.AutoIncrementablesBDOracle;
 import com.vector.Utileria.Log;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: DAODatosCertificadoImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar, listar implementadas del DAO y las sentenicas sql
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class DAODatosCertificadoImpl extends Log implements DAODatosCertificado {
+	
+	/** The jdbc template. */
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	/** The autoin. */
 	private AutoIncrementablesBDOracle autoin;
+	
+	/** The datos. */
 	List<DatosCertificadoBean> datos;
 	
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosCertificado#Crear(com.vector.Beans.DatosCertificadoBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional
@@ -70,8 +85,8 @@ public class DAODatosCertificadoImpl extends Log implements DAODatosCertificado 
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosCertificado#Modificar(com.vector.Beans.DatosCertificadoBean)
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
@@ -97,8 +112,9 @@ public class DAODatosCertificadoImpl extends Log implements DAODatosCertificado 
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosCertificado#Eliminar(int)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
@@ -121,8 +137,9 @@ public class DAODatosCertificadoImpl extends Log implements DAODatosCertificado 
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosCertificado#Buscar(com.vector.Beans.DatosCertificadoBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional//(readOnly = true)
@@ -147,9 +164,9 @@ public class DAODatosCertificadoImpl extends Log implements DAODatosCertificado 
 		return retorno;
 	}
 
-	
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosCorreoAlt#Listar()
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosCertificadoBean> Listar() {
@@ -158,6 +175,13 @@ public class DAODatosCertificadoImpl extends Log implements DAODatosCertificado 
 		info("ejecuta sentencia sql: "+sql);
 		return jdbcTemplate.query(sql, new CertificadoRowMapper());
 	}
+	
+	/**
+	 * Sets the datos certificado.
+	 *
+	 * @param rs the new datos certificado
+	 * @throws SQLException the SQL exception
+	 */
 	private void setDatosCertificado(ResultSet rs) throws SQLException{
 		datos= new ArrayList<DatosCertificadoBean>();
 		DatosCertificadoBean respuesta;
@@ -172,6 +196,11 @@ public class DAODatosCertificadoImpl extends Log implements DAODatosCertificado 
 			}
 	}
 
+	/**
+	 * Gets the datos certificado.
+	 *
+	 * @return the datos certificado
+	 */
 	private List<DatosCertificadoBean>getDatosCertificado(){
 		info("retorna los datos");
 		return this.datos;

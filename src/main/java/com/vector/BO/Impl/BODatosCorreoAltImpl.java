@@ -16,18 +16,30 @@ import com.vector.DAO.DAODatosCorreoAlt;
 import com.vector.Utileria.EnvioMensaje;
 import com.vector.Utileria.Log;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author JESUS ALEJANDRO CARRILLO SANCHEZ
- *
+ *   Vector México
+ *   Clase: BODatosCorreoAltImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar y listar implementados del BO
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class BODatosCorreoAltImpl extends Log implements BODatosCorreoAlt {
+	
+	/** The daocorreo. */
 	@Autowired
 	private DAODatosCorreoAlt daocorreo;
 	
+	/** The Constant LOGGER. */
 	private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosCorreoAlt#Crear(com.vector.Beans.DatosCorreoAltBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Crear(List<DatosCorreoAltBean> datos) {
@@ -61,8 +73,9 @@ public class BODatosCorreoAltImpl extends Log implements BODatosCorreoAlt {
 		return mensaje;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosCorreoAlt#Modificar(com.vector.Beans.DatosCorreoAltBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Modificar(DatosCorreoAltBean datos) {
@@ -88,8 +101,9 @@ public class BODatosCorreoAltImpl extends Log implements BODatosCorreoAlt {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosCorreoAlt#Eliminar(int)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Eliminar(DatosCorreoAltBean datos) {
@@ -114,8 +128,9 @@ public class BODatosCorreoAltImpl extends Log implements BODatosCorreoAlt {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosCorreoAlt#Buscar(com.vector.Beans.DatosCorreoAltBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public DatosCorreoAltBean Buscar(DatosCorreoAltBean datos) {
@@ -124,8 +139,9 @@ public class BODatosCorreoAltImpl extends Log implements BODatosCorreoAlt {
 		return daocorreo.Buscar(datos);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosCorreoAlt#Listar()
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosCorreoAltBean> Listar(long id) {

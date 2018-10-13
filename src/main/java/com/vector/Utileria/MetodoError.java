@@ -14,16 +14,34 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.vector.Beans.MsgBean;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio
- *RecyHumWS2--com.vector.Utileria--MetodoError
+ *   Vector México
+ *   Clase: MetodoError.java
+ *   Descripción:  contiene mensaje de error del WS
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Controller
-public class MetodoError {
+public class MetodoError extends Log{
+
+/** The Constant ruta. */
 private static final String ruta = "/error";
+
+/**
+ * Clase: error 
+ * Descripcion:.
+ *
+ * @param request Tipo de Dato resivido HttpServletRequest
+ * @param response Tipo de Dato resivido HttpServletResponse
+ * @return Retorna response entity
+ */
 @RequestMapping(value=ruta, method=RequestMethod.POST)
 public ResponseEntity<MsgBean> error(HttpServletRequest request, HttpServletResponse response){
-	System.out.println("Ruta de WS no valida");
+	error("Ruta de WS no valida");
 	MsgBean mensaje = new MsgBean();
 	mensaje.setMsjAccion(new EnvioMensaje().getRutaInvalida());
 return new ResponseEntity<MsgBean>(mensaje,HttpStatus.BAD_REQUEST);	

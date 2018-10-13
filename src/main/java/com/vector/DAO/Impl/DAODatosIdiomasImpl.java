@@ -22,19 +22,36 @@ import com.vector.DAO.DAODatosIdiomas;
 import com.vector.Utileria.AutoIncrementablesBDOracle;
 
 import java.util.logging.Logger;
+
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: DAODatosIdiomasImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar, listar implementadas del DAO y las sentenicas sql
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class DAODatosIdiomasImpl implements DAODatosIdiomas {
+	
+	/** The jdbc template. */
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	/** The Constant LOGGER. */
 	private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
+	
+	/** The autoin. */
 	private AutoIncrementablesBDOracle autoin;
+	
+	/** The datos. */
 	List<DatosIdiomasBean> datos ;
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosIdiomas#Crear(com.vector.Beans.DatosIdiomasBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Transactional(readOnly = true)
 	public int Crear(DatosIdiomasBean datos) {
@@ -65,8 +82,9 @@ public class DAODatosIdiomasImpl implements DAODatosIdiomas {
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosIdiomas#Modificar(com.vector.Beans.DatosIdiomasBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
@@ -93,8 +111,9 @@ public class DAODatosIdiomasImpl implements DAODatosIdiomas {
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosIdiomas#Eliminar(int)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
@@ -112,8 +131,8 @@ public class DAODatosIdiomasImpl implements DAODatosIdiomas {
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosIdiomas#Buscar(com.vector.Beans.DatosIdiomasBean)
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
@@ -135,8 +154,9 @@ public class DAODatosIdiomasImpl implements DAODatosIdiomas {
 		return retorno;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosIdiomas#Listar()
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
@@ -146,6 +166,12 @@ public class DAODatosIdiomasImpl implements DAODatosIdiomas {
 		return jdbcTemplate.query(sql, new IdiomaRowMapper());
 	}
 	
+		/**
+		 * Sets the datos idiomas.
+		 *
+		 * @param rs the new datos idiomas
+		 * @throws SQLException the SQL exception
+		 */
 		private void setDatosIdiomas(ResultSet rs) throws SQLException{
 			datos= new ArrayList<DatosIdiomasBean>();
 			DatosIdiomasBean respuesta;
@@ -164,6 +190,11 @@ public class DAODatosIdiomasImpl implements DAODatosIdiomas {
 				}
 		}
 
+		/**
+		 * Gets the datos idiomas.
+		 *
+		 * @return the datos idiomas
+		 */
 		private List<DatosIdiomasBean>getDatosIdiomas(){
 			return this.datos;
 		}	

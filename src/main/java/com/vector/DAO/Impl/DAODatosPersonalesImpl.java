@@ -26,27 +26,42 @@ import com.vector.Utileria.AutoIncrementablesBDOracle;
 import com.vector.Utileria.ConvertirFecha;
 import com.vector.Utileria.Log;
 
-
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio
- *
+ *   Vector México
+ *   Clase: DAODatosPersonalesImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar, listar implementadas del DAO y las sentenicas sql
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
+	
+	/** The jdbc template. */
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	/** The ultimoid. */
 	AutoIncrementablesBDOracle ultimoid;
+	
+	/** The c. */
 	Calendar c;
+	
+	/** The dia. */
 	String dia = "";
+	
+	/** The mes. */
 	String mes = "";
+	
+	/** The annio. */
 	String annio = "";
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.service.ModelABCLD#Create(com.vector.model.Modelo)
+	/** 
+	 * {@inheritDoc}
 	 */
-
 	@Transactional(readOnly = true)
 	public int Crear(DatosPersonalesBean datos) {
 		ultimoid = new AutoIncrementablesBDOracle();
@@ -292,10 +307,9 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.service.ModelABCLD#Delete(int)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Transactional(readOnly = true)
 	public int Eliminar(long id) {
@@ -315,10 +329,9 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 		return respuesta;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.service.ModelABCLD#Buscar(com.vector.model.Modelo)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Transactional(readOnly = true)
 	public DatosPersonalesBean Buscar(DatosPersonalesBean datos) {
@@ -654,10 +667,9 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.service.ModelABCLD#Listar(com.vector.model.Modelo)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Transactional(readOnly = true)
 	public List<DatosPersonalesBean> Listar() {
@@ -667,12 +679,8 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 		return jdbcTemplate.query(sql, new DatPerRowMapper());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.vector.DAO.DAODatosPersonales#Actualizar(com.vector.Beans.DatosPersonales
-	 * .DatosPersonalesBean)
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Modificar(DatosPersonalesBean datos) {
@@ -981,12 +989,9 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 		return respuesta;
 	}
 
-	/*
-	 * (Claudio-Javadoc)
-	 * 
-	 * @see
-	 * com.vector.DAO.DAODatosPersonales#Modificar2(com.vector.Beans.DatosPersonales
-	 * .DatosPersonalesBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Modificar2(DatosPersonalesBean datos) {
@@ -1296,12 +1301,8 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 
 	}
 
-	/*
-	 * (Claudio-Javadoc)
-	 * 
-	 * @see
-	 * com.vector.DAO.DAODatosPersonales#Modificar3(com.vector.Beans.DatosPersonales
-	 * .DatosPersonalesBean)
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Modificar3(DatosPersonalesBean datos) {
@@ -1328,10 +1329,8 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 		return respuesta;
 	}
 
-	/*
-	 * (Claudio-Javadoc)
-	 * 
-	 * @see com.vector.DAO.DAODatosPersonales#BusquedaArea()
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
@@ -1381,12 +1380,9 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 		return listara;
 	}
 
-	/*
-	 * (Claudio-Javadoc)
-	 * 
-	 * @see
-	 * com.vector.DAO.DAODatosPersonales#BusquedaPersonaNombreCompleto(java.lang.
-	 * String)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosPersonalesBean> BusquedaPersonaNombreCompleto(String parametro) {
@@ -1437,8 +1433,8 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 		return retorno;
 	}
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.DAO.DAODatosPersonales#BusquedaHerramientasConPersona(long)
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosPersonalesBean> BusquedaHerramientasConPersona(long id) {
@@ -1479,8 +1475,8 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 		return listara;
 	}
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.DAO.DAODatosPersonales#BusquedaExpLaboralPersona(long)
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosPersonalesBean> BusquedaExpLaboralPersona(long id) {
@@ -1550,8 +1546,9 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 		return listara;
 	}
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.DAO.DAODatosPersonales#BusquedaIdiomasPersona(long)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosPersonalesBean> BusquedaIdiomasPersona(long id) {

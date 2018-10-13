@@ -18,14 +18,32 @@ import com.vector.Beans.DatosCursoBean;
 import com.vector.Beans.MsgBean;
 import com.vector.Utileria.Log;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author Jair
- *
+ *   Vector México
+ *   Clase: DatosCursoController.java
+ *   Descripción:  contiene los links de los servicios disponibles
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @RestController
 public class DatosCursoController extends Log{
+	
+	/** The curso. */
 	@Autowired
 	private BODatosCurso curso;
+	
+	/**
+	 * Clase: insertar 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido List<DatosCursoBean>
+	 * @return Retorna response entity
+	 */
 	//Ruta utilizada para la llamada de la funcion crear cursos
 	@RequestMapping(path = "/SGRHWebService/DatosCurso/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosCursoBean> datos){
@@ -33,6 +51,14 @@ public class DatosCursoController extends Log{
 		info("Se creo un curso "+datos.toString());
 		return new ResponseEntity<MsgBean>(curso.Crear(datos),HttpStatus.OK);
 	}
+	
+	/**
+	 * Clase: actualizar 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido DatosCursoBean
+	 * @return Retorna response entity
+	 */
 	//Ruta utilizada para la llamada de la funcion Modificar cursos
 	@RequestMapping(path = "/SGRHWebService/DatosCurso/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody  DatosCursoBean datos){
@@ -40,6 +66,14 @@ public class DatosCursoController extends Log{
 		info("Se modifico un curso con id: "+datos.getIdcurso());
 		return new ResponseEntity<MsgBean>(curso.Modificar(datos),HttpStatus.OK);
 	}
+	
+	/**
+	 * Clase: eliminar 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido DatosCursoBean
+	 * @return Retorna response entity
+	 */
 	//Ruta utilizada para la llamada de la funcion eliminar cursos
 	@RequestMapping(path = "/SGRHWebService/DatosCurso/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosCursoBean datos){
@@ -47,6 +81,14 @@ public class DatosCursoController extends Log{
 		info("se elimino un curso con id "+datos.getIdcurso());
 		return new ResponseEntity<MsgBean>(curso.Eliminar(datos),HttpStatus.OK);
 	}
+	
+	/**
+	 * Clase: buscar 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido DatosCursoBean
+	 * @return Retorna response entity
+	 */
 	//Ruta utilizada para la llamada de la funcion buscar cursos
 	@RequestMapping(path = "/SGRHWebService/DatosCurso/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosCursoBean>>buscar(@RequestBody  DatosCursoBean datos){
@@ -54,6 +96,14 @@ public class DatosCursoController extends Log{
 		info("se busco los cursos de la persona: "+datos.getIdpersona());
 		return new ResponseEntity<List< DatosCursoBean>>(curso.Buscar(datos),HttpStatus.OK);
 	}
+	
+	/**
+	 * Clase: consulta 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido DatosCursoBean
+	 * @return Retorna response entity
+	 */
 	//Ruta utilizada para la llamada de la funcion listar cursos
 	@RequestMapping(path = "/SGRHWebService/DatosCurso/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosCursoBean>> consulta(@RequestBody DatosCursoBean datos){

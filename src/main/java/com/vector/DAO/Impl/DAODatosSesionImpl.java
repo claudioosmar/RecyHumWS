@@ -32,7 +32,7 @@ import com.vector.Utileria.*;
 /**
  *   Vector México
  *   Clase: DAODatosSesionImpl.java
- *   Descripción:  crea, modifica, elimina y verifica usuarios
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar, listar, verificar implementadas del DAO y las sentenicas sql
  *   
  * 
  *   Control de Cambios:

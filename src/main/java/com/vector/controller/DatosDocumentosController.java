@@ -18,14 +18,32 @@ import com.vector.Beans.DatosDocumentoBean;
 import com.vector.Beans.MsgBean;
 import com.vector.Utileria.Log;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author JESUS ALEJANDRO CARRILLO SANCHEZ
- *
+ *   Vector México
+ *   Clase: DatosDocumentosController.java
+ *   Descripción:  contiene los links de los servicios disponibles
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @RestController
 public class DatosDocumentosController extends Log{
+	
+	/** The documento. */
 	@Autowired
 	private BODatosDocumentos documento;
+	
+	/**
+	 * Clase: insertar 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido List<DatosDocumentoBean>
+	 * @return Retorna response entity
+	 */
 	//Ruta utilizada para la llamada de la funcion crear documento
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosDocumentoBean> datos){
@@ -33,6 +51,14 @@ public class DatosDocumentosController extends Log{
 		info("Se agrego el doc "+datos.toString());
 		return new ResponseEntity<MsgBean>(documento.Crear(datos),HttpStatus.OK);
 	}
+	
+	/**
+	 * Clase: actualizar 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido DatosDocumentoBean
+	 * @return Retorna response entity
+	 */
 	//Ruta utilizada para la llamada de la funcion Modificar documentos
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosDocumentoBean datos){
@@ -40,6 +66,14 @@ public class DatosDocumentosController extends Log{
 		info("Se modifico el documento "+datos.getDescripciondocNw()+" con id "+datos.getIddocumentoLt()+" " + "al ID de persona "+datos.getIdpersona()+" con id nuevo documento "+datos.getIddocumentoNw()+" ");
 		return new ResponseEntity<MsgBean>(documento.Modificar(datos),HttpStatus.OK);
 	}
+	
+	/**
+	 * Clase: eliminar 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido DatosDocumentoBean
+	 * @return Retorna response entity
+	 */
 	//Ruta utilizada para la llamada de la funcion eliminar documetos
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosDocumentoBean datos){
@@ -47,6 +81,14 @@ public class DatosDocumentosController extends Log{
 		info("se elimino el documento "+datos.getDescripciondocNw()+ "con el ID de documento "+datos.getIddocumentoNw());
 		return new ResponseEntity<MsgBean>(documento.Eliminar(datos),HttpStatus.OK);
 	}
+	
+	/**
+	 * Clase: buscar 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido DatosDocumentoBean
+	 * @return Retorna response entity
+	 */
 	//Ruta utilizada para la llamada de la funcion buscar documentos
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosDocumentoBean>>buscar(@RequestBody DatosDocumentoBean datos){
@@ -54,6 +96,14 @@ public class DatosDocumentosController extends Log{
 		info("se busco el documento "+datos.toString());
 		return new ResponseEntity<List<DatosDocumentoBean>>(documento.Buscar(datos),HttpStatus.OK);
 	}
+	
+	/**
+	 * Clase: consulta 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido DatosDocumentoBean
+	 * @return Retorna response entity
+	 */
 	//Ruta utilizada para la llamada de la funcion listar idiomas
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosDocumentoBean>> consulta(@RequestBody DatosDocumentoBean datos){

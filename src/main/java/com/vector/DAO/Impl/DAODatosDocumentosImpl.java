@@ -18,20 +18,31 @@ import org.springframework.stereotype.Service;
 import com.vector.Beans.DatosDocumentoBean;
 import com.vector.DAO.DAODatosDocumento;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author JESUS ALEJANDRO CARRILLO SANCHEZ
- *
+ *   Vector México
+ *   Clase: DAODatosDocumentosImpl.java
+ *   Descripción: contiene los metedos crear, modificar, eliminar, buscar, listar implementadas del DAO y las sentenicas sql
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class DAODatosDocumentosImpl implements DAODatosDocumento {
+	
+	/** The jdbc template. */
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	/** The datos. */
 	List<DatosDocumentoBean> datos;
 	
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosDocumento#Crear(com.vector.Beans.DatosDocumentoBean)
+	/** 
+	 * {@inheritDoc}
 	 */
-	
 	@Override
 	public int Crear(DatosDocumentoBean datos) {
 		// TODO Auto-generated method stub
@@ -52,8 +63,9 @@ public class DAODatosDocumentosImpl implements DAODatosDocumento {
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosDocumento#Modificar(com.vector.Beans.DatosDocumentoBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Modificar(DatosDocumentoBean datos) {
@@ -76,8 +88,9 @@ public class DAODatosDocumentosImpl implements DAODatosDocumento {
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosDocumento#Eliminar(int)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Eliminar(DatosDocumentoBean datos) {
@@ -98,8 +111,9 @@ public class DAODatosDocumentosImpl implements DAODatosDocumento {
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosDocumento#Buscar(com.vector.Beans.DatosDocumentoBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosDocumentoBean> Buscar(DatosDocumentoBean datos) {
@@ -122,8 +136,9 @@ public class DAODatosDocumentosImpl implements DAODatosDocumento {
 		return retorno;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosDocumento#Listar()
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosDocumentoBean> Listar(long id) {
@@ -132,6 +147,13 @@ public class DAODatosDocumentosImpl implements DAODatosDocumento {
 		System.out.println(sql);
 		return jdbcTemplate.query(sql, new DocRowMapper());
 	}
+	
+	/**
+	 * Sets the datos documento.
+	 *
+	 * @param rs the new datos documento
+	 * @throws SQLException the SQL exception
+	 */
 	private void setDatosDocumento(ResultSet rs) throws SQLException{
 		datos= new ArrayList<DatosDocumentoBean>();
 		DatosDocumentoBean respuesta;
@@ -145,15 +167,18 @@ public class DAODatosDocumentosImpl implements DAODatosDocumento {
 			}
 	}
 
+	/**
+	 * Gets the datos documento.
+	 *
+	 * @return the datos documento
+	 */
 	private List<DatosDocumentoBean>getDatosDocumento(){
 		return this.datos;
 	}
 }
 class DocRowMapper implements RowMapper<DatosDocumentoBean>{
 
-	/* (non-Javadoc)
-	 * @see org.springframework.jdbc.core.RowMapper#mapRow(java.sql.ResultSet, int)
-	 */
+
 	@Override
 	public DatosDocumentoBean mapRow(ResultSet rs, int rowNum) throws SQLException {
 		// TODO Auto-generated method stub

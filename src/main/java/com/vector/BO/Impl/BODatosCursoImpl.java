@@ -15,24 +15,38 @@ import com.vector.DAO.DAODatosCurso;
 import com.vector.Utileria.EnvioMensaje;
 import com.vector.Utileria.Log;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author Jair
- *
+ *   Vector México
+ *   Clase: BODatosCursoImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar y listar implementados del BO
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class BODatosCursoImpl extends Log implements BODatosCurso {
+	
+	/** The daocurso. */
 	@Autowired
 	private DAODatosCurso daocurso;
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosCurso#Crear(com.vector.Beans.DatosCursoBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Crear(List<DatosCursoBean> datos) {
 		// TODO Auto-generated method stub
 		int resultado=0;
+		DatosCursoBean retorno = new DatosCursoBean();
 		//Sentencia for para la validacion del tamaño de los datos del bean
 		for (int i = 0; i < datos.size(); i++) {
-			resultado = daocurso.Crear(datos.get(i));
+			retorno.setIdcurso( daocurso.Crear(datos.get(i)));
+			resultado= Integer.parseInt(String.valueOf(retorno.getIdcurso()));
+			info("insercion correcta --> "+resultado +retorno.getIdcurso() );
 			if(resultado==0) {
 				error("Fallo en la insercion de curso "+i+1);
 			}
@@ -54,8 +68,9 @@ public class BODatosCursoImpl extends Log implements BODatosCurso {
 		return mensaje;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosCurso#Modificar(com.vector.Beans.DatosCursoBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Modificar(DatosCursoBean datos) {
@@ -80,8 +95,8 @@ public class BODatosCursoImpl extends Log implements BODatosCurso {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosCurso#Eliminar(int)
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Eliminar(DatosCursoBean datos) {
@@ -106,8 +121,9 @@ public class BODatosCursoImpl extends Log implements BODatosCurso {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosCurso#Buscar(com.vector.Beans.DatosCursoBean)
+	
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosCursoBean> Buscar(DatosCursoBean datos) {
@@ -116,8 +132,9 @@ public class BODatosCursoImpl extends Log implements BODatosCurso {
 		return daocurso.Buscar(datos);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosCurso#Listar()
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosCursoBean> Listar() {

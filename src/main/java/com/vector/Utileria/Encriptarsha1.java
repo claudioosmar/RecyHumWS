@@ -10,12 +10,27 @@ import java.util.Base64;
 
 import org.springframework.stereotype.Service;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: Encriptarsha1.java
+ *   Descripción:  metodo de encriptacion
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class Encriptarsha1 {
+	
+	/**
+	 * Clase: Encriptar 
+	 * Descripcion:.
+	 *
+	 * @param kripto Tipo de Dato resivido String
+	 * @return Retorna string
+	 */
 	public String Encriptar(String kripto) {
 		byte[] newpassword = null;
 		try {

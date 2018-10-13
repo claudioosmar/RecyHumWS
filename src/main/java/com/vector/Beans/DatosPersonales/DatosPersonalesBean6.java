@@ -5,37 +5,66 @@ package com.vector.Beans.DatosPersonales;
 
 import javax.validation.constraints.NotNull;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio
- *RecyHumWS2--com.vector.Beans.DatosPersonales--DatosPersonalesBean6
+ *   Vector México
+ *   Clase: DatosPersonalesBean6.java
+ *   Descripción:  contiene las variables, getters y setters 
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 //Clase Bean de datos personoles 6
 public class DatosPersonalesBean6 extends DatosPersonalesBean7{
+	
+	/** The edad. */
 	/*Variables de DatosPersonales*/
 	@NotNull
 	private int edad=0;
+	
+	/** The idarea. */
 	@NotNull
 	private int idarea=0;
+	
+	/** The tipotelefono. */
 	@NotNull
 	private String tipotelefono="";
+	
+	/** The iddireccion. */
 	@NotNull
 	private long iddireccion=0;
+	
+	/** The telefonoprincipal nw. */
 	@NotNull
 	private String telefonoprincipalNw="";
+	
+	/** The telefonosecundario nw. */
 	@NotNull
 	private String telefonosecundarioNw="";
+	
+	/** The telefono emergente nw. */
 	@NotNull
 	private String telefonoEmergenteNw="";
+	
+	/** The correoprincipal nw. */
 	@NotNull
 	private String correoprincipalNw="";
+	
+	/** The corresecundario nw. */
 	@NotNull
 	private String corresecundarioNw="";
+	
+	/** The iduser. */
 	@NotNull
 	private long iduser=0;
 	/*Seccion de getters y setters*/
 	
 	
 	/**
+	 * Gets the iduser.
+	 *
 	 * @return Obtienes el valor de iduser del tipo long
 	 */
 	
@@ -47,7 +76,9 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 	
 	/**
-	 * @param Agregar el valor a iduser del tipo long
+	 * Sets the iduser.
+	 *
+	 * @param iduser the new iduser
 	 */
 	
 	public void setIduser(long iduser) {
@@ -57,6 +88,8 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 
 	/**
+	 * Gets the edad.
+	 *
 	 * @return Obtienes el valor de edad del tipo int
 	 */
 	
@@ -67,6 +100,8 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 	
 	
 	/**
+	 * Gets the telefonoprincipal nw.
+	 *
 	 * @return Obtienes el valor de telefonoprincipalNw del tipo String
 	 */
 	
@@ -77,6 +112,8 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 	
 	/**
+	 * Gets the telefonosecundario nw.
+	 *
 	 * @return Obtienes el valor de telefonosecundarioNw del tipo String
 	 */
 	
@@ -87,6 +124,8 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 	
 	/**
+	 * Gets the telefono emergente nw.
+	 *
 	 * @return Obtienes el valor de telefonoEmergenteNw del tipo String
 	 */
 	
@@ -97,6 +136,8 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 	
 	/**
+	 * Gets the correoprincipal nw.
+	 *
 	 * @return Obtienes el valor de correoprincipalNw del tipo String
 	 */
 	
@@ -107,6 +148,8 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 	
 	/**
+	 * Gets the corresecundario nw.
+	 *
 	 * @return Obtienes el valor de corresecundarioNw del tipo String
 	 */
 	
@@ -117,7 +160,9 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 	
 	/**
-	 * @param Agregar el valor a telefonoprincipalNw del tipo String
+	 * Sets the telefonoprincipal nw.
+	 *
+	 * @param telefonoprincipalNw the new telefonoprincipal nw
 	 */
 	
 	public void setTelefonoprincipalNw(String telefonoprincipalNw) {
@@ -127,7 +172,9 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 	
 	/**
-	 * @param Agregar el valor a telefonosecundarioNw del tipo String
+	 * Sets the telefonosecundario nw.
+	 *
+	 * @param telefonosecundarioNw the new telefonosecundario nw
 	 */
 	
 	public void setTelefonosecundarioNw(String telefonosecundarioNw) {
@@ -137,7 +184,9 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 	
 	/**
-	 * @param Agregar el valor a telefonoEmergenteNw del tipo String
+	 * Sets the telefono emergente nw.
+	 *
+	 * @param telefonoEmergenteNw the new telefono emergente nw
 	 */
 	
 	public void setTelefonoEmergenteNw(String telefonoEmergenteNw) {
@@ -147,7 +196,9 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 	
 	/**
-	 * @param Agregar el valor a correoprincipalNw del tipo String
+	 * Sets the correoprincipal nw.
+	 *
+	 * @param correoprincipalNw the new correoprincipal nw
 	 */
 	
 	public void setCorreoprincipalNw(String correoprincipalNw) {
@@ -157,7 +208,9 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 	
 	/**
-	 * @param Agregar el valor a corresecundarioNw del tipo String
+	 * Sets the corresecundario nw.
+	 *
+	 * @param corresecundarioNw the new corresecundario nw
 	 */
 	
 	public void setCorresecundarioNw(String corresecundarioNw) {
@@ -166,6 +219,8 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 
 	/**
+	 * Gets the iddireccion.
+	 *
 	 * @return Obtienes el valor de iddireccion del tipo long
 	 */
 	
@@ -177,7 +232,9 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 	
 	/**
-	 * @param Agregar el valor a iddireccion del tipo long
+	 * Sets the iddireccion.
+	 *
+	 * @param iddireccion the new iddireccion
 	 */
 	
 	public void setIddireccion(long iddireccion) {
@@ -187,6 +244,8 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 
 	/**
+	 * Gets the tipotelefono.
+	 *
 	 * @return Obtienes el valor de tipotelefono del tipo String
 	 */
 	
@@ -197,7 +256,9 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 	
 	/**
-	 * @param Agregar el valor a tipotelefono del tipo String
+	 * Sets the tipotelefono.
+	 *
+	 * @param tipotelefono the new tipotelefono
 	 */
 	
 	public void setTipotelefono(String tipotelefono) {
@@ -206,7 +267,9 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 
 	/**
-	 * @param Agregar el valor a edad del tipo int
+	 * Sets the edad.
+	 *
+	 * @param edad the new edad
 	 */
 	
 	public void setEdad(int edad) {
@@ -216,6 +279,8 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 	
 	/**
+	 * Gets the idarea.
+	 *
 	 * @return Obtienes el valor de idarea del tipo int
 	 */
 	
@@ -226,7 +291,9 @@ public class DatosPersonalesBean6 extends DatosPersonalesBean7{
 
 	
 	/**
-	 * @param Agregar el valor a idarea del tipo int
+	 * Sets the idarea.
+	 *
+	 * @param idarea the new idarea
 	 */
 	
 	public void setIdarea(int idarea) {

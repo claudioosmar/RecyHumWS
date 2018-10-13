@@ -15,16 +15,27 @@ import com.vector.DAO.DAODatosHerramientas;
 import com.vector.Utileria.EnvioMensaje;
 import com.vector.Utileria.Log;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: BODatosHerramientasImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar y listar implementados del BO
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class BODatosHerramientasImpl extends Log implements BODatosHerramientas {
+	
+	/** The daoherrm. */
 	@Autowired
 	private DAODatosHerramientas daoherrm;
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosHerramientas#Crear(com.vector.Beans.DatosHerramientasBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Crear(List<DatosHerramientasBean> datos) {
@@ -55,8 +66,9 @@ public class BODatosHerramientasImpl extends Log implements BODatosHerramientas 
 		return mensaje;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosHerramientas#Modificar(com.vector.Beans.DatosHerramientasBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Modificar(DatosHerramientasBean datos) {
@@ -81,8 +93,9 @@ public class BODatosHerramientasImpl extends Log implements BODatosHerramientas 
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosHerramientas#Eliminar(int)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Eliminar(DatosHerramientasBean datos) {
@@ -107,8 +120,9 @@ public class BODatosHerramientasImpl extends Log implements BODatosHerramientas 
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosHerramientas#Buscar(com.vector.Beans.DatosHerramientasBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosHerramientasBean> Buscar(DatosHerramientasBean datos) {
@@ -117,8 +131,9 @@ public class BODatosHerramientasImpl extends Log implements BODatosHerramientas 
 		return daoherrm.Buscar(datos);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosHerramientas#Listar()
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosHerramientasBean> Listar() {

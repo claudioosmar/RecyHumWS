@@ -18,14 +18,32 @@ import com.vector.Beans.DatosLaboralesBean;
 import com.vector.Beans.MsgBean;
 import com.vector.Utileria.Log;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio
- *
+ *   Vector México
+ *   Clase: DatosLaboralesController.java
+ *   Descripción:  contiene los links de los servicios disponibles
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @RestController
 public class DatosLaboralesController  extends Log{
+	
+	/** The laborales. */
 	@Autowired
 	private BODatosLaborales laborales;
+	
+	/**
+	 * Clase: insertar 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido List<DatosLaboralesBean>
+	 * @return Retorna response entity
+	 */
 	//Ruta utilizada para la llamada de la funcion crear datos laborales
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Crear", method = RequestMethod.POST)
 	public ResponseEntity<DatosLaboralesBean> insertar(@RequestBody List<DatosLaboralesBean> datos){
@@ -33,6 +51,14 @@ public class DatosLaboralesController  extends Log{
 		info("Se creo un registro laboral"+datos.get(0).getIdexplaborl());
 		return new ResponseEntity<DatosLaboralesBean>(laborales.Crear(datos),HttpStatus.OK);
 	}
+	
+	/**
+	 * Clase: actualizar 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido DatosLaboralesBean
+	 * @return Retorna response entity
+	 */
 	//Ruta utilizada para la llamada de la funcion Modificar datos laborales
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosLaboralesBean datos){
@@ -40,6 +66,14 @@ public class DatosLaboralesController  extends Log{
 		info("Se modifico un regristro laboral"+datos.toString());
 		return new ResponseEntity<MsgBean>(laborales.Modificar(datos),HttpStatus.OK);
 	}
+	
+	/**
+	 * Clase: eliminar 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido DatosLaboralesBean
+	 * @return Retorna response entity
+	 */
 	//Ruta utilizada para la llamada de la funcion eliminar datos laborales
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosLaboralesBean datos){
@@ -47,6 +81,14 @@ public class DatosLaboralesController  extends Log{
 		info("se elimino un registro laboral de "+datos.getIdexplaborl());
 		return new ResponseEntity<MsgBean>(laborales.Eliminar(datos.getIdexplaborl()),HttpStatus.OK);
 	}
+	
+	/**
+	 * Clase: buscar 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido DatosLaboralesBean
+	 * @return Retorna response entity
+	 */
 	//Ruta utilizada para la llamada de la funcion buscar datos laborales
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosLaboralesBean>>buscar(@RequestBody DatosLaboralesBean datos){
@@ -54,6 +96,13 @@ public class DatosLaboralesController  extends Log{
 		info("se busco un registro laboral");
 		return new ResponseEntity<List<DatosLaboralesBean>>(laborales.Buscar(datos),HttpStatus.OK);
 	}
+	
+	/**
+	 * Clase: consulta 
+	 * Descripcion:.
+	 *
+	 * @return Retorna response entity
+	 */
 	//Ruta utilizada para la llamada de la funcion listar datos laborales
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosLaboralesBean>> consulta(){

@@ -5,50 +5,93 @@ package com.vector.Beans;
 
 import javax.validation.constraints.NotNull;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio
- *RecyHumWS2--com.vector.Beans--DatosLaboralesBean
+ *   Vector México
+ *   Clase: DatosLaboralesBean.java
+ *   Descripción:  contiene las variables, getters y setters 
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 //Clase Bean para los datos de experiencias laborales
 public class DatosLaboralesBean {
+	
+	/** The idmotivotermino. */
 	//Variable para declara los getter y setter de experiencias laborales
 	@NotNull
 	private int idmotivotermino=0;
+	
+	/** The puesto. */
 	@NotNull
 	private String puesto="";
+	
+	/** The fechainicioexp. */
 	@NotNull
 	private String fechainicioexp="";
+	
+	/** The fechafinalexp. */
 	@NotNull
 	private String fechafinalexp="";
+	
+	/** The actividadesreal. */
 	@NotNull
 	private String actividadesreal="";
+	
+	/** The logros. */
 	@NotNull
 	private String logros="";
+	
+	/** The idtipocontrato. */
 	@NotNull
 	private int idtipocontrato=0;
+	
+	/** The descripcionexp. */
 	@NotNull
 	private String descripcionexp="";
+	
+	/** The nombreempresa. */
 	@NotNull
 	private String nombreempresa="";
+	
+	/** The idpersona. */
 	@NotNull
 	private long idpersona=0;
+	
+	/** The idherramienta. */
 	@NotNull
 	private int idherramienta=0;
+	
+	/** The porsentajeherra. */
 	@NotNull
 	private int porsentajeherra=0;
+	
+	/** The añosexp. */
 	@NotNull
 	private int añosexp=0;
+	
+	/** The descripcionherrm. */
 	@NotNull
 	private String descripcionherrm="";
+	
+	/** The iddescmotivo. */
 	@NotNull
 	private int iddescmotivo=0;
+	
+	/** The idexplaborl. */
 	@NotNull
 	private int idexplaborl=0;
+	
+	/** The idempresa. */
 	@NotNull
 	private int idempresa=0;
 	
 	// declaracion de getters y setters
 	/**
+	 * Gets the idmotivotermino.
+	 *
 	 * @return Obtienes el valor de idmotivotermino del tipo int
 	 */
 	
@@ -57,7 +100,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idmotivotermino del tipo int
+	 * Sets the idmotivotermino.
+	 *
+	 * @param idmotivotermino the new idmotivotermino
 	 */
 	
 	public void setIdmotivotermino(int idmotivotermino) {
@@ -65,6 +110,8 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
+	 * Gets the puesto.
+	 *
 	 * @return Obtienes el valor de puesto del tipo String
 	 */
 	
@@ -73,7 +120,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a puesto del tipo String
+	 * Sets the puesto.
+	 *
+	 * @param puesto the new puesto
 	 */
 	
 	public void setPuesto(String puesto) {
@@ -81,6 +130,8 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
+	 * Gets the fechainicioexp.
+	 *
 	 * @return Obtienes el valor de fechainicioexp del tipo String
 	 */
 	
@@ -89,7 +140,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a fechainicioexp del tipo String
+	 * Sets the fechainicioexp.
+	 *
+	 * @param fechainicioexp the new fechainicioexp
 	 */
 	
 	public void setFechainicioexp(String fechainicioexp) {
@@ -97,6 +150,8 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
+	 * Gets the fechafinalexp.
+	 *
 	 * @return Obtienes el valor de fechafinalexp del tipo String
 	 */
 	
@@ -105,7 +160,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a fechafinalexp del tipo String
+	 * Sets the fechafinalexp.
+	 *
+	 * @param fechafinalexp the new fechafinalexp
 	 */
 	
 	public void setFechafinalexp(String fechafinalexp) {
@@ -113,6 +170,8 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
+	 * Gets the actividadesreal.
+	 *
 	 * @return Obtienes el valor de actividadesreal del tipo String
 	 */
 	
@@ -121,7 +180,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a actividadesreal del tipo String
+	 * Sets the actividadesreal.
+	 *
+	 * @param actividadesreal the new actividadesreal
 	 */
 	
 	public void setActividadesreal(String actividadesreal) {
@@ -129,6 +190,8 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
+	 * Gets the logros.
+	 *
 	 * @return Obtienes el valor de logros del tipo String
 	 */
 	
@@ -137,7 +200,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a logros del tipo String
+	 * Sets the logros.
+	 *
+	 * @param logros the new logros
 	 */
 	
 	public void setLogros(String logros) {
@@ -145,6 +210,8 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
+	 * Gets the idtipocontrato.
+	 *
 	 * @return Obtienes el valor de idtipocontrato del tipo int
 	 */
 	
@@ -153,7 +220,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idtipocontrato del tipo int
+	 * Sets the idtipocontrato.
+	 *
+	 * @param idtipocontrato the new idtipocontrato
 	 */
 	
 	public void setIdtipocontrato(int idtipocontrato) {
@@ -161,6 +230,8 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
+	 * Gets the descripcionexp.
+	 *
 	 * @return Obtienes el valor de descripcionexp del tipo String
 	 */
 	
@@ -169,7 +240,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a descripcionexp del tipo String
+	 * Sets the descripcionexp.
+	 *
+	 * @param descripcionexp the new descripcionexp
 	 */
 	
 	public void setDescripcionexp(String descripcionexp) {
@@ -177,6 +250,8 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
+	 * Gets the nombreempresa.
+	 *
 	 * @return Obtienes el valor de nombreempresa del tipo String
 	 */
 	
@@ -185,7 +260,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a nombreempresa del tipo String
+	 * Sets the nombreempresa.
+	 *
+	 * @param nombreempresa the new nombreempresa
 	 */
 	
 	public void setNombreempresa(String nombreempresa) {
@@ -193,6 +270,8 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
+	 * Gets the idpersona.
+	 *
 	 * @return Obtienes el valor de idpersona del tipo long
 	 */
 	
@@ -201,7 +280,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idpersona del tipo long
+	 * Sets the idpersona.
+	 *
+	 * @param idpersona the new idpersona
 	 */
 	
 	public void setIdpersona(long idpersona) {
@@ -209,6 +290,8 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
+	 * Gets the idherramienta.
+	 *
 	 * @return Obtienes el valor de idherramienta del tipo int
 	 */
 	
@@ -217,7 +300,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idherramienta del tipo int
+	 * Sets the idherramienta.
+	 *
+	 * @param idherramienta the new idherramienta
 	 */
 	
 	public void setIdherramienta(int idherramienta) {
@@ -225,6 +310,8 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
+	 * Gets the porsentajeherra.
+	 *
 	 * @return Obtienes el valor de porsentajeherra del tipo int
 	 */
 	
@@ -233,7 +320,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a porsentajeherra del tipo int
+	 * Sets the porsentajeherra.
+	 *
+	 * @param porsentajeherra the new porsentajeherra
 	 */
 	
 	public void setPorsentajeherra(int porsentajeherra) {
@@ -241,6 +330,8 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
+	 * Gets the añosexp.
+	 *
 	 * @return Obtienes el valor de añosexp del tipo int
 	 */
 	
@@ -249,7 +340,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a añosexp del tipo int
+	 * Sets the añosexp.
+	 *
+	 * @param añosexp the new añosexp
 	 */
 	
 	public void setAñosexp(int añosexp) {
@@ -257,6 +350,8 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
+	 * Gets the descripcionherrm.
+	 *
 	 * @return Obtienes el valor de descripcionherrm del tipo String
 	 */
 	
@@ -265,7 +360,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a descripcionherrm del tipo String
+	 * Sets the descripcionherrm.
+	 *
+	 * @param descripcionherrm the new descripcionherrm
 	 */
 	
 	public void setDescripcionherrm(String descripcionherrm) {
@@ -273,6 +370,8 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
+	 * Gets the iddescmotivo.
+	 *
 	 * @return Obtienes el valor de iddescmotivo del tipo int
 	 */
 	
@@ -281,7 +380,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a iddescmotivo del tipo int
+	 * Sets the iddescmotivo.
+	 *
+	 * @param iddescmotivo the new iddescmotivo
 	 */
 	
 	public void setIddescmotivo(int iddescmotivo) {
@@ -289,6 +390,8 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
+	 * Gets the idexplaborl.
+	 *
 	 * @return Obtienes el valor de idexplaborl del tipo int
 	 */
 	
@@ -297,7 +400,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idexplaborl del tipo int
+	 * Sets the idexplaborl.
+	 *
+	 * @param idexplaborl the new idexplaborl
 	 */
 	
 	public void setIdexplaborl(int idexplaborl) {
@@ -305,6 +410,8 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
+	 * Gets the idempresa.
+	 *
 	 * @return Obtienes el valor de idempresa del tipo int
 	 */
 	
@@ -313,7 +420,9 @@ public class DatosLaboralesBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idempresa del tipo int
+	 * Sets the idempresa.
+	 *
+	 * @param idempresa the new idempresa
 	 */
 	
 	public void setIdempresa(int idempresa) {

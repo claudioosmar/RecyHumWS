@@ -20,18 +20,30 @@ import com.vector.Utileria.Log;
 
 import java.util.logging.Logger;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: BODatosTelefonoAltImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar y listar implementados del BO
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class BODatosTelefonoAltImpl extends Log implements BODatosTelefonoAlt {
+
+/** The telefone. */
 @Autowired
 private DAODatosTelefonoAlt telefone;
 
+/** The Constant LOGGER. */
 private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BOTelefonAlt#Crear(com.vector.Beans.DatosTelefonoAltBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Crear(List<DatosTelefonoAltBean> datos) {
@@ -62,8 +74,9 @@ private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BOTelefonAlt#Modificar(com.vector.Beans.DatosTelefonoAltBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Modificar(DatosTelefonoAltBean datos) {
@@ -84,8 +97,9 @@ private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BOTelefonAlt#Eliminar(int)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Eliminar(String id) {
@@ -106,8 +120,9 @@ private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BOTelefonAlt#Buscar(com.vector.Beans.DatosTelefonoAltBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public DatosTelefonoAltBean Buscar(DatosTelefonoAltBean datos) {
@@ -116,8 +131,9 @@ private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
 		return telefone.Buscar(datos);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BOTelefonAlt#Listar()
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosTelefonoAltBean> Listar(long id) {

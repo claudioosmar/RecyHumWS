@@ -5,32 +5,53 @@ package com.vector.Beans;
 
 import javax.validation.constraints.NotNull;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio
- *RecyHumWS2--com.vector.Beans--DatosDocumentoBean
+ *   Vector México
+ *   Clase: DatosDocumentoBean.java
+ *   Descripción:  contiene las variables, getters y setters 
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 //Clase Bean para los datos de documentos
 public class DatosDocumentoBean {
+	
+	/** The iddocumento nw. */
 	//Variable para declara los getter y setter de documento
 	@NotNull
 	private int iddocumentoNw=0;
+	
+	/** The descripciondoc nw. */
 	@NotNull
 	private String descripciondocNw="";
+	
+	/** The urldoc nw. */
 	@NotNull
 	private String urldocNw="";
 	
+	/** The idpersona. */
 	private int idpersona =0;
 	
+	/** The iddocumento lt. */
 	@NotNull
 	private int iddocumentoLt=0;
+	
+	/** The descripciondoc lt. */
 	@NotNull
 	private String descripciondocLt="";
 	
+	/** The urldoc lt. */
 	@NotNull
 	private String urldocLt="";
 
 	
 	/**
+	 * Gets the iddocumento nw.
+	 *
 	 * @return Obtienes el valor de iddocumentoNw del tipo int
 	 */
 	
@@ -40,7 +61,9 @@ public class DatosDocumentoBean {
 
 	
 	/**
-	 * @param Agregar el valor a iddocumentoNw del tipo int
+	 * Sets the iddocumento nw.
+	 *
+	 * @param iddocumentoNw the new iddocumento nw
 	 */
 	
 	public void setIddocumentoNw(int iddocumentoNw) {
@@ -49,6 +72,8 @@ public class DatosDocumentoBean {
 
 	
 	/**
+	 * Gets the descripciondoc nw.
+	 *
 	 * @return Obtienes el valor de descripciondocNw del tipo String
 	 */
 	
@@ -58,7 +83,9 @@ public class DatosDocumentoBean {
 
 	
 	/**
-	 * @param Agregar el valor a descripciondocNw del tipo String
+	 * Sets the descripciondoc nw.
+	 *
+	 * @param descripciondocNw the new descripciondoc nw
 	 */
 	
 	public void setDescripciondocNw(String descripciondocNw) {
@@ -67,6 +94,8 @@ public class DatosDocumentoBean {
 
 	
 	/**
+	 * Gets the urldoc nw.
+	 *
 	 * @return Obtienes el valor de urldocNw del tipo String
 	 */
 	
@@ -76,7 +105,9 @@ public class DatosDocumentoBean {
 
 	
 	/**
-	 * @param Agregar el valor a urldocNw del tipo String
+	 * Sets the urldoc nw.
+	 *
+	 * @param urldocNw the new urldoc nw
 	 */
 	
 	public void setUrldocNw(String urldocNw) {
@@ -85,6 +116,8 @@ public class DatosDocumentoBean {
 
 	
 	/**
+	 * Gets the idpersona.
+	 *
 	 * @return Obtienes el valor de idpersona del tipo int
 	 */
 	
@@ -94,7 +127,9 @@ public class DatosDocumentoBean {
 
 	
 	/**
-	 * @param Agregar el valor a idpersona del tipo int
+	 * Sets the idpersona.
+	 *
+	 * @param idpersona the new idpersona
 	 */
 	
 	public void setIdpersona(int idpersona) {
@@ -103,6 +138,8 @@ public class DatosDocumentoBean {
 
 	
 	/**
+	 * Gets the iddocumento lt.
+	 *
 	 * @return Obtienes el valor de iddocumentoLt del tipo int
 	 */
 	
@@ -112,7 +149,9 @@ public class DatosDocumentoBean {
 
 	
 	/**
-	 * @param Agregar el valor a iddocumentoLt del tipo int
+	 * Sets the iddocumento lt.
+	 *
+	 * @param iddocumentoLt the new iddocumento lt
 	 */
 	
 	public void setIddocumentoLt(int iddocumentoLt) {
@@ -121,6 +160,8 @@ public class DatosDocumentoBean {
 
 	
 	/**
+	 * Gets the descripciondoc lt.
+	 *
 	 * @return Obtienes el valor de descripciondocLt del tipo String
 	 */
 	
@@ -130,7 +171,9 @@ public class DatosDocumentoBean {
 
 	
 	/**
-	 * @param Agregar el valor a descripciondocLt del tipo String
+	 * Sets the descripciondoc lt.
+	 *
+	 * @param descripciondocLt the new descripciondoc lt
 	 */
 	
 	public void setDescripciondocLt(String descripciondocLt) {
@@ -139,6 +182,8 @@ public class DatosDocumentoBean {
 
 	
 	/**
+	 * Gets the urldoc lt.
+	 *
 	 * @return Obtienes el valor de urldocLt del tipo String
 	 */
 	
@@ -148,7 +193,9 @@ public class DatosDocumentoBean {
 
 	
 	/**
-	 * @param Agregar el valor a urldocLt del tipo String
+	 * Sets the urldoc lt.
+	 *
+	 * @param urldocLt the new urldoc lt
 	 */
 	
 	public void setUrldocLt(String urldocLt) {

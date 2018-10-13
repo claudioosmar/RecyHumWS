@@ -5,36 +5,66 @@ package com.vector.Beans;
 
 import javax.validation.constraints.NotNull;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio
- *RecyHumWS2--com.vector.Beans--DatosIdiomasBean
+ *   Vector México
+ *   Clase: DatosIdiomasBean.java
+ *   Descripción:  contiene las variables, getters y setters 
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 //Clase Bean para los datos de idiomas
 public class DatosIdiomasBean {
+	
+	/** The ididioma. */
 	/*atributos para ingresar los datos de estudio*/
 	@NotNull
 	private int ididioma=0;
+	
+	/** The pcjescrito. */
 	@NotNull
 	private int pcjescrito=0;
+	
+	/** The pcjhablado. */
 	@NotNull
 	private int pcjhablado=0;
+	
+	/** The pcjentendido. */
 	@NotNull
 	private int pcjentendido=0;
+	
+	/** The descripciondominio. */
 	@NotNull
 	private String descripciondominio="";
+	
+	/** The idiomanativa. */
 	@NotNull
 	private String idiomanativa="";
+	
+	/** The idpersona. */
 	@NotNull
 	private long idpersona=0;
+	
+	/** The iddominio. */
 	@NotNull
 	private int iddominio=0;
+	
+	/** The nombrecompleto. */
 	@NotNull
 	private String nombrecompleto="";
+	
+	/** The nombreidioma. */
 	@NotNull
 	private String nombreidioma="";
 	
 	//declaracion de getters y setters
 	/**
+	 * Gets the ididioma.
+	 *
 	 * @return Obtienes el valor de ididioma del tipo int
 	 */
 	
@@ -43,7 +73,9 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a ididioma del tipo int
+	 * Sets the ididioma.
+	 *
+	 * @param ididioma the new ididioma
 	 */
 	
 	public void setIdidioma(int ididioma) {
@@ -51,6 +83,8 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
+	 * Gets the pcjescrito.
+	 *
 	 * @return Obtienes el valor de pcjescrito del tipo int
 	 */
 	
@@ -59,7 +93,9 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a pcjescrito del tipo int
+	 * Sets the pcjescrito.
+	 *
+	 * @param pcjescrito the new pcjescrito
 	 */
 	
 	public void setPcjescrito(int pcjescrito) {
@@ -67,6 +103,8 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
+	 * Gets the pcjhablado.
+	 *
 	 * @return Obtienes el valor de pcjhablado del tipo int
 	 */
 	
@@ -75,7 +113,9 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a pcjhablado del tipo int
+	 * Sets the pcjhablado.
+	 *
+	 * @param pcjhablado the new pcjhablado
 	 */
 	
 	public void setPcjhablado(int pcjhablado) {
@@ -83,6 +123,8 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
+	 * Gets the pcjentendido.
+	 *
 	 * @return Obtienes el valor de pcjentendido del tipo int
 	 */
 	
@@ -91,7 +133,9 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a pcjentendido del tipo int
+	 * Sets the pcjentendido.
+	 *
+	 * @param pcjentendido the new pcjentendido
 	 */
 	
 	public void setPcjentendido(int pcjentendido) {
@@ -99,6 +143,8 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
+	 * Gets the descripciondominio.
+	 *
 	 * @return Obtienes el valor de descripciondominio del tipo String
 	 */
 	
@@ -107,7 +153,9 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a descripciondominio del tipo String
+	 * Sets the descripciondominio.
+	 *
+	 * @param descripciondominio the new descripciondominio
 	 */
 	
 	public void setDescripciondominio(String descripciondominio) {
@@ -115,6 +163,8 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
+	 * Gets the idiomanativa.
+	 *
 	 * @return Obtienes el valor de idiomanativa del tipo String
 	 */
 	
@@ -123,7 +173,9 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idiomanativa del tipo String
+	 * Sets the idiomanativa.
+	 *
+	 * @param idiomanativa the new idiomanativa
 	 */
 	
 	public void setIdiomanativa(String idiomanativa) {
@@ -131,6 +183,8 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
+	 * Gets the idpersona.
+	 *
 	 * @return Obtienes el valor de idpersona del tipo long
 	 */
 	
@@ -139,7 +193,9 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idpersona del tipo long
+	 * Sets the idpersona.
+	 *
+	 * @param idpersona the new idpersona
 	 */
 	
 	public void setIdpersona(long idpersona) {
@@ -147,6 +203,8 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
+	 * Gets the iddominio.
+	 *
 	 * @return Obtienes el valor de iddominio del tipo int
 	 */
 	
@@ -155,7 +213,9 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a iddominio del tipo int
+	 * Sets the iddominio.
+	 *
+	 * @param iddominio the new iddominio
 	 */
 	
 	public void setIddominio(int iddominio) {
@@ -163,6 +223,8 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
+	 * Gets the nombrecompleto.
+	 *
 	 * @return Obtienes el valor de nombrecompleto del tipo String
 	 */
 	
@@ -171,7 +233,9 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a nombrecompleto del tipo String
+	 * Sets the nombrecompleto.
+	 *
+	 * @param nombrecompleto the new nombrecompleto
 	 */
 	
 	public void setNombrecompleto(String nombrecompleto) {
@@ -179,6 +243,8 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
+	 * Gets the nombreidioma.
+	 *
 	 * @return Obtienes el valor de nombreidioma del tipo String
 	 */
 	
@@ -187,7 +253,9 @@ public class DatosIdiomasBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a nombreidioma del tipo String
+	 * Sets the nombreidioma.
+	 *
+	 * @param nombreidioma the new nombreidioma
 	 */
 	
 	public void setNombreidioma(String nombreidioma) {

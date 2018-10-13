@@ -5,27 +5,47 @@ package com.vector.Beans;
 
 import javax.validation.constraints.NotNull;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio
- *RecyHumWS2--com.vector.Beans--DatosCorreoAltBean
+ *   Vector México
+ *   Clase: DatosCorreoAltBean.java
+ *   Descripción:  contiene las variables, getters y setters 
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
+ *
  */
 //Clase Bean para los datos de correo alternativo
 public class DatosCorreoAltBean {
+	
+	/** The idtipocorreo. */
 	//Variable para declara los getter y setter de correo alternativo
 	@NotNull
 	private int idtipocorreo=0;
+	
+	/** The correo nw. */
 	@NotNull
 	private String correoNw="";
+	
+	/** The idpersona. */
 	@NotNull
 	private long idpersona=0;
+	
+	/** The correo lt. */
 	@NotNull
 	private String correoLt="";
+	
+	/** The Nombre completo. */
 	@NotNull
 	private String NombreCompleto = "";
 	
 	
 	// declaracion de getters y setters
 	/**
+	 * Gets the idtipocorreo.
+	 *
 	 * @return Obtienes el valor de idtipocorreo del tipo int
 	 */
 	
@@ -34,7 +54,9 @@ public class DatosCorreoAltBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idtipocorreo del tipo int
+	 * Sets the idtipocorreo.
+	 *
+	 * @param idtipocorreo the new idtipocorreo
 	 */
 	
 	public void setIdtipocorreo(int idtipocorreo) {
@@ -42,6 +64,8 @@ public class DatosCorreoAltBean {
 	}
 	
 	/**
+	 * Gets the correo nw.
+	 *
 	 * @return Obtienes el valor de correoNw del tipo String
 	 */
 	
@@ -50,7 +74,9 @@ public class DatosCorreoAltBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a correoNw del tipo String
+	 * Sets the correo nw.
+	 *
+	 * @param correoNw the new correo nw
 	 */
 	
 	public void setCorreoNw(String correoNw) {
@@ -58,6 +84,8 @@ public class DatosCorreoAltBean {
 	}
 	
 	/**
+	 * Gets the idpersona.
+	 *
 	 * @return Obtienes el valor de idpersona del tipo long
 	 */
 	
@@ -66,7 +94,9 @@ public class DatosCorreoAltBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idpersona del tipo long
+	 * Sets the idpersona.
+	 *
+	 * @param idpersona the new idpersona
 	 */
 	
 	public void setIdpersona(long idpersona) {
@@ -74,6 +104,8 @@ public class DatosCorreoAltBean {
 	}
 	
 	/**
+	 * Gets the correo lt.
+	 *
 	 * @return Obtienes el valor de correoLt del tipo String
 	 */
 	
@@ -82,7 +114,9 @@ public class DatosCorreoAltBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a correoLt del tipo String
+	 * Sets the correo lt.
+	 *
+	 * @param correoLt the new correo lt
 	 */
 	
 	public void setCorreoLt(String correoLt) {
@@ -90,6 +124,8 @@ public class DatosCorreoAltBean {
 	}
 	
 	/**
+	 * Gets the nombre completo.
+	 *
 	 * @return Obtienes el valor de nombreCompleto del tipo String
 	 */
 	
@@ -98,7 +134,9 @@ public class DatosCorreoAltBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a nombreCompleto del tipo String
+	 * Sets the nombre completo.
+	 *
+	 * @param nombreCompleto the new nombre completo
 	 */
 	
 	public void setNombreCompleto(String nombreCompleto) {

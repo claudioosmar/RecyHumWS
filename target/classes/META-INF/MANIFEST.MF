@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Implementation-Title: WS SGRH
-Implementation-Version: 1.0.0-SNAPSHOT
+Implementation-Version: 1.0.0-RELEASE
 Built-By: vectormx
 Implementation-Vendor-Id: com.vector
 Build-Jdk: 1.8.0_181

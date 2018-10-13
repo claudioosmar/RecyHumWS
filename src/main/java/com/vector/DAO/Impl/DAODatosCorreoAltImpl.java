@@ -19,20 +19,30 @@ import com.vector.Beans.DatosCorreoAltBean;
 import com.vector.DAO.DAODatosCorreoAlt;
 import com.vector.Utileria.Log;
 
-
-
+// TODO: Auto-generated Javadoc
 /**
- * @author JESUS ALEJANDRO CARRILLO SANCHEZ
- *
+ *   Vector México
+ *   Clase: DAODatosCorreoAltImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar, listar implementadas del DAO y las sentenicas sql
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class DAODatosCorreoAltImpl extends Log implements DAODatosCorreoAlt {
+	
+	/** The jdbc template. */
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	/** The datos. */
 	List<DatosCorreoAltBean> datos ;
 	
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosCorreoAlt#Crear(com.vector.Beans.DatosCorreoAltBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Crear(DatosCorreoAltBean datos) {
@@ -55,8 +65,9 @@ public class DAODatosCorreoAltImpl extends Log implements DAODatosCorreoAlt {
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosCorreoAlt#Modificar(com.vector.Beans.DatosCorreoAltBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Modificar(DatosCorreoAltBean datos) {
@@ -80,8 +91,9 @@ public class DAODatosCorreoAltImpl extends Log implements DAODatosCorreoAlt {
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosCorreoAlt#Eliminar(int)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Eliminar(DatosCorreoAltBean datos) {
@@ -102,8 +114,8 @@ final String sql="delete tblpiv02 where correo = (?)";
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosCorreoAlt#Buscar(com.vector.Beans.DatosCorreoAltBean)
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public DatosCorreoAltBean Buscar(DatosCorreoAltBean datos) {
@@ -138,8 +150,8 @@ final String sql="delete tblpiv02 where correo = (?)";
 	}
 	
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosCorreoAlt#Listar()
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosCorreoAltBean> Listar(long id) {
@@ -148,6 +160,13 @@ final String sql="delete tblpiv02 where correo = (?)";
 		info("ejecucion de la sentencia sql: "+sql);
 		return jdbcTemplate.query(sql, new CorreosRowMapper());
 	}
+	
+	/**
+	 * Sets the datos correo.
+	 *
+	 * @param rs the new datos correo
+	 * @throws SQLException the SQL exception
+	 */
 	private void setDatosCorreo(ResultSet rs) throws SQLException{
 		datos= new ArrayList<DatosCorreoAltBean>();
 		DatosCorreoAltBean respuesta;
@@ -158,6 +177,11 @@ final String sql="delete tblpiv02 where correo = (?)";
 			}
 	}
 
+	/**
+	 * Gets the datos correo.
+	 *
+	 * @return the datos correo
+	 */
 	@SuppressWarnings("unused")
 	private List<DatosCorreoAltBean>getDatosCorreo(){
 		return this.datos;
@@ -166,9 +190,7 @@ final String sql="delete tblpiv02 where correo = (?)";
 }
 class CorreosRowMapper implements RowMapper<DatosCorreoAltBean>{
 
-	/* (non-Javadoc)
-	 * @see org.springframework.jdbc.core.RowMapper#mapRow(java.sql.ResultSet, int)
-	 */
+
 	@Override
 	public DatosCorreoAltBean mapRow(ResultSet rs, int rowNum) throws SQLException {
 		// TODO Auto-generated method stub

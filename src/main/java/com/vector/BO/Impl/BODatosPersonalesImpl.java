@@ -15,17 +15,28 @@ import com.vector.DAO.DAODatosPersonales;
 import com.vector.Utileria.EnvioMensaje;
 import com.vector.Utileria.Log;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: BODatosPersonalesImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar y listar implementados del BO
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class BODatosPersonalesImpl extends Log implements BODatosPersonales {
+	
+	/** The datospersonales. */
 	@Autowired
 	private DAODatosPersonales datospersonales;
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosPersonales#Crear(com.vector.Beans.DatosPersonales.DatosPersonalesBean)
+	
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	//Creacion de datos Personales
@@ -34,9 +45,9 @@ public class BODatosPersonalesImpl extends Log implements BODatosPersonales {
 		int respuesta = 0;
 		DatosPersonalesBean retorno = new DatosPersonalesBean();
 		
-			info("envia respuesta");
-			respuesta= Integer.parseInt(String.valueOf(retorno.getIdpersona()));
+			info("envia respuesta"+respuesta);
 			retorno.setIdpersona(datospersonales.Crear(datos));
+			respuesta= Integer.parseInt(String.valueOf(retorno.getIdpersona()));
 			if (respuesta == 0) {
 				error("fallo la insercion ");
 
@@ -45,8 +56,9 @@ public class BODatosPersonalesImpl extends Log implements BODatosPersonales {
 			
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosPersonales#Actualizar(com.vector.Beans.DatosPersonales.DatosPersonalesBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	//Modificacion de DatosPersonales
@@ -71,8 +83,9 @@ public class BODatosPersonalesImpl extends Log implements BODatosPersonales {
 		return mensaje;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosPersonales#Eliminar(int)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Eliminar(DatosPersonalesBean datos) {
@@ -95,8 +108,9 @@ public class BODatosPersonalesImpl extends Log implements BODatosPersonales {
 		return mensaje;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosPersonales#Buscar(com.vector.Beans.DatosPersonales.DatosPersonalesBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public DatosPersonalesBean Buscar(DatosPersonalesBean datos) {
@@ -105,8 +119,9 @@ public class BODatosPersonalesImpl extends Log implements BODatosPersonales {
 		return datospersonales.Buscar(datos);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosPersonales#Listar(java.util.List)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosPersonalesBean> Listar() {
@@ -115,8 +130,9 @@ public class BODatosPersonalesImpl extends Log implements BODatosPersonales {
 		return datospersonales.Listar();
 	}
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.BO.BODatosPersonales#Modificar2(com.vector.Beans.DatosPersonales.DatosPersonalesBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Modificar2(DatosPersonalesBean datos) {
@@ -139,8 +155,9 @@ public class BODatosPersonalesImpl extends Log implements BODatosPersonales {
 		return mensaje;
 	}
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.BO.BODatosPersonales#Modificar3(com.vector.Beans.DatosPersonales.DatosPersonalesBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Modificar3(DatosPersonalesBean datos) {
@@ -163,8 +180,9 @@ public class BODatosPersonalesImpl extends Log implements BODatosPersonales {
 		return mensaje;
 	}
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.BO.BODatosPersonales#BusquedaArea()
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosPersonalesBean> BusquedaEstudiosPersona(long id) {
@@ -173,8 +191,9 @@ public class BODatosPersonalesImpl extends Log implements BODatosPersonales {
 		return datospersonales.BusquedaEstudiosPersona(id);
 	}
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.BO.BODatosPersonales#BusquedaNombreCompleto(java.lang.String)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosPersonalesBean> BusquedaNombreCompleto(String parametro) {
@@ -183,8 +202,9 @@ public class BODatosPersonalesImpl extends Log implements BODatosPersonales {
 		return datospersonales.BusquedaPersonaNombreCompleto(parametro);
 	}
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.BO.BODatosPersonales#BusquedaHerramientasConPersona(long)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosPersonalesBean> BusquedaHerramientasConPersona(long id) {
@@ -193,8 +213,9 @@ public class BODatosPersonalesImpl extends Log implements BODatosPersonales {
 		return datospersonales.BusquedaHerramientasConPersona(id);
 	}
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.BO.BODatosPersonales#BusquedaExpLaboralPersona(long)
+	
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosPersonalesBean> BusquedaExpLaboralPersona(long id) {
@@ -203,8 +224,9 @@ public class BODatosPersonalesImpl extends Log implements BODatosPersonales {
 		return datospersonales.BusquedaExpLaboralPersona(id);
 	}
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.BO.BODatosPersonales#BusquedaIdiomasPersona(long)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosPersonalesBean> BusquedaIdiomasPersona(long id) {

@@ -14,16 +14,27 @@ import com.vector.DAO.DAODatosIdiomas;
 import com.vector.Utileria.EnvioMensaje;
 import com.vector.Utileria.Log;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: BODatosIdiomaImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar y listar implementados del BO
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class BODatosIdiomaImpl extends Log implements BODatosIdiomas {
+	
+	/** The daoidiomas. */
 	@Autowired
 	private DAODatosIdiomas daoidiomas;
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BOIdiomas#Crear(com.vector.Beans.DatosIdiomasBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Crear(List<DatosIdiomasBean> datos) {
@@ -55,8 +66,9 @@ public class BODatosIdiomaImpl extends Log implements BODatosIdiomas {
 		return mensaje;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BOIdiomas#Modificar(com.vector.Beans.DatosIdiomasBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Modificar(DatosIdiomasBean datos) {
@@ -81,8 +93,9 @@ public class BODatosIdiomaImpl extends Log implements BODatosIdiomas {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BOIdiomas#Eliminar(int)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Eliminar(DatosIdiomasBean datos) {
@@ -107,8 +120,9 @@ public class BODatosIdiomaImpl extends Log implements BODatosIdiomas {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BOIdiomas#Buscar(com.vector.Beans.DatosIdiomasBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosIdiomasBean> Buscar(DatosIdiomasBean datos) {
@@ -117,8 +131,9 @@ public class BODatosIdiomaImpl extends Log implements BODatosIdiomas {
 		return daoidiomas.Buscar(datos);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BOIdiomas#Listar()
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosIdiomasBean> Listar() {

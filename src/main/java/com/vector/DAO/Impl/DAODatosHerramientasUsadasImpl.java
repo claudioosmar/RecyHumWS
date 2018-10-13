@@ -19,17 +19,29 @@ import org.springframework.stereotype.Service;
 import com.vector.Beans.DatosHerramientasUsadasBean;
 import com.vector.DAO.DAODatosHerramientasUsadas;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: DAODatosHerramientasUsadasImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar, listar implementadas del DAO y las sentenicas sql
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class DAODatosHerramientasUsadasImpl implements DAODatosHerramientasUsadas {
+	
+	/** The jdbc template. */
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	/** The datos. */
 	List<DatosHerramientasUsadasBean> datos ;
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosHerramientasUsadas#Crear(com.vector.Beans.DatosHerramientasUsadasBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Crear(DatosHerramientasUsadasBean datos) {
@@ -60,8 +72,9 @@ public class DAODatosHerramientasUsadasImpl implements DAODatosHerramientasUsada
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosHerramientasUsadas#Modificar(com.vector.Beans.DatosHerramientasUsadasBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Modificar(DatosHerramientasUsadasBean datos) {
@@ -84,8 +97,9 @@ public class DAODatosHerramientasUsadasImpl implements DAODatosHerramientasUsada
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosHerramientasUsadas#Eliminar(com.vector.Beans.DatosHerramientasUsadasBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Eliminar(DatosHerramientasUsadasBean datos) {
@@ -120,8 +134,8 @@ public class DAODatosHerramientasUsadasImpl implements DAODatosHerramientasUsada
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosHerramientasUsadas#Buscar(com.vector.Beans.DatosHerramientasUsadasBean)
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosHerramientasUsadasBean> Buscar(DatosHerramientasUsadasBean datos) {
@@ -154,8 +168,9 @@ public class DAODatosHerramientasUsadasImpl implements DAODatosHerramientasUsada
 		return retorno;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosHerramientasUsadas#Listar(long)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosHerramientasUsadasBean> Listar() {
@@ -164,6 +179,12 @@ public class DAODatosHerramientasUsadasImpl implements DAODatosHerramientasUsada
 		return jdbcTemplate.query(sql, new Herr2RowMapper());
 	}
 	
+/**
+ * Sets the datos herramientasusadas.
+ *
+ * @param rs the new datos herramientasusadas
+ * @throws SQLException the SQL exception
+ */
 private void setDatosHerramientasusadas(ResultSet rs) throws SQLException {
 		datos= new ArrayList<DatosHerramientasUsadasBean>();
 		DatosHerramientasUsadasBean respuesta ;
@@ -179,6 +200,12 @@ private void setDatosHerramientasusadas(ResultSet rs) throws SQLException {
 		this.datos.add(respuesta);
 		}
 	}
+	
+	/**
+	 * Gets the datosherramientasusadas.
+	 *
+	 * @return the datosherramientasusadas
+	 */
 	private List<DatosHerramientasUsadasBean>getDatosherramientasusadas(){
 		return this.datos;
 	}
@@ -186,9 +213,6 @@ private void setDatosHerramientasusadas(ResultSet rs) throws SQLException {
 
 class Herr2RowMapper implements RowMapper<DatosHerramientasUsadasBean>{
 
-	/* (non-Javadoc)
-	 * @see org.springframework.jdbc.core.RowMapper#mapRow(java.sql.ResultSet, int)
-	 */
 	@Override
 	public DatosHerramientasUsadasBean mapRow(ResultSet rs, int rowNum) throws SQLException {
 		// TODO Auto-generated method stub

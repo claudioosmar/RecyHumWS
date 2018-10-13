@@ -5,36 +5,66 @@ package com.vector.Beans.DatosPersonales;
 
 import javax.validation.constraints.NotNull;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio
- *RecyHumWS2--com.vector.Beans.DatosPersonales--DatosPersonalesBean3
+ *   Vector México
+ *   Clase: DatosPersonalesBean3.java
+ *   Descripción:  contiene las variables, getters y setters 
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 //Clase Bean de datos personales 3 extendido de datos personales 4
 public class DatosPersonalesBean3 extends DatosPersonalesBean4{
+	
+	/** The id disponibilidad cambio. */
 	/*Variables de DatosPersonales*/
 	@NotNull
 	private int idDisponibilidadCambio=0;
+	
+	/** The nacionalidad. */
 	@NotNull
 	private String nacionalidad="";
+	
+	/** The resumen. */
 	@NotNull
 	private String resumen="";
+	
+	/** The Objetivo laboral. */
 	@NotNull
 	private String ObjetivoLaboral="";
+	
+	/** The calle. */
 	@NotNull
 	private String calle="";
+	
+	/** The numero exterior. */
 	@NotNull
 	private String numeroExterior="";
+	
+	/** The numero interior. */
 	@NotNull
 	private String numeroInterior="";
+	
+	/** The id codigo postal. */
 	@NotNull
 	private int idCodigoPostal=0;
+	
+	/** The pais. */
 	@NotNull
 	private String pais="";
+	
+	/** The idmunicipio. */
 	@NotNull
 	private String idmunicipio="";
 	
 	/*Seccion de getters*/
 	/**
+	 * Gets the id disponibilidad cambio.
+	 *
 	 * @return Obtienes el valor de idDisponibilidadCambio del tipo int
 	 */
 	
@@ -43,7 +73,9 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
-	 * @param Agregar el valor a idDisponibilidadCambio del tipo int
+	 * Sets the id disponibilidad cambio.
+	 *
+	 * @param idDisponibilidadCambio the new id disponibilidad cambio
 	 */
 	
 	public void setIdDisponibilidadCambio(int idDisponibilidadCambio) {
@@ -51,6 +83,8 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
+	 * Gets the nacionalidad.
+	 *
 	 * @return Obtienes el valor de nacionalidad del tipo String
 	 */
 	
@@ -59,7 +93,9 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
-	 * @param Agregar el valor a nacionalidad del tipo String
+	 * Sets the nacionalidad.
+	 *
+	 * @param nacionalidad the new nacionalidad
 	 */
 	
 	public void setNacionalidad(String nacionalidad) {
@@ -67,6 +103,8 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
+	 * Gets the resumen.
+	 *
 	 * @return Obtienes el valor de resumen del tipo String
 	 */
 	
@@ -75,7 +113,9 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
-	 * @param Agregar el valor a resumen del tipo String
+	 * Sets the resumen.
+	 *
+	 * @param resumen the new resumen
 	 */
 	
 	public void setResumen(String resumen) {
@@ -83,6 +123,8 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
+	 * Gets the objetivo laboral.
+	 *
 	 * @return Obtienes el valor de objetivoLaboral del tipo String
 	 */
 	
@@ -91,7 +133,9 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
-	 * @param Agregar el valor a objetivoLaboral del tipo String
+	 * Sets the objetivo laboral.
+	 *
+	 * @param objetivoLaboral the new objetivo laboral
 	 */
 	
 	public void setObjetivoLaboral(String objetivoLaboral) {
@@ -99,6 +143,8 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
+	 * Gets the calle.
+	 *
 	 * @return Obtienes el valor de calle del tipo String
 	 */
 	
@@ -107,7 +153,9 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
-	 * @param Agregar el valor a calle del tipo String
+	 * Sets the calle.
+	 *
+	 * @param calle the new calle
 	 */
 	
 	public void setCalle(String calle) {
@@ -115,6 +163,8 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
+	 * Gets the numero exterior.
+	 *
 	 * @return Obtienes el valor de numeroExterior del tipo String
 	 */
 	
@@ -123,7 +173,9 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
-	 * @param Agregar el valor a numeroExterior del tipo String
+	 * Sets the numero exterior.
+	 *
+	 * @param numeroExterior the new numero exterior
 	 */
 	
 	public void setNumeroExterior(String numeroExterior) {
@@ -131,6 +183,8 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
+	 * Gets the numero interior.
+	 *
 	 * @return Obtienes el valor de numeroInterior del tipo String
 	 */
 	
@@ -139,7 +193,9 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
-	 * @param Agregar el valor a numeroInterior del tipo String
+	 * Sets the numero interior.
+	 *
+	 * @param numeroInterior the new numero interior
 	 */
 	
 	public void setNumeroInterior(String numeroInterior) {
@@ -147,6 +203,8 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
+	 * Gets the id codigo postal.
+	 *
 	 * @return Obtienes el valor de idCodigoPostal del tipo int
 	 */
 	
@@ -155,7 +213,9 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
-	 * @param Agregar el valor a idCodigoPostal del tipo int
+	 * Sets the id codigo postal.
+	 *
+	 * @param idCodigoPostal the new id codigo postal
 	 */
 	
 	public void setIdCodigoPostal(int idCodigoPostal) {
@@ -163,6 +223,8 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
+	 * Gets the pais.
+	 *
 	 * @return Obtienes el valor de pais del tipo String
 	 */
 	
@@ -171,7 +233,9 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
-	 * @param Agregar el valor a pais del tipo String
+	 * Sets the pais.
+	 *
+	 * @param pais the new pais
 	 */
 	
 	public void setPais(String pais) {
@@ -179,6 +243,8 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
+	 * Gets the idmunicipio.
+	 *
 	 * @return Obtienes el valor de idmunicipio del tipo String
 	 */
 	
@@ -187,7 +253,9 @@ public class DatosPersonalesBean3 extends DatosPersonalesBean4{
 	}
 	
 	/**
-	 * @param Agregar el valor a idmunicipio del tipo String
+	 * Sets the idmunicipio.
+	 *
+	 * @param idmunicipio the new idmunicipio
 	 */
 	
 	public void setIdmunicipio(String idmunicipio) {

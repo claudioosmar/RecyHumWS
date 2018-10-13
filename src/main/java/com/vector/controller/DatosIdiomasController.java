@@ -18,40 +18,83 @@ import com.vector.Beans.DatosIdiomasBean;
 import com.vector.Beans.MsgBean;
 import com.vector.Utileria.Log;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: DatosIdiomasController.java
+ *   Descripción:  contiene los links de los servicios disponibles
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @RestController
 public class DatosIdiomasController extends Log{
 
+	/** The idioma. */
 	@Autowired
 	private BODatosIdiomas idioma;
 	
+	/**
+	 * Clase: insertar 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido List<DatosIdiomasBean>
+	 * @return Retorna response entity
+	 */
 	@RequestMapping(path = "/SGRHWebService/DatosIdiomas/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosIdiomasBean> datos){
 		info("Se agrego el idioma "+datos.get(0).getIdidioma()+" al ID de persona "+datos.get(0).getIdpersona()+"\n ");
 		return new ResponseEntity<MsgBean>(idioma.Crear(datos),HttpStatus.OK);
 	}
 	
+	/**
+	 * Clase: actualizar 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido DatosIdiomasBean
+	 * @return Retorna response entity
+	 */
 	@RequestMapping(path = "/SGRHWebService/DatosIdiomas/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosIdiomasBean datos){
 		info("Se actializo el idioma "+datos.getIdidioma()+" al ID de persona "+datos.getIdpersona()+"\n ");
 		return new ResponseEntity<MsgBean>(idioma.Modificar(datos),HttpStatus.OK);
 	}
 	
+	/**
+	 * Clase: eliminar 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido DatosIdiomasBean
+	 * @return Retorna response entity
+	 */
 	@RequestMapping(path = "/SGRHWebService/DatosIdiomas/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosIdiomasBean datos){
 		info("Se elimino el idioma "+datos.getIddominio()+"\n ");
 		return new ResponseEntity<MsgBean>(idioma.Eliminar(datos),HttpStatus.OK);
 	}
 	
+	/**
+	 * Clase: buscar 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido DatosIdiomasBean
+	 * @return Retorna response entity
+	 */
 	@RequestMapping(path =  "/SGRHWebService/DatosIdiomas/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosIdiomasBean>>buscar(@RequestBody DatosIdiomasBean datos){
 		info("Se listo los idiomas de la persona con id de dominio "+datos.getIddominio()+" al ID de persona "+datos.getIdpersona()+"\n ");
 		return new ResponseEntity<List<DatosIdiomasBean>>(idioma.Buscar(datos),HttpStatus.OK);
 	}
 	
+    /**
+     * Clase: consulta 
+     * Descripcion:.
+     *
+     * @param datos Tipo de Dato resivido DatosIdiomasBean
+     * @return Retorna response entity
+     */
     @RequestMapping(value = "/SGRHWebService/DatosIdiomas/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosIdiomasBean>> consulta(@RequestBody DatosIdiomasBean datos){
 		info("Ingresando a listar idiomas "+"\n");

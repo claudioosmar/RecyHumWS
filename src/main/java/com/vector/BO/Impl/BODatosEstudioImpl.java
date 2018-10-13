@@ -15,19 +15,28 @@ import com.vector.DAO.DAODatosEstudio;
 import com.vector.Utileria.EnvioMensaje;
 import com.vector.Utileria.Log;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: BODatosEstudioImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar y listar implementados del BO
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class BODatosEstudioImpl extends Log implements BODatosEstudio {
+	
+	/** The daoestudio. */
 	@Autowired
 	private DAODatosEstudio daoestudio;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.BO.BOEstudios#Crear(com.vector.Beans.DatosEstudioBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 
@@ -37,9 +46,9 @@ public class BODatosEstudioImpl extends Log implements BODatosEstudio {
 		DatosEstudioBean retorno = new DatosEstudioBean();
 		info("entra en ciclo for");
 		for (int i = 0; i < datos.size(); i++) {
-			info("envia respuesta: "+respuesta);
 			retorno.setIdestudio(daoestudio.Crear(datos.get(i)));
 			respuesta= Integer.parseInt(String.valueOf(retorno.getIdestudio()));
+			info("envia respuesta: "+respuesta);
 			if (respuesta == 0) {
 				error("fallo la insercion " + i + 1);
 				break;
@@ -49,10 +58,9 @@ public class BODatosEstudioImpl extends Log implements BODatosEstudio {
 		return retorno;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.BO.BOEstudios#Modificar(com.vector.Beans.DatosEstudioBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Modificar(DatosEstudioBean datos) {
@@ -73,10 +81,9 @@ public class BODatosEstudioImpl extends Log implements BODatosEstudio {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.BO.BOEstudios#Eliminar(int)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Eliminar(DatosEstudioBean datos) {
@@ -97,10 +104,9 @@ public class BODatosEstudioImpl extends Log implements BODatosEstudio {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.BO.BOEstudios#Buscar(com.vector.Beans.DatosEstudioBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosEstudioBean> Buscar(DatosEstudioBean datos) {
@@ -109,10 +115,9 @@ public class BODatosEstudioImpl extends Log implements BODatosEstudio {
 		return daoestudio.Buscar(datos);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.BO.BOEstudios#Listar()
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosEstudioBean> Listar() {

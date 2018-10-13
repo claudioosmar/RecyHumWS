@@ -12,33 +12,34 @@ import java.util.logging.Level;
 
 import java.util.logging.Logger;
 
-/**
- * 
- * @author Claudio
- *
- * 
- * 
- */
 
+
+// TODO: Auto-generated Javadoc
+/**
+ *   Vector México
+ *   Clase: Log.java
+ *   Descripción:  contiene el LOG para la consola
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
+ */
 public class Log {
 
-	/** Obtiene el Nombre de la Clase */
+	/**  Obtiene el Nombre de la Clase. */
 
 	private String clase = Thread.currentThread().getStackTrace()[2].getClassName();
 
-	/** Inicializador del Loger */
+	/**  Inicializador del Loger. */
 
 	private Logger LOGGER = Logger.getLogger(clase);
 
 	/**
-	 * 
-	 * Metodo para mandar Info´s
-	 * 
-	 * @param info
-	 *            Descripcion de lo que sucede
-	 * 
+	 * Metodo para mandar Info´s.
+	 *
+	 * @param info            Descripcion de lo que sucede
 	 * @return void
-	 * 
 	 */
 
 	public void info(String info) {
@@ -50,14 +51,10 @@ public class Log {
 	}
 
 	/**
-	 * 
-	 * Metodo para mandar Warning´s
-	 * 
-	 * @param warn
-	 *            Descripcion de lo que sucede
-	 * 
+	 * Metodo para mandar Warning´s.
+	 *
+	 * @param warn            Descripcion de lo que sucede
 	 * @return void
-	 * 
 	 */
 
 	public void warn(String warn) {
@@ -69,14 +66,10 @@ public class Log {
 	}
 
 	/**
-	 * 
-	 * Metodo para mandar Debug´s
-	 * 
-	 * @param debug
-	 *            Descripcion de lo que sucede
-	 * 
+	 * Metodo para mandar Debug´s.
+	 *
+	 * @param debug            Descripcion de lo que sucede
 	 * @return void
-	 * 
 	 */
 
 	public void debug(String debug) {
@@ -88,14 +81,10 @@ public class Log {
 	}
 
 	/**
-	 * 
-	 * Metodo para mandar Errores
-	 * 
-	 * @param error
-	 *            Descripcion de lo que sucede
-	 * 
+	 * Metodo para mandar Errores.
+	 *
+	 * @param error            Descripcion de lo que sucede
 	 * @return void
-	 * 
 	 */
 
 	public void error(String error) {
@@ -107,14 +96,10 @@ public class Log {
 	}
 
 	/**
-	 * 
-	 * Metodo para mandar Fatal´s
-	 * 
-	 * @param fatal
-	 *            Descripcion de lo que sucede
-	 * 
+	 * Metodo para mandar Fatal´s.
+	 *
+	 * @param fatal            Descripcion de lo que sucede
 	 * @return void
-	 * 
 	 */
 
 	public void fatal(String fatal) {

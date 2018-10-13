@@ -14,15 +14,32 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: AutoIncrementablesBDOracle.java
+ *   Descripción:  secuencia de autoincremento para las tablas
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 //Clase pa incrementar las tablas al insertar en ellas
 @Service
 public class AutoIncrementablesBDOracle {
+	
+	/** The respuesta. */
 	//variable de retorno
 	private int respuesta = 0;
+	
+	/**
+	 * Clase: DominioIDUltimo 
+	 * Descripcion:.
+	 *
+	 * @param jdbcTemplate Tipo de Dato resivido JdbcTemplate
+	 * @return Retorna int
+	 */
 	//request mapping, url para llamar este metodo,metodo post
 	@RequestMapping(value = "/UltimoID/Dominio",method=RequestMethod.POST)
 	public int DominioIDUltimo(JdbcTemplate jdbcTemplate) {
@@ -46,6 +63,14 @@ public class AutoIncrementablesBDOracle {
 		//retorna el resultado
 		return respuesta ;
 	}
+	
+	/**
+	 * Clase: EstudioIDUltimo 
+	 * Descripcion:.
+	 *
+	 * @param jdbcTemplate Tipo de Dato resivido JdbcTemplate
+	 * @return Retorna int
+	 */
 	//request mapping, url para llamar este metodo,metodo post	
 @RequestMapping(value = "/UltimoID/Estudio",method=RequestMethod.POST)
 public int EstudioIDUltimo(JdbcTemplate jdbcTemplate) {
@@ -69,6 +94,14 @@ public int EstudioIDUltimo(JdbcTemplate jdbcTemplate) {
 	//retorna el resultado
 	return respuesta ;
 }
+
+/**
+ * Clase: PersonaIDUltimo 
+ * Descripcion:.
+ *
+ * @param jdbcTemplate Tipo de Dato resivido JdbcTemplate
+ * @return Retorna int
+ */
 //request mapping, url para llamar este metodo,metodo post
 	@RequestMapping(value = "/UltimoID/Persona",method=RequestMethod.POST)
 public int PersonaIDUltimo(JdbcTemplate jdbcTemplate) {
@@ -92,6 +125,14 @@ public int PersonaIDUltimo(JdbcTemplate jdbcTemplate) {
 	//retorna el resultado
 	return respuesta ;
 }
+	
+	/**
+	 * Clase: PersonaDetalleIDUltimo 
+	 * Descripcion:.
+	 *
+	 * @param jdbcTemplate Tipo de Dato resivido JdbcTemplate
+	 * @return Retorna int
+	 */
 	//request mapping, url para llamar este metodo,metodo post
 @RequestMapping(value = "/UltimoID/PersonaDetalle",method=RequestMethod.POST)
 public int PersonaDetalleIDUltimo(JdbcTemplate jdbcTemplate) {
@@ -115,6 +156,14 @@ public int PersonaDetalleIDUltimo(JdbcTemplate jdbcTemplate) {
 	//retorna el resultado
 	return respuesta ;
 }
+
+/**
+ * Clase: AreaIDUltimo 
+ * Descripcion:.
+ *
+ * @param jdbcTemplate Tipo de Dato resivido JdbcTemplate
+ * @return Retorna int
+ */
 //request mapping, url para llamar este metodo,metodo post
 @RequestMapping(value = "/UltimoID/Area",method=RequestMethod.POST)
 public int AreaIDUltimo(JdbcTemplate jdbcTemplate) {
@@ -138,6 +187,14 @@ public int AreaIDUltimo(JdbcTemplate jdbcTemplate) {
 	//retorna el resultado
 	return respuesta ;
 }
+
+/**
+ * Clase: UsuarioIDUltimo 
+ * Descripcion:.
+ *
+ * @param jdbcTemplate Tipo de Dato resivido JdbcTemplate
+ * @return Retorna int
+ */
 //request mapping, url para llamar este metodo,metodo post
 @RequestMapping(value = "/UltimoID/Usuario",method=RequestMethod.POST)
 public int UsuarioIDUltimo(JdbcTemplate jdbcTemplate) {
@@ -161,6 +218,14 @@ public int UsuarioIDUltimo(JdbcTemplate jdbcTemplate) {
 	//retorna el resultado
 	return respuesta ;
 }
+
+/**
+ * Clase: IDExpLaboralIDUltimo 
+ * Descripcion:.
+ *
+ * @param jdbcTemplate Tipo de Dato resivido JdbcTemplate
+ * @return Retorna int
+ */
 //request mapping, url para llamar este metodo,metodo post
 @RequestMapping(value = "/UltimoID/ExperienciaLaboral",method=RequestMethod.POST)
 public int IDExpLaboralIDUltimo(JdbcTemplate jdbcTemplate) {
@@ -184,6 +249,14 @@ public int IDExpLaboralIDUltimo(JdbcTemplate jdbcTemplate) {
 	//retorna el resultado
 	return respuesta ;
 }
+
+/**
+ * Clase: EmpresasIDUltimo 
+ * Descripcion:.
+ *
+ * @param jdbcTemplate Tipo de Dato resivido JdbcTemplate
+ * @return Retorna int
+ */
 //request mapping, url para llamar este metodo,metodo post
 @RequestMapping(value = "/UltimoID/Empresas",method=RequestMethod.POST)
 public int EmpresasIDUltimo(JdbcTemplate jdbcTemplate) {
@@ -207,6 +280,14 @@ public int EmpresasIDUltimo(JdbcTemplate jdbcTemplate) {
 	//retorna el resultado
 	return respuesta ;
 }
+
+/**
+ * Clase: DireccionIDUltimo 
+ * Descripcion:.
+ *
+ * @param jdbcTemplate Tipo de Dato resivido JdbcTemplate
+ * @return Retorna int
+ */
 //request mapping, url para llamar este metodo,metodo post
 @RequestMapping(value = "/UltimoID/Direccion",method=RequestMethod.POST)
 public int DireccionIDUltimo(JdbcTemplate jdbcTemplate) {
@@ -230,6 +311,14 @@ public int DireccionIDUltimo(JdbcTemplate jdbcTemplate) {
 	//retorna el resultado
 	return respuesta ;
 }
+
+/**
+ * Clase: CertificadoIDUltimo 
+ * Descripcion:.
+ *
+ * @param jdbcTemplate Tipo de Dato resivido JdbcTemplate
+ * @return Retorna int
+ */
 //request mapping, url para llamar este metodo,metodo post
 @RequestMapping(value = "/UltimoID/Certificado",method=RequestMethod.POST)
 public int CertificadoIDUltimo(JdbcTemplate jdbcTemplate) {
@@ -254,6 +343,13 @@ public int CertificadoIDUltimo(JdbcTemplate jdbcTemplate) {
 	return respuesta ;
 }
 
+/**
+ * Clase: CursoIDUltimo 
+ * Descripcion:.
+ *
+ * @param jdbcTemplate Tipo de Dato resivido JdbcTemplate
+ * @return Retorna int
+ */
 //request mapping, url para llamar este metodo,metodo post
 @RequestMapping(value = "/UltimoID/Curso",method=RequestMethod.POST)
 public int CursoIDUltimo(JdbcTemplate jdbcTemplate) {
@@ -277,6 +373,14 @@ public int CursoIDUltimo(JdbcTemplate jdbcTemplate) {
 	//retorna el resultado
 	return respuesta ;
 }
+
+/**
+ * Clase: CarreraIDUltimo 
+ * Descripcion:.
+ *
+ * @param jdbcTemplate Tipo de Dato resivido JdbcTemplate
+ * @return Retorna int
+ */
 //request mapping, url para llamar este metodo,metodo post
 @RequestMapping(value = "/UltimoID/Carrera",method=RequestMethod.POST)
 public int CarreraIDUltimo(JdbcTemplate jdbcTemplate) {

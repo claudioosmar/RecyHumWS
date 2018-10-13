@@ -13,13 +13,28 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.vector.Beans.MsgBean;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: ErroresdeNegocio.java
+ *   Descripción:  contiene el control de errores
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @ControllerAdvice
 public class ErroresdeNegocio extends Log {
 	 
+	/**
+	 * Clase: SQLException 
+	 * Descripcion:.
+	 *
+	 * @param request Tipo de Dato resivido HttpServletRequest
+	 * @param e Tipo de Dato resivido SQLException
+	 * @return Retorna response entity
+	 */
 	@ExceptionHandler(java.sql.SQLException.class) 
 	public ResponseEntity<MsgBean> SQLException (HttpServletRequest request, java.sql.SQLException e) {
         MsgBean mensaje = new MsgBean();
@@ -28,6 +43,14 @@ public class ErroresdeNegocio extends Log {
 		return new ResponseEntity<MsgBean>(mensaje,HttpStatus.BAD_REQUEST);
 	}
 	
+	/**
+	 * Clase: HttpMessageNotReadableException 
+	 * Descripcion:.
+	 *
+	 * @param request Tipo de Dato resivido HttpServletRequest
+	 * @param e Tipo de Dato resivido HttpMessageNotReadableException
+	 * @return Retorna response entity
+	 */
 	@ExceptionHandler(org.springframework.http.converter.HttpMessageNotReadableException.class) 
 	public ResponseEntity<MsgBean> HttpMessageNotReadableException (HttpServletRequest request, org.springframework.http.converter.HttpMessageNotReadableException e){
 		MsgBean mensaje = new MsgBean();
@@ -36,6 +59,14 @@ public class ErroresdeNegocio extends Log {
 		return new ResponseEntity<MsgBean>(mensaje,HttpStatus.BAD_REQUEST);
 	}
 	
+	/**
+	 * Clase: IllegalStateException 
+	 * Descripcion:.
+	 *
+	 * @param request Tipo de Dato resivido HttpServletRequest
+	 * @param e Tipo de Dato resivido IllegalStateException
+	 * @return Retorna response entity
+	 */
 	@ExceptionHandler(java.lang.IllegalStateException.class)
 	public ResponseEntity<MsgBean> IllegalStateException (HttpServletRequest request, java.lang.IllegalStateException e){
 		MsgBean mensaje = new MsgBean();
@@ -43,6 +74,15 @@ public class ErroresdeNegocio extends Log {
         mensaje.setMsjAccion(e.getMessage()+"--"+e.getLocalizedMessage());
 		return new ResponseEntity<MsgBean>(mensaje,HttpStatus.BAD_REQUEST);
 	}
+	
+	/**
+	 * Clase: NullPointerException 
+	 * Descripcion:.
+	 *
+	 * @param request Tipo de Dato resivido HttpServletRequest
+	 * @param e Tipo de Dato resivido NullPointerException
+	 * @return Retorna response entity
+	 */
 	@ExceptionHandler(java.lang.NullPointerException.class)
 	public ResponseEntity<MsgBean> NullPointerException(HttpServletRequest request, java.lang.NullPointerException e){
 		MsgBean mensaje = new MsgBean();
@@ -50,6 +90,15 @@ public class ErroresdeNegocio extends Log {
         mensaje.setMsjAccion(e.getMessage()+"--"+e.getLocalizedMessage());
 		return new ResponseEntity<MsgBean>(mensaje,HttpStatus.BAD_REQUEST);
 	}
+	
+	/**
+	 * Clase: NumberFormatException 
+	 * Descripcion:.
+	 *
+	 * @param request Tipo de Dato resivido HttpServletRequest
+	 * @param e Tipo de Dato resivido NumberFormatException
+	 * @return Retorna response entity
+	 */
 	@ExceptionHandler(java.lang.NumberFormatException.class)
 	public ResponseEntity<MsgBean> NumberFormatException(HttpServletRequest request, java.lang.NumberFormatException e){
 		MsgBean mensaje = new MsgBean();

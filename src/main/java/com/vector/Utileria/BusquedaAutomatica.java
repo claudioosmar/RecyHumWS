@@ -19,27 +19,59 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio
- *RecyHumWS2--com.vector.Utileria--BusquedaAutomatica
+ *   Vector México
+ *   Clase: BusquedaAutomatica.java
+ *   Descripción:  busqueda automatica de listado
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
-
 @RestController
 public class BusquedaAutomatica extends Log{
+
+/** The idestado. */
 /*variables*/
 	private int idestado=0;
+	
+	/** The idmunicipio. */
 	private int idmunicipio=0;
+	
+	/** The idlocalidad. */
 	private int idlocalidad=0;
+	
+	/** The nombreestado. */
 	private String nombreestado="";
+	
+	/** The nombremunicipio. */
 	private String nombremunicipio="";
+	
+	/** The nombrelocalidad. */
 	private String nombrelocalidad="";
+	
+	/** The datos. */
 	List<BusquedaAutomatica> datos;
+	
+	/** The datos 2. */
 	List<BusquedaAutomatica> datos2;
+	
+	/** The datos 3. */
 	List<BusquedaAutomatica> datos3;
+	
+	/** The jdbc template. */
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
+	/**
+	 * Clase: Busqueda 
+	 * Descripcion:.
+	 *
+	 * @param datos Tipo de Dato resivido BusquedaAutomatica
+	 * @return Retorna list
+	 */
 	/*metodo para enlistar los estados desde la base de datos*/
 	@RequestMapping(value = "/SGRHWebService/BusquedaAutomatica/ListarEstado",method=RequestMethod.POST)
 	public List<BusquedaAutomatica>Busqueda(BusquedaAutomatica datos) {
@@ -70,6 +102,12 @@ public class BusquedaAutomatica extends Log{
 		return retorno;
 	}
 	
+	/**
+	 * Sets the datos busqueda estados.
+	 *
+	 * @param rs the new datos busqueda estados
+	 * @throws SQLException the SQL exception
+	 */
 	private void setDatosBusquedaEstados(ResultSet rs) throws SQLException{
 		datos= new ArrayList<BusquedaAutomatica>();
 		BusquedaAutomatica respuesta;
@@ -78,15 +116,27 @@ public class BusquedaAutomatica extends Log{
 			respuesta = new BusquedaAutomatica();
 			respuesta.setIdestado(rs.getInt(1));
 			respuesta.setNombreestado(rs.getString(3));
-			info("se enlistaron los estados");
 			this.datos.add(respuesta);
 			}
+		info("se enlistaron los estados");
 	}
 
+	/**
+	 * Gets the datos busqueda estados.
+	 *
+	 * @return the datos busqueda estados
+	 */
 	private List<BusquedaAutomatica>getDatosBusquedaEstados(){
 		return this.datos;
 	}
 
+	/**
+	 * Clase: BusquedaMun 
+	 * Descripcion:.
+	 *
+	 * @param datos1 Tipo de Dato resivido BusquedaAutomatica
+	 * @return Retorna list
+	 */
 	/*metodo para enlistar los municipios desde la base de datos*/
 	@RequestMapping(value = "/SGRHWebService/BusquedaAutomatica/ListarMunicipio",method=RequestMethod.POST)
 	public List<BusquedaAutomatica>BusquedaMun(@RequestBody BusquedaAutomatica datos1) {
@@ -110,6 +160,12 @@ public class BusquedaAutomatica extends Log{
 		return retorno;
 	}
 	
+	/**
+	 * Sets the datos busqueda municipio.
+	 *
+	 * @param rs the new datos busqueda municipio
+	 * @throws SQLException the SQL exception
+	 */
 	private void setDatosBusquedaMunicipio(ResultSet rs) throws SQLException{
 		datos2= new ArrayList<BusquedaAutomatica>();
 		BusquedaAutomatica respuesta;
@@ -119,15 +175,27 @@ public class BusquedaAutomatica extends Log{
 			respuesta.setIdmunicipio(rs.getInt(1));
 			respuesta.setNombremunicipio(rs.getString(4));
 			respuesta.setIdestado(rs.getInt(2));
-			info("se enlistaron los municipios");
 			this.datos2.add(respuesta);
 			}
+		info("se enlistaron los municipios");
 	}
 
+	/**
+	 * Gets the datos busqueda municipio.
+	 *
+	 * @return the datos busqueda municipio
+	 */
 	private List<BusquedaAutomatica>getDatosBusquedaMunicipio(){
 		return this.datos2;
 	}
 	
+	/**
+	 * Clase: BusquedaLoc 
+	 * Descripcion:.
+	 *
+	 * @param datos2 Tipo de Dato resivido BusquedaAutomatica
+	 * @return Retorna list
+	 */
 	/*metodo para enlistar las localidades desde la base de datos*/
 	@RequestMapping(value = "/SGRHWebService/BusquedaAutomatica/ListarLocalidad",method=RequestMethod.POST)
 	public List<BusquedaAutomatica>BusquedaLoc(@RequestBody BusquedaAutomatica datos2) {
@@ -153,6 +221,12 @@ public class BusquedaAutomatica extends Log{
 		return retorno;
 	}
 	
+	/**
+	 * Sets the datos busqueda localidad.
+	 *
+	 * @param rs the new datos busqueda localidad
+	 * @throws SQLException the SQL exception
+	 */
 	private void setDatosBusquedaLocalidad(ResultSet rs) throws SQLException{
 		datos3= new ArrayList<BusquedaAutomatica>();
 		BusquedaAutomatica respuesta;
@@ -162,11 +236,16 @@ public class BusquedaAutomatica extends Log{
 			respuesta.setIdlocalidad(rs.getInt(1));
 			respuesta.setNombrelocalidad(rs.getString(4));
 			respuesta.setIdmunicipio(rs.getInt(2));
-			info("se enlistaron las localidades");
 			this.datos3.add(respuesta);
 			}
+		info("se enlistaron las localidades");
 	}
 
+	/**
+	 * Gets the datos busqueda localidad.
+	 *
+	 * @return the datos busqueda localidad
+	 */
 	private List<BusquedaAutomatica>getDatosBusquedaLocalidad(){
 		return this.datos3;
 	}
@@ -174,6 +253,8 @@ public class BusquedaAutomatica extends Log{
 	/*getters y setters*/
 	
 	/**
+	 * Gets the idestado.
+	 *
 	 * @return Obtienes el valor de idestado
 	 */
 	
@@ -184,7 +265,9 @@ public class BusquedaAutomatica extends Log{
 
 	
 	/**
-	 * @param Agregar el valor a idestado
+	 * Sets the idestado.
+	 *
+	 * @param idestado the new idestado
 	 */
 	
 	public void setIdestado(int idestado) {
@@ -194,6 +277,8 @@ public class BusquedaAutomatica extends Log{
 
 	
 	/**
+	 * Gets the idmunicipio.
+	 *
 	 * @return Obtienes el valor de idmunicipio
 	 */
 	
@@ -204,7 +289,9 @@ public class BusquedaAutomatica extends Log{
 
 	
 	/**
-	 * @param Agregar el valor a idmunicipio
+	 * Sets the idmunicipio.
+	 *
+	 * @param idmunicipio the new idmunicipio
 	 */
 	
 	public void setIdmunicipio(int idmunicipio) {
@@ -214,6 +301,8 @@ public class BusquedaAutomatica extends Log{
 
 	
 	/**
+	 * Gets the idlocalidad.
+	 *
 	 * @return Obtienes el valor de idlocalidad
 	 */
 	
@@ -224,7 +313,9 @@ public class BusquedaAutomatica extends Log{
 
 	
 	/**
-	 * @param Agregar el valor a idlocalidad
+	 * Sets the idlocalidad.
+	 *
+	 * @param idlocalidad the new idlocalidad
 	 */
 	
 	public void setIdlocalidad(int idlocalidad) {
@@ -233,6 +324,8 @@ public class BusquedaAutomatica extends Log{
 
 
 	/**
+	 * Gets the nombreestado.
+	 *
 	 * @return Obtienes el valor de nombreestado
 	 */
 	
@@ -242,7 +335,9 @@ public class BusquedaAutomatica extends Log{
 
 	
 	/**
-	 * @param Agregar el valor a nombreestado
+	 * Sets the nombreestado.
+	 *
+	 * @param nombreestado the new nombreestado
 	 */
 	
 	public void setNombreestado(String nombreestado) {
@@ -251,6 +346,8 @@ public class BusquedaAutomatica extends Log{
 
 	
 	/**
+	 * Gets the nombremunicipio.
+	 *
 	 * @return Obtienes el valor de nombremunicipio
 	 */
 	
@@ -260,7 +357,9 @@ public class BusquedaAutomatica extends Log{
 
 	
 	/**
-	 * @param Agregar el valor a nombremunicipio
+	 * Sets the nombremunicipio.
+	 *
+	 * @param nombremunicipio the new nombremunicipio
 	 */
 	
 	public void setNombremunicipio(String nombremunicipio) {
@@ -269,6 +368,8 @@ public class BusquedaAutomatica extends Log{
 
 	
 	/**
+	 * Gets the nombrelocalidad.
+	 *
 	 * @return Obtienes el valor de nombrelocalidad
 	 */
 	
@@ -278,7 +379,9 @@ public class BusquedaAutomatica extends Log{
 
 	
 	/**
-	 * @param Agregar el valor a nombrelocalidad
+	 * Sets the nombrelocalidad.
+	 *
+	 * @param nombrelocalidad the new nombrelocalidad
 	 */
 	
 	public void setNombrelocalidad(String nombrelocalidad) {

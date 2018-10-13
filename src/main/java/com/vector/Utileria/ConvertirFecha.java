@@ -3,11 +3,26 @@
  */
 package com.vector.Utileria;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio WebServiceSGRH--com.vector.Utileria--ConvertirFecha
+ *   Vector México
+ *   Clase: ConvertirFecha.java
+ *   Descripción:  convierte la fecha en un formato en especifico
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 public class ConvertirFecha {
 
+	/**
+	 * Clase: converter 
+	 * Descripcion:.
+	 *
+	 * @param fecha Tipo de Dato resivido String
+	 * @return Retorna string
+	 */
 	public String converter(String fecha) {
 //		System.out.println("fecha de conversion "+fecha);
 		String auxiliar[]= fecha.split(" ");

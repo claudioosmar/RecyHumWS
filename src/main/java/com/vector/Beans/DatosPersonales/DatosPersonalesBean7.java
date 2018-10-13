@@ -5,34 +5,64 @@ package com.vector.Beans.DatosPersonales;
 
 import javax.validation.constraints.NotNull;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio
- *WebServiceSGRH--com.vector.Beans.DatosPersonales--DatosPersonalesBean7
+ *   Vector México
+ *   Clase: DatosPersonalesBean7.java
+ *   Descripción:  contiene las variables, getters y setters 
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 public class DatosPersonalesBean7 extends DatosPersonalesBean8{
+
+/** The localidad. */
 @NotNull
 private String localidad ="";
+
+/** The peinicial. */
 @NotNull
 private String peinicial="";
+
+/** The pefinal. */
 @NotNull
 private String pefinal="";
+
+/** The instituto. */
 @NotNull
 private String instituto="";
+
+/** The descripcionherra. */
 @NotNull
 private String descripcionherra="";
+
+/** The idiomanativo. */
 @NotNull
 private String idiomanativo="";
+
+/** The nombreidioma. */
 @NotNull
 private String nombreidioma="";
+
+/** The finicial. */
 @NotNull
 private String finicial="";
+
+/** The ffinal. */
 @NotNull
 private String ffinal="";
+
+/** The nombreempresa. */
 @NotNull
 private String nombreempresa="";
 
 
 /**
+ * Gets the localidad.
+ *
  * @return Obtienes el valor de localidad del tipo String
  */
 
@@ -41,7 +71,9 @@ public String getLocalidad() {
 }
 
 /**
- * @param Agregar el valor a localidad del tipo String
+ * Sets the localidad.
+ *
+ * @param localidad the new localidad
  */
 
 public void setLocalidad(String localidad) {
@@ -49,6 +81,8 @@ public void setLocalidad(String localidad) {
 }
 
 /**
+ * Gets the peinicial.
+ *
  * @return Obtienes el valor de peinicial del tipo String
  */
 
@@ -57,7 +91,9 @@ public String getPeinicial() {
 }
 
 /**
- * @param Agregar el valor a peinicial del tipo String
+ * Sets the peinicial.
+ *
+ * @param peinicial the new peinicial
  */
 
 public void setPeinicial(String peinicial) {
@@ -65,6 +101,8 @@ public void setPeinicial(String peinicial) {
 }
 
 /**
+ * Gets the pefinal.
+ *
  * @return Obtienes el valor de pefinal del tipo String
  */
 
@@ -73,7 +111,9 @@ public String getPefinal() {
 }
 
 /**
- * @param Agregar el valor a pefinal del tipo String
+ * Sets the pefinal.
+ *
+ * @param pefinal the new pefinal
  */
 
 public void setPefinal(String pefinal) {
@@ -81,6 +121,8 @@ public void setPefinal(String pefinal) {
 }
 
 /**
+ * Gets the instituto.
+ *
  * @return Obtienes el valor de instituto del tipo String
  */
 
@@ -89,7 +131,9 @@ public String getInstituto() {
 }
 
 /**
- * @param Agregar el valor a instituto del tipo String
+ * Sets the instituto.
+ *
+ * @param instituto the new instituto
  */
 
 public void setInstituto(String instituto) {
@@ -97,6 +141,8 @@ public void setInstituto(String instituto) {
 }
 
 /**
+ * Gets the descripcionherra.
+ *
  * @return Obtienes el valor de descripcionherra del tipo String
  */
 
@@ -105,7 +151,9 @@ public String getDescripcionherra() {
 }
 
 /**
- * @param Agregar el valor a descripcionherra del tipo String
+ * Sets the descripcionherra.
+ *
+ * @param descripcionherra the new descripcionherra
  */
 
 public void setDescripcionherra(String descripcionherra) {
@@ -113,6 +161,8 @@ public void setDescripcionherra(String descripcionherra) {
 }
 
 /**
+ * Gets the idiomanativo.
+ *
  * @return Obtienes el valor de idiomanativo del tipo String
  */
 
@@ -121,7 +171,9 @@ public String getIdiomanativo() {
 }
 
 /**
- * @param Agregar el valor a idiomanativo del tipo String
+ * Sets the idiomanativo.
+ *
+ * @param idiomanativo the new idiomanativo
  */
 
 public void setIdiomanativo(String idiomanativo) {
@@ -129,6 +181,8 @@ public void setIdiomanativo(String idiomanativo) {
 }
 
 /**
+ * Gets the nombreidioma.
+ *
  * @return Obtienes el valor de nombreidioma del tipo String
  */
 
@@ -137,7 +191,9 @@ public String getNombreidioma() {
 }
 
 /**
- * @param Agregar el valor a nombreidioma del tipo String
+ * Sets the nombreidioma.
+ *
+ * @param nombreidioma the new nombreidioma
  */
 
 public void setNombreidioma(String nombreidioma) {
@@ -145,6 +201,8 @@ public void setNombreidioma(String nombreidioma) {
 }
 
 /**
+ * Gets the finicial.
+ *
  * @return Obtienes el valor de finicial del tipo String
  */
 
@@ -153,7 +211,9 @@ public String getFinicial() {
 }
 
 /**
- * @param Agregar el valor a finicial del tipo String
+ * Sets the finicial.
+ *
+ * @param finicial the new finicial
  */
 
 public void setFinicial(String finicial) {
@@ -161,6 +221,8 @@ public void setFinicial(String finicial) {
 }
 
 /**
+ * Gets the ffinal.
+ *
  * @return Obtienes el valor de ffinal del tipo String
  */
 
@@ -169,7 +231,9 @@ public String getFfinal() {
 }
 
 /**
- * @param Agregar el valor a ffinal del tipo String
+ * Sets the ffinal.
+ *
+ * @param ffinal the new ffinal
  */
 
 public void setFfinal(String ffinal) {
@@ -177,6 +241,8 @@ public void setFfinal(String ffinal) {
 }
 
 /**
+ * Gets the nombreempresa.
+ *
  * @return Obtienes el valor de nombreempresa del tipo String
  */
 
@@ -185,7 +251,9 @@ public String getNombreempresa() {
 }
 
 /**
- * @param Agregar el valor a nombreempresa del tipo String
+ * Sets the nombreempresa.
+ *
+ * @param nombreempresa the new nombreempresa
  */
 
 public void setNombreempresa(String nombreempresa) {

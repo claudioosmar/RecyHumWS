@@ -5,29 +5,52 @@ package com.vector.Beans;
 
 import javax.validation.constraints.NotNull;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio
- *RecyHumWS2--com.vector.Beans--DatosCertificadoBean
+ *   Vector México
+ *   Clase: DatosCertificadoBean.java
+ *   Descripción:  contiene las variables, getters y setters 
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 // Clase Bean para los datos de certificado 
 public class DatosCertificadoBean {
+	
+	/** The nomcertificado nw. */
 	//Variable para declara los getter y setter de certificado
 	@NotNull
 	private String nomcertificadoNw=""; 
+	
+	/** The iddocumento nw. */
 	@NotNull
 	private int iddocumentoNw=0;
+	
+	/** The idcertificado. */
 	@NotNull
 	private int idcertificado=0;
+	
+	/** The nomcertificado lt. */
 	@NotNull
 	private String nomcertificadoLt="";
+	
+	/** The iddocumento lt. */
 	@NotNull
 	private int iddocumentoLt=0;
+	
+	/** The idestudio. */
 	@NotNull
 	private int idestudio=0;
+	
+	/** The idpersona. */
 	@NotNull
 	private long idpersona;
 	
 	/**
+	 * Gets the nomcertificado nw.
+	 *
 	 * @return Obtienes el valor de nomcertificadoNw del tipo String
 	 */
 	
@@ -36,7 +59,9 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a nomcertificadoNw del tipo String
+	 * Sets the nomcertificado nw.
+	 *
+	 * @param nomcertificadoNw the new nomcertificado nw
 	 */
 	
 	public void setNomcertificadoNw(String nomcertificadoNw) {
@@ -44,6 +69,8 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
+	 * Gets the iddocumento nw.
+	 *
 	 * @return Obtienes el valor de iddocumentoNw del tipo int
 	 */
 	
@@ -52,7 +79,9 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a iddocumentoNw del tipo int
+	 * Sets the iddocumento nw.
+	 *
+	 * @param iddocumentoNw the new iddocumento nw
 	 */
 	
 	public void setIddocumentoNw(int iddocumentoNw) {
@@ -60,6 +89,8 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
+	 * Gets the idcertificado.
+	 *
 	 * @return Obtienes el valor de idcertificado del tipo int
 	 */
 	
@@ -68,7 +99,9 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idcertificado del tipo int
+	 * Sets the idcertificado.
+	 *
+	 * @param idcertificado the new idcertificado
 	 */
 	
 	public void setIdcertificado(int idcertificado) {
@@ -76,6 +109,8 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
+	 * Gets the nomcertificado lt.
+	 *
 	 * @return Obtienes el valor de nomcertificadoLt del tipo String
 	 */
 	
@@ -84,7 +119,9 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a nomcertificadoLt del tipo String
+	 * Sets the nomcertificado lt.
+	 *
+	 * @param nomcertificadoLt the new nomcertificado lt
 	 */
 	
 	public void setNomcertificadoLt(String nomcertificadoLt) {
@@ -92,6 +129,8 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
+	 * Gets the iddocumento lt.
+	 *
 	 * @return Obtienes el valor de iddocumentoLt del tipo int
 	 */
 	
@@ -100,7 +139,9 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a iddocumentoLt del tipo int
+	 * Sets the iddocumento lt.
+	 *
+	 * @param iddocumentoLt the new iddocumento lt
 	 */
 	
 	public void setIddocumentoLt(int iddocumentoLt) {
@@ -108,6 +149,8 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
+	 * Gets the idestudio.
+	 *
 	 * @return Obtienes el valor de idestudio del tipo int
 	 */
 	
@@ -116,7 +159,9 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idestudio del tipo int
+	 * Sets the idestudio.
+	 *
+	 * @param idestudio the new idestudio
 	 */
 	
 	public void setIdestudio(int idestudio) {
@@ -124,6 +169,8 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
+	 * Gets the idpersona.
+	 *
 	 * @return Obtienes el valor de idpersona del tipo long
 	 */
 	
@@ -132,7 +179,9 @@ public class DatosCertificadoBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idpersona del tipo long
+	 * Sets the idpersona.
+	 *
+	 * @param idpersona the new idpersona
 	 */
 	
 	public void setIdpersona(long idpersona) {

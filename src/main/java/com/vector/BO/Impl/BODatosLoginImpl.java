@@ -17,18 +17,28 @@ import com.vector.DAO.DAODatosSesion;
 import com.vector.Utileria.EnvioMensaje;
 import com.vector.Utileria.Log;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: BODatosLoginImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar y listar implementados del BO
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class BODatosLoginImpl extends Log implements BODatosLogin {
 
+	/** The sesion. */
 	@Autowired
 	private DAODatosSesion sesion;
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.LoginBO#ListarUsuarios()
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosInicioSesionBean> ListarUsuarios() {
@@ -37,8 +47,8 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 		return sesion.Listar();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.LoginBO#VerificarUsuario(java.lang.Object)
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosFormularioBean> VerificarUsuario(DatosInicioSesionBean datos) {
@@ -47,8 +57,9 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 		return sesion.VerificarLogin(datos);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.LoginBO#CreateUser(java.lang.Object)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
@@ -71,8 +82,9 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 		return mensaje;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosLogin#Modificar(com.vector.Beans.DatosInicioSesionBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
@@ -95,8 +107,9 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 		return mensaje;
 	}
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.BO.BODatosLogin#Eliminat(com.vector.Beans.DatosInicioSesionBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Eliminar(long id) {
@@ -121,8 +134,9 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 		}
 	}
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.BO.BODatosLogin#Buscar(com.vector.Beans.DatosInicioSesionBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public DatosInicioSesionBean Buscar(DatosInicioSesionBean datos) {

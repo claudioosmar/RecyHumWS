@@ -15,14 +15,27 @@ import com.vector.DAO.DAODatosLaborales;
 import com.vector.Utileria.EnvioMensaje;
 import com.vector.Utileria.Log;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: BODatosLaboralesImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar y listar implementados del BO
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class BODatosLaboralesImpl extends Log implements BODatosLaborales {
+	
+	/** The daolabor. */
 	@Autowired
 	private DAODatosLaborales daolabor;
+	
+	/** 
+	 * {@inheritDoc}
+	 */
 	/* (non-Javadoc)
 	 * @see com.vector.BO.BODatosLaborales#Crear(com.vector.Beans.DatosLaboralesBean)
 	 */
@@ -40,8 +53,9 @@ public class BODatosLaboralesImpl extends Log implements BODatosLaborales {
 		return retorno;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosLaborales#Modificar(com.vector.Beans.DatosLaboralesBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Modificar(DatosLaboralesBean datos) {
@@ -65,8 +79,9 @@ public class BODatosLaboralesImpl extends Log implements BODatosLaborales {
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosLaborales#Eliminar(int)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Eliminar(int id) {
@@ -88,8 +103,9 @@ public class BODatosLaboralesImpl extends Log implements BODatosLaborales {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosLaborales#Buscar(com.vector.Beans.DatosLaboralesBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosLaboralesBean> Buscar(DatosLaboralesBean datos) {
@@ -98,8 +114,9 @@ public class BODatosLaboralesImpl extends Log implements BODatosLaborales {
 		return daolabor.Buscar(datos);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosLaborales#Listar()
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosLaboralesBean> Listar() {

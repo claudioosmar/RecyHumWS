@@ -20,19 +20,32 @@ import com.vector.Beans.DatosLaboralesBean;
 import com.vector.DAO.DAODatosLaborales;
 import com.vector.Utileria.AutoIncrementablesBDOracle;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: DAODatosLaboralesImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar, listar implementadas del DAO y las sentenicas sql
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class DAODatosLaboralesImpl implements DAODatosLaborales {
 	
+	/** The jdbc template. */
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	/** The ids. */
 	private AutoIncrementablesBDOracle ids;
+	
+	/** The listalabo. */
 	private List<DatosLaboralesBean> listalabo;
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosLaborales#Crear(com.vector.Beans.DatosLaboralesBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Crear(DatosLaboralesBean datos) {
@@ -84,8 +97,9 @@ public class DAODatosLaboralesImpl implements DAODatosLaborales {
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosLaborales#Modificar(com.vector.Beans.DatosLaboralesBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Modificar(DatosLaboralesBean datos) {
@@ -118,8 +132,8 @@ public class DAODatosLaboralesImpl implements DAODatosLaborales {
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosLaborales#Eliminar(int)
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Eliminar(int id) {
@@ -137,8 +151,9 @@ public class DAODatosLaboralesImpl implements DAODatosLaborales {
 		return respuesta;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosLaborales#Buscar(com.vector.Beans.DatosLaboralesBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosLaboralesBean> Buscar(DatosLaboralesBean datos) {
@@ -186,8 +201,9 @@ public class DAODatosLaboralesImpl implements DAODatosLaborales {
 		return getListaDatosLaborales();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosLaborales#Listar()
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosLaboralesBean> Listar() {
@@ -195,6 +211,13 @@ public class DAODatosLaboralesImpl implements DAODatosLaborales {
 		final String sql = "select * from tblexpslaborales";
 		return jdbcTemplate.query(sql, new labRowMapper());
 	}
+	
+	/**
+	 * Sets the buscar datos laborales.
+	 *
+	 * @param rs2 the new buscar datos laborales
+	 * @throws SQLException the SQL exception
+	 */
 	private void setBuscarDatosLaborales(ResultSet rs2)throws SQLException {
 		
 		DatosLaboralesBean respuesta = new DatosLaboralesBean();
@@ -213,6 +236,12 @@ public class DAODatosLaboralesImpl implements DAODatosLaborales {
 		listalabo.add(respuesta);
 		
 	}
+	
+	/**
+	 * Gets the lista datos laborales.
+	 *
+	 * @return the lista datos laborales
+	 */
 	private List<DatosLaboralesBean> getListaDatosLaborales(){
 		 return this.listalabo;
 	}

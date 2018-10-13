@@ -5,31 +5,58 @@ package com.vector.Beans.DatosPersonales;
 
 import javax.validation.constraints.NotNull;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio
- *RecyHumWS2--com.vector.Beans.DatosPersonales--DatosPersonalesBean2
+ *   Vector México
+ *   Clase: DatosPersonalesBean2.java
+ *   Descripción:  contiene las variables, getters y setters 
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 //Clase Bean de datos personales 2 estendido de datos personales 3
 public class DatosPersonalesBean2 extends DatosPersonalesBean3{
+	
+	/** The url rfc. */
 	/*Variables de DatosPersonales*/
 	@NotNull
 	private String urlRfc="";
+	
+	/** The c URP. */
 	@NotNull
 	private String cURP="";
+	
+	/** The urlc URP. */
 	@NotNull
 	private String urlcURP="";
+	
+	/** The idpasaporte. */
 	@NotNull
 	private int idpasaporte=0;
+	
+	/** The id visa. */
 	@NotNull
 	private int idVisa=0;
+	
+	/** The id edo civil. */
 	@NotNull
 	private int idEdoCivil=0;
+	
+	/** The seguro social. */
 	@NotNull
 	private String seguroSocial="";
+	
+	/** The url seguro social. */
 	@NotNull
 	private String urlSeguroSocial="";
+	
+	/** The id infonavit. */
 	@NotNull
 	private int idInfonavit=0;
+	
+	/** The id disponibilidad viajar. */
 	@NotNull
 	private int idDisponibilidadViajar=0;
 	
@@ -37,6 +64,8 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	/*Seccion de getters*/
 	
 	/**
+	 * Gets the url rfc.
+	 *
 	 * @return Obtienes el valor de urlRfc del tipo String
 	 */
 	
@@ -45,7 +74,9 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
-	 * @param Agregar el valor a urlRfc del tipo String
+	 * Sets the url rfc.
+	 *
+	 * @param urlRfc the new url rfc
 	 */
 	
 	public void setUrlRfc(String urlRfc) {
@@ -53,6 +84,8 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
+	 * Gets the c URP.
+	 *
 	 * @return Obtienes el valor de cURP del tipo String
 	 */
 	
@@ -61,7 +94,9 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
-	 * @param Agregar el valor a cURP del tipo String
+	 * Sets the c URP.
+	 *
+	 * @param cURP the new c URP
 	 */
 	
 	public void setcURP(String cURP) {
@@ -69,6 +104,8 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
+	 * Gets the urlc URP.
+	 *
 	 * @return Obtienes el valor de urlcURP del tipo String
 	 */
 	
@@ -77,7 +114,9 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
-	 * @param Agregar el valor a urlcURP del tipo String
+	 * Sets the urlc URP.
+	 *
+	 * @param urlcURP the new urlc URP
 	 */
 	
 	public void setUrlcURP(String urlcURP) {
@@ -85,6 +124,8 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
+	 * Gets the idpasaporte.
+	 *
 	 * @return Obtienes el valor de idpasaporte del tipo int
 	 */
 	
@@ -93,7 +134,9 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
-	 * @param Agregar el valor a idpasaporte del tipo int
+	 * Sets the idpasaporte.
+	 *
+	 * @param idpasaporte the new idpasaporte
 	 */
 	
 	public void setIdpasaporte(int idpasaporte) {
@@ -101,6 +144,8 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
+	 * Gets the id visa.
+	 *
 	 * @return Obtienes el valor de idVisa del tipo int
 	 */
 	
@@ -109,7 +154,9 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
-	 * @param Agregar el valor a idVisa del tipo int
+	 * Sets the id visa.
+	 *
+	 * @param idVisa the new id visa
 	 */
 	
 	public void setIdVisa(int idVisa) {
@@ -117,6 +164,8 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
+	 * Gets the id edo civil.
+	 *
 	 * @return Obtienes el valor de idEdoCivil del tipo int
 	 */
 	
@@ -125,7 +174,9 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
-	 * @param Agregar el valor a idEdoCivil del tipo int
+	 * Sets the id edo civil.
+	 *
+	 * @param idEdoCivil the new id edo civil
 	 */
 	
 	public void setIdEdoCivil(int idEdoCivil) {
@@ -133,6 +184,8 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
+	 * Gets the seguro social.
+	 *
 	 * @return Obtienes el valor de seguroSocial del tipo String
 	 */
 	
@@ -141,7 +194,9 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
-	 * @param Agregar el valor a seguroSocial del tipo String
+	 * Sets the seguro social.
+	 *
+	 * @param seguroSocial the new seguro social
 	 */
 	
 	public void setSeguroSocial(String seguroSocial) {
@@ -149,6 +204,8 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
+	 * Gets the url seguro social.
+	 *
 	 * @return Obtienes el valor de urlSeguroSocial del tipo String
 	 */
 	
@@ -157,7 +214,9 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
-	 * @param Agregar el valor a urlSeguroSocial del tipo String
+	 * Sets the url seguro social.
+	 *
+	 * @param urlSeguroSocial the new url seguro social
 	 */
 	
 	public void setUrlSeguroSocial(String urlSeguroSocial) {
@@ -165,6 +224,8 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
+	 * Gets the id infonavit.
+	 *
 	 * @return Obtienes el valor de idInfonavit del tipo int
 	 */
 	
@@ -173,7 +234,9 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
-	 * @param Agregar el valor a idInfonavit del tipo int
+	 * Sets the id infonavit.
+	 *
+	 * @param idInfonavit the new id infonavit
 	 */
 	
 	public void setIdInfonavit(int idInfonavit) {
@@ -181,6 +244,8 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
+	 * Gets the id disponibilidad viajar.
+	 *
 	 * @return Obtienes el valor de idDisponibilidadViajar del tipo int
 	 */
 	
@@ -189,7 +254,9 @@ public class DatosPersonalesBean2 extends DatosPersonalesBean3{
 	}
 	
 	/**
-	 * @param Agregar el valor a idDisponibilidadViajar del tipo int
+	 * Sets the id disponibilidad viajar.
+	 *
+	 * @param idDisponibilidadViajar the new id disponibilidad viajar
 	 */
 	
 	public void setIdDisponibilidadViajar(int idDisponibilidadViajar) {

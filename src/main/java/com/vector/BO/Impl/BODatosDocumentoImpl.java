@@ -15,18 +15,30 @@ import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosDocumento;
 import com.vector.Utileria.EnvioMensaje;
 import com.vector.Utileria.Log;
+
+// TODO: Auto-generated Javadoc
 /**
- * @author JESUS ALEJANDRO CARRILLO SANCHEZ
- *
+ *   Vector México
+ *   Clase: BODatosDocumentoImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar y listar implementados del BO
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class BODatosDocumentoImpl extends Log implements BODatosDocumentos {
+	
+	/** The daodoc. */
 	@Autowired
 	private DAODatosDocumento daodoc;
 	
+	/** The Constant LOGGER. */
 	private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosDocumentos#Crear(com.vector.Beans.DatosDocumentoBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Crear(List<DatosDocumentoBean> datos) {
@@ -61,8 +73,9 @@ public class BODatosDocumentoImpl extends Log implements BODatosDocumentos {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosDocumentos#Modificar(com.vector.Beans.DatosDocumentoBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Modificar(DatosDocumentoBean datos) {
@@ -88,8 +101,9 @@ public class BODatosDocumentoImpl extends Log implements BODatosDocumentos {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosDocumentos#Eliminar(int)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Eliminar(DatosDocumentoBean datos) {
@@ -114,8 +128,9 @@ public class BODatosDocumentoImpl extends Log implements BODatosDocumentos {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosDocumentos#Buscar(com.vector.Beans.DatosDocumentoBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosDocumentoBean> Buscar(DatosDocumentoBean datos) {
@@ -124,8 +139,9 @@ public class BODatosDocumentoImpl extends Log implements BODatosDocumentos {
 		return daodoc.Buscar(datos);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.vector.BO.BODatosDocumentos#Listar()
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosDocumentoBean> Listar(long id) {

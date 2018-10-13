@@ -5,36 +5,65 @@ package com.vector.Beans.DatosPersonales;
 
 import javax.validation.constraints.NotNull;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio
- *         RecyHumWS2--com.vector.Beans.DatosPersonales--DatosPersonalesBean
+ *   Vector México
+ *   Clase: DatosPersonalesBean.java
+ *   Descripción:  contiene las variables, getters y setters 
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 // Clase Bean de datos personales extendiendo de datos personales bean 2
 public class DatosPersonalesBean extends DatosPersonalesBean2 {
+	
+	/** The idpersona. */
 	/* Variables de DatosPersonales */
 	@NotNull
 	private int idpersona = 0;
+	
+	/** The primer nombre. */
 	@NotNull
 	private String primerNombre = "";
+	
+	/** The segundo nombre. */
 	@NotNull
 	private String segundoNombre = "";
+	
+	/** The apellid pterno. */
 	@NotNull
 	private String apellidPterno = "";
+	
+	/** The apellid materno. */
 	@NotNull
 	private String apellidMaterno = "";
+	
+	/** The id sexo. */
 	@NotNull
 	private String idSexo = "";
+	
+	/** The fecha nacimiento. */
 	@NotNull
 	private String fechaNacimiento = "";
+	
+	/** The url fecha nacimiento. */
 	@NotNull
 	private String urlFechaNacimiento = "";
+	
+	/** The url foto. */
 	@NotNull
 	private String urlFoto = "";
+	
+	/** The rfc. */
 	@NotNull
 	private String rfc = "";
 
 	/* Seccion de getters */
 	/**
+	 * Gets the idpersona.
+	 *
 	 * @return Obtienes el valor de idpersona del tipo int
 	 */
 
@@ -43,8 +72,9 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
-	 * @param Agregar
-	 *            el valor a idpersona del tipo int
+	 * Sets the idpersona.
+	 *
+	 * @param idpersona the new idpersona
 	 */
 
 	public void setIdpersona(int idpersona) {
@@ -52,6 +82,8 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
+	 * Gets the primer nombre.
+	 *
 	 * @return Obtienes el valor de primerNombre del tipo String
 	 */
 
@@ -60,8 +92,9 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
-	 * @param Agregar
-	 *            el valor a primerNombre del tipo String
+	 * Sets the primer nombre.
+	 *
+	 * @param primerNombre the new primer nombre
 	 */
 
 	public void setPrimerNombre(String primerNombre) {
@@ -69,6 +102,8 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
+	 * Gets the segundo nombre.
+	 *
 	 * @return Obtienes el valor de segundoNombre del tipo String
 	 */
 
@@ -77,8 +112,9 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
-	 * @param Agregar
-	 *            el valor a segundoNombre del tipo String
+	 * Sets the segundo nombre.
+	 *
+	 * @param segundoNombre the new segundo nombre
 	 */
 
 	public void setSegundoNombre(String segundoNombre) {
@@ -86,6 +122,8 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
+	 * Gets the apellid pterno.
+	 *
 	 * @return Obtienes el valor de apellidPterno del tipo String
 	 */
 
@@ -94,8 +132,9 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
-	 * @param Agregar
-	 *            el valor a apellidPterno del tipo String
+	 * Sets the apellid pterno.
+	 *
+	 * @param apellidPterno the new apellid pterno
 	 */
 
 	public void setApellidPterno(String apellidPterno) {
@@ -103,6 +142,8 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
+	 * Gets the apellid materno.
+	 *
 	 * @return Obtienes el valor de apellidMaterno del tipo String
 	 */
 
@@ -111,8 +152,9 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
-	 * @param Agregar
-	 *            el valor a apellidMaterno del tipo String
+	 * Sets the apellid materno.
+	 *
+	 * @param apellidMaterno the new apellid materno
 	 */
 
 	public void setApellidMaterno(String apellidMaterno) {
@@ -120,6 +162,8 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
+	 * Gets the id sexo.
+	 *
 	 * @return Obtienes el valor de idSexo del tipo String
 	 */
 
@@ -128,8 +172,9 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
-	 * @param Agregar
-	 *            el valor a idSexo del tipo String
+	 * Sets the id sexo.
+	 *
+	 * @param idSexo the new id sexo
 	 */
 
 	public void setIdSexo(String idSexo) {
@@ -137,6 +182,8 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
+	 * Gets the fecha nacimiento.
+	 *
 	 * @return Obtienes el valor de fechaNacimiento del tipo String
 	 */
 
@@ -145,8 +192,9 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
-	 * @param Agregar
-	 *            el valor a fechaNacimiento del tipo String
+	 * Sets the fecha nacimiento.
+	 *
+	 * @param fechaNacimiento the new fecha nacimiento
 	 */
 
 	public void setFechaNacimiento(String fechaNacimiento) {
@@ -154,6 +202,8 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
+	 * Gets the url fecha nacimiento.
+	 *
 	 * @return Obtienes el valor de urlFechaNacimiento del tipo String
 	 */
 
@@ -162,8 +212,9 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
-	 * @param Agregar
-	 *            el valor a urlFechaNacimiento del tipo String
+	 * Sets the url fecha nacimiento.
+	 *
+	 * @param urlFechaNacimiento the new url fecha nacimiento
 	 */
 
 	public void setUrlFechaNacimiento(String urlFechaNacimiento) {
@@ -171,6 +222,8 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
+	 * Gets the url foto.
+	 *
 	 * @return Obtienes el valor de urlFoto del tipo String
 	 */
 
@@ -179,8 +232,9 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
-	 * @param Agregar
-	 *            el valor a urlFoto del tipo String
+	 * Sets the url foto.
+	 *
+	 * @param urlFoto the new url foto
 	 */
 
 	public void setUrlFoto(String urlFoto) {
@@ -188,6 +242,8 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
+	 * Gets the rfc.
+	 *
 	 * @return Obtienes el valor de rfc del tipo String
 	 */
 
@@ -196,14 +252,18 @@ public class DatosPersonalesBean extends DatosPersonalesBean2 {
 	}
 
 	/**
-	 * @param Agregar
-	 *            el valor a rfc del tipo String
+	 * Sets the rfc.
+	 *
+	 * @param rfc the new rfc
 	 */
 
 	public void setRfc(String rfc) {
 		this.rfc = rfc;
 	}
 
+	/** 
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String toString() {
 

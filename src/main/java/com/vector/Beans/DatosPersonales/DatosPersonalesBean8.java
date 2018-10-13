@@ -5,19 +5,37 @@ package com.vector.Beans.DatosPersonales;
 
 import javax.validation.constraints.NotNull;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio
- *WebServiceSGRH--com.vector.Beans.DatosPersonales--DatosPersonalesBean8
+ *   Vector México
+ *   Clase: DatosPersonalesBean8.java
+ *   Descripción:  contiene las variables, getters y setters 
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 public class DatosPersonalesBean8 {
+	
+	/** The actividades. */
 	@NotNull
 	private String actividades="";
+	
+	/** The nombrecarrera. */
 	@NotNull
 	private String nombrecarrera="";
+	
+	/** The descripcionidioma. */
 	@NotNull
 	private String descripcionidioma="";
+	
+	/** The nombregrado. */
 	@NotNull
 	private String nombregrado="";
+	
+	/** The nombreherramienta. */
 	@NotNull
 	private String nombreherramienta="";
 	
@@ -25,6 +43,8 @@ public class DatosPersonalesBean8 {
 	
 	
 	/**
+	 * Gets the nombregrado.
+	 *
 	 * @return Obtienes el valor de nombregrado del tipo String
 	 */
 	
@@ -36,7 +56,9 @@ public class DatosPersonalesBean8 {
 
 	
 	/**
-	 * @param Agregar el valor a nombregrado del tipo String
+	 * Sets the nombregrado.
+	 *
+	 * @param nombregrado the new nombregrado
 	 */
 	
 	public void setNombregrado(String nombregrado) {
@@ -47,6 +69,8 @@ public class DatosPersonalesBean8 {
 
 	
 	/**
+	 * Gets the nombreherramienta.
+	 *
 	 * @return Obtienes el valor de nombreherramienta del tipo String
 	 */
 	
@@ -58,7 +82,9 @@ public class DatosPersonalesBean8 {
 
 	
 	/**
-	 * @param Agregar el valor a nombreherramienta del tipo String
+	 * Sets the nombreherramienta.
+	 *
+	 * @param nombreherramienta the new nombreherramienta
 	 */
 	
 	public void setNombreherramienta(String nombreherramienta) {
@@ -68,6 +94,8 @@ public class DatosPersonalesBean8 {
 
 
 	/**
+	 * Gets the grado.
+	 *
 	 * @return Obtienes el valor de grado del tipo String
 	 */
 	
@@ -78,7 +106,9 @@ public class DatosPersonalesBean8 {
 
 	
 	/**
-	 * @param Agregar el valor a grado del tipo String
+	 * Sets the grado.
+	 *
+	 * @param grado the new grado
 	 */
 	
 	public void setGrado(String grado) {
@@ -87,6 +117,8 @@ public class DatosPersonalesBean8 {
 
 
 	/**
+	 * Gets the descripcionidioma.
+	 *
 	 * @return Obtienes el valor de descripcionidioma del tipo String
 	 */
 	
@@ -96,7 +128,9 @@ public class DatosPersonalesBean8 {
 
 	
 	/**
-	 * @param Agregar el valor a descripcionidioma del tipo String
+	 * Sets the descripcionidioma.
+	 *
+	 * @param descripcionidioma the new descripcionidioma
 	 */
 	
 	public void setDescripcionidioma(String descripcionidioma) {
@@ -104,6 +138,8 @@ public class DatosPersonalesBean8 {
 	}
 
 	/**
+	 * Gets the actividades.
+	 *
 	 * @return Obtienes el valor de actividades del tipo String
 	 */
 	
@@ -112,7 +148,9 @@ public class DatosPersonalesBean8 {
 	}
 	
 	/**
-	 * @param Agregar el valor a actividades del tipo String
+	 * Sets the actividades.
+	 *
+	 * @param actividades the new actividades
 	 */
 	
 	public void setActividades(String actividades) {
@@ -120,6 +158,8 @@ public class DatosPersonalesBean8 {
 	}
 	
 	/**
+	 * Gets the nombrecarrera.
+	 *
 	 * @return Obtienes el valor de nombrecarrera del tipo String
 	 */
 	
@@ -128,7 +168,9 @@ public class DatosPersonalesBean8 {
 	}
 	
 	/**
-	 * @param Agregar el valor a nombrecarrera del tipo String
+	 * Sets the nombrecarrera.
+	 *
+	 * @param nombrecarrera the new nombrecarrera
 	 */
 	
 	public void setNombrecarrera(String nombrecarrera) {

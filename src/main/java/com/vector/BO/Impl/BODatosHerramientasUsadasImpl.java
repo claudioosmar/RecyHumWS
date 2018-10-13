@@ -15,19 +15,28 @@ import com.vector.DAO.DAODatosHerramientasUsadas;
 import com.vector.Utileria.EnvioMensaje;
 import com.vector.Utileria.Log;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author vectormx
- *
+ *   Vector México
+ *   Clase: BODatosHerramientasUsadasImpl.java
+ *   Descripción:  contiene los metedos crear, modificar, eliminar, buscar y listar implementados del BO
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 @Service
 public class BODatosHerramientasUsadasImpl extends Log implements BODatosHerramientasUsadas {
+	
+	/** The daoherramientas. */
 	@Autowired
 	private DAODatosHerramientasUsadas daoherramientas;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.BO.BODatosHerramientasUsadas#Crear(java.util.List)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Crear(List<DatosHerramientasUsadasBean> datos) {
@@ -58,11 +67,9 @@ public class BODatosHerramientasUsadasImpl extends Log implements BODatosHerrami
 		return mensaje;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.BO.BODatosHerramientasUsadas#Modificar(com.vector.Beans.
-	 * DatosHerramientasUsadasBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Modificar(DatosHerramientasUsadasBean datos) {
@@ -87,11 +94,9 @@ public class BODatosHerramientasUsadasImpl extends Log implements BODatosHerrami
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.BO.BODatosHerramientasUsadas#Eliminar(com.vector.Beans.
-	 * DatosHerramientasUsadasBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MsgBean Eliminar(DatosHerramientasUsadasBean datos) {
@@ -116,11 +121,9 @@ public class BODatosHerramientasUsadasImpl extends Log implements BODatosHerrami
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.BO.BODatosHerramientasUsadas#Buscar(com.vector.Beans.
-	 * DatosHerramientasUsadasBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosHerramientasUsadasBean> Buscar(DatosHerramientasUsadasBean datos) {
@@ -129,10 +132,9 @@ public class BODatosHerramientasUsadasImpl extends Log implements BODatosHerrami
 		return daoherramientas.Buscar(datos);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.BO.BODatosHerramientasUsadas#Listar(long)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosHerramientasUsadasBean> Listar() {

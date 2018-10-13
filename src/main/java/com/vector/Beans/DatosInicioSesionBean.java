@@ -5,48 +5,89 @@ package com.vector.Beans;
 
 import javax.validation.constraints.NotNull;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Claudio
- *RecyHumWS2--com.vector.Beans--DatosInicioSesionBean
+ *   Vector México
+ *   Clase: DatosInicioSesionBean.java
+ *   Descripción:  contiene las variables, getters y setters 
+ *   
+ * 
+ *   Control de Cambios:
+ *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *   
  */
 //Clase Bean para los datos de login
 public class DatosInicioSesionBean {
+	
+	/** The iduser. */
 	//Variable para declara los getter y setter de login
 	@NotNull
 	private long iduser=0;
+	
+	/** The ip. */
 	@NotNull
 	private String ip="";
+	
+	/** The usuario. */
 	@NotNull
 	private String usuario="";
+	
+	/** The contraseña. */
 	@NotNull
 	private String contraseña="";
+	
+	/** The Status. */
 	@NotNull
 	private boolean Status= false;
+	
+	/** The token. */
 	@NotNull
 	private String token="";
+	
+	/** The movimiento. */
 	@NotNull
 	private String movimiento="";
+	
+	/** The idtipouser. */
 	@NotNull
 	private int idtipouser=0;
+	
+	/** The idpersonaalta. */
 	@NotNull
 	private long idpersonaalta=0;
+	
+	/** The idpersona. */
 	@NotNull
 	private long idpersona=0;
+	
+	/** The observacion. */
 	@NotNull
 	private String observacion="";
+	
+	/** The nombre. */
 	@NotNull
 	private String nombre="";
+	
+	/** The fecha creacion. */
 	@NotNull
 	private String fechaCreacion="";
+	
+	/** The fecha termino. */
 	@NotNull
 	private String fechaTermino="";
+	
+	/** The nombrecompleto. */
 	@NotNull
 	private String nombrecompleto="";
+	
+	/** The area. */
 	@NotNull
 	private String area="";
 	
 	//declaraciones de getters y setters
 	/**
+	 * Gets the iduser.
+	 *
 	 * @return Obtienes el valor de iD_User del tipo long
 	 */
 	
@@ -55,7 +96,9 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a iD_User del tipo long
+	 * Sets the iduser.
+	 *
+	 * @param iD_User the new iduser
 	 */
 	
 	public void setiduser(long iD_User) {
@@ -63,6 +106,8 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
+	 * Gets the ip.
+	 *
 	 * @return Obtienes el valor de iP del tipo String
 	 */
 	
@@ -71,7 +116,9 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a iP del tipo String
+	 * Sets the ip.
+	 *
+	 * @param iP the new ip
 	 */
 	
 	public void setIP(String iP) {
@@ -79,6 +126,8 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
+	 * Gets the usuario.
+	 *
 	 * @return Obtienes el valor de usuario del tipo String
 	 */
 	
@@ -87,7 +136,9 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a usuario del tipo String
+	 * Sets the usuario.
+	 *
+	 * @param usuario the new usuario
 	 */
 	
 	public void setUsuario(String usuario) {
@@ -95,6 +146,8 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
+	 * Gets the contraseña.
+	 *
 	 * @return Obtienes el valor de contraseña del tipo String
 	 */
 	
@@ -103,7 +156,9 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a contraseña del tipo String
+	 * Sets the contraseña.
+	 *
+	 * @param contraseña the new contraseña
 	 */
 	
 	public void setContraseña(String contraseña) {
@@ -111,6 +166,8 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
+	 * Gets the status.
+	 *
 	 * @return Obtienes el valor de status del tipo String
 	 */
 	
@@ -119,7 +176,9 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a status del tipo String
+	 * Sets the status.
+	 *
+	 * @param status the new status
 	 */
 	
 	public void setStatus(boolean status) {
@@ -127,6 +186,8 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
+	 * Gets the token.
+	 *
 	 * @return Obtienes el valor de token del tipo String
 	 */
 	
@@ -135,7 +196,9 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a token del tipo String
+	 * Sets the token.
+	 *
+	 * @param token the new token
 	 */
 	
 	public void setToken(String token) {
@@ -143,6 +206,8 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
+	 * Gets the movimiento.
+	 *
 	 * @return Obtienes el valor de movimiento del tipo String
 	 */
 	
@@ -151,7 +216,9 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a movimiento del tipo String
+	 * Sets the movimiento.
+	 *
+	 * @param movimiento the new movimiento
 	 */
 	
 	public void setMovimiento(String movimiento) {
@@ -159,6 +226,8 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
+	 * Gets the idtipouser.
+	 *
 	 * @return Obtienes el valor de idtipouser del tipo int
 	 */
 	
@@ -167,7 +236,9 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idtipouser del tipo int
+	 * Sets the idtipouser.
+	 *
+	 * @param idtipouser the new idtipouser
 	 */
 	
 	public void setIdtipouser(int idtipouser) {
@@ -175,6 +246,8 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
+	 * Gets the idpersonaalta.
+	 *
 	 * @return Obtienes el valor de idpersonaalta del tipo long
 	 */
 	
@@ -183,7 +256,9 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idpersonaalta del tipo long
+	 * Sets the idpersonaalta.
+	 *
+	 * @param idpersonaalta the new idpersonaalta
 	 */
 	
 	public void setIdpersonaalta(long idpersonaalta) {
@@ -191,6 +266,8 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
+	 * Gets the idpersona.
+	 *
 	 * @return Obtienes el valor de idpersona del tipo long
 	 */
 	
@@ -199,7 +276,9 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a idpersona del tipo long
+	 * Sets the idpersona.
+	 *
+	 * @param idpersona the new idpersona
 	 */
 	
 	public void setIdpersona(long idpersona) {
@@ -207,6 +286,8 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
+	 * Gets the observacion.
+	 *
 	 * @return Obtienes el valor de observacion del tipo String
 	 */
 	
@@ -215,7 +296,9 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a observacion del tipo String
+	 * Sets the observacion.
+	 *
+	 * @param observacion the new observacion
 	 */
 	
 	public void setObservacion(String observacion) {
@@ -223,6 +306,8 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
+	 * Gets the nombre.
+	 *
 	 * @return Obtienes el valor de nombre del tipo String
 	 */
 	
@@ -231,7 +316,9 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a nombre del tipo String
+	 * Sets the nombre.
+	 *
+	 * @param nombre the new nombre
 	 */
 	
 	public void setNombre(String nombre) {
@@ -239,6 +326,8 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
+	 * Gets the fecha creacion.
+	 *
 	 * @return Obtienes el valor de fechaCreacion del tipo String
 	 */
 	
@@ -247,7 +336,9 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a fechaCreacion del tipo String
+	 * Sets the fecha creacion.
+	 *
+	 * @param fechaCreacion the new fecha creacion
 	 */
 	
 	public void setFechaCreacion(String fechaCreacion) {
@@ -255,6 +346,8 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
+	 * Gets the fecha termino.
+	 *
 	 * @return Obtienes el valor de fechaTermino del tipo String
 	 */
 	
@@ -263,7 +356,9 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a fechaTermino del tipo String
+	 * Sets the fecha termino.
+	 *
+	 * @param fechaTermino the new fecha termino
 	 */
 	
 	public void setFechaTermino(String fechaTermino) {
@@ -271,6 +366,8 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
+	 * Gets the nombrecompleto.
+	 *
 	 * @return Obtienes el valor de nombrecompleto del tipo String
 	 */
 	
@@ -279,7 +376,9 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a nombrecompleto del tipo String
+	 * Sets the nombrecompleto.
+	 *
+	 * @param nombrecompleto the new nombrecompleto
 	 */
 	
 	public void setNombrecompleto(String nombrecompleto) {
@@ -287,6 +386,8 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
+	 * Gets the area.
+	 *
 	 * @return Obtienes el valor de area del tipo String
 	 */
 	
@@ -295,13 +396,18 @@ public class DatosInicioSesionBean {
 	}
 	
 	/**
-	 * @param Agregar el valor a area del tipo String
+	 * Sets the area.
+	 *
+	 * @param area the new area
 	 */
 	
 	public void setArea(String area) {
 		this.area = area;
 	}
 	
+	/** 
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String toString() {
 
