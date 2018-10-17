@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * 
  *   Control de Cambios:
  *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *  17/10/2018 Jair de Jesus Barcenas Gomez - Modificacion: se agrego nueva sentencia para pistas auditoras
  *   
  */
 //Clase pa incrementar las tablas al insertar en ellas
@@ -386,6 +387,31 @@ public int CursoIDUltimo(JdbcTemplate jdbcTemplate) {
 public int CarreraIDUltimo(JdbcTemplate jdbcTemplate) {
 	//sentencia sql para seleccionar la maxima fila encontrada en la tabla
 	final String sql = "select max(idcarrera) from tblcarreras";
+	jdbcTemplate.update(new PreparedStatementCreator() {
+		@Override
+		public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+			//se prepara la sentencia sql
+			PreparedStatement ps = con.prepareStatement(sql);
+			//obtencion de resultados al ejecutar la sentencia sql
+			ResultSet rs = ps.executeQuery();
+			//busca el siguiente valor si existe
+			rs.next();
+			//se le da el valor a la variable y encuentre el id +1
+			respuesta = (rs.getInt(1))+1;
+			//retorna el resultado del prepared
+			return ps;
+		}
+	});
+	//retorna el resultado
+	return respuesta ;
+}
+
+
+//request mapping, url para llamar este metodo,metodo post
+@RequestMapping(value = "/UltimoID/PistaAud",method=RequestMethod.POST)
+public int PistaIDUltimo(JdbcTemplate jdbcTemplate) {
+	//sentencia sql para seleccionar la maxima fila encontrada en la tabla
+	final String sql = "select max(idpista) from tblpistasaudit";
 	jdbcTemplate.update(new PreparedStatementCreator() {
 		@Override
 		public PreparedStatement createPreparedStatement(Connection con) throws SQLException {

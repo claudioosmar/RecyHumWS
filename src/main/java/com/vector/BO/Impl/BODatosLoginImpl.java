@@ -12,7 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.vector.BO.BODatosLogin;
 import com.vector.Beans.DatosFormularioBean;
 import com.vector.Beans.DatosInicioSesionBean;
+import com.vector.Beans.DatosPistaAuditoraBean;
 import com.vector.Beans.MsgBean;
+import com.vector.DAO.DAODatosPistaAuditora;
 import com.vector.DAO.DAODatosSesion;
 import com.vector.Utileria.EnvioMensaje;
 import com.vector.Utileria.Log;
@@ -35,6 +37,8 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 	/** The sesion. */
 	@Autowired
 	private DAODatosSesion sesion;
+	@Autowired
+	private DAODatosPistaAuditora audit;
 
 
 	/** 
@@ -54,6 +58,15 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 	public List<DatosFormularioBean> VerificarUsuario(DatosInicioSesionBean datos) {
 		// TODO Auto-generated method stub
 		info("entra en metodo verificar usuario");
+		DatosPistaAuditoraBean datos1 = new DatosPistaAuditoraBean();
+		datos1.setAccion("prueba ");
+		datos1.setFormulario("verificar usuario prueba");
+		datos1.setIduser(20);
+		datos1.setIpequipo("172.24.4.154");
+		datos1.setSistema("S.G.R.H");
+		datos1.setStatus("1");
+		audit.Crear(datos1);
+		
 		return sesion.VerificarLogin(datos);
 	}
 
@@ -144,5 +157,7 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 		info("entra al metodo buscar");
 		return sesion.Buscar(datos);
 	}
+	
+	
 
 }
