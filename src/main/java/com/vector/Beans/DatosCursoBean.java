@@ -55,9 +55,91 @@ public class DatosCursoBean {
 	
 	/** The nombrecertificado. */
 	@NotNull
+	private String urlcertificado="";
+	
+	/** The observacion. */
+	@NotNull
+	private String observacion="";
+	
+	/** The nombrecertificado. */
+	@NotNull
 	private String nombrecertificado="";
 	
 	
+	/** The urlcertificado nw. */
+	@NotNull
+	private String urlcertificadoNw="";
+	
+	
+
+	
+	/**
+	 * Gets the urlcertificado nw.
+	 *
+	 * @return the urlcertificado nw
+	 */
+	public String getUrlcertificadoNw() {
+		return urlcertificadoNw;
+	}
+
+
+
+
+	/**
+	 * Sets the urlcertificado nw.
+	 *
+	 * @param nombrecertificadoNw the new urlcertificado nw
+	 */
+	public void setUrlcertificadoNw(String nombrecertificadoNw) {
+		this.urlcertificadoNw = nombrecertificadoNw;
+	}
+
+
+
+	/**
+	 * Gets the nombrecertificado.
+	 *
+	 * @return Obtienes el valor de nombrecertificado del tipo String
+	 */
+	
+	public String getNombrecertificado() {
+		return nombrecertificado;
+	}
+
+
+	
+	/**
+	 * Sets the nombrecertificado.
+	 *
+	 * @param nombrecertificado the new nombrecertificado
+	 */
+	
+	public void setNombrecertificado(String nombrecertificado) {
+		this.nombrecertificado = nombrecertificado;
+	}
+
+
+	/**
+	 * Gets the observacion.
+	 *
+	 * @return Obtienes el valor de observacion del tipo String
+	 */
+	
+	public String getObservacion() {
+		return observacion;
+	}
+
+	
+	/**
+	 * Sets the observacion.
+	 *
+	 * @param observacion the new observacion
+	 */
+	
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+
 	//declaracion de getters y setters
 	/**
 	 * Gets the idcurso.
@@ -225,17 +307,17 @@ public class DatosCursoBean {
 	 * @return Obtienes el valor de nombrecertificado del tipo String
 	 */
 	
-	public String getNombrecertificado() {
-		return nombrecertificado;
+	public String getUrlcertificado() {
+		return urlcertificado;
 	}
 	
 	/**
 	 * Sets the nombrecertificado.
 	 *
-	 * @param nombrecertificado the new nombrecertificado
+	 * @param urlcertificado the new urlcertificado
 	 */
 	
-	public void setNombrecertificado(String nombrecertificado) {
-		this.nombrecertificado = nombrecertificado;
+	public void setUrlcertificado(String urlcertificado) {
+		this.urlcertificado = urlcertificado;
 	}
 }

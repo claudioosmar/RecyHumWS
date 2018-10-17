@@ -36,8 +36,9 @@ import com.vector.Utileria.*;
  *   
  * 
  *   Control de Cambios:
- *  10/10/2018 Claudio Osmar Osorio Zuñiga - Creacion
+ *  10/10/2018 Jair de jesus Barcenas Gomez - Creacion
  *  10/10/2018 Jair de jesus Barcenas Gomez - Modificacion: Mensajes en LOG
+ *  16/10/2018 Jair de jesus Barcenas Gomez - Modificacion: mejora en los metodos de insercion
  *   
  */
 @Service
@@ -89,18 +90,38 @@ public class DAODatosSesionImpl extends Log implements DAODatosSesion {
 		String contraseña=datos.getContraseña().trim();
 		datos.setContraseña(new Encriptarsha1().Encriptar(contraseña));
 		final String sql = "INSERT INTO TBLUSERS VALUES(?,?,?,?,?,?,?,?,?)";
+		final String sql2="insert into tblpiv02 values (?,?,?)";
+		final String sql3 = "select * from tbltiposcorreos where idtipocorreo = (?)";
 		//datos.setContraseña(new Encriptarsha1().Encriptar(datos.getContraseña()));
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				
+				debug("datos entrantes para el sql3: IDTIPOCORREO["+datos.getIdtipocorreo()+"]");
+				PreparedStatement ps2 = con.prepareStatement(sql3);
+				ps2.setInt(1, datos.getIdtipocorreo());
+				ResultSet rs2 = ps2.executeQuery();
+				if(rs2.next());
+				info("ejecucion de la sentencia sql3: "+sql3);
+				String tipocorreo = (rs2.getString(2));
+				warn("dato enviado: CORREO["+tipocorreo+"]");
+				
+				debug("datos entrantes para el sql2: IDPERSONA["+datos.getIdpersona()+"], IDTIPOCORREO["+datos.getIdtipocorreo()+"], CORREO["+datos.getNombre()+"]");
+				PreparedStatement ps1 = con.prepareStatement(sql2);
+				ps1.setLong(1, datos.getIdpersona());
+				ps1.setInt(2, datos.getIdtipocorreo());
+				ps1.setString(3, datos.getNombre());
+				ps1.execute();
+				info("ejecucion de la sentenica sql2: "+sql2);
+				
 				debug("datos entrantes para sql: IDTIPOUSER["+datos.getIdtipouser()+"], IDPERSONAALTA"+datos.getIdpersonaalta()
-				+"], NOMBREUSER["+datos.getNombre()+"], IDPERSONA["+datos.getIdpersona()+"], OBSERVACION["+datos.getObservacion()
+				+"], NOMBREUSER["+datos.getNombre()+tipocorreo+"], IDPERSONA["+datos.getIdpersona()+"], OBSERVACION["+datos.getObservacion()
 				+"], FECHACREACION["+fecha+"], FECHAMODIFICACION["+fecha+"]");
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setLong(1, IDUser);
 				ps.setInt(2, datos.getIdtipouser());
 				ps.setLong(3,datos.getIdpersonaalta());
-				ps.setString(4, datos.getNombre());
+				ps.setString(4, datos.getNombre()+tipocorreo);
 				ps.setString(5, datos.getContraseña());
 				ps.setString(6, fecha);
 				ps.setString(7, fecha);
@@ -285,7 +306,7 @@ class SesionRowMapper implements RowMapper<DatosInicioSesionBean> {
 		user.setIdpersonaalta(0);
 		user.setObservacion("unsigned");
 		user.setiduser(rs.getInt(1));
-		user.setIP(rs.getString(4));
+		//user.setIP(rs.getString(4));
 		user.setUsuario(rs.getString(2));
 		user.setContraseña("unsigned");
 		user.setStatus(rs.getBoolean(7));

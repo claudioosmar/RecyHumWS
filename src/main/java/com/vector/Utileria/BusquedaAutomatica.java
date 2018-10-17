@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 
  *   Control de Cambios:
  *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *  16/10/2018 Jair de Jesus Barcenas Gomez - Modificacion: nuevo meto de busqueda por codigo postal
  *   
  */
 @RestController
@@ -52,6 +53,9 @@ public class BusquedaAutomatica extends Log{
 	/** The nombrelocalidad. */
 	private String nombrelocalidad="";
 	
+	/** The codigopost. */
+	private int codigopost=0;
+	
 	/** The datos. */
 	List<BusquedaAutomatica> datos;
 	
@@ -61,9 +65,83 @@ public class BusquedaAutomatica extends Log{
 	/** The datos 3. */
 	List<BusquedaAutomatica> datos3;
 	
+	/** The datos 4. */
+	List<BusquedaAutomatica> datos4;
+	
 	/** The jdbc template. */
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	
+	/**
+	 * Clase: BusquedaCP 
+	 * Descripcion:.
+	 *
+	 * @param datos4 Tipo de Dato resivido BusquedaAutomatica
+	 * @return Retorna list
+	 */
+	@RequestMapping(value = "/SGRHWebService/BusquedaAutomatica/ListarCP",method=RequestMethod.POST)
+	public List<BusquedaAutomatica>BusquedaCP(BusquedaAutomatica datos4) {
+		//sentencia sql para recuperar los estados
+		final String sql4 = "select * from tbllocalidades l, tblmunicipios m, tblestados e where l.idmunicipio = m.idmunicipio and m.idestado=e.idestado and l.codpost = (?)";
+		
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				//preparacion de la sentencia
+				info("datos en entrada para el sql: CODIGOPOSTAL["+datos4.getCodigopost()+"]");
+				PreparedStatement ps4 = con.prepareStatement(sql4);	
+				ps4.setInt(1, datos4.getCodigopost());
+				//mensaje en consola
+				info("ejecucion de la sentencia sql4: "+sql4);
+				// recuperando los datos
+				ResultSet rs4 = ps4.executeQuery();
+				//metodo set que retorna las filas de la sentencia
+				info("llamada al metodo setDatosBusquedaEstados(rs)");
+				setDatosBusquedaCP(rs4);
+				//retorna la sentencia
+				return ps4;
+		
+			}
+		});
+		//variable de retorno que obtiene la lista de la opbencion de datos
+		info("llamada al metodo getDatosBusquedaCP()");
+		List<BusquedaAutomatica> retorno4 = getDatosBusquedaCP();
+		//retorna retorno
+		return retorno4;
+	}
+	
+	
+	/**
+	 * Sets the datos busqueda CP.
+	 *
+	 * @param rs4 the new datos busqueda CP
+	 * @throws SQLException the SQL exception
+	 */
+	private void setDatosBusquedaCP(ResultSet rs4) throws SQLException{
+		datos4= new ArrayList<BusquedaAutomatica>();
+		BusquedaAutomatica respuesta4;
+		info("entra en el while");
+		while(rs4.next()) {
+			respuesta4 = new BusquedaAutomatica();
+			respuesta4.setIdlocalidad(rs4.getInt(1));
+			respuesta4.setNombrelocalidad(rs4.getString(3));
+			respuesta4.setNombremunicipio(rs4.getString(8));
+			respuesta4.setNombreestado(rs4.getString(12));
+			this.datos4.add(respuesta4);
+			}
+		info("se enlisto todo");
+	}
+	
+	/**
+	 * Gets the datos busqueda CP.
+	 *
+	 * @return the datos busqueda CP
+	 */
+	private List<BusquedaAutomatica>getDatosBusquedaCP(){
+		return this.datos4;
+	}
+	
 	
 	/**
 	 * Clase: Busqueda 
@@ -386,6 +464,28 @@ public class BusquedaAutomatica extends Log{
 	
 	public void setNombrelocalidad(String nombrelocalidad) {
 		this.nombrelocalidad = nombrelocalidad;
+	}
+
+	
+	/**
+	 * Gets the codigopost.
+	 *
+	 * @return Obtienes el valor de codigopost del tipo int
+	 */
+	
+	public int getCodigopost() {
+		return codigopost;
+	}
+
+	
+	/**
+	 * Sets the codigopost.
+	 *
+	 * @param codigopost the new codigopost
+	 */
+	
+	public void setCodigopost(int codigopost) {
+		this.codigopost = codigopost;
 	}
 	
 	

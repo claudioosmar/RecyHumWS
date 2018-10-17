@@ -51,7 +51,7 @@ public class DatosInicioSesionController extends Log{
 	 */
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody DatosInicioSesionBean datos){
-		info("Se creo un usuario"+datos.toString());
+		info("Se creo un usuario"+datos.getIdtipocorreo()+datos.getNombre());
 		return new ResponseEntity<MsgBean>(login.CreateUser(datos),HttpStatus.OK);
 	}
 	

@@ -35,6 +35,7 @@ import com.vector.Utileria.Log;
  * 
  *   Control de Cambios:
  *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *  16/10/2018 Jair de Jesus Barcenas Gomez - Modificacion: nuevos arreglos en los metodos de insercion y modificacion
  *   
  */
 @Service
@@ -247,15 +248,15 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 				ResultSet rs14 = ps14.executeQuery();
 				info("ejecucion de la sentencia sql6: "+sql6);
 				rs14.next();
-				// Quinteava insersion -- Correos -- Correo Principal
-				debug("datos entrantes para el sql7: IDPERSONA["+iDpersona+"], CORREOPRINCIPAL"+datos.getCorreoPrincipal()+"]");
-				PreparedStatement ps15 = con.prepareStatement(sql7);
-				ps15.setInt(1, iDpersona);
-				ps15.setInt(2, 1);
-				ps15.setString(3, datos.getCorreoPrincipal());
-				ResultSet rs15 = ps15.executeQuery();
-				info("ejecucion de la sentencia sql7: "+sql7);
-				rs15.next();
+//				// Quinteava insersion -- Correos -- Correo Principal
+//				debug("datos entrantes para el sql7: IDPERSONA["+iDpersona+"], CORREOPRINCIPAL"+datos.getCorreoPrincipal()+"]");
+//				PreparedStatement ps15 = con.prepareStatement(sql7);
+//				ps15.setInt(1, iDpersona);
+//				ps15.setInt(2, 1);
+//				ps15.setString(3, datos.getCorreoPrincipal());
+//				ResultSet rs15 = ps15.executeQuery();
+//				info("ejecucion de la sentencia sql7: "+sql7);
+//				rs15.next();
 				// dieciseisava insersion -- Correos -- Correo Secundario --nulos
 				if (!datos.getCorreoSecundario().equals(" ")) {
 					info("entra en el if");
@@ -1000,7 +1001,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 		final String sql = "UPDATE TBLPERSONAS SET  URLFOTO=(?), RESUMEN =(?), OBJLABORAL =(?) WHERE IDPERSONA=(?) ";
 		final String sql1 = "UPDATE TBLDIRECCIONES SET CALLE =(?), COLONIA=(?), NUMINTERIOR=(?), NUMEXTERIOR=(?), CODPOST=(?), IDLOCALIDAD=(?) WHERE IDDIRECCION =(?)";
 		final String sql2 = "UPDATE TBLPIV01 SET TELEFONO=(?) WHERE IDTIPOTELEFONO=(?) AND IDPERSONA =(?) AND TELEFONO=(?)";
-		final String sql3 = "UPDATE TBLPIV02 SET CORREO=(?) WHERE AND IDTIPOCORREO=(?) AND IDPEROSNA=(?) AND CORREO=(?)";
+		final String sql3 = "UPDATE TBLPIV02 SET CORREO=(?), IDTIPOCORREO=(?) WHERE IDPEROSNA=(?) AND CORREO=(?)";
 		final String sql4 = "INSERT INTO TBLPIV01 VALUES (?,?,?)";
 		final String sql5 = "INSERT INTO TBLPIV02 VALUES (?,?,?)";
 		final String sql6 = "select * from tbldetspersonas";
@@ -1207,48 +1208,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 				}
 
 				// actualizacion en la pivote 2
-				// seleccion para saber si hay valor en piv01 por telefono
-				debug("datos entrantes para el sqlaux4: IDPERSONA["+datos.getIdpersona()+"]");
-				PreparedStatement psAux8 = con.prepareStatement(sqlaux4);
-				psAux8.setInt(1, 4);
-				psAux8.setInt(2, datos.getIdpersona());
-				ResultSet rsAux8 = psAux8.executeQuery();
-				info("ejecucion de la sentencia sqlaux4: " + sqlaux4);
-				if (rsAux8.next())
-					;
-				String cdaux8 = (rsAux8.getString(3));
-				warn("datos enviados: CORREOVIEJO[" + cdaux8+"]");
-				// sentencia if para agregar o actualizar segun se cumpla la condicion
-				// busca si el registro existe o no
-				if (datos.getCorreoPrincipal().isEmpty()) {
-					if (rsAux8.next()) {
-						info("entra en la sentencia if");
-						// si encuentra algo actualizacion en la pivote 1 para correo principal
-						debug("datos entrantes para sql3: CORREONW["+ datos.getCorreoprincipalNw()+"], IDPERSONA["+ datos.getIdpersona()+"], CORROVIEJO["+cdaux8+"]");
-						PreparedStatement ps15 = con.prepareStatement(sql3);
-						ps.setString(1, datos.getCorreoprincipalNw());
-						ps.setInt(2, 4);
-						ps.setInt(3, datos.getIdpersona());
-						ps.setString(4, cdaux8);
-						ResultSet rs15 = ps15.executeQuery();
-						info("ejecucion de la sentencia sql3: " + sql3);
-						rs15.next();
-					} else {
-						info("entra en la sentecia else");
-						// sino se encuentra que ingrese nuevo registro para correo proncipal
-						debug("datos entrantes para sql5: CORREONW["+ datos.getCorreoprincipalNw()+"], IDPERSONA["+ datos.getIdpersona()+"]");
-						PreparedStatement ps16 = con.prepareStatement(sql5);
-						ps16.setInt(1, datos.getIdpersona());
-						ps16.setLong(2, 4);
-						ps16.setString(3, datos.getCorreoprincipalNw());
-						ResultSet rs16 = ps16.executeQuery();
-						info("ejecucion de la sentencia sql5: " + sql5);
-						rs16.next();
-					}
-				} else {
-					info("dato vacio");
-				}
-				debug("datos entrantes para el sqlaux4: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos entrantes para el sqlaux4: IDPERSONA["+datos.getIdpersona()+"], IDCORREOSECUNDARIO["+datos.getIdCorreoSecundario()+"]");
 				PreparedStatement psAux9 = con.prepareStatement(sqlaux4);
 				psAux9.setInt(1, datos.getIdCorreoSecundario());
 				psAux9.setInt(2, datos.getIdpersona());
@@ -1263,7 +1223,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 				if (datos.getCorreoSecundario().isEmpty()) {
 					if (rsAux6.next()) {
 						info("entrando en la sentencia if");
-						// si encuentra algo actualizacion en la pivote 1 para correo secundario
+						// si encuentra algo actualizacion en la pivote 2 para correo secundario
 						debug("datos entrantes para sql3: CORREOSECUNDARIONW["+ datos.getCorreoprincipalNw()+"], IDPERSONA["+ datos.getIdpersona()+"], CORREOSECUNDARIOVIEJO["+cdaux9+"], IDTIPOCORREO["+datos.getIdCorreoSecundario()+"]");
 						PreparedStatement ps17 = con.prepareStatement(sql3);
 						ps17.setString(1, datos.getCorresecundarioNw());
@@ -1308,6 +1268,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 	public int Modificar3(DatosPersonalesBean datos) {
 		// TODO Auto-generated method stub
 		final String sql = "UPDATE TBLPERSONAS SET  IDAREA=(?), SUELDO =(?) WHERE IDPERSONA=(?) ";
+		
 		// Apartado de execuciones
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override

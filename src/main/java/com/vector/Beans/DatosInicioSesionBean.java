@@ -24,9 +24,9 @@ public class DatosInicioSesionBean {
 	@NotNull
 	private long iduser=0;
 	
-	/** The ip. */
+	/** The idtipocorreo. */
 	@NotNull
-	private String ip="";
+	private int idtipocorreo=0;
 	
 	/** The usuario. */
 	@NotNull
@@ -111,8 +111,8 @@ public class DatosInicioSesionBean {
 	 * @return Obtienes el valor de iP del tipo String
 	 */
 	
-	public String getIP() {
-		return ip;
+	public int getIdtipocorreo() {
+		return idtipocorreo;
 	}
 	
 	/**
@@ -121,8 +121,8 @@ public class DatosInicioSesionBean {
 	 * @param iP the new ip
 	 */
 	
-	public void setIP(String iP) {
-		ip = iP;
+	public void setIdtipocorreo(int Idtipocorreo) {
+		idtipocorreo = Idtipocorreo;
 	}
 	
 	/**
@@ -411,7 +411,7 @@ public class DatosInicioSesionBean {
 	@Override
 	public String toString() {
 
-		return String.format("DatosUsuarioBean [IDUSER="+iduser+ "],[IP="+ip + "],[USUARIO="+usuario + "],[CONTRASEÑA="+contraseña + "],[STATUS="
+		return String.format("DatosUsuarioBean [IDUSER="+iduser+ "],[IDTIPOCORREO="+idtipocorreo + "],[USUARIO="+usuario + "],[CONTRASEÑA="+contraseña + "],[STATUS="
 		+Status + "],[TOKEN="+token + "],[MOVIMIENTO="+movimiento + "],[IDTIPOUSER="
 		+idtipouser + "],[IDTIPOPERSONAALTA="+idpersonaalta + "],[IDPERSONA="+idpersona + "],[OBSERVACION="
 		+observacion + "],[NOMBRE="	+nombre + "],[FECHACREACION="+fechaCreacion  + "],[FECHAMODIFICACION="
