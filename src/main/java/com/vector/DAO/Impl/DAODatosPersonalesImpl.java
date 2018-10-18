@@ -65,6 +65,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 	 */
 	@Transactional(readOnly = true)
 	public int Crear(DatosPersonalesBean datos) {
+		info("se mando a llamar este metodo");
 		ultimoid = new AutoIncrementablesBDOracle();
 		// Ultimas ID´s en la base de datos
 		int iDpersona = ultimoid.PersonaIDUltimo(jdbcTemplate);
@@ -314,6 +315,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 	 */
 	@Transactional(readOnly = true)
 	public int Eliminar(long id) {
+		info("se mando a llamar este metodo");
 		final String sql = "DELETE TBLPERSONAS WHERE IDPERSONA = ?";
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
@@ -336,6 +338,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 	 */
 	@Transactional(readOnly = true)
 	public DatosPersonalesBean Buscar(DatosPersonalesBean datos) {
+		info("se mando a llamar este metodo");
 		DatosPersonalesBean retorno = new DatosPersonalesBean();
 		/* Sentencias SQL a ejecutar */
 		// final String sql = "SELECT * FROM TBLPERSONAS PERS, TBLAREAS ARS,
@@ -674,6 +677,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 	 */
 	@Transactional(readOnly = true)
 	public List<DatosPersonalesBean> Listar() {
+		info("se mando a llamar este metodo");
 		// TODO Auto-generated method stub
 		final String sql = "SELECT * FROM view_datospersonales2";
 		info("ejecucion de la sentencia sql: "+sql);
@@ -685,7 +689,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 	 */
 	@Override
 	public int Modificar(DatosPersonalesBean datos) {
-
+		info("se mando a llamar este metodo");
 		// TODO Auto-generated method stub
 		final String sql0 = "UPDATE TBLDETSPERSONAS SET  NOMBRE=(?), SEGNOMBRE =(?), APELLIDOP =(?), APELLIDOM=(?), SEXO=(?), FECHANAC=(?), IDEDOCIVIL=(?), NACIONALIDAD=(?) WHERE IDPERSONA=(?)";
 		final String sql = "UPDATE TBLPERSONAS SET  URLFOTO=(?), RESUMEN =(?), OBJLABORAL =(?) WHERE IDPERSONA=(?) ";
@@ -996,6 +1000,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 	 */
 	@Override
 	public int Modificar2(DatosPersonalesBean datos) {
+		info("se mando a llamar este metodo");
 		// TODO Auto-generated method stub
 		final String sql0 = "UPDATE TBLDETSPERSONAS SET  NOMBRE=(?), SEGNOMBRE =(?), APELLIDOP =(?), APELLIDOM=(?), SEXO=(?), FECHANAC=(?), IDEDOCIVIL=(?), NACIONALIDAD=(?) WHERE IDPERSONA=(?)";
 		final String sql = "UPDATE TBLPERSONAS SET  URLFOTO=(?), RESUMEN =(?), OBJLABORAL =(?) WHERE IDPERSONA=(?) ";
@@ -1067,13 +1072,13 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 							+ datos.getNumeroInterior() + "], NUMEROEXTERIOR[" + datos.getNumeroExterior() + "], IDDIRECCCION["
 							+ idAux2+ "]");
 					PreparedStatement ps1 = con.prepareStatement(sql1);
-					ps.setString(1, datos.getCalle());
-					ps.setString(2, datos.getColonia());
-					ps.setString(3, datos.getNumeroInterior());
-					ps.setString(4, datos.getNumeroExterior());
-					ps.setInt(5, datos.getIdCodigoPostal());
-					ps.setInt(6, datos.getIdlocalidad());
-					ps.setLong(7, idAux2);
+					ps1.setString(1, datos.getCalle());
+					ps1.setString(2, datos.getColonia());
+					ps1.setString(3, datos.getNumeroInterior());
+					ps1.setString(4, datos.getNumeroExterior());
+					ps1.setInt(5, datos.getIdCodigoPostal());
+					ps1.setInt(6, datos.getIdlocalidad());
+					ps1.setLong(7, idAux2);
 					ResultSet rs1 = ps1.executeQuery();
 					info("ejecucion de la sentencia sql1: " + sql1);
 					rs1.next();
@@ -1090,16 +1095,17 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 				warn("datos enviados: TELEFONOANTIGUO[" + cdaux5+"]" );
 				// sentencia if para agregar o actualizar segun se cumpla la condicion
 				// busca si el registro existe o no
-				if (!datos.getTelefonoPrincipal().isEmpty()) {
+				//System.err.println("telefono principal --> "+datos.getTelefonoprincipalNw());
+				if (!datos.getTelefonoprincipalNw().equals(" ")) {
 					if (rsAux5.next()) {
 						info("entra a la sentecia if");
 						// si encuentra algo actualizacion en la pivote 1 para telefono principal
 						info("datos entrantes para sql2: TELEFONONW[" + datos.getTelefonoprincipalNw() + "], IDPERSONA["
 								+ datos.getIdpersona() + "]");
 						PreparedStatement ps2 = con.prepareStatement(sql2);
-						ps.setString(1, datos.getTelefonoprincipalNw());
-						ps.setInt(2, 1);
-						ps.setInt(3, datos.getIdpersona());
+						ps2.setString(1, datos.getTelefonoprincipalNw());
+						ps2.setInt(2, 1);
+						ps2.setInt(3, datos.getIdpersona());
 						ResultSet rs2 = ps2.executeQuery();
 						info("ejecucion de la sentencia sql2: " + sql2);
 						rs2.next();
@@ -1107,7 +1113,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 					} else {
 						info("entra en la sentecia else");
 						// sino se encuentra que ingrese nuevo registro para telefono proncipal
-						info("datos entrantes para sql2: TELEFONONW[" + datos.getTelefonoprincipalNw() + "], IDPERSONA[" + datos.getIdpersona() + "]");
+						info("datos entrantes para sql4: TELEFONONW[" + datos.getTelefonoprincipalNw() + "], IDPERSONA[" + datos.getIdpersona() + "]");
 						PreparedStatement ps9 = con.prepareStatement(sql4);
 						ps9.setInt(1, datos.getIdpersona());
 						ps9.setLong(2, 1);
@@ -1120,42 +1126,42 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 				} else {
 					info("datos vacio");
 				}
-				debug("datos entrantes para el sqlaux3: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos entrantes para el sqlaux3(1): IDPERSONA["+datos.getIdpersona()+"]");
 				// seleccion para saber si hay valor en piv01 por telefono
 				PreparedStatement psAux6 = con.prepareStatement(sqlaux3);
 				psAux6.setInt(1, 2);
 				psAux6.setInt(2, datos.getIdpersona());
 				ResultSet rsAux6 = psAux6.executeQuery();
-				info("ejecucion de la sentencia sqlaux3: " + sqlaux3);
+				info("ejecucion de la sentencia sqlaux3(1): " + sqlaux3);
 				rsAux6.next();
 				String cdaux6 = (rsAux6.getString(3));
 				warn("datos enviados:  TELEFONOANTIGUO[" + cdaux6+"]");
 				// sentencia if para agregar o actualizar segun se cumpla la condicion
 				// busca si el registro existe o no
-				if (!datos.getTelefonoSecundario().isEmpty()) {
+				if (!datos.getTelefonosecundarioNw().equals(" ")) {
 					if (rsAux6.next()) {
-						info("entra en la sentencia if");
+
+						info("entra en la sentencia if 1");
 						// si encuentra algo actualizacion en la pivote 1 para telefono secundario
-						debug("datos entrantes para sql2: TELEFONOSECUNDARIONW["+datos.getTelefonosecundarioNw()+"], IDPERSONA["+datos.getIdpersona()+"]");
+						debug("datos entrantes para sql2(1): TELEFONOSECUNDARIONW["+datos.getTelefonosecundarioNw()+"], IDPERSONA["+datos.getIdpersona()+"]");
 						PreparedStatement ps3 = con.prepareStatement(sql2);
-						ps.setString(1, datos.getTelefonosecundarioNw());
-						ps.setInt(2, 2);
-						ps.setInt(3, datos.getIdpersona());
-					
+						ps3.setString(1, datos.getTelefonosecundarioNw());
+						ps3.setInt(2, 2);
+						ps3.setInt(3, datos.getIdpersona());
 						ResultSet rs3 = ps3.executeQuery();
-						info("ejecucion de la sentencia sql2: " + sql2);
+						info("ejecucion de la sentencia sql2(1): " + sql2);
 						rs3.next();
 				
 					} else {
-						info("entrando en sentencia else");
+						info("entrando en sentencia else (1)");
 						// sino se encuentra que ingrese nuevo registro para telefono secundario
-						debug("datos entrantes para sql4: TELEFONOSECUNDARIONW["+datos.getTelefonosecundarioNw()+"], IDPERSONA["+datos.getIdpersona()+"]");
+						debug("datos entrantes para sql4(1): TELEFONOSECUNDARIONW["+datos.getTelefonosecundarioNw()+"], IDPERSONA["+datos.getIdpersona()+"]");
 						PreparedStatement ps10 = con.prepareStatement(sql4);
 						ps10.setInt(1, datos.getIdpersona());
 						ps10.setLong(2, 2);
 						ps10.setString(3, datos.getTelefonosecundarioNw());
 						ResultSet rs10 = ps10.executeQuery();
-						info("ejecucion de la sentencia sql4: " + sql4);
+						info("ejecucion de la sentencia sql4(1): " + sql4);
 						rs10.next();
 
 					}
@@ -1175,15 +1181,15 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 				info("datos enviados: TELEFONOANTIGUO[" + cdaux7+"]");
 				// sentencia if para agregar o actualizar segun se cumpla la condicion
 				// busca si el registro existe o no
-				if (!datos.getTelefonoEmergencia().isEmpty()) {
+				if (!datos.getTelefonoEmergenteNw().equals(" ")) {
 					if (rsAux7.next()) {
 						info("entra en sentencia if");
 						// si encuentra algo actualizacion en la pivote 1 para telefono emergencia
 						debug("datos entrantes para sql2: TELEFONOEMERGENCIANW["+datos.getTelefonoEmergenteNw()+"], IDPERSONA["+datos.getIdpersona()+"]");
 						PreparedStatement ps4 = con.prepareStatement(sql2);
-						ps.setString(1, datos.getTelefonoEmergenteNw());
-						ps.setInt(2, 3);
-						ps.setInt(3, datos.getIdpersona());
+						ps4.setString(1, datos.getTelefonoEmergenteNw());
+						ps4.setInt(2, 3);
+						ps4.setInt(3, datos.getIdpersona());
 				
 						ResultSet rs4 = ps4.executeQuery();
 						info("ejecucion de la sentencia sql2: " + sql2);
@@ -1192,13 +1198,13 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 					} else {
 						// sino se encuentra que ingrese nuevo registro para telefono emergencia
 						debug("datos entrantes para sql4: TELEFONOSECUNDARIONW["+datos.getTelefonoEmergenteNw()+"], IDPERSONA["+datos.getIdpersona()+"]");
-						PreparedStatement ps10 = con.prepareStatement(sql4);
-						ps10.setInt(1, datos.getIdpersona());
-						ps10.setLong(2, 3);
-						ps10.setString(3, datos.getTelefonoEmergenteNw());
-						ResultSet rs10 = ps10.executeQuery();
+						PreparedStatement ps11 = con.prepareStatement(sql4);
+						ps11.setInt(1, datos.getIdpersona());
+						ps11.setLong(2, 3);
+						ps11.setString(3, datos.getTelefonoEmergenteNw());
+						ResultSet rs11 = ps11.executeQuery();
 						info("ejecucion de la sentencia sql4: " + sql4);
-						rs10.next();
+						rs11.next();
 					}
 				} else {
 					info("dato vacio");
@@ -1207,11 +1213,11 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 				// actualizacion en la pivote 2
 				debug("datos entrantes para el sqlaux4: IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement psAux9 = con.prepareStatement(sqlaux4);
-				//psAux9.setInt(1, datos.getIdCorreoSecundario());
+				psAux9.setInt(1, datos.getIdCorreoSecundario());
 				psAux9.setInt(1, datos.getIdpersona());
 				ResultSet rsAux9 = psAux9.executeQuery();
 				info("ejecucion de la sentencia sqlaux4: " + sqlaux4);
-				if (rsAux9.next());
+				rsAux9.next();
 				int cdaux10 = (rsAux9.getInt(2));
 				warn("datos enviados: IDCORREOSECUNDARIOVIEJO["+cdaux10+"]");
 				
@@ -1219,8 +1225,8 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 				
 				// sentencia if para agregar o actualizar segun se cumpla la condicion
 				// busca si el registro existe o no
-				if (!datos.getCorreoSecundario().isEmpty()) {
-					if (rsAux6.next()) {
+				if (!datos.getCorresecundarioNw().equals(" ")) {
+					if (rsAux9.next()) {
 						info("entrando en la sentencia if");
 						// si encuentra algo actualizacion en la pivote 2 para correo secundario
 						debug("datos entrantes para sql3: CORREOSECUNDARIONW["+ datos.getCorreoprincipalNw()+"], IDPERSONA["+ datos.getIdpersona()+"], IDCORREOSECUNDARIOVIEJO"+cdaux10+"], IDTIPOCORREONw["+datos.getIdCorreoSecundario()+"]");
@@ -1265,6 +1271,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 	 */
 	@Override
 	public int Modificar3(DatosPersonalesBean datos) {
+		info("se mando a llamar este metodo");
 		// TODO Auto-generated method stub
 		final String sql = "UPDATE TBLPERSONAS SET  IDAREA=(?), SUELDO =(?) WHERE IDPERSONA=(?) ";
 		
@@ -1295,6 +1302,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 	@Override
 	@Transactional(readOnly = true)
 	public List<DatosPersonalesBean> BusquedaEstudiosPersona(long id) {
+		info("se mando a llamar este metodo");
 		ConvertirFecha converter = new ConvertirFecha();
 		c = Calendar.getInstance();
 		dia = Integer.toString(c.get(Calendar.DATE));
@@ -1346,6 +1354,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 	 */
 	@Override
 	public List<DatosPersonalesBean> BusquedaPersonaNombreCompleto(String parametro) {
+		info("se mando a llamar este metodo");
 		// TODO Auto-generated method stub
 		Object parm;
 		String sql = "";
@@ -1398,6 +1407,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 	 */
 	@Override
 	public List<DatosPersonalesBean> BusquedaHerramientasConPersona(long id) {
+		info("se mando a llamar este metodo");
 		// TODO Auto-generated method stub
 		
 		/** Sentencias SQL */
@@ -1440,6 +1450,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 	 */
 	@Override
 	public List<DatosPersonalesBean> BusquedaExpLaboralPersona(long id) {
+		info("se mando a llamar este metodo");
 		ConvertirFecha converter = new ConvertirFecha();
 		c = Calendar.getInstance();
 		dia = Integer.toString(c.get(Calendar.DATE));
@@ -1512,6 +1523,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 	 */
 	@Override
 	public List<DatosPersonalesBean> BusquedaIdiomasPersona(long id) {
+		info("se mando a llamar este metodo");
 		// TODO Auto-generated method stub
 		info("Busqueda el CV de la persona con ID " + id);
 		/** Sentencias SQL */
