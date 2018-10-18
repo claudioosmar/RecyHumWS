@@ -4,10 +4,14 @@
 package com.vector.Utileria;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -106,5 +110,23 @@ public class ErroresdeNegocio extends Log {
         mensaje.setMsjAccion(e.getMessage()+"--"+e.getLocalizedMessage());
 		return new ResponseEntity<MsgBean>(mensaje,HttpStatus.BAD_REQUEST);
 	}
+	
+	@ExceptionHandler(org.springframework.web.bind.MethodArgumentNotValidException.class)
+    public ResponseEntity<List<String>> MissingServletRequestParameterException(HttpServletRequest request,org.springframework.web.bind.MethodArgumentNotValidException e){
+          List<String> errores = new ArrayList<>();
+          BindingResult result = e.getBindingResult();
+          for (int i = 0; i < result.getAllErrors().size(); i++) {
+                 errores.add(result.getAllErrors().get(i).getDefaultMessage());
+          }
+          return new ResponseEntity<List<String>>(errores,HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(org.springframework.validation.BindException.class)
+    public ResponseEntity<List<String>> BindException(HttpServletRequest request,org.springframework.validation.BindException e){
+          List<String> errores = new ArrayList<>();
+          for (int i = 0; i < e.getAllErrors().size(); i++) {
+                 errores.add(e.getAllErrors().get(i).getDefaultMessage());
+          }
+          return new ResponseEntity<List<String>>(errores,HttpStatus.BAD_REQUEST);
+    }
 
 }

@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.vector.BO.BODatosLogin;
+import com.vector.BO.BOPistaAuditora;
 import com.vector.Beans.DatosFormularioBean;
 import com.vector.Beans.DatosInicioSesionBean;
 import com.vector.Beans.DatosPistaAuditoraBean;
 import com.vector.Beans.MsgBean;
-import com.vector.DAO.DAODatosPistaAuditora;
 import com.vector.DAO.DAODatosSesion;
 import com.vector.Utileria.EnvioMensaje;
 import com.vector.Utileria.Log;
@@ -38,16 +38,20 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 	@Autowired
 	private DAODatosSesion sesion;
 	@Autowired
-	private DAODatosPistaAuditora audit;
+	private BOPistaAuditora audit;
 
 
 	/** 
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<DatosInicioSesionBean> ListarUsuarios() {
+	public List<DatosInicioSesionBean> ListarUsuarios(DatosPistaAuditoraBean datos) {
+		
 		// TODO Auto-generated method stub
 		info("entra en metodo listar usuario");
+		datos.setAccion("Listar Todos los usuarios");
+		datos.setStatusOp("1");
+		audit.GrabarPistaAuditora(datos);
 		return sesion.Listar();
 	}
 
@@ -58,16 +62,18 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 	public List<DatosFormularioBean> VerificarUsuario(DatosInicioSesionBean datos) {
 		// TODO Auto-generated method stub
 		info("entra en metodo verificar usuario");
-		DatosPistaAuditoraBean datos1 = new DatosPistaAuditoraBean();
-		datos1.setAccion("prueba ");
-		datos1.setFormulario("verificar usuario prueba");
-		datos1.setIduser(20);
-		datos1.setIpequipo("172.24.4.154");
-		datos1.setSistema("S.G.R.H");
-		datos1.setStatus("1");
-		audit.Crear(datos1);
+		List<DatosFormularioBean> respuesta = sesion.VerificarLogin(datos);
+		if (respuesta.size()==1) {
+			datos.setIduser(respuesta.get(0).getIdpersona());
+			datos.setStatusOp("1");
+		}else {
+			datos.setStatusOp("0");
+			datos.setIduser(0);
+		}
 		
-		return sesion.VerificarLogin(datos);
+		audit.GrabarPistaAuditora(datos);
+		
+		return respuesta;
 	}
 
 
@@ -86,12 +92,19 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 		if(resultado == 1) {
 			info("mensaje correcto");
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+			datos.setAccion("El ID de persona "+datos.getIdpersona()+"creo el usuario "+datos.getUsuario());
+			datos.setStatusOp("1");
+			datos.setIduser(datos.getIdpersona());
 		}
 		//mensaje de respuesta en caso de que la condicional no se cumpla mande mensaje fallo
 		else {
 			error("mensaje error");
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+			datos.setAccion("El ID de persona "+datos.getIdpersona()+"creo el usuario "+datos.getUsuario());
+			datos.setStatusOp("0");
+			datos.setIduser(datos.getIdpersona());
 		}
+		audit.GrabarPistaAuditora(datos);
 		return mensaje;
 	}
 
@@ -111,12 +124,19 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 		if(resultado == 1) {
 			info("mensaje correcto");
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+			datos.setAccion("El ID de persona "+datos.getIdpersona()+"modifico el usuario "+datos.getUsuario());
+			datos.setStatusOp("1");
+			datos.setIduser(datos.getIdpersona());
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
 			error("mensaje error");
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+			datos.setAccion("El ID de persona "+datos.getIdpersona()+"modifico el usuario "+datos.getUsuario());
+			datos.setStatusOp("1");
+			datos.setIduser(datos.getIdpersona());
 		}
+		audit.GrabarPistaAuditora(datos);
 		return mensaje;
 	}
 
@@ -125,24 +145,28 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public MsgBean Eliminar(long id) {
+	public MsgBean Eliminar(DatosInicioSesionBean datos) {
 		// TODO Auto-generated method stub
 		
-		int respuesta=sesion.Delete(id);
+		int respuesta=sesion.Delete(datos.getIduser());
 		MsgBean msj = new MsgBean();
 		info("entra en sentencia if");
 		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
 		if(respuesta==1) {
 			info("mensaje correcto " + respuesta);
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
-			
+			datos.setAccion("El ID de persona "+datos.getIdpersona()+"elimino el usuario "+datos.getUsuario());
+			datos.setStatusOp("1");
+			datos.setIduser(datos.getIdpersona());
 			return msj;
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
 			error("mensaje error - "+ respuesta);
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
-			
+			datos.setAccion("El ID de persona "+datos.getIdpersona()+"elimino el usuario "+datos.getUsuario());
+			datos.setStatusOp("1");
+			datos.setIduser(datos.getIdpersona());
 			return msj;
 		}
 	}
@@ -155,6 +179,10 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 	public DatosInicioSesionBean Buscar(DatosInicioSesionBean datos) {
 		// TODO Auto-generated method stub
 		info("entra al metodo buscar");
+		datos.setAccion("Buscando datos");
+		datos.setStatusOp("1");
+		datos.setIduser(datos.getIdpersona());
+		audit.GrabarPistaAuditora(datos);
 		return sesion.Buscar(datos);
 	}
 	

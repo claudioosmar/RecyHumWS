@@ -19,33 +19,48 @@ import javax.validation.constraints.NotNull;
 public class DatosPistaAuditoraBean {
 	
 	/** The idpista. */
-	@NotNull
+	
 	private long idpista =0;
 	
 	/** The iduser. */
-	@NotNull
-	private long iduser=0;
+	@NotNull(message="IDUsuario Necesario")
+	private long iduser;
 	
 	/** The formulario. */
-	@NotNull
-	private String formulario="";
+	@NotNull(message="Formulario Necesario")
+	private String formulario;
 	
 	/** The sistema. */
-	@NotNull
-	private String sistema="";
+	@NotNull(message="Sistema Necesario")
+	private String sistema;
 	
 	/** The accion. */
-	@NotNull
-	private String accion="";
+	private String accion;
 	
 	/** The ipequipo. */
-	@NotNull
-	private String ipequipo="";
+	@NotNull(message="IPEquipo Necesario")
+	private String ipequipo;
 	
-	/** The status. */
-	@NotNull
-	private String status="";
+	private String statusOp;
 	
+	
+	/**
+	 * @return Obtienes el valor de statusOp del tipo String
+	 */
+	
+	public String getStatusOp() {
+		return statusOp;
+	}
+
+	
+	/**
+	 * @param Agregar el valor a statusOp del tipo String
+	 */
+	
+	public void setStatusOp(String statusOp) {
+		this.statusOp = statusOp;
+	}
+
 	/**
 	 * Gets the idpista.
 	 *
@@ -166,24 +181,10 @@ public class DatosPistaAuditoraBean {
 		this.ipequipo = ipequipo;
 	}
 	
-	/**
-	 * Gets the status.
-	 *
-	 * @return Obtienes el valor de status del tipo String
-	 */
-	
-	public String getStatus() {
-		return status;
-	}
-	
-	/**
-	 * Sets the status.
-	 *
-	 * @param status the new status
-	 */
-	
-	public void setStatus(String status) {
-		this.status = status;
+
+	@Override
+	public String toString() {
+		return "{idpista["+idpista+"],iduser["+iduser+"][formulario["+formulario+"],sistema["+sistema+"],ipequipo["+ipequipo+"],status["+statusOp+"]}";
 	}
 	
 }

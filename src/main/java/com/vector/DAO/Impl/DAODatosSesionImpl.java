@@ -252,13 +252,14 @@ public class DAODatosSesionImpl extends Log implements DAODatosSesion {
 				DatosFormularioBean date = new DatosFormularioBean();
 				ResultSet rs = ps.executeQuery();
 				info("ejecucion de la sentencia sql: "+sql);
-				if(rs.next()) 
-					info("entra en la sentencia if");
+				if(rs.next()) {
+				info("entra en la sentencia if");
 				date.setIdtipousuario(rs.getInt(2));
 				date.setIdpersona(rs.getLong(8));
 				date.setStatus(rs.getBoolean(13));
 				resp.add(date);
 				warn("datos enviado: IDTIPOUSER["+rs.getInt(2)+"], IDPERSONA["+rs.getLong(8)+"], STATUS["+rs.getBoolean(13)+"]");
+				}
 				return ps;
 			}
 		});

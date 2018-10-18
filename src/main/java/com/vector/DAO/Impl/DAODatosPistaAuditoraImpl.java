@@ -85,10 +85,10 @@ public class DAODatosPistaAuditoraImpl extends Log implements DAODatosPistaAudit
 
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 
-				debug("datos entrantes para el sql3: IDTIPOCORREO[" + idpista + "], IDUSER[" + datos.getIduser()
+				debug("datos entrantes para el sql3: IDPISTA[" + idpista + "], IDUSER[" + datos.getIduser()
 						+ "], FECHA[" + fecha + "], HORA[" + hora + "], FORMULARIO[" + datos.getFormulario()
 						+ "], SISTEMA[" + datos.getSistema() + "], ACCION[" + datos.getAccion() + "], IPEQUIPO["
-						+ datos.getIpequipo() + "],STATUS[" + datos.getStatus() + "]");
+						+ datos.getIpequipo() + "],STATUS[" + datos.getStatusOp() + "]");
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setLong(1, idpista);
 				ps.setLong(2, datos.getIduser());
@@ -98,7 +98,7 @@ public class DAODatosPistaAuditoraImpl extends Log implements DAODatosPistaAudit
 				ps.setString(6, datos.getSistema());
 				ps.setString(7, datos.getAccion());
 				ps.setString(8, datos.getIpequipo());
-				ps.setString(9, datos.getStatus());
+				ps.setString(9, datos.getStatusOp());
 
 				return ps;
 			}

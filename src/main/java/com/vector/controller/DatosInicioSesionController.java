@@ -6,6 +6,8 @@ package com.vector.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vector.BO.BODatosLogin;
 import com.vector.Beans.DatosFormularioBean;
 import com.vector.Beans.DatosInicioSesionBean;
+import com.vector.Beans.DatosPistaAuditoraBean;
 import com.vector.Beans.MsgBean;
 import com.vector.Utileria.Log;
 
@@ -40,6 +43,7 @@ public class DatosInicioSesionController extends Log{
 	/** The login. */
 	@Autowired
 	private BODatosLogin login;
+
 	
 
 	/**
@@ -52,7 +56,9 @@ public class DatosInicioSesionController extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody DatosInicioSesionBean datos){
 		info("Se creo un usuario"+datos.getIdtipocorreo()+datos.getNombre());
-		return new ResponseEntity<MsgBean>(login.CreateUser(datos),HttpStatus.OK);
+		MsgBean respuesta =login.CreateUser(datos);
+		
+		return new ResponseEntity<MsgBean>(respuesta,HttpStatus.OK);
 	}
 	
 	
@@ -77,23 +83,18 @@ public class DatosInicioSesionController extends Log{
 	 * @return Retorna response entity
 	 */
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Verificar", method = RequestMethod.POST)
-	public ResponseEntity<List<DatosFormularioBean>> verificarlogin(@RequestBody DatosInicioSesionBean datos){
+	public ResponseEntity<List<DatosFormularioBean>> verificarlogin(@RequestBody @Valid DatosInicioSesionBean datos){
 		info("se verifica el usuario");/*letreros*/
-		debug(null);/*informacion de variables*/
-		error(null);/*errores ocurridos bajo control*/
-		warn(null);/*alertas de informacion erronea*/
-		fatal(null);/*errores fatales del programa*/
-		MsgBean respuesta = new MsgBean();
-		if(datos.getUsuario().isEmpty()&&datos.getContraseña().isEmpty()) {
-			warn("usuario y contraseña incorrecto");
-			respuesta.setMsjAccion("falta usuario y/o contraseña");
+		info("Datos de sesion "+datos.toString());
+		datos.setAccion("Inteto de logueo Usuario "+datos.getUsuario());
+		List<DatosFormularioBean> respuestaLogin =login.VerificarUsuario(datos);
+		if (respuestaLogin.size()==1) {
+			return new ResponseEntity<List<DatosFormularioBean>>(respuestaLogin,HttpStatus.OK);	
 		}else {
-		
-		info("acceso concedido");
-	}
-		info("verificaccion correcta");
-		return new ResponseEntity<List<DatosFormularioBean>>(login.VerificarUsuario(datos),HttpStatus.OK);
-		
+			
+			return new ResponseEntity<List<DatosFormularioBean>>(respuestaLogin,HttpStatus.BAD_REQUEST);
+		}
+			
 	}
 
 	
@@ -104,9 +105,9 @@ public class DatosInicioSesionController extends Log{
 	 * @return Retorna response entity
 	 */
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Listar", method = RequestMethod.POST)
-	public ResponseEntity<List<DatosInicioSesionBean>> consulta(){
+	public ResponseEntity<List<DatosInicioSesionBean>> consulta(@RequestBody @Valid DatosPistaAuditoraBean audit){
 		info("Se ingreso a listar Usuarios");
-		List<DatosInicioSesionBean> usuarios = login.ListarUsuarios();
+		List<DatosInicioSesionBean> usuarios = login.ListarUsuarios(audit);
 		if(usuarios.isEmpty()) {
 			info("no se encontro datos");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -160,7 +161,7 @@ public class DatosInicioSesionController extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/EliminarUser",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>eliminar(@RequestBody DatosInicioSesionBean datos){
 		info("Se elimino usuario: "+datos.getiduser());
-		return new ResponseEntity<MsgBean>(login.Eliminar(datos.getiduser()),HttpStatus.OK);
+		return new ResponseEntity<MsgBean>(login.Eliminar(datos),HttpStatus.OK);
 	}
 	
 }

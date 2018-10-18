@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
  *   
  */
 //Clase Bean para los datos de login
-public class DatosInicioSesionBean {
+public class DatosInicioSesionBean extends DatosPistaAuditoraBean{
 	
 	/** The iduser. */
 	//Variable para declara los getter y setter de login
@@ -29,12 +29,12 @@ public class DatosInicioSesionBean {
 	private int idtipocorreo=0;
 	
 	/** The usuario. */
-	@NotNull
-	private String usuario="";
+	@NotNull(message="Usuario Necesario")
+	private String usuario;
 	
 	/** The contraseña. */
-	@NotNull
-	private String contraseña="";
+	@NotNull(message="Contraseña Necesario")
+	private String contraseña;
 	
 	/** The Status. */
 	@NotNull

@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.vector.Beans.DatosFormularioBean;
 import com.vector.Beans.DatosInicioSesionBean;
+import com.vector.Beans.DatosPistaAuditoraBean;
 import com.vector.Beans.MsgBean;
 
 // TODO: Auto-generated Javadoc
@@ -29,7 +30,7 @@ public interface BODatosLogin  {
 	 * @return Retorna list
 	 */
 	//REGRESA UN LISTADO DEL BEAN DE INICIO DE SESION
-	List<DatosInicioSesionBean> ListarUsuarios ();
+	List<DatosInicioSesionBean> ListarUsuarios (DatosPistaAuditoraBean pista);
 	
 	/**
 	 * Clase: VerificarUsuario 
@@ -69,7 +70,7 @@ public interface BODatosLogin  {
 	 * @return Retorna msg bean
 	 */
 	//MENSAJE DE ELIMINACION DE DATOS DEL INICIO DE SESION QUE REGRESA UN MENSADE DE LA CLASE MSGBEAN
-	MsgBean Eliminar(long id);
+	MsgBean Eliminar(DatosInicioSesionBean datos);
 	
 	/**
 	 * Clase: Buscar 
