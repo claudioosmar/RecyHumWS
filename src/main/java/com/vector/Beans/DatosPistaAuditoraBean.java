@@ -24,7 +24,7 @@ public class DatosPistaAuditoraBean {
 	
 	/** The iduser. */
 	@NotNull(message="IDUsuario Necesario")
-	private long iduser;
+	private long iduserp;
 	
 	/** The formulario. */
 	@NotNull(message="Formulario Necesario")
@@ -87,8 +87,8 @@ public class DatosPistaAuditoraBean {
 	 * @return Obtienes el valor de iduser del tipo long
 	 */
 	
-	public long getIduser() {
-		return iduser;
+	public long getIduserp() {
+		return iduserp;
 	}
 	
 	/**
@@ -97,8 +97,8 @@ public class DatosPistaAuditoraBean {
 	 * @param iduser the new iduser
 	 */
 	
-	public void setIduser(long iduser) {
-		this.iduser = iduser;
+	public void setIduserp(long iduser) {
+		this.iduserp = iduser;
 	}
 	
 	/**
@@ -184,7 +184,7 @@ public class DatosPistaAuditoraBean {
 
 	@Override
 	public String toString() {
-		return "{idpista["+idpista+"],iduser["+iduser+"][formulario["+formulario+"],sistema["+sistema+"],ipequipo["+ipequipo+"],status["+statusOp+"]}";
+		return "{idpista["+idpista+"],iduser["+iduserp+"][formulario["+formulario+"],sistema["+sistema+"],ipequipo["+ipequipo+"],status["+statusOp+"]}";
 	}
 	
 }
