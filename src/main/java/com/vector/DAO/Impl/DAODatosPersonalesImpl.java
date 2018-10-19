@@ -359,12 +359,12 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				debug("datos de entrada para sql2: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql2(1): IDPERSONA["+datos.getIdpersona()+"]");
 				// consulta la tabla personas
 				PreparedStatement ps0 = con.prepareStatement(sql2);
 				ps0.setLong(1, datos.getIdpersona());
 				ResultSet rs0 = ps0.executeQuery();
-				info("ejecucin de la sentencia sql2 "+ sql2);
+				info("ejecucin de la sentencia sql2(1) "+ sql2);
 				if (rs0.next()) {
 					info("entra en la sentencia if");
 					retorno.setUrlFoto(rs0.getString(3));
@@ -378,11 +378,11 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 				}
 				
 				// consulta la tabla detalle persona
-				debug("datos de entrada para sql3: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql3(1): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps01 = con.prepareStatement(sql3);
 				ps01.setLong(1, datos.getIdpersona());
 				ResultSet rs01 = ps01.executeQuery();
-				info("ejecucin de la sentencia sql3 "+ sql3);
+				info("ejecucin de la sentencia sql3(1)"+ sql3);
 				if (rs01.next()) {
 					info("entra en la sentencia if");
 					retorno.setIdEdoCivil(rs01.getInt(4));
@@ -397,34 +397,34 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 					warn("datos enviados: IDESTADOCIVIL["+rs01.getInt(4)+"], ESTADOCIVIL["+rs01.getString(13)+"], NOMBRE["+rs01.getString(5)+"], SEGUNDONOMBRE["+rs01.getString(6)+"], APELLIDOPATERNO["+rs01.getString(7)+"], APELLIDOMATERNO["+rs01.getString(8)+"], SEXO["+rs01.getString(9)+"], FECHANACIMIENTO["+rs01.getString(10)+"], NACIONALIDAD["+rs01.getString(11)+"]");
 				}
 				// consulta la vista datos personales para la edad
-				debug("datos de entrada para sql10: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql10(1): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps20 = con.prepareStatement(sql10);
 				ps20.setLong(1, datos.getIdpersona());
 				ResultSet rs20 = ps20.executeQuery();
-				info("ejecucin de la sentencia sql10 "+ sql10);
+				info("ejecucin de la sentencia sql10(1)"+ sql10);
 				if (rs20.next()) {
 					retorno.setEdad(rs20.getInt(7));
 					warn("datos enviados: EDAD["+rs20.getInt(7)+"]");
 				}
 				// consulta la tabla piv03 para obtener el RFC
-				debug("datos de entrada para sql4: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql4(1): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps02 = con.prepareStatement(sql4);
 				ps02.setLong(1, datos.getIdpersona());
 				ps02.setInt(2, 2);
 				ResultSet rs02 = ps02.executeQuery();
-				info("ejecucin de la sentencia sql4: "+ sql4);
+				info("ejecucin de la sentencia sql4(1): "+ sql4);
 				if (rs02.next()) {
 					info("entra en la sentencia if");
 					retorno.setRfc(rs02.getString(3));
 					warn("datos enviados: RFC["+rs02.getString(3)+"]");
 				}
 				// consulta la tabla piv03 para obtener el CURP
-				debug("datos de entrada para sql4: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql4(2): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps03 = con.prepareStatement(sql4);
 				ps03.setLong(1, datos.getIdpersona());
 				ps03.setInt(2, 4);
 				ResultSet rs03 = ps03.executeQuery();
-				info("ejecucin de la sentencia sql4: "+ sql4);
+				info("ejecucin de la sentencia sql4(2): "+ sql4);
 				if (rs03.next()) {
 					info("entra en la sentencia if");
 					retorno.setcURP(rs03.getString(3));
@@ -432,131 +432,131 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 				}
 
 				// verifica que se tenga un valor para pasaporte
-				debug("datos de entrada para sql7: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql7(1): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement psAux004 = con.prepareStatement(sql7);
 				psAux004.setLong(1, datos.getIdpersona());
 				psAux004.setLong(2, 3);
 				ResultSet rsAux004 = psAux004.executeQuery();
-				info("ejecucin de la sentencia sql7: "+ sql7);
+				info("ejecucin de la sentencia sql7(1): "+ sql7);
 
 				// consulta la tabla piv11 para obetener pasaporte
 				if (rsAux004.next()) {
 					info("entra en la sentencia if");
-					debug("datos de entrada para sql5: IDPERSONA["+datos.getIdpersona()+"]");
+					debug("datos de entrada para sql5(1): IDPERSONA["+datos.getIdpersona()+"]");
 					PreparedStatement ps04 = con.prepareStatement(sql5);
 					ps04.setLong(1, datos.getIdpersona());
 					ps04.setInt(2, 3);
 					ResultSet rs04 = ps04.executeQuery();
-					info("ejecucin de la sentencia sql5: "+ sql5);
+					info("ejecucin de la sentencia sql5(1): "+ sql5);
 					rs04.next();
 					retorno.setIdpasaporte(rs04.getInt(1));
 					warn("datos enviados: PASAPORTE["+rs04.getInt(1)+"]");
 				}
 
 				// verifica que se tenga un valor para visa
-				debug("datos de entrada para sql7: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql7(2): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement psAux005 = con.prepareStatement(sql7);
 				psAux005.setLong(1, datos.getIdpersona());
 				psAux005.setLong(2, 4);
 				ResultSet rsAux005 = psAux005.executeQuery();
-				info("ejecucin de la sentencia sql7: "+ sql7);
+				info("ejecucin de la sentencia sql7(2): "+ sql7);
 
 				// consulta la tabla piv11 para obetener visa
 				if (rsAux005.next()) {
 					info("entra en la sentencia if");
-					debug("datos de entrada para sql5: IDPERSONA["+datos.getIdpersona()+"]");
+					debug("datos de entrada para sql5(2): IDPERSONA["+datos.getIdpersona()+"]");
 					PreparedStatement ps05 = con.prepareStatement(sql5);
 					ps05.setLong(1, datos.getIdpersona());
 					ps05.setInt(2, 4);
 					ResultSet rs05 = ps05.executeQuery();
-					info("ejecucin de la sentencia sql5: "+ sql5);
+					info("ejecucin de la sentencia sql5(2): "+ sql5);
 					rs05.next();
 					retorno.setIdVisa(rs05.getInt(1));
 					warn("datos enviados: VISA["+rs05.getInt(1)+"]");
 				}
 				// consulta la tabla piv03 para obtener el NSS
-				debug("datos de entrada para sql4: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql4(3): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps06 = con.prepareStatement(sql4);
 				ps06.setLong(1, datos.getIdpersona());
 				ps06.setInt(2, 5);
 				ResultSet rs06 = ps06.executeQuery();
-				info("ejecucin de la sentencia sql4: "+ sql4);
+				info("ejecucin de la sentencia sql4(3): "+ sql4);
 				if (rs06.next()) {
 					info("entra en la sentencia if");
 					retorno.setcURP(rs06.getString(3));
 					warn("datos enviados: CURP["+rs06.getString(3)+"]");
 				}
 				// verifica que se tenga un valor para infonavit
-				debug("datos de entrada para sql7: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql7(3): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement psAux007 = con.prepareStatement(sql7);
 				psAux007.setLong(1, datos.getIdpersona());
 				psAux007.setLong(2, 5);
 				ResultSet rsAux007 = psAux007.executeQuery();
-				info("ejecucin de la sentencia sql7: "+ sql7);
+				info("ejecucin de la sentencia sql7(3): "+ sql7);
 
 				// consulta la tabla piv11 para obetener INFONAVIT
 				if (rsAux007.next()) {
 					info("entra en la sentencia if");
-					debug("datos de entrada para sql5: IDPERSONA["+datos.getIdpersona()+"]");
+					debug("datos de entrada para sql5(3): IDPERSONA["+datos.getIdpersona()+"]");
 					PreparedStatement ps07 = con.prepareStatement(sql5);
 					ps07.setLong(1, datos.getIdpersona());
 					ps07.setInt(2, 5);
 					ResultSet rs07 = ps07.executeQuery();
-					info("ejecuciOn de la sentencia sql5: "+ sql5);
+					info("ejecuciOn de la sentencia sql5(3): "+ sql5);
 					rs07.next();
 					retorno.setIdInfonavit(rs07.getInt(1));
 					warn("datos enviados: INFONAVIT["+rs07.getInt(1)+"]");
 				}
 
 				// verifica que se tenga un valor para viajar
-				debug("datos de entrada para sql7: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql7(4): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement psAux008 = con.prepareStatement(sql7);
 				psAux008.setLong(1, datos.getIdpersona());
 				psAux008.setLong(2, 1);
 				ResultSet rsAux008 = psAux008.executeQuery();
-				info("ejecucin de la sentencia sql7: "+ sql7);
+				info("ejecucin de la sentencia sql7(4): "+ sql7);
 
 				// consulta la tabla piv11 para disponibilidad viajar
 				if (rsAux008.next()) {
 					info("entra en la sentencia if");
-					debug("datos de entrada para sql5: IDPERSONA["+datos.getIdpersona()+"]");
+					debug("datos de entrada para sql5(4): IDPERSONA["+datos.getIdpersona()+"]");
 					PreparedStatement ps08 = con.prepareStatement(sql5);
 					ps08.setLong(1, datos.getIdpersona());
 					ps08.setInt(2, 1);
 					ResultSet rs08 = ps08.executeQuery();
-					info("ejecuciOn de la sentencia sql5: "+ sql5);
+					info("ejecuciOn de la sentencia sql5(4): "+ sql5);
 					rs08.next();
 					retorno.setIdDisponibilidadViajar(rs08.getInt(1));
 					warn("datos enviados: DISPONIVILIDADVIAJAR["+rs08.getInt(1)+"]");
 				}
 
 				// verifica que se tenga un valor para cambio residencia
-				debug("datos de entrada para sql7: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql7(5): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement psAux009 = con.prepareStatement(sql7);
 				psAux009.setLong(1, datos.getIdpersona());
 				psAux009.setLong(2, 2);
 				ResultSet rsAux009 = psAux009.executeQuery();
-				info("ejecucin de la sentencia sql7: "+ sql7);
+				info("ejecucin de la sentencia sql7(5): "+ sql7);
 
 				// consulta la tabla piv11 para disponibilidad cambio residencia
 				if (rsAux009.next()) {
 					info("entra en la sentencia if");
-					debug("datos de entrada para sql5: IDPERSONA["+datos.getIdpersona()+"]");
+					debug("datos de entrada para sql5(5): IDPERSONA["+datos.getIdpersona()+"]");
 					PreparedStatement ps09 = con.prepareStatement(sql5);
 					ps09.setLong(1, datos.getIdpersona());
 					ps09.setInt(2, 2);
 					ResultSet rs09 = ps09.executeQuery();
-					info("ejecuciOn de la sentencia sql5: "+ sql5);
+					info("ejecuciOn de la sentencia sql5(5): "+ sql5);
 					rs09.next();
 					retorno.setIdDisponibilidadCambio(rs09.getInt(1));
 					warn("datos enviados: DISPONIBILIDADCAMBIO["+rs09.getInt(1)+"]");
 				}
 				// consulta la tabla piv3 para direccion
-				debug("datos de entrada para sql6: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql6(1): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps10 = con.prepareStatement(sql6);
 				ps10.setLong(1, datos.getIdpersona());
 				ResultSet rs10 = ps10.executeQuery();
-				info("ejecucin de la sentencia sql6: "+ sql6);
+				info("ejecucin de la sentencia sql6(1): "+ sql6);
 				if (rs10.next()) {
 					retorno.setCalle(rs10.getString(13));
 					retorno.setColonia(rs10.getString(14));
@@ -567,53 +567,59 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 					warn("datos enviados: CALLE["+rs10.getString(13)+"], COLONIA["+rs10.getString(14)+"], NUMEROINTERIOR["+rs10.getString(15)+"], NUMEROEXTERIOR["+rs10.getString(16)+"], CODIGOPOSTAL["+rs10.getInt(17)+"], IDLOCALIDAD["+rs10.getInt(18)+"]");
 				}
 				// consulta la tabla piv01 para obterner el telefono principal
-				debug("datos de entrada para sql8: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql8(1): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps11 = con.prepareStatement(sql8);
 				ps11.setLong(1, datos.getIdpersona());
 				ps11.setInt(2, 1);
 				ResultSet rs11 = ps11.executeQuery();
-				info("ejecucin de la sentencia sql8: "+ sql8);
+				info("ejecucin de la sentencia sql8(1): "+ sql8);
 				if (rs11.next()) {
 					retorno.setTelefonoPrincipal(rs11.getString(3));
 					warn("datos enviados: TELEFONOPRINCIPAL["+rs11.getString(3)+"]");
+				}else {
+					warn("datos no existentes");
 				}
 
 				// consulta la tabla piv01 para obterner el telefono secundario
-				debug("datos de entrada para sql8: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql8(2): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps12 = con.prepareStatement(sql8);
 				ps12.setLong(1, datos.getIdpersona());
 				ps12.setInt(2, 2);
 				ResultSet rs12 = ps12.executeQuery();
-				info("ejecucin de la sentencia sql8: "+ sql8);
+				info("ejecucin de la sentencia sql8(2): "+ sql8);
 				if (rs12.next()) {
 					retorno.setTelefonoSecundario(rs12.getString(3));
 					warn("datos enviados: TELEFONOSECUNDARIO["+rs12.getString(3)+"]");
+				}else {
+					warn("datos no existentes");
 				}
 				// consulta la tabla piv01 para obterner el telefono emergente
-				debug("datos de entrada para sql8: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql8(3): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps13 = con.prepareStatement(sql8);
 				ps13.setLong(1, datos.getIdpersona());
 				ps13.setInt(2, 3);
 				ResultSet rs13 = ps13.executeQuery();
-				info("ejecucin de la sentencia sql8: "+ sql8);
+				info("ejecucin de la sentencia sql8(3): "+ sql8);
 				if (rs13.next()) {
 					retorno.setTelefonoEmergencia(rs13.getString(3));
 					warn("datos enviados: TELEFONOEMERGENCIA["+rs13.getString(3)+"]");
+				}else {
+					warn("datos no existentes");
 				}
 
 				// consulta la tabla piv02 para obterner el correo principal (vector)
-				debug("datos de entrada para sql9: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql9(1): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps14 = con.prepareStatement(sql9);
 				ps14.setLong(1, datos.getIdpersona());
 				ps14.setInt(2, 4);
 				ResultSet rs14 = ps14.executeQuery();
-				info("ejecucin de la sentencia sql9: "+ sql9);
-				debug("datos de entrada para sql9: IDPERSONA["+datos.getIdpersona()+"]");
+				info("ejecucin de la sentencia sql9(1): "+ sql9);
+				debug("datos de entrada para sql9(2): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps15 = con.prepareStatement(sql9);
 				ps15.setLong(1, datos.getIdpersona());
 				ps15.setInt(2, 6);
 				ResultSet rs15 = ps15.executeQuery();
-				info("ejecucin de la sentencia sql9: "+ sql9);
+				info("ejecucin de la sentencia sql9(2): "+ sql9);
 				if (rs14.next()) {
 					retorno.setCorreoPrincipal(rs14.getString(3) + "@ext.vectoritcgroup.com");
 					warn("datos enviados: CORREOPRINCIPAL["+rs14.getString(3)+"]");
@@ -623,47 +629,61 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 				}
 
 				// consulta la tabla piv02 para obterner el correo secundario (personal)
-				debug("datos de entrada para sql9: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql9(3): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps16 = con.prepareStatement(sql9);
 				ps16.setLong(1, datos.getIdpersona());
 				ps16.setInt(2, 1);
 				ResultSet rs16 = ps16.executeQuery();
-				info("ejecucin de la sentencia sql9: "+ sql9);
-				if (rs16.next()) {
+				if(rs16.next()) {
+				info("ejecucin de la sentencia sql9(3): "+ sql9);
 					retorno.setCorreoSecundario(rs16.getString(3));
-					warn("datos enviados: CORREOsecundario["+rs16.getString(3)+"]");
+					retorno.setIdCorreoSecundario(1);
+					warn("datos enviados: CORREOsecundario["+rs16.getString(3)+"], IDCORREOSECUNDARIO["+1+"]");
+				}else {
+					warn("datos no existentes");
 				}
-				debug("datos de entrada para sql9: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql9(4): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps17 = con.prepareStatement(sql9);
 				ps17.setLong(1, datos.getIdpersona());
 				ps17.setInt(2, 2);
 				ResultSet rs17 = ps17.executeQuery();
-				info("ejecucin de la sentencia sql9: "+ sql9);
-				if (rs17.next()) {
+				if(rs17.next()) {
+				info("ejecucin de la sentencia sql9(4): "+ sql9);
+
 					retorno.setCorreoSecundario(rs17.getString(3));
-					warn("datos enviados: CORREOSECUNDARIO["+rs17.getString(3)+"]");
-				}
-				debug("datos de entrada para sql9: IDPERSONA["+datos.getIdpersona()+"]");
+					retorno.setIdCorreoSecundario(2);
+					warn("datos enviados: CORREOSECUNDARIO["+rs17.getString(3)+"], IDCORREOSECUNDARIO["+2+"]");
+			}else {
+				warn("datos no existentes");
+			}
+				debug("datos de entrada para sql9(5): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps18 = con.prepareStatement(sql9);
 				ps18.setLong(1, datos.getIdpersona());
 				ps18.setInt(2, 3);
 				ResultSet rs18 = ps18.executeQuery();
-				info("ejecucin de la sentencia sql9: "+ sql9);
-				if (rs18.next()) {
+				if(rs18.next()) {
+				info("ejecucin de la sentencia sql9(5): "+ sql9);
+
 					retorno.setCorreoSecundario(rs18.getString(3));
-					warn("datos enviados: CORRESECUNDARIO["+rs18.getString(3)+"]");
+					retorno.setIdCorreoSecundario(3);
+					warn("datos enviados: CORRESECUNDARIO["+rs18.getString(3)+"], IDCORREOSECUNDARIO["+3+"]");
+				}else {
+					warn("datos no existentes");
 				}
-				debug("datos de entrada para sql9: IDPERSONA["+datos.getIdpersona()+"]");
+				debug("datos de entrada para sql9(6): IDPERSONA["+datos.getIdpersona()+"]");
 				PreparedStatement ps19 = con.prepareStatement(sql9);
 				ps19.setLong(1, datos.getIdpersona());
 				ps19.setInt(2, 5);
 				ResultSet rs19 = ps19.executeQuery();
-				info("ejecucin de la sentencia sql9: "+ sql9);
-				if (rs19.next()) {
-					retorno.setCorreoSecundario(rs19.getString(3));
-					warn("datos enviados: CORREOSECUNDARIO["+rs19.getString(3)+"]");
-				}
+				if(rs19.next()) {
+				info("ejecucin de la sentencia sql9(6): "+ sql9);
 
+					retorno.setCorreoSecundario(rs19.getString(3));
+					retorno.setIdCorreoSecundario(4);
+					warn("datos enviados: CORREOSECUNDARIO["+rs19.getString(3)+"], IDCORREOSECUNDARIO["+5+"]");
+				}else {
+					warn("datos no existentes");
+				}
 				return ps01;
 			}
 		});
@@ -693,7 +713,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 		// TODO Auto-generated method stub
 		final String sql0 = "UPDATE TBLDETSPERSONAS SET  NOMBRE=(?), SEGNOMBRE =(?), APELLIDOP =(?), APELLIDOM=(?), SEXO=(?), FECHANAC=(?), IDEDOCIVIL=(?), NACIONALIDAD=(?) WHERE IDPERSONA=(?)";
 		final String sql = "UPDATE TBLPERSONAS SET  URLFOTO=(?), RESUMEN =(?), OBJLABORAL =(?) WHERE IDPERSONA=(?) ";
-		final String sql2 = "UPDATE TBLDIRECCIONES SET CODPOST=(?), CALLE=(?), COLONIA=(?), NUMINTERIOR=(?),NUMEXTERIOR=(?) WHERE IDDIRECCION=(?)";
+		final String sql2 = "UPDATE TBLDIRECCIONES SET CODPOST=(?), CALLE=(?), COLONIA=(?), NUMINTERIOR=(?),NUMEXTERIOR=(?), IDLOCALIDAD=(?) WHERE IDDIRECCION=(?)";
 		final String sql3 = "UPDATE TBLPIV03 SET IDDOC=(?),DESCRIPCION=(?),URLDOC=(?) WHERE IDPERSONA=(?) and IDDOC =(?)";
 		// final String sql4 = "UPDATE TBLPIV11 SET IDOTROSDOC=(?) WHERE IDPERSONA=(?),
 		// AND IDOTROSDOC=(?)";
@@ -710,7 +730,37 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-
+				// seleccion de busqueda de id de direccion
+				debug("datos entrantes para el sqlaux: IDPERSONA["+datos.getIdpersona()+"]");
+				PreparedStatement psAux = con.prepareStatement(sqlaux);
+				psAux.setLong(1, datos.getIdpersona());
+				ResultSet rsAux = psAux.executeQuery();
+				info("ejecucion de la sentencia sqlaux: "+sqlaux);
+				rsAux.next();
+				int idAux2 = Integer.parseInt(rsAux.getString(1));
+				warn("datos enviados: IDDIRECCION["+idAux2+"]");
+				
+				if(idAux2 == 0) {
+					info("no se encontraron datos");
+				}else {
+					debug("datos entrantes para el sql2: CODIGOPOSTAL[" + datos.getIdCodigoPostal() + "], CALLE["
+							+ datos.getCalle() + "], COLONIA[" + datos.getColonia() + "NUMEROINTERIOR["
+							+ datos.getNumeroInterior() + "], NUMEROEXTERIOR[" + datos.getNumeroExterior() + "], IDDIRECCCION["
+							+ idAux2+ "], IDLOCALIDAD["+datos.getIdlocalidad()+"]");
+				// segunda actualizacion tbldirecciones
+				PreparedStatement ps2 = con.prepareStatement(sql2);
+				ps2.setInt(1, datos.getIdCodigoPostal());
+				ps2.setString(2, datos.getCalle());
+				ps2.setString(3, datos.getColonia());
+				ps2.setString(4, datos.getNumeroInterior());
+				ps2.setString(5, datos.getNumeroExterior());
+				ps2.setInt(6, datos.getIdlocalidad());
+				ps2.setInt(7, idAux2);
+				ResultSet rs2 = ps2.executeQuery();
+//				rs2.next();
+				info("ejecucion de la sentencia sql2: "+sql2);
+				}
+				
 				// cero actualizada tabla detalle persona
 				PreparedStatement ps0 = con.prepareStatement(sql0);
 				debug("datos entrantes para el sql0: NOMBRE[" + datos.getPrimerNombre()
@@ -743,36 +793,9 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 				ps.setString(3, datos.getObjetivoLaboral());
 				ps.setLong(4, datos.getIdpersona());
 				ResultSet rs = ps.executeQuery();
+				info("ejecucion de la sentencia sql: "+sql);
 				if (rs.next()) {
-					info("entra en la sentencia if");
-				}
-
-				// seleccion de busqueda de id de direccion
-				debug("datos entrantes para el sqlaux: IDPERSONA["+datos.getIdpersona()+"]");
-				PreparedStatement psAux = con.prepareStatement(sqlaux);
-				psAux.setLong(1, datos.getIdpersona());
-				ResultSet rsAux = psAux.executeQuery();
-				info("ejecucion de la sentencia sqlaux: "+sqlaux);
-				rsAux.next();
-				int idAux2 = Integer.parseInt(rsAux.getString(1));
-				warn("datos enviados: IDDIRECCION["+idAux2+"]");
-
-				// segunda actualizacion tbldirecciones
-				PreparedStatement ps2 = con.prepareStatement(sql2);
-				debug("datos entrantes para el sql2: CODIGOPOSTAL[" + datos.getCodpost() + "], CALLE["
-						+ datos.getCalle() + "], COLONIA[" + datos.getColonia() + "NUMEROINTERIOR["
-						+ datos.getNumeroInterior() + "], NUMEROEXTERIOR[" + datos.getNumeroExterior() + "], IDDIRECCCION["
-						+ idAux2+ "]");
-				ps2.setInt(1, datos.getCodpost());
-				ps2.setString(2, datos.getCalle());
-				ps2.setString(3, datos.getColonia());
-				ps2.setString(4, datos.getNumeroInterior());
-				ps2.setString(5, datos.getNumeroExterior());
-				ps2.setInt(6, idAux2);
-				ResultSet rs2 = ps2.executeQuery();
-				info("ejecucion de la sentencia sql2: "+sql2);
-				if (rs2.next()) {
-					info("entra en la sentencia if");
+					
 				}
 
 				// tercera actualizacion piv_03 --acta de nacimiento--
@@ -839,7 +862,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 					}
 				} else {
 					PreparedStatement ps6 = con.prepareStatement(sql04);
-					debug("datos entrantes para el sqlaux3: IDPERSONA["+datos.getIdpersona()+"]");
+					debug("datos entrantes para el sql04: IDPERSONA["+datos.getIdpersona()+"]");
 					ps6.setInt(1, 3);
 					ps6.setLong(2, datos.getIdpersona());
 					ResultSet rs6 = ps6.executeQuery();
@@ -1009,7 +1032,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 		final String sql3 = "UPDATE TBLPIV02 SET CORREO=(?), IDTIPOCORREO=(?) WHERE IDPERSONA=(?) AND IDTIPOCORREO=(?)";
 		final String sql4 = "INSERT INTO TBLPIV01 VALUES (?,?,?)";
 		final String sql5 = "INSERT INTO TBLPIV02 VALUES (?,?,?)";
-		final String sql6 = "select * from tbldetspersonas";
+		final String sql6 = "select * from tbldetspersonas where idpersona=(?)";
 
 		// aux para la busqueda del id de direccion
 		final String sqlaux = "select * from tbldirecciones dir, tbldetspersonas dts where dir.iddireccion = dts.iddireccion and dts.idpersona = (?)";
@@ -1255,9 +1278,11 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 				}
 				// System.out.println();
 				
-				PreparedStatement ps17 = con.prepareStatement(sql6);
+				debug("datos entrantes para el sql6: IDPERSONA["+datos.getIdpersona()+"]");
+				PreparedStatement ps20 = con.prepareStatement(sql6);
+				ps20.setLong(1, datos.getIdpersona());
 				info("ejecucion de la sentencia sql6: " + sql6);
-				return ps17;
+				return ps20;
 			}
 
 		});

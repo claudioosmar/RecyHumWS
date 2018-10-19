@@ -143,12 +143,12 @@ public class BODatosPersonalesImpl extends Log implements BODatosPersonales {
 		info("entra en sentencia if");
 		//condicion que genera mensaje de modificacion exitosa
 		if(resultado == 1) {
-			info("mensaje correcto");
+			info("mensaje correcto: " + resultado);
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 		}
 		//Se genera mensaje de modificacion fallida
 		else {
-			error("mensaje error");
+			error("mensaje error: "+resultado);
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 		}
 		//Se regresa el mensaje

@@ -51,6 +51,7 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 		info("entra en metodo listar usuario");
 		datos.setAccion("Listar Todos los usuarios");
 		datos.setStatusOp("1");
+//		datos.setIduserp(datos.get);
 		audit.GrabarPistaAuditora(datos);
 		return sesion.Listar();
 	}
@@ -64,11 +65,11 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 		info("entra en metodo verificar usuario");
 		List<DatosFormularioBean> respuesta = sesion.VerificarLogin(datos);
 		if (respuesta.size()==1) {
-			datos.setIduser(respuesta.get(0).getIdpersona());
+			datos.setIduserp(respuesta.get(0).getIdpersona());
 			datos.setStatusOp("1");
 		}else {
 			datos.setStatusOp("0");
-			datos.setIduser(0);
+			datos.setIduserp(0);
 		}
 		
 		audit.GrabarPistaAuditora(datos);
@@ -94,7 +95,7 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 			datos.setAccion("El ID de persona "+datos.getIdpersona()+"creo el usuario "+datos.getUsuario());
 			datos.setStatusOp("1");
-			datos.setIduser(datos.getIdpersona());
+			datos.setIduserp(datos.getIdpersona());
 		}
 		//mensaje de respuesta en caso de que la condicional no se cumpla mande mensaje fallo
 		else {
@@ -102,7 +103,7 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 			datos.setAccion("El ID de persona "+datos.getIdpersona()+"creo el usuario "+datos.getUsuario());
 			datos.setStatusOp("0");
-			datos.setIduser(datos.getIdpersona());
+			datos.setIduserp(datos.getIdpersona());
 		}
 		audit.GrabarPistaAuditora(datos);
 		return mensaje;
@@ -126,15 +127,15 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 			datos.setAccion("El ID de persona "+datos.getIdpersona()+"modifico el usuario "+datos.getUsuario());
 			datos.setStatusOp("1");
-			datos.setIduser(datos.getIdpersona());
+			datos.setIduserp(datos.getIdpersona());
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
 			error("mensaje error");
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 			datos.setAccion("El ID de persona "+datos.getIdpersona()+"modifico el usuario "+datos.getUsuario());
-			datos.setStatusOp("1");
-			datos.setIduser(datos.getIdpersona());
+			datos.setStatusOp("0");
+			datos.setIduserp(datos.getIdpersona());
 		}
 		audit.GrabarPistaAuditora(datos);
 		return mensaje;
@@ -148,7 +149,7 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 	public MsgBean Eliminar(DatosInicioSesionBean datos) {
 		// TODO Auto-generated method stub
 		
-		int respuesta=sesion.Delete(datos.getIduser());
+		int respuesta=sesion.Delete(datos.getIduserp());
 		MsgBean msj = new MsgBean();
 		info("entra en sentencia if");
 		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
@@ -157,7 +158,7 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
 			datos.setAccion("El ID de persona "+datos.getIdpersona()+"elimino el usuario "+datos.getUsuario());
 			datos.setStatusOp("1");
-			datos.setIduser(datos.getIdpersona());
+			datos.setIduserp(datos.getIdpersona());
 			return msj;
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
@@ -165,8 +166,8 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 			error("mensaje error - "+ respuesta);
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
 			datos.setAccion("El ID de persona "+datos.getIdpersona()+"elimino el usuario "+datos.getUsuario());
-			datos.setStatusOp("1");
-			datos.setIduser(datos.getIdpersona());
+			datos.setStatusOp("0");
+			datos.setIduserp(datos.getIdpersona());
 			return msj;
 		}
 	}
@@ -181,7 +182,7 @@ public class BODatosLoginImpl extends Log implements BODatosLogin {
 		info("entra al metodo buscar");
 		datos.setAccion("Buscando datos");
 		datos.setStatusOp("1");
-		datos.setIduser(datos.getIdpersona());
+		datos.setIduserp(datos.getIdpersona());
 		audit.GrabarPistaAuditora(datos);
 		return sesion.Buscar(datos);
 	}

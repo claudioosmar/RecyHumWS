@@ -27,6 +27,7 @@ import com.vector.Utileria.Log;
  * 
  *   Control de Cambios:
  *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *  18/10/2018 Jair de Jesus Barcenas Gomez - Modificacion: arreglo de mensaje para el LOG
  *   
  */
 @RestController
@@ -58,7 +59,7 @@ public class DatosIdiomasController extends Log{
 	 */
 	@RequestMapping(path = "/SGRHWebService/DatosIdiomas/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosIdiomasBean datos){
-		info("Se actializo el idioma "+datos.getIdidioma()+" al ID de persona "+datos.getIdpersona()+"\n ");
+		info("Se actializo el idioma");
 		return new ResponseEntity<MsgBean>(idioma.Modificar(datos),HttpStatus.OK);
 	}
 	
@@ -71,7 +72,7 @@ public class DatosIdiomasController extends Log{
 	 */
 	@RequestMapping(path = "/SGRHWebService/DatosIdiomas/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosIdiomasBean datos){
-		info("Se elimino el idioma "+datos.getIddominio()+"\n ");
+		info("Se elimino el idioma ");
 		return new ResponseEntity<MsgBean>(idioma.Eliminar(datos),HttpStatus.OK);
 	}
 	
@@ -84,7 +85,7 @@ public class DatosIdiomasController extends Log{
 	 */
 	@RequestMapping(path =  "/SGRHWebService/DatosIdiomas/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosIdiomasBean>>buscar(@RequestBody DatosIdiomasBean datos){
-		info("Se listo los idiomas de la persona con id de dominio "+datos.getIddominio()+" al ID de persona "+datos.getIdpersona()+"\n ");
+		info("Se listo los idiomas de la persona");
 		return new ResponseEntity<List<DatosIdiomasBean>>(idioma.Buscar(datos),HttpStatus.OK);
 	}
 	
@@ -97,7 +98,7 @@ public class DatosIdiomasController extends Log{
      */
     @RequestMapping(value = "/SGRHWebService/DatosIdiomas/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosIdiomasBean>> consulta(@RequestBody DatosIdiomasBean datos){
-		info("Ingresando a listar idiomas "+"\n");
+		info("Ingresando a listar idiomas ");
 		List<DatosIdiomasBean> idiomas = idioma.Listar();
 		if(idiomas.isEmpty()) {
 			info("no se encontraron datos");

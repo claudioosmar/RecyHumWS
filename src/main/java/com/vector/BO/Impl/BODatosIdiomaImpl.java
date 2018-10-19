@@ -24,6 +24,7 @@ import com.vector.Utileria.Log;
  * 
  *   Control de Cambios:
  *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
+ *  18/10/2018 Jair de Jesus Barcenas Gomez - Modificacion correccion de mensajes
  *   
  */
 @Service
@@ -43,9 +44,10 @@ public class BODatosIdiomaImpl extends Log implements BODatosIdiomas {
 		//Sentencia for para la validacion del tamaño de los datos del bean		
 		info("entra en ciclo for");
 		for (int i = 0; i < datos.size(); i++) {
-			info("envia respuesta");
+			info("mensaje correcto");
 			resultado = daoidiomas.Crear(datos.get(i));
 			if(resultado==0) {
+				error("mensaje de error");
 				error("Fallo en la insercion de idioma "+i+1);
 			}
 		}

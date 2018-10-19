@@ -48,7 +48,8 @@ public class DatosEstudioController extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosEstudio/Crear", method = RequestMethod.POST)
 	public ResponseEntity<DatosEstudioBean> insertar(@RequestBody List<DatosEstudioBean> datos){
 		info("se creo un nuevo estudio: "+datos.get(0).getIdestudio());
-		return new ResponseEntity<DatosEstudioBean>(estudio.Crear(datos),HttpStatus.OK);
+		DatosEstudioBean respuesta = estudio.Crear(datos);
+		return new ResponseEntity<DatosEstudioBean>(respuesta,HttpStatus.OK);
 	}
 	
 	/**

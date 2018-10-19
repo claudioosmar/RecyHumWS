@@ -44,6 +44,7 @@ public class BODatosEstudioImpl extends Log implements BODatosEstudio {
 		// TODO Auto-generated method stub
 		int respuesta = 0;
 		DatosEstudioBean retorno = new DatosEstudioBean();
+		MsgBean msj= new MsgBean();
 		info("entra en ciclo for");
 		for (int i = 0; i < datos.size(); i++) {
 			retorno.setIdestudio(daoestudio.Crear(datos.get(i)));
@@ -51,10 +52,14 @@ public class BODatosEstudioImpl extends Log implements BODatosEstudio {
 			info("envia respuesta: "+respuesta);
 			if (respuesta == 0) {
 				error("fallo la insercion " + i + 1);
+				
+				msj.setMsjAccion(new EnvioMensaje().getFallo());
+				retorno.setMsj(msj);
 				break;
 			}
 		}
-
+		msj.setMsjAccion(new EnvioMensaje().getCorrecto());
+		retorno.setMsj(msj);
 		return retorno;
 	}
 
