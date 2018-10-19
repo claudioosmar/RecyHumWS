@@ -87,7 +87,26 @@ public class DatosEstudioBean {
 	/** The idcarrera 2. */
 	@NotNull
 	private int idcarrera2=0;
+	private MsgBean msj;
 	
+	
+	/**
+	 * @return Obtienes el valor de msj del tipo MsgBean
+	 */
+	
+	public MsgBean getMsj() {
+		return msj;
+	}
+
+	
+	/**
+	 * @param Agregar el valor a msj del tipo MsgBean
+	 */
+	
+	public void setMsj(MsgBean msj) {
+		this.msj = msj;
+	}
+
 	//declaracion de setters y getters
 	/**
 	 * Gets the idgrado.
