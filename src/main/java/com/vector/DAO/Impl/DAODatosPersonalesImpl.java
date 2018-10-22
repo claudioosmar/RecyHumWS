@@ -730,36 +730,6 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				// seleccion de busqueda de id de direccion
-				debug("datos entrantes para el sqlaux: IDPERSONA["+datos.getIdpersona()+"]");
-				PreparedStatement psAux = con.prepareStatement(sqlaux);
-				psAux.setLong(1, datos.getIdpersona());
-				ResultSet rsAux = psAux.executeQuery();
-				info("ejecucion de la sentencia sqlaux: "+sqlaux);
-				rsAux.next();
-				int idAux2 = Integer.parseInt(rsAux.getString(1));
-				warn("datos enviados: IDDIRECCION["+idAux2+"]");
-				
-				if(idAux2 == 0) {
-					info("no se encontraron datos");
-				}else {
-					debug("datos entrantes para el sql2: CODIGOPOSTAL[" + datos.getIdCodigoPostal() + "], CALLE["
-							+ datos.getCalle() + "], COLONIA[" + datos.getColonia() + "NUMEROINTERIOR["
-							+ datos.getNumeroInterior() + "], NUMEROEXTERIOR[" + datos.getNumeroExterior() + "], IDDIRECCCION["
-							+ idAux2+ "], IDLOCALIDAD["+datos.getIdlocalidad()+"]");
-				// segunda actualizacion tbldirecciones
-				PreparedStatement ps2 = con.prepareStatement(sql2);
-				ps2.setInt(1, datos.getIdCodigoPostal());
-				ps2.setString(2, datos.getCalle());
-				ps2.setString(3, datos.getColonia());
-				ps2.setString(4, datos.getNumeroInterior());
-				ps2.setString(5, datos.getNumeroExterior());
-				ps2.setInt(6, datos.getIdlocalidad());
-				ps2.setInt(7, idAux2);
-				ResultSet rs2 = ps2.executeQuery();
-//				rs2.next();
-				info("ejecucion de la sentencia sql2: "+sql2);
-				}
 				
 				// cero actualizada tabla detalle persona
 				PreparedStatement ps0 = con.prepareStatement(sql0);
@@ -797,7 +767,36 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 				if (rs.next()) {
 					
 				}
-
+				// seleccion de busqueda de id de direccion
+				debug("datos entrantes para el sqlaux: IDPERSONA["+datos.getIdpersona()+"]");
+				PreparedStatement psAux = con.prepareStatement(sqlaux);
+				psAux.setLong(1, datos.getIdpersona());
+				ResultSet rsAux = psAux.executeQuery();
+				info("ejecucion de la sentencia sqlaux: "+sqlaux);
+			//	rsAux.next();
+				int idAux2 = Integer.parseInt(rsAux.getString(1));
+				warn("datos enviados: IDDIRECCION["+idAux2+"]");
+				
+			if(rsAux.next()) {
+					debug("datos entrantes para el sql2: CODIGOPOSTAL[" + datos.getIdCodigoPostal() + "], CALLE["
+							+ datos.getCalle() + "], COLONIA[" + datos.getColonia() + "NUMEROINTERIOR["
+							+ datos.getNumeroInterior() + "], NUMEROEXTERIOR[" + datos.getNumeroExterior() + "], IDDIRECCCION["
+							+ idAux2+ "], IDLOCALIDAD["+datos.getIdlocalidad()+"]");
+				// segunda actualizacion tbldirecciones
+				PreparedStatement ps2 = con.prepareStatement(sql2);
+				ps2.setInt(1, datos.getIdCodigoPostal());
+				ps2.setString(2, datos.getCalle());
+				ps2.setString(3, datos.getColonia());
+				ps2.setString(4, datos.getNumeroInterior());
+				ps2.setString(5, datos.getNumeroExterior());
+				ps2.setInt(6, datos.getIdlocalidad());
+				ps2.setInt(7, idAux2);
+				ResultSet rs2 = ps2.executeQuery();
+				rs2.next();
+				info("ejecucion de la sentencia sql2: "+sql2);
+			}else {
+				info("datos no encontrados");
+			}
 				// tercera actualizacion piv_03 --acta de nacimiento--
 				PreparedStatement ps3 = con.prepareStatement(sql3);
 				debug("datos entrantes para el sql3: FECHANACIMIENTO["+datos.getFechaNacimiento()+"], URLFECHANACIMIENTO["+datos.getUrlFechaNacimiento()+"],IDPERSONA["+datos.getIdpersona()+"]");
@@ -1027,7 +1026,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 		// TODO Auto-generated method stub
 		final String sql0 = "UPDATE TBLDETSPERSONAS SET  NOMBRE=(?), SEGNOMBRE =(?), APELLIDOP =(?), APELLIDOM=(?), SEXO=(?), FECHANAC=(?), IDEDOCIVIL=(?), NACIONALIDAD=(?) WHERE IDPERSONA=(?)";
 		final String sql = "UPDATE TBLPERSONAS SET  URLFOTO=(?), RESUMEN =(?), OBJLABORAL =(?) WHERE IDPERSONA=(?) ";
-		final String sql1 = "UPDATE TBLDIRECCIONES SET CALLE =(?), COLONIA=(?), NUMINTERIOR=(?), NUMEXTERIOR=(?), CODPOST=(?), IDLOCALIDAD=(?) WHERE IDDIRECCION =(?)";
+		final String sql1 = "UPDATE TBLDIRECCIONES SET CODPOST=(?), CALLE=(?), COLONIA=(?), NUMINTERIOR=(?),NUMEXTERIOR=(?), IDLOCALIDAD=(?) WHERE IDDIRECCION=(?)";
 		final String sql2 = "UPDATE TBLPIV01 SET TELEFONO=(?) WHERE IDTIPOTELEFONO=(?) AND IDPERSONA =(?)";
 		final String sql3 = "UPDATE TBLPIV02 SET CORREO=(?), IDTIPOCORREO=(?) WHERE IDPERSONA=(?) AND IDTIPOCORREO=(?)";
 		final String sql4 = "INSERT INTO TBLPIV01 VALUES (?,?,?)";
@@ -1087,25 +1086,24 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 				rsAux.next();
 				int idAux2 = Integer.parseInt(rsAux.getString(1));
 				warn("datos enviados: IDDIRECCION[" + idAux2+"]" );
-				if (rsAux.next()) {
-					info("entra en la sentencia if");
+				
 					// actualizacion en direccion
-					debug("datos entrantes para el sql2: CODIGOPOSTAL[" + datos.getCodpost() + "], CALLE["
-							+ datos.getCalle() + "], COLONIA[" + datos.getColonia() + "NUMEROINTERIOR["
+					debug("datos entrantes para el sql2: CODIGOPOSTAL[" + datos.getIdCodigoPostal() + "], CALLE["
+							+ datos.getCalle() + "], COLONIA[" + datos.getColonia() + "], NUMEROINTERIOR["
 							+ datos.getNumeroInterior() + "], NUMEROEXTERIOR[" + datos.getNumeroExterior() + "], IDDIRECCCION["
-							+ idAux2+ "]");
+							+ idAux2+ "], IDLOCALIDAD["+datos.getIdlocalidad()+"]");
 					PreparedStatement ps1 = con.prepareStatement(sql1);
-					ps1.setString(1, datos.getCalle());
-					ps1.setString(2, datos.getColonia());
-					ps1.setString(3, datos.getNumeroInterior());
-					ps1.setString(4, datos.getNumeroExterior());
-					ps1.setInt(5, datos.getIdCodigoPostal());
+					ps1.setString(2, datos.getCalle());
+					ps1.setString(3, datos.getColonia());
+					ps1.setString(4, datos.getNumeroInterior());
+					ps1.setString(5, datos.getNumeroExterior());
+					ps1.setInt(1, datos.getIdCodigoPostal());
 					ps1.setInt(6, datos.getIdlocalidad());
 					ps1.setLong(7, idAux2);
 					ResultSet rs1 = ps1.executeQuery();
 					info("ejecucion de la sentencia sql1: " + sql1);
 					rs1.next();
-				}
+				
 				debug("datos entrantes para el sqlaux3: IDPERSONA["+datos.getIdpersona()+"]");
 				// seleccion para saber si hay valor en piv01 por telefono
 				PreparedStatement psAux5 = con.prepareStatement(sqlaux3);

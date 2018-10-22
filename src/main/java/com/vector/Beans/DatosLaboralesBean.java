@@ -87,7 +87,47 @@ public class DatosLaboralesBean {
 	/** The idempresa. */
 	@NotNull
 	private int idempresa=0;
+	@NotNull
+	private String descripcionmotivo="";
 	
+	
+	/**
+	 * @return Obtienes el valor de descripcionmotivo del tipo String
+	 */
+	
+	public String getDescripcionmotivo() {
+		return descripcionmotivo;
+	}
+
+
+	
+	/**
+	 * @param Agregar el valor a descripcionmotivo del tipo String
+	 */
+	
+	public void setDescripcionmotivo(String descripcionmotivo) {
+		this.descripcionmotivo = descripcionmotivo;
+	}
+
+	private MsgBean msj;
+	
+	/**
+	 * @return Obtienes el valor de msj del tipo MsgBean
+	 */
+	
+	public MsgBean getMsj() {
+		return msj;
+	}
+
+	
+	/**
+	 * @param Agregar el valor a msj del tipo MsgBean
+	 */
+	
+	public void setMsj(MsgBean msj) {
+		this.msj = msj;
+	}
+
 	// declaracion de getters y setters
 	/**
 	 * Gets the idmotivotermino.

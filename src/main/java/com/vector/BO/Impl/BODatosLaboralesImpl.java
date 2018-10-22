@@ -42,14 +42,24 @@ public class BODatosLaboralesImpl extends Log implements BODatosLaborales {
 	@Override
 	public DatosLaboralesBean Crear(List<DatosLaboralesBean> datos) {
 		// TODO Auto-generated method stub
+		int respuesta = 0;
 		DatosLaboralesBean retorno = new DatosLaboralesBean();
+		MsgBean msj= new MsgBean();
 		info("entra en ciclo for");
 		//Sentencia for para la validacion del tamaño de los datos del bean
 		for (int i = 0; i < datos.size(); i++) {
-			info("envia informacio");
-			retorno.setIdexplaborl(daolabor.Crear(datos.get(i))); 
+			retorno.setIdexplaborl(daolabor.Crear(datos.get(i)));
+			respuesta= Integer.parseInt(String.valueOf(retorno.getIdexplaborl()));
+			if (respuesta == 0) {
+				error("fallo la insercion " + i + 1);
+				msj.setMsjAccion(new EnvioMensaje().getFallo());
+				retorno.setMsj(msj);
+				break;
+			}		
 		}
 		
+		msj.setMsjAccion(new EnvioMensaje().getCorrecto());
+		retorno.setMsj(msj);
 		return retorno;
 	}
 
