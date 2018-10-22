@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
  *   
  */
 //Clase Bean para los datos de Cursos
-public class DatosCursoBean {
+public class DatosCursoBean extends DatosPistaAuditoraBean{
 	
 	/** The idcurso. */
 	//Variable para declara los getter y setter de certificado

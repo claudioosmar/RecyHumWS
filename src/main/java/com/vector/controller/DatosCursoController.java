@@ -5,6 +5,8 @@ package com.vector.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vector.BO.BODatosCurso;
 import com.vector.Beans.DatosCursoBean;
+import com.vector.Beans.DatosPistaAuditoraBean;
 import com.vector.Beans.MsgBean;
 import com.vector.Utileria.Log;
 
@@ -46,7 +49,7 @@ public class DatosCursoController extends Log{
 	 */
 	//Ruta utilizada para la llamada de la funcion crear cursos
 	@RequestMapping(path = "/SGRHWebService/DatosCurso/Crear", method = RequestMethod.POST)
-	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosCursoBean> datos){
+	public ResponseEntity<MsgBean> insertar(@RequestBody @Valid List<DatosCursoBean> datos){
 		//Linea de impresion en consola que muestra datos de los cursos al ser creados
 		info("Se creo un curso: IDCURSO["+datos.get(0).getIdcurso()+"]");
 		return new ResponseEntity<MsgBean>(curso.Crear(datos),HttpStatus.OK);
@@ -61,7 +64,7 @@ public class DatosCursoController extends Log{
 	 */
 	//Ruta utilizada para la llamada de la funcion Modificar cursos
 	@RequestMapping(path = "/SGRHWebService/DatosCurso/Modificar",method = RequestMethod.POST)
-	public ResponseEntity<MsgBean>actualizar(@RequestBody  DatosCursoBean datos){
+	public ResponseEntity<MsgBean>actualizar(@RequestBody @Valid DatosCursoBean datos){
 		//Linea de impresion en consola que muestra datos de los cursos al ser modificados
 		info("Se modifico un curso con id: IDCURSO["+datos.getIdcurso()+"], IDCERTIFICADO["+datos.getIdcertificado()+"]");
 		return new ResponseEntity<MsgBean>(curso.Modificar(datos),HttpStatus.OK);
@@ -76,7 +79,7 @@ public class DatosCursoController extends Log{
 	 */
 	//Ruta utilizada para la llamada de la funcion eliminar cursos
 	@RequestMapping(path = "/SGRHWebService/DatosCurso/Eliminar",method = RequestMethod.POST)
-	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosCursoBean datos){
+	public ResponseEntity<MsgBean> eliminar(@RequestBody @Valid DatosCursoBean datos){
 		//Linea de impresion en consola que muestra datos de los cursos al ser eliminados
 		info("se elimino un curso con id: IDCURSO["+datos.getIdcurso()+"]");
 		return new ResponseEntity<MsgBean>(curso.Eliminar(datos),HttpStatus.OK);
@@ -106,10 +109,10 @@ public class DatosCursoController extends Log{
 	 */
 	//Ruta utilizada para la llamada de la funcion listar cursos
 	@RequestMapping(path = "/SGRHWebService/DatosCurso/Listar",method=RequestMethod.POST)
-	public ResponseEntity<List<DatosCursoBean>> consulta(@RequestBody DatosCursoBean datos){
+	public ResponseEntity<List<DatosCursoBean>> consulta(@RequestBody @Valid DatosPistaAuditoraBean datos){
 		//mensaje de impresion de la accion realisada
 		info("Ingresando a listar cursos ");
-		List<DatosCursoBean> cursos = curso.Listar();
+		List<DatosCursoBean> cursos = curso.Listar(datos);
 		if(cursos.isEmpty()) {
 			info("no se encontraron datos");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

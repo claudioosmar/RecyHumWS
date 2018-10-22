@@ -5,6 +5,8 @@ package com.vector.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,7 +47,7 @@ public class DatosCorreoAltController extends Log {
 	 */
 	//Ruta utilizada para la llamada de la funcion crear correoalt
 	@RequestMapping(path = "/SGRHWebService/DatosCorreo/Crear", method = RequestMethod.POST)
-	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosCorreoAltBean> datos){
+	public ResponseEntity<MsgBean> insertar(@RequestBody @Valid List<DatosCorreoAltBean> datos){
 		//Linea de impresion en consola que muestra datos del correoalt al ser creados
 		info("Se creo un correo: "+datos.toString());
 		return new ResponseEntity<MsgBean>(correo.Crear(datos),HttpStatus.OK);
@@ -60,7 +62,7 @@ public class DatosCorreoAltController extends Log {
 	 */
 	//Ruta utilizada para la llamada de la funcion Modificar correoalt
 	@RequestMapping(path = "/SGRHWebService/DatosCorreo/Modificar",method = RequestMethod.POST)
-	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosCorreoAltBean datos){
+	public ResponseEntity<MsgBean>actualizar(@RequestBody @Valid DatosCorreoAltBean datos){
 		//Linea de impresion en consola que muestra datos del correoalt al ser modificados
 		info("Se modifico el correo: "+datos.toString());
 		return new ResponseEntity<MsgBean>(correo.Modificar(datos),HttpStatus.OK);
@@ -75,7 +77,7 @@ public class DatosCorreoAltController extends Log {
 	 */
 	//Ruta utilizada para la llamada de la funcion eliminar correoalt
 	@RequestMapping(path = "/SGRHWebService/DatosCorreo/Eliminar",method = RequestMethod.POST)
-	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosCorreoAltBean datos){
+	public ResponseEntity<MsgBean> eliminar(@RequestBody @Valid DatosCorreoAltBean datos){
 		//Linea de impresion en consola que muestra datos del correoalt al ser eliminados
 		info("se elimino el correo: "+datos.getCorreoNw());
 		return new ResponseEntity<MsgBean>(correo.Eliminar(datos),HttpStatus.OK);
@@ -90,7 +92,7 @@ public class DatosCorreoAltController extends Log {
 	 */
 	//Ruta utilizada para la llamada de la funcion buscar correoalt
 	@RequestMapping(path = "/SGRHWebService/DatosCorreo/Buscar",method=RequestMethod.POST)
-	public ResponseEntity<DatosCorreoAltBean> buscar(@RequestBody DatosCorreoAltBean datos){
+	public ResponseEntity<DatosCorreoAltBean> buscar(@RequestBody @Valid DatosCorreoAltBean datos){
 		//mensaje de impresion en la consola que muestra los datos que relacionan la consulta
 		info("se busco el correo de la persona: "+datos.getIdpersona());
 		return new ResponseEntity<DatosCorreoAltBean>(correo.Buscar(datos),HttpStatus.OK);
@@ -105,7 +107,7 @@ public class DatosCorreoAltController extends Log {
 	 */
 	//Ruta utilizada para la llamada de la funcion listar idiomas
 	@RequestMapping(path = "/SGRHWebService/DatosCorreo/Listar",method=RequestMethod.POST)
-	public ResponseEntity<List<DatosCorreoAltBean>> consulta(@RequestBody DatosCorreoAltBean datos){
+	public ResponseEntity<List<DatosCorreoAltBean>> consulta(@RequestBody @Valid DatosCorreoAltBean datos){
 		//mensaje de impresion de la accion realisada
 		info("Ingresando a listar los correos ");
 		List<DatosCorreoAltBean> correos = correo.Listar(datos);

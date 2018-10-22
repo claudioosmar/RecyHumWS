@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.vector.BO.BODatosCurso;
 import com.vector.Beans.DatosCursoBean;
+import com.vector.Beans.DatosPistaAuditoraBean;
 import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosCurso;
 import com.vector.Utileria.EnvioMensaje;
@@ -33,6 +34,8 @@ public class BODatosCursoImpl extends Log implements BODatosCurso {
 	/** The daocurso. */
 	@Autowired
 	private DAODatosCurso daocurso;
+	@Autowired
+	private BOPistaAuditoraImpl audit;
 
 	/** 
 	 * {@inheritDoc}
@@ -40,6 +43,7 @@ public class BODatosCursoImpl extends Log implements BODatosCurso {
 	@Override
 	public MsgBean Crear(List<DatosCursoBean> datos) {
 		// TODO Auto-generated method stub
+		datos.get(0).setAccion("Crear Curso "+datos);
 		int resultado=0;
 		DatosCursoBean retorno = new DatosCursoBean();
 		//Sentencia for para la validacion del tamaño de los datos del bean
@@ -59,11 +63,15 @@ public class BODatosCursoImpl extends Log implements BODatosCurso {
 		if(resultado == 1) {
 			info("mensaje correcto");
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+			datos.get(0).setStatusOp("1");
+			audit.GrabarPistaAuditora(datos.get(0));
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
 			error("mensaje error");
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+			datos.get(0).setStatusOp("0");
+			audit.GrabarPistaAuditora(datos.get(0));
 		}
 		return mensaje;
 	}
@@ -75,6 +83,7 @@ public class BODatosCursoImpl extends Log implements BODatosCurso {
 	@Override
 	public MsgBean Modificar(DatosCursoBean datos) {
 		// TODO Auto-generated method stub
+		datos.setAccion("Modificar Curso "+datos);
 		int respuesta = daocurso.Modificar(datos);
 		//Condicional para el envio del mensaje de respuesta
 		MsgBean msj = new MsgBean();
@@ -83,14 +92,16 @@ public class BODatosCursoImpl extends Log implements BODatosCurso {
 		if(respuesta==1) {
 			info("mensaje correcto");
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
-			
+			datos.setStatusOp("1");
+			audit.GrabarPistaAuditora(datos);
 			return msj;
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
 			error("mensaje error");
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
-			
+			datos.setStatusOp("0");
+			audit.GrabarPistaAuditora(datos);
 			return msj;
 		}
 	}
@@ -101,6 +112,7 @@ public class BODatosCursoImpl extends Log implements BODatosCurso {
 	@Override
 	public MsgBean Eliminar(DatosCursoBean datos) {
 		// TODO Auto-generated method stub
+		datos.setAccion("Eliminar Curso "+datos);
 		int respuesta=daocurso.Eliminar(datos);
 		//Condicional para el envio del mensaje de respuesta
 		MsgBean msj = new MsgBean();
@@ -109,14 +121,16 @@ public class BODatosCursoImpl extends Log implements BODatosCurso {
 		if(respuesta==1) {
 			info("mensaje correcto");
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
-	
+			datos.setStatusOp("1");
+			audit.GrabarPistaAuditora(datos);
 			return msj;
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
 			error("mensaje error");
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
-			
+			datos.setStatusOp("0");
+			audit.GrabarPistaAuditora(datos);
 			return msj;
 		}
 	}
@@ -128,7 +142,10 @@ public class BODatosCursoImpl extends Log implements BODatosCurso {
 	@Override
 	public List<DatosCursoBean> Buscar(DatosCursoBean datos) {
 		// TODO Auto-generated method stub
+		datos.setAccion("Buscar Curso "+datos);
 		info("entra en metodo buscar");
+		datos.setStatusOp("1");
+		audit.GrabarPistaAuditora(datos);
 		return daocurso.Buscar(datos);
 	}
 
@@ -137,9 +154,12 @@ public class BODatosCursoImpl extends Log implements BODatosCurso {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<DatosCursoBean> Listar() {
+	public List<DatosCursoBean> Listar(DatosPistaAuditoraBean datos) {
 		// TODO Auto-generated method stub
+		datos.setAccion("Listar Curso "+datos);
 		info("entra en metodo listar");
+		datos.setStatusOp("1");
+		audit.GrabarPistaAuditora(datos);
 		return daocurso.Listar();
 	}
 

@@ -6,6 +6,7 @@ package com.vector.BO;
 import java.util.List;
 
 import com.vector.Beans.DatosCursoBean;
+import com.vector.Beans.DatosPistaAuditoraBean;
 import com.vector.Beans.MsgBean;
 
 // TODO: Auto-generated Javadoc
@@ -68,5 +69,5 @@ public interface BODatosCurso {
 	 * @return Retorna list
 	 */
 	//LISTADO DE DATOS DEL APARTADO CURSO
-	List<DatosCursoBean> Listar();
+	List<DatosCursoBean> Listar(DatosPistaAuditoraBean datos);
 }
