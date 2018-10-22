@@ -121,7 +121,8 @@ public class DatosInicioSesionController extends Log{
 	 * Clase: consultaprueba 
 	 * Descripcion:.
 	 *
-	 * @return Retorna response entity
+	 * @return Retorna response entity}
+	 * @deprecated
 	 */
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/VerificarPrueba", method = RequestMethod.POST)
 	public ResponseEntity<List<DatosFormularioBean>> consultaprueba(){

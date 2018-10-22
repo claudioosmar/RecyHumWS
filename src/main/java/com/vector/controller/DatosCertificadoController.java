@@ -4,6 +4,9 @@
 package com.vector.controller;
 
 import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.vector.BO.BODatosCertificado;
 import com.vector.Beans.DatosCertificadoBean;
+import com.vector.Beans.DatosInicioSesionBean;
 import com.vector.Beans.MsgBean;
 import com.vector.Utileria.Log;
 
@@ -104,10 +108,10 @@ public class DatosCertificadoController extends Log {
 	 */
 	//Ruta utilizada para la llamada de la funcion listar idiomas
 	@RequestMapping(path = "/SGRHWebService/DatosCertificado/Listar",method=RequestMethod.POST)
-	public ResponseEntity<List< DatosCertificadoBean>> consulta(@RequestBody DatosCertificadoBean datos){
+	public ResponseEntity<List< DatosCertificadoBean>> consulta(@RequestBody @Valid  DatosInicioSesionBean datos){
 		//mensaje de impresion de la accion realisada
 		info("Ingresando a listar certificado ");
-		List< DatosCertificadoBean> certificados = certificado.Listar();
+		List< DatosCertificadoBean> certificados = certificado.Listar(datos);
 		if(certificados.isEmpty()) {
 			info("No se encontro contenido");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

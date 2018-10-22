@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
  *
  */
 //Clase Bean para los datos de correo alternativo
-public class DatosCorreoAltBean {
+public class DatosCorreoAltBean extends DatosInicioSesionBean {
 	
 	/** The idtipocorreo. */
 	//Variable para declara los getter y setter de correo alternativo

@@ -108,7 +108,7 @@ public class DatosCorreoAltController extends Log {
 	public ResponseEntity<List<DatosCorreoAltBean>> consulta(@RequestBody DatosCorreoAltBean datos){
 		//mensaje de impresion de la accion realisada
 		info("Ingresando a listar los correos ");
-		List<DatosCorreoAltBean> correos = correo.Listar(datos.getIdpersona());
+		List<DatosCorreoAltBean> correos = correo.Listar(datos);
 		if(correos.isEmpty()) {
 			info("no se encontraron datos");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

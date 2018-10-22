@@ -69,7 +69,7 @@ public interface BODatosCorreoAlt {
 	 * @return Retorna list
 	 */
 	//REGRESA UN LISTADO DE LOS DATOS DEL APARTADO DE CORREOALT
-	List<DatosCorreoAltBean> Listar(long id);
+	List<DatosCorreoAltBean> Listar(DatosCorreoAltBean datos);
 	/**
 	 * @param datos
 	 * @return

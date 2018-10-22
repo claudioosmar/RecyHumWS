@@ -7,7 +7,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.vector.BO.BODatosCertificado;
+import com.vector.BO.BOPistaAuditora;
 import com.vector.Beans.DatosCertificadoBean;
+import com.vector.Beans.DatosInicioSesionBean;
 import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosCertificado;
 import com.vector.Utileria.EnvioMensaje;
@@ -31,6 +33,8 @@ public class BODatosCertificadoImpl extends Log implements BODatosCertificado {
 	/** The daocertificado. */
 	@Autowired
 	private DAODatosCertificado daocertificado;
+	@Autowired
+	private BOPistaAuditora audit;
 	
 	/** 
 	 * {@inheritDoc}
@@ -38,6 +42,7 @@ public class BODatosCertificadoImpl extends Log implements BODatosCertificado {
 	@Override
 	public MsgBean Crear(List<DatosCertificadoBean> datos) {
 		// TODO Auto-generated method stub
+		datos.get(0).setAccion("Crear Certificado "+datos);
 		int respuesta=0;
 		info("entra en ciclo for");
 		//Sentencia for para la validacion del tamaño de los datos del bean
@@ -46,9 +51,13 @@ public class BODatosCertificadoImpl extends Log implements BODatosCertificado {
 			respuesta = daocertificado.Crear(datos.get(i));
 			if (respuesta==0) {
 				error("Fallo en la insercion"+i+1);
-		
+				datos.get(0).setStatusOp("0");
+				audit.GrabarPistaAuditora(datos.get(0));	
 			}
+		
 		}
+		datos.get(0).setStatusOp("1");
+		audit.GrabarPistaAuditora(datos.get(0));
 		//Condicional para el envio del mensaje de respuesta
 		MsgBean mensaje = new MsgBean();
 		mensaje.setMsjAccion(new EnvioMensaje().getFallo());
@@ -57,12 +66,16 @@ public class BODatosCertificadoImpl extends Log implements BODatosCertificado {
 		if(respuesta == 1) {
 			info("mensaje correcto");
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+			datos.get(0).setStatusOp("1");
+			audit.GrabarPistaAuditora(datos.get(0));
 			return mensaje;
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
 			error("mensaje de error");
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+			datos.get(0).setStatusOp("0");
+			audit.GrabarPistaAuditora(datos.get(0));
 		return mensaje;
 	}
 }
@@ -72,6 +85,7 @@ public class BODatosCertificadoImpl extends Log implements BODatosCertificado {
 	 */
 	@Override
 	public MsgBean Modificar(DatosCertificadoBean datos) {
+		datos.setAccion("Modificar Certificado "+datos);
 		// TODO Auto-generated method stub
 		//Condicional para el envio del mensaje de respuesta
 		MsgBean mensaje = new MsgBean();
@@ -82,11 +96,15 @@ public class BODatosCertificadoImpl extends Log implements BODatosCertificado {
 		if(resultado == 1) {
 			info("mensaje correcto");
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+			datos.setStatusOp("1");
+			audit.GrabarPistaAuditora(datos);
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
 			error("mensaje de error");
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+			datos.setStatusOp("0");
+			audit.GrabarPistaAuditora(datos);
 		}
 		return mensaje;
 	}
@@ -96,6 +114,7 @@ public class BODatosCertificadoImpl extends Log implements BODatosCertificado {
 	 */
 	@Override
 	public MsgBean Eliminar(DatosCertificadoBean datos) {
+		datos.setAccion("Eliminar Certificado "+datos);
 		// TODO Auto-generated method stub
 		int respuesta=daocertificado.Eliminar(datos);
 		//Condicional para el envio del mensaje de respuesta
@@ -105,14 +124,16 @@ public class BODatosCertificadoImpl extends Log implements BODatosCertificado {
 		if(respuesta==1) {
 			info("mensaje correcto");
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
-			
+			datos.setStatusOp("1");
+			audit.GrabarPistaAuditora(datos);
 			return msj;
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
 			error("mensaje correcto");
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
-			
+			datos.setStatusOp("0");
+			audit.GrabarPistaAuditora(datos);
 			return msj;
 		}
 	}
@@ -124,6 +145,9 @@ public class BODatosCertificadoImpl extends Log implements BODatosCertificado {
 	public List<DatosCertificadoBean> Buscar(DatosCertificadoBean datos) {
 		// TODO Auto-generated method stub
 		info("entra en metodo buscar");
+		datos.setAccion("Buscar Certificado "+datos);
+		datos.setStatusOp("1");
+		audit.GrabarPistaAuditora(datos);
 		return daocertificado.Buscar(datos);
 	}
 
@@ -131,9 +155,12 @@ public class BODatosCertificadoImpl extends Log implements BODatosCertificado {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<DatosCertificadoBean> Listar() {
+	public List<DatosCertificadoBean> Listar(DatosInicioSesionBean datos) {
 		// TODO Auto-generated method stub
 		info("entra en metodo listar");
+		datos.setAccion("Listar Certificado "+datos);
+		datos.setStatusOp("1");
+		audit.GrabarPistaAuditora(datos);
 		return daocertificado.Listar();
 	}
 

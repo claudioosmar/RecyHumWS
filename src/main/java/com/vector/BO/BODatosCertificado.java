@@ -6,6 +6,7 @@ package com.vector.BO;
 import java.util.List;
 
 import com.vector.Beans.DatosCertificadoBean;
+import com.vector.Beans.DatosInicioSesionBean;
 import com.vector.Beans.MsgBean;
 
 // TODO: Auto-generated Javadoc
@@ -71,5 +72,5 @@ public interface BODatosCertificado {
 	 * @return Retorna list
 	 */
 	//REGRESA UN LISTADO DE LOS DATOS DEL APARTADO CERTIFICADO 
-	List<DatosCertificadoBean> Listar();
+	List<DatosCertificadoBean> Listar(DatosInicioSesionBean datos);
 }
