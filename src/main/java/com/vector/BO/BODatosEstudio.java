@@ -69,6 +69,6 @@ public interface BODatosEstudio {
 	 * @return Retorna list
 	 */
 	//LISTADO DE DATOS DE ESTUDIO
-	List<DatosEstudioBean> Listar();
+	List<DatosEstudioBean> Listar(DatosEstudioBean datos);
 
 }

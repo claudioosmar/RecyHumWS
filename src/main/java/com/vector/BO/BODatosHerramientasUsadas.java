@@ -69,5 +69,5 @@ public interface BODatosHerramientasUsadas {
 	 * @return Retorna list
 	 */
 	//REGRESA UN LISTADO DE DATOS DEL APARTADO HERRAMIENTAS USADAS
-	List<DatosHerramientasUsadasBean> Listar();
+	List<DatosHerramientasUsadasBean> Listar(DatosHerramientasUsadasBean datos);
 }

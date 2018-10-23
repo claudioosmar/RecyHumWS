@@ -78,7 +78,7 @@ public class DatosTelefonoAltController extends Log {
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosTelefonoAltBean datos){
 		//Linea de impresion en consola que muestra los datos telefono al ser eliminados
 		info("Se elimino el telefono "+datos.getTelefonoNw()+"\n ");
-		return new ResponseEntity<MsgBean>(telefono.Eliminar(datos.getTelefonoNw()),HttpStatus.OK);
+		return new ResponseEntity<MsgBean>(telefono.Eliminar(datos),HttpStatus.OK);
 	}
 	
 	/**
@@ -108,7 +108,7 @@ public class DatosTelefonoAltController extends Log {
 	public ResponseEntity<List<DatosTelefonoAltBean>> consulta(@RequestBody DatosTelefonoAltBean datos){
 		//mensaje de impresion de la accion realisada
 		info("Ingresando a listar telefonos "+"\n" );
-		List<DatosTelefonoAltBean> telefonos = telefono.Listar(datos.getIdpersona());
+		List<DatosTelefonoAltBean> telefonos = telefono.Listar(datos);
 		if(telefonos.isEmpty()) {
 			info("no se encontraron datos");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

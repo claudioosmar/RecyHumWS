@@ -79,7 +79,7 @@ public class DatosLaboralesController  extends Log{
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosLaboralesBean datos){
 		//Linea de impresion en consola que muestra datos de los datos laborales al ser eliminados
 		info("se elimino un registro laboral de "+datos.getIdexplaborl());
-		return new ResponseEntity<MsgBean>(laborales.Eliminar(datos.getIdexplaborl()),HttpStatus.OK);
+		return new ResponseEntity<MsgBean>(laborales.Eliminar(datos),HttpStatus.OK);
 	}
 	
 	/**
@@ -105,10 +105,10 @@ public class DatosLaboralesController  extends Log{
 	 */
 	//Ruta utilizada para la llamada de la funcion listar datos laborales
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Listar",method=RequestMethod.POST)
-	public ResponseEntity<List<DatosLaboralesBean>> consulta(){
+	public ResponseEntity<List<DatosLaboralesBean>> consulta(@RequestBody DatosLaboralesBean datos){
 		//mensaje de impresion de la accion realisada
 		info("Ingresando a listar de datos laborales ");
-		List<DatosLaboralesBean> laboral = laborales.Listar();
+		List<DatosLaboralesBean> laboral = laborales.Listar(datos);
 		if(laboral.isEmpty()) {
 			info("no se encontraron datos");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -49,7 +49,7 @@ public interface BODatosLaborales {
 	 * @return Retorna msg bean
 	 */
 	//MENSAJE DE ELIMINACION DE LOS DATOS LABORALES
-	MsgBean Eliminar(int id);
+	MsgBean Eliminar(DatosLaboralesBean datos);
 	
 	/**
 	 * Clase: Buscar 
@@ -68,5 +68,5 @@ public interface BODatosLaborales {
 	 * @return Retorna list
 	 */
 	//LISTADO DE DATOS LABORALES
-	List<DatosLaboralesBean> Listar();
+	List<DatosLaboralesBean> Listar(DatosLaboralesBean datos);
 }

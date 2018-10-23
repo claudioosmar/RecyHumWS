@@ -5,6 +5,8 @@ package com.vector.Beans.DatosPersonales;
 
 import javax.validation.constraints.NotNull;
 
+import com.vector.Beans.DatosPistaAuditoraBean;
+
 
 // TODO: Auto-generated Javadoc
 /**
@@ -17,7 +19,7 @@ import javax.validation.constraints.NotNull;
  *  12/10/2018 Jair de Jesus Barcenas Gomez - Creacion
  *   
  */
-public class DatosPersonalesBean8 {
+public class DatosPersonalesBean8 extends DatosPistaAuditoraBean {
 	
 	/** The actividades. */
 	@NotNull

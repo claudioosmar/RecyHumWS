@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vector.BO.BODatosLaborales;
+import com.vector.BO.BOPistaAuditora;
 import com.vector.Beans.DatosLaboralesBean;
 import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosLaborales;
@@ -32,6 +33,8 @@ public class BODatosLaboralesImpl extends Log implements BODatosLaborales {
 	/** The daolabor. */
 	@Autowired
 	private DAODatosLaborales daolabor;
+	@Autowired
+	private BOPistaAuditora audit;
 	
 	/** 
 	 * {@inheritDoc}
@@ -42,6 +45,7 @@ public class BODatosLaboralesImpl extends Log implements BODatosLaborales {
 	@Override
 	public DatosLaboralesBean Crear(List<DatosLaboralesBean> datos) {
 		// TODO Auto-generated method stub
+		datos.get(0).setAccion("Crear Laborales "+datos);
 		int respuesta = 0;
 		DatosLaboralesBean retorno = new DatosLaboralesBean();
 		MsgBean msj= new MsgBean();
@@ -54,12 +58,16 @@ public class BODatosLaboralesImpl extends Log implements BODatosLaborales {
 				error("fallo la insercion " + i + 1);
 				msj.setMsjAccion(new EnvioMensaje().getFallo());
 				retorno.setMsj(msj);
+				datos.get(0).setStatusOp("0");
+				audit.GrabarPistaAuditora(datos.get(0));
 				break;
 			}		
 		}
 		
 		msj.setMsjAccion(new EnvioMensaje().getCorrecto());
 		retorno.setMsj(msj);
+		datos.get(0).setStatusOp("1");
+		audit.GrabarPistaAuditora(datos.get(0));
 		return retorno;
 	}
 
@@ -70,6 +78,7 @@ public class BODatosLaboralesImpl extends Log implements BODatosLaborales {
 	@Override
 	public MsgBean Modificar(DatosLaboralesBean datos) {
 		// TODO Auto-generated method stub
+		datos.setAccion("Modificar Laboral "+datos);
 		int respuesta = daolabor.Modificar(datos);
 		//Condicional para el envio del mensaje de respuesta
 		MsgBean mensaje = new MsgBean();
@@ -78,12 +87,16 @@ public class BODatosLaboralesImpl extends Log implements BODatosLaborales {
 		if(respuesta==1) {
 			info("mensaje correcto");
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+			datos.setStatusOp("1");
+			audit.GrabarPistaAuditora(datos);
 			return mensaje;
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
 			error("mensaje error");
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+			datos.setStatusOp("0");
+			audit.GrabarPistaAuditora(datos);
 			return mensaje;
 		}
 		
@@ -94,21 +107,26 @@ public class BODatosLaboralesImpl extends Log implements BODatosLaborales {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public MsgBean Eliminar(int id) {
+	public MsgBean Eliminar(DatosLaboralesBean datos) {
 		// TODO Auto-generated method stub
-		int respuesta = daolabor.Eliminar(id);
+		datos.setAccion("Eliminar Laboral "+datos);
+		int respuesta = daolabor.Eliminar(datos.getIdexplaborl());
 		MsgBean mensaje = new MsgBean();
 		info("entra en sentencia if");
 		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
 		if(respuesta==1) {
 			info("mensaje correcto");
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
+			datos.setStatusOp("1");
+			audit.GrabarPistaAuditora(datos);
 			return mensaje;
 		}
 		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
 		else {
 			error("mensaje error");
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
+			datos.setStatusOp("0");
+			audit.GrabarPistaAuditora(datos);
 			return mensaje;
 		}
 	}
@@ -120,7 +138,10 @@ public class BODatosLaboralesImpl extends Log implements BODatosLaborales {
 	@Override
 	public List<DatosLaboralesBean> Buscar(DatosLaboralesBean datos) {
 		// TODO Auto-generated method stub
+		datos.setAccion("Buscar Laboral "+datos);
 		info("entra en metodo buscar ");
+		datos.setStatusOp("1");
+		audit.GrabarPistaAuditora(datos);
 		return daolabor.Buscar(datos);
 	}
 
@@ -129,9 +150,12 @@ public class BODatosLaboralesImpl extends Log implements BODatosLaborales {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<DatosLaboralesBean> Listar() {
+	public List<DatosLaboralesBean> Listar(DatosLaboralesBean datos) {
 		// TODO Auto-generated method stub
+		datos.setAccion("Listar Laboral "+datos);
 		info("entra en metodo listar");
+		datos.setStatusOp("1");
+		audit.GrabarPistaAuditora(datos);
 		return null;
 	}
 

@@ -218,9 +218,9 @@ public class DatosPersonalesController extends Log {
 	 */
 	// Ruta utilizada para la llamada de la funcion listar idiomas
 	@RequestMapping("/SGRHWebService/DatosPersonales/Listar")
-	public ResponseEntity<List<DatosPersonalesBean>> Listar() {
+	public ResponseEntity<List<DatosPersonalesBean>> Listar(@RequestBody DatosPersonalesBean datos) {
 		info("Ingresando a listar datos personales ");
-		List<DatosPersonalesBean> resp = bodatos.Listar();
+		List<DatosPersonalesBean> resp = bodatos.Listar(datos);
 		if (resp.isEmpty()) {
 			info("No se encontro contenido");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

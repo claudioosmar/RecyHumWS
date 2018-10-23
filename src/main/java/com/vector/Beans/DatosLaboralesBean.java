@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
  *   
  */
 //Clase Bean para los datos de experiencias laborales
-public class DatosLaboralesBean {
+public class DatosLaboralesBean extends DatosPistaAuditoraBean{
 	
 	/** The idmotivotermino. */
 	//Variable para declara los getter y setter de experiencias laborales

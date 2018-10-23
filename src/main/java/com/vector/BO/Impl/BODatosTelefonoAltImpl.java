@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.vector.BO.BODatosTelefonoAlt;
+import com.vector.BO.BOPistaAuditora;
 import com.vector.Beans.DatosTelefonoAltBean;
 import com.vector.Beans.MsgBean;
 import com.vector.DAO.DAODatosTelefonoAlt;
@@ -38,6 +39,8 @@ public class BODatosTelefonoAltImpl extends Log implements BODatosTelefonoAlt {
 /** The telefone. */
 @Autowired
 private DAODatosTelefonoAlt telefone;
+@Autowired
+private BOPistaAuditora audit;
 
 /** The Constant LOGGER. */
 private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
@@ -48,6 +51,7 @@ private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
 	@Override
 	public MsgBean Crear(List<DatosTelefonoAltBean> datos) {
 		// TODO Auto-generated method stub
+		datos.get(0).setAccion("Crear Telefono Alt "+datos);
 		int respuesta=0;
 	info("entra en ciclo for");
 		for (int i = 0; i < datos.size(); i++) {
@@ -66,10 +70,14 @@ private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
 		if(respuesta==1) {
 			info("mensaje correcto");
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
+			datos.get(0).setStatusOp("1");
+			audit.GrabarPistaAuditora(datos.get(0));
 			return msj;
 		}else {
 			error("mensaje error");
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
+			datos.get(0).setStatusOp("0");
+			audit.GrabarPistaAuditora(datos.get(0));
 			return msj;
 		}
 	}
@@ -81,18 +89,21 @@ private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
 	@Override
 	public MsgBean Modificar(DatosTelefonoAltBean datos) {
 		// TODO Auto-generated method stub
+		datos.setAccion("Modificar Telefono Alt "+datos);
 		int respuesta = telefone.Modificar(datos);
 		MsgBean msj = new MsgBean();
 		info("entra en sentencia if");
 		if(respuesta==1) {
 			info("mensaje correcto");
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
-			
+			datos.setStatusOp("1");
+			audit.GrabarPistaAuditora(datos);
 			return msj;
 		}else {
 			error("mensaje error");
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
-			
+			datos.setStatusOp("0");
+			audit.GrabarPistaAuditora(datos);
 			return msj;
 		}
 	}
@@ -102,20 +113,23 @@ private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
 	 * {@inheritDoc}
 	 */
 	@Override
-	public MsgBean Eliminar(String id) {
+	public MsgBean Eliminar(DatosTelefonoAltBean datos) {
 		// TODO Auto-generated method stub
-		int respuesta=telefone.Eliminar(id);
+		datos.setAccion("Eliminar Telefono Alt "+datos);
+		int respuesta=telefone.Eliminar(datos.getTelefonoNw());
 		MsgBean msj = new MsgBean();
 		info("entra en la sentencia if");
 		if(respuesta==1) {
 			info("mensaje correcto");
 			msj.setMsjAccion(new EnvioMensaje().getCorrecto());
-			
+			datos.setStatusOp("1");
+			audit.GrabarPistaAuditora(datos);
 			return msj;
 		}else {
 			error("mensaje error");
 			msj.setMsjAccion(new EnvioMensaje().getFallo());
-			
+			datos.setStatusOp("0");
+			audit.GrabarPistaAuditora(datos);
 			return msj;
 		}
 	}
@@ -128,6 +142,9 @@ private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
 	public DatosTelefonoAltBean Buscar(DatosTelefonoAltBean datos) {
 		// TODO Auto-generated method stub
 		info("mensaje correcto");
+		datos.setAccion("Buscar Telefono Alt "+datos);
+		datos.setStatusOp("1");
+		audit.GrabarPistaAuditora(datos);
 		return telefone.Buscar(datos);
 	}
 
@@ -136,10 +153,13 @@ private final static Logger LOGGER = Logger.getLogger("com.vector.BO.Impl");
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<DatosTelefonoAltBean> Listar(long id) {
+	public List<DatosTelefonoAltBean> Listar(DatosTelefonoAltBean datos) {
 		// TODO Auto-generated method stub
 		error("mensaje error");
-		return telefone.Listar(id);
+		datos.setAccion("Listar Telefono Alt "+datos);
+		datos.setStatusOp("1");
+		audit.GrabarPistaAuditora(datos);
+		return telefone.Listar(datos.getIdpersona());
 	}
 
 }

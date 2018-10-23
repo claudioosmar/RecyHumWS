@@ -69,5 +69,5 @@ public interface BODatosDocumentos {
 	 * @return Retorna list
 	 */
 	//LISTADO DE DATOS DE DOCUMENTOS
-	List<DatosDocumentoBean> Listar(long id);
+	List<DatosDocumentoBean> Listar(DatosDocumentoBean datos);
 }

@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
  *   
  */
 //Clase Bean para los datos academicos
-public class DatosEstudioBean {
+public class DatosEstudioBean extends DatosPistaAuditoraBean{
 
 /** The idgrado. */
 ///Variable para declara los getter y setter de estudios

@@ -109,7 +109,7 @@ public class DatosDocumentosController extends Log{
 	public ResponseEntity<List<DatosDocumentoBean>> consulta(@RequestBody DatosDocumentoBean datos){
 		//mensaje de impresion de la accion realisada
 		info("Ingresando a listar documento ");
-		List<DatosDocumentoBean> documentos = documento.Listar(datos.getIdpersona());
+		List<DatosDocumentoBean> documentos = documento.Listar(datos);
 		if(documentos.isEmpty()) {
 			info("no se encontraron datos");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

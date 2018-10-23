@@ -99,7 +99,7 @@ public class DatosIdiomasController extends Log{
     @RequestMapping(value = "/SGRHWebService/DatosIdiomas/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosIdiomasBean>> consulta(@RequestBody DatosIdiomasBean datos){
 		info("Ingresando a listar idiomas ");
-		List<DatosIdiomasBean> idiomas = idioma.Listar();
+		List<DatosIdiomasBean> idiomas = idioma.Listar(datos);
 		if(idiomas.isEmpty()) {
 			info("no se encontraron datos");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

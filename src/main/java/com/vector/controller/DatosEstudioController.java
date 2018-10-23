@@ -101,7 +101,7 @@ public class DatosEstudioController extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosEstudio/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosEstudioBean>> consulta(@RequestBody DatosEstudioBean datos ){
 		info("Ingresando a estudios");
-		List<DatosEstudioBean> estudios = estudio.Listar();
+		List<DatosEstudioBean> estudios = estudio.Listar(datos);
 		if(estudios.isEmpty()) {
 			info("no se encontraron datos");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

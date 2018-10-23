@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
  *   
  */
 //Clase Bean para los datos de documentos
-public class DatosDocumentoBean {
+public class DatosDocumentoBean extends DatosPistaAuditoraBean {
 	
 	/** The iddocumento nw. */
 	//Variable para declara los getter y setter de documento

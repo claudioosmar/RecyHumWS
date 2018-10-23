@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
  *   
  */
 //Clase Bean para los datos de Herramientas conocidas
-public class DatosHerramientasBean {
+public class DatosHerramientasBean extends DatosPistaAuditoraBean{
 	
 	/** The idherramienta. */
 	//Variable para declara los getter y setter de herramientas conocidas

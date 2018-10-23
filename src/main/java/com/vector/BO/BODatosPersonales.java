@@ -68,7 +68,7 @@ public interface BODatosPersonales {
 	 * @return Retorna list
 	 */
 	//LISTADO DE DATOS DEL APARTADI DE DATOS PERSONALES
-	List<DatosPersonalesBean> Listar ();
+	List<DatosPersonalesBean> Listar (DatosPersonalesBean datos);
 	
 	/**
 	 * Clase: Modificar2 

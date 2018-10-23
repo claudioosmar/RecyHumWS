@@ -99,7 +99,7 @@ public class DatosHerramientasController extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosHerramientas/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosHerramientasBean>> consulta(@RequestBody DatosHerramientasBean datos){
 		info("Se listaton herramientas conocidas "+"\n ");
-		List<DatosHerramientasBean> herramienta = herramientas.Listar();
+		List<DatosHerramientasBean> herramienta = herramientas.Listar(datos);
 		if(herramienta.isEmpty()) {
 			info("no se encontraron datos");
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

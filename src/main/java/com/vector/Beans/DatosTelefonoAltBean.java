@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
  *   
  */
 //Clase Bean para los datos de telefonos alternativos
-public class DatosTelefonoAltBean {
+public class DatosTelefonoAltBean extends DatosPistaAuditoraBean {
 	
 	/** The idtipotelefono. */
 	//Variable para declara los getter y setter de telefono alternativo

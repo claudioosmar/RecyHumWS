@@ -67,5 +67,5 @@ public interface BODatosIdiomas {
 	 *
 	 * @return Retorna list
 	 */
-	List<DatosIdiomasBean> Listar();
+	List<DatosIdiomasBean> Listar(DatosIdiomasBean datos);
 }

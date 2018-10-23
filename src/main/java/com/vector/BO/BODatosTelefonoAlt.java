@@ -49,7 +49,7 @@ public interface BODatosTelefonoAlt {
 	 * @return Retorna msg bean
 	 */
 	//MENSAJE DE ELIMINACION DE LOS DATOS DEL APARTADO DE TELEFONOALT QUE RETORNA UN MENSAJE DE LA CLASE MSGBEAN
-	MsgBean Eliminar(String id);
+	MsgBean Eliminar(DatosTelefonoAltBean datos);
 	
 	/**
 	 * Clase: Buscar 
@@ -69,5 +69,5 @@ public interface BODatosTelefonoAlt {
 	 * @return Retorna list
 	 */
 	//REGRESA UN LISTADO DE LOS DATOS DEL APARTADO TELEFONOALT
-	List<DatosTelefonoAltBean> Listar(long id);
+	List<DatosTelefonoAltBean> Listar(DatosTelefonoAltBean datos);
 }

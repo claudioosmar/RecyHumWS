@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
  *   
  */
 //Clase Bean para los datos de idiomas
-public class DatosIdiomasBean {
+public class DatosIdiomasBean extends DatosPistaAuditoraBean{
 	
 	/** The ididioma. */
 	/*atributos para ingresar los datos de estudio*/
