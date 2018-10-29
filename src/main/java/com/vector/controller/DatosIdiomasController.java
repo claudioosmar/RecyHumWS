@@ -59,7 +59,7 @@ public class DatosIdiomasController extends Log{
 	 */
 	@RequestMapping(path = "/SGRHWebService/DatosIdiomas/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosIdiomasBean datos){
-		info("Se actializo el idioma");
+		info("Se actializo el idioma"+"\n");
 		return new ResponseEntity<MsgBean>(idioma.Modificar(datos),HttpStatus.OK);
 	}
 	
@@ -72,7 +72,7 @@ public class DatosIdiomasController extends Log{
 	 */
 	@RequestMapping(path = "/SGRHWebService/DatosIdiomas/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosIdiomasBean datos){
-		info("Se elimino el idioma ");
+		info("Se elimino el idioma "+"\n");
 		return new ResponseEntity<MsgBean>(idioma.Eliminar(datos),HttpStatus.OK);
 	}
 	
@@ -85,7 +85,7 @@ public class DatosIdiomasController extends Log{
 	 */
 	@RequestMapping(path =  "/SGRHWebService/DatosIdiomas/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosIdiomasBean>>buscar(@RequestBody DatosIdiomasBean datos){
-		info("Se listo los idiomas de la persona");
+		info("Se listo los idiomas de la persona"+"\n");
 		return new ResponseEntity<List<DatosIdiomasBean>>(idioma.Buscar(datos),HttpStatus.OK);
 	}
 	
@@ -98,7 +98,7 @@ public class DatosIdiomasController extends Log{
      */
     @RequestMapping(value = "/SGRHWebService/DatosIdiomas/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosIdiomasBean>> consulta(@RequestBody DatosIdiomasBean datos){
-		info("Ingresando a listar idiomas ");
+		info("Ingresando a listar idiomas "+"\n");
 		List<DatosIdiomasBean> idiomas = idioma.Listar(datos);
 		if(idiomas.isEmpty()) {
 			info("no se encontraron datos");

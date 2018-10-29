@@ -48,7 +48,7 @@ public class DatosLaboralesController  extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Crear", method = RequestMethod.POST)
 	public ResponseEntity<DatosLaboralesBean> insertar(@RequestBody List<DatosLaboralesBean> datos){
 		//Linea de impresion en consola que muestra datos de los datos laboralesal ser creados
-		info("Se creo un registro laboral"+datos.get(0).getIdexplaborl());
+		info("Se creo un registro laboral"+datos.get(0).getIdexplaborl()+"\n");
 		return new ResponseEntity<DatosLaboralesBean>(laborales.Crear(datos),HttpStatus.OK);
 	}
 	
@@ -63,7 +63,7 @@ public class DatosLaboralesController  extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosLaboralesBean datos){
 		//Linea de impresion en consola que muestra datos de los datos laborales al ser modificados
-		info("Se modifico un regristro laboral"+datos.toString());
+		info("Se modifico un regristro laboral"+datos.toString()+"\n");
 		return new ResponseEntity<MsgBean>(laborales.Modificar(datos),HttpStatus.OK);
 	}
 	
@@ -78,7 +78,7 @@ public class DatosLaboralesController  extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosLaboralesBean datos){
 		//Linea de impresion en consola que muestra datos de los datos laborales al ser eliminados
-		info("se elimino un registro laboral de "+datos.getIdexplaborl());
+		info("se elimino un registro laboral de "+datos.getIdexplaborl()+"\n");
 		return new ResponseEntity<MsgBean>(laborales.Eliminar(datos),HttpStatus.OK);
 	}
 	
@@ -93,7 +93,7 @@ public class DatosLaboralesController  extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosLaboralesBean>>buscar(@RequestBody DatosLaboralesBean datos){
 		//mensaje de impresion en la consola que muestra los datos que relacionan la consulta
-		info("se busco un registro laboral");
+		info("se busco un registro laboral"+"\n");
 		return new ResponseEntity<List<DatosLaboralesBean>>(laborales.Buscar(datos),HttpStatus.OK);
 	}
 	
@@ -107,7 +107,7 @@ public class DatosLaboralesController  extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosLaborales/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosLaboralesBean>> consulta(@RequestBody DatosLaboralesBean datos){
 		//mensaje de impresion de la accion realisada
-		info("Ingresando a listar de datos laborales ");
+		info("Ingresando a listar de datos laborales "+"\n");
 		List<DatosLaboralesBean> laboral = laborales.Listar(datos);
 		if(laboral.isEmpty()) {
 			info("no se encontraron datos");

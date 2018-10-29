@@ -69,7 +69,7 @@ public class DAODatosPistaAuditoraImpl extends Log implements DAODatosPistaAudit
 	@Override
 	@Transactional(readOnly = true)
 	public int Crear(DatosPistaAuditoraBean datos) {
-		info("pista auditora ingresada");
+		info("entra en el metodo");
 		autoin = new AutoIncrementablesBDOracle();
 		date = new Date();
 		formateador = new SimpleDateFormat("dd/MM/yy");
@@ -99,7 +99,7 @@ public class DAODatosPistaAuditoraImpl extends Log implements DAODatosPistaAudit
 				ps.setString(7, datos.getAccion());
 				ps.setString(8, datos.getIpequipo());
 				ps.setString(9, datos.getStatusOp());
-
+				info("ejecucion de la sentencia sql: "+sql);
 				return ps;
 			}
 		});

@@ -29,6 +29,7 @@ import com.vector.Utileria.*;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
  *   Vector México
  *   Clase: DAODatosSesionImpl.java
@@ -76,12 +77,14 @@ public class DAODatosSesionImpl extends Log implements DAODatosSesion {
 	List<DatosInicioSesionBean> datos;
 
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.DAO.DAODatosSesion#Create(com.vector.Beans.DatosInicioSesionBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
 	public int Create(DatosInicioSesionBean datos) {
+		info("entra en el metodo");
 		autoin = new AutoIncrementablesBDOracle();
 		date = new Date();
 		formateador = new SimpleDateFormat ("dd/MM/yy"); 
@@ -135,18 +138,14 @@ public class DAODatosSesionImpl extends Log implements DAODatosSesion {
 		return respuesta;
 	}
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.DAO.DAODatosSesion#Delete(long)
-	 */
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.DAO.SesionDAO#Delete(int)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
 	public int Delete(long id) {
-		
+		info("entra en el metodo");
 		// TODO Auto-generated method stub
 		final String sql = "DELETE TBLUSERS WHERE IDUSER=(?)";
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
@@ -165,17 +164,14 @@ public class DAODatosSesionImpl extends Log implements DAODatosSesion {
 		return respuesta;
 	}
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.DAO.DAODatosSesion#Buscar(com.vector.Beans.DatosInicioSesionBean)
-	 */
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.DAO.SesionDAO#Buscar(java.lang.Object)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
 	public DatosInicioSesionBean Buscar(DatosInicioSesionBean datos) {
+		info("entra en el metodo");
 		// TODO Auto-generated method stub
 		final String sql="select * from tbldetspersonas dets, tblusers us, tblpersonas pers, tblareas ar\r\n" + 
 				"where pers.idpersona = dets.idpersona and pers.idpersona=us.idpersona and pers.idarea=ar.idarea and us.idpersona =(?)";
@@ -201,42 +197,29 @@ public class DAODatosSesionImpl extends Log implements DAODatosSesion {
 		return respuesta;
 	}
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.DAO.DAODatosSesion#Listar()
-	 */
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vector.DAO.SesionDAO#Listar(java.lang.Object)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	@Transactional(readOnly = true)
 	public List<DatosInicioSesionBean> Listar() {
+		info("entra en el metodo");
 		// TODO Auto-generated method stub
 
 		final String sql = "select * from view_usuario";
 		info("ejecucion del sql: "+ sql);
 		return jdbcTemplate.query(sql, new SesionRowMapper());
 	
-		/*jdbcTemplate.update(new PreparedStatementCreator() {
-			@Override
-			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement ps = con.prepareStatement(sql);
-				sesion=convert.InicioSesion(ps.executeQuery());
-				return ps;
-			}
-		});
-		return sesion;*/
 	}
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.DAO.DAODatosSesion#VerificarLogin(com.vector.Beans.DatosInicioSesionBean)
-	 */
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.SesionDAO#VerificarLogin(com.vector.Beans.InicioSesionBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public List<DatosFormularioBean> VerificarLogin(DatosInicioSesionBean datos) {
+		info("entra en el metodo");
 		// TODO Auto-generated method stub
 		final String sql = "select * from tblusers ur, tblpersonas pr where ur.idpersona = pr.idpersona and ur.nombre = (?) and ur.contraseña =(?)";
 		String contraseña=datos.getContraseña().trim();
@@ -271,14 +254,13 @@ public class DAODatosSesionImpl extends Log implements DAODatosSesion {
 
 }
 
-	/* (Claudio-Javadoc)
-	 * @see com.vector.DAO.DAODatosSesion#Modificar(com.vector.Beans.DatosInicioSesionBean)
-	 */
-	/* (non-Javadoc)
-	 * @see com.vector.DAO.DAODatosSesion#Modificar(com.vector.Beans.DatosInicioSesionBean)
+
+	/** 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int Modificar(DatosInicioSesionBean datos) {
+		info("entra en el metodo");
 		// TODO Auto-generated method stub
 		final String sql = "update tblusers set contraseña=(?) where iduser=(?)";
 		datos.setContraseña(new Encriptarsha1().Encriptar(datos.getContraseña()));
@@ -319,9 +301,6 @@ class SesionRowMapper implements RowMapper<DatosInicioSesionBean> {
 }
 class FormularioRowMapper implements RowMapper<DatosFormularioBean>{
 
-	/* (non-Javadoc)
-	 * @see org.springframework.jdbc.core.RowMapper#mapRow(java.sql.ResultSet, int)
-	 */
 	@Override
 	public DatosFormularioBean mapRow(ResultSet rs, int rowNum) throws SQLException {
 		// TODO Auto-generated method stub

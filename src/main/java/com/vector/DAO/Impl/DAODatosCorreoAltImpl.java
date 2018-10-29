@@ -46,6 +46,7 @@ public class DAODatosCorreoAltImpl extends Log implements DAODatosCorreoAlt {
 	 */
 	@Override
 	public int Crear(DatosCorreoAltBean datos) {
+		info("entra en el metodo");
 		// TODO Auto-generated method stub
 		
 		final String sql="INSERT INTO TBLPIV02 VALUES(?,?,?)";		
@@ -62,6 +63,7 @@ public class DAODatosCorreoAltImpl extends Log implements DAODatosCorreoAlt {
 				return ps;
 			}
 		});
+		warn("datos enviados RESPUETA["+respuesta+"]");
 		return respuesta;
 	}
 
@@ -71,6 +73,7 @@ public class DAODatosCorreoAltImpl extends Log implements DAODatosCorreoAlt {
 	 */
 	@Override
 	public int Modificar(DatosCorreoAltBean datos) {
+		info("entra en el metodo");
 		// TODO Auto-generated method stub
 		final String sql="update tblpiv02 set correo = (?), idtipocorreo =(?) where correo= (?) and idpersona = (?)";		
 		
@@ -88,6 +91,7 @@ public class DAODatosCorreoAltImpl extends Log implements DAODatosCorreoAlt {
 				return ps;
 			}
 		});
+		warn("datos enviados RESPUETA["+respuesta+"]");
 		return respuesta;
 	}
 
@@ -97,6 +101,7 @@ public class DAODatosCorreoAltImpl extends Log implements DAODatosCorreoAlt {
 	 */
 	@Override
 	public int Eliminar(DatosCorreoAltBean datos) {
+		info("entra en el metodo");
 		// TODO Auto-generated method stub
 final String sql="delete tblpiv02 where correo = (?)";
 		
@@ -111,6 +116,7 @@ final String sql="delete tblpiv02 where correo = (?)";
 				return ps;
 			}
 		});
+		warn("datos enviados RESPUETA["+respuesta+"]");
 		return respuesta;
 	}
 
@@ -119,6 +125,7 @@ final String sql="delete tblpiv02 where correo = (?)";
 	 */
 	@Override
 	public DatosCorreoAltBean Buscar(DatosCorreoAltBean datos) {
+		info("entra en el metodo");
 		// TODO Auto-generated method stub
 		final String sql="select * from tblpiv02 where idpersona  = (?)";
 		final String sql2 = "select * from tbldetspersonas where idpersona = (?)";
@@ -146,6 +153,7 @@ final String sql="delete tblpiv02 where correo = (?)";
 				return ps;
 			}
 		});
+		warn("datos enviados RESPUETA["+respuesta+"]");
 		return respuesta;
 	}
 	
@@ -155,6 +163,7 @@ final String sql="delete tblpiv02 where correo = (?)";
 	 */
 	@Override
 	public List<DatosCorreoAltBean> Listar(long id) {
+		info("entra en el metodo");
 		// TODO Auto-generated method stub
 		final String sql="select * from tblpiv02 where idpersona = '"+id+"'";
 		info("ejecucion de la sentencia sql: "+sql);

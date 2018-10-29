@@ -50,7 +50,7 @@ public class DatosCertificadoController extends Log {
 	@RequestMapping(path = "/SGRHWebService/DatosCertificado/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody @Valid List<DatosCertificadoBean> datos){
 		//Linea de impresion en consola que muestra datos de los certificados al ser creados
-		info("Se creo un certificado: "+datos.toString());
+		info("Se creo un certificado: "+datos.toString()+"\n");
 		return new ResponseEntity<MsgBean>(certificado.Crear(datos),HttpStatus.OK);
 	}
 	
@@ -65,7 +65,7 @@ public class DatosCertificadoController extends Log {
 	@RequestMapping(path = "/SGRHWebService/DatosCertificado/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody @Valid  DatosCertificadoBean datos){
 		//Linea de impresion en consola que muestra datos de los certificados al ser modificados
-		info("Se modifico el certificado con id: "+ datos.getIdcertificado());
+		info("Se modifico el certificado con id: "+ datos.getIdcertificado()+"\n");
 		return new ResponseEntity<MsgBean>(certificado.Modificar(datos),HttpStatus.OK);
 	}
 	
@@ -80,7 +80,7 @@ public class DatosCertificadoController extends Log {
 	@RequestMapping(path = "/SGRHWebService/DatosCertificado/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody @Valid DatosCertificadoBean datos){
 		//Linea de impresion en consola que muestra datos de los certificados al ser eliminados
-		info("se elimino el certificado: "+ datos.getIdcertificado());
+		info("se elimino el certificado: "+ datos.getIdcertificado()+"\n");
 		return new ResponseEntity<MsgBean>(certificado.Eliminar(datos),HttpStatus.OK);
 	}
 	
@@ -95,7 +95,7 @@ public class DatosCertificadoController extends Log {
 	@RequestMapping(path = "/SGRHWebService/DatosCertificado/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosCertificadoBean>> buscar(@RequestBody @Valid  DatosCertificadoBean datos){
 		//mensaje de impresion en la consola que muestra los datos que relacionan la consulta
-		info("se busco el certificado "+ datos.toString());
+		info("se busco el certificado "+ datos.toString()+"\n");
 		return new ResponseEntity<List<DatosCertificadoBean>>(certificado.Buscar(datos),HttpStatus.OK);
 	}
 	
@@ -110,7 +110,7 @@ public class DatosCertificadoController extends Log {
 	@RequestMapping(path = "/SGRHWebService/DatosCertificado/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List< DatosCertificadoBean>> consulta(@RequestBody @Valid  DatosInicioSesionBean datos){
 		//mensaje de impresion de la accion realisada
-		info("Ingresando a listar certificado ");
+		info("Ingresando a listar certificado "+"\n");
 		List< DatosCertificadoBean> certificados = certificado.Listar(datos);
 		if(certificados.isEmpty()) {
 			info("No se encontro contenido");

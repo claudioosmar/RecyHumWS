@@ -51,7 +51,7 @@ public class DatosCursoController extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosCurso/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody @Valid List<DatosCursoBean> datos){
 		//Linea de impresion en consola que muestra datos de los cursos al ser creados
-		info("Se creo un curso: IDCURSO["+datos.get(0).getIdcurso()+"]");
+		info("Se creo un curso: IDCURSO["+datos.get(0).getIdcurso()+"]"+"\n");
 		return new ResponseEntity<MsgBean>(curso.Crear(datos),HttpStatus.OK);
 	}
 	
@@ -66,7 +66,7 @@ public class DatosCursoController extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosCurso/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody @Valid DatosCursoBean datos){
 		//Linea de impresion en consola que muestra datos de los cursos al ser modificados
-		info("Se modifico un curso con id: IDCURSO["+datos.getIdcurso()+"], IDCERTIFICADO["+datos.getIdcertificado()+"]");
+		info("Se modifico un curso con id: IDCURSO["+datos.getIdcurso()+"], IDCERTIFICADO["+datos.getIdcertificado()+"]"+"\n");
 		return new ResponseEntity<MsgBean>(curso.Modificar(datos),HttpStatus.OK);
 	}
 	
@@ -81,7 +81,7 @@ public class DatosCursoController extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosCurso/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody @Valid DatosCursoBean datos){
 		//Linea de impresion en consola que muestra datos de los cursos al ser eliminados
-		info("se elimino un curso con id: IDCURSO["+datos.getIdcurso()+"]");
+		info("se elimino un curso con id: IDCURSO["+datos.getIdcurso()+"]"+"\n");
 		return new ResponseEntity<MsgBean>(curso.Eliminar(datos),HttpStatus.OK);
 	}
 	
@@ -96,7 +96,7 @@ public class DatosCursoController extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosCurso/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosCursoBean>>buscar(@RequestBody  DatosCursoBean datos){
 		//mensaje de impresion en la consola que muestra los datos que relacionan la consulta
-		info("se busco los cursos de la persona: IDPERSONA["+datos.getIdpersona()+"]");
+		info("se busco los cursos de la persona: IDPERSONA["+datos.getIdpersona()+"]"+"\n");
 		return new ResponseEntity<List< DatosCursoBean>>(curso.Buscar(datos),HttpStatus.OK);
 	}
 	
@@ -111,7 +111,7 @@ public class DatosCursoController extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosCurso/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosCursoBean>> consulta(@RequestBody @Valid DatosPistaAuditoraBean datos){
 		//mensaje de impresion de la accion realisada
-		info("Ingresando a listar cursos ");
+		info("Ingresando a listar cursos "+"\n");
 		List<DatosCursoBean> cursos = curso.Listar(datos);
 		if(cursos.isEmpty()) {
 			info("no se encontraron datos");

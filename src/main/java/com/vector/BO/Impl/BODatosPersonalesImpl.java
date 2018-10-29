@@ -54,8 +54,11 @@ public class BODatosPersonalesImpl extends Log implements BODatosPersonales {
 			if (respuesta == 0) {
 				error("fallo la insercion ");
 				datos.setStatusOp("0");
+		}else {
+			info("insercion correcta");
+			datos.setStatusOp("1");
 		}
-			audit.GrabarPistaAuditora(datos);
+			audit.GrabarPistaAuditora(datos);		
 			return retorno;
 			
 	}

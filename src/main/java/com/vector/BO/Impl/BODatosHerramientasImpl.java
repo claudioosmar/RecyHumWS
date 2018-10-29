@@ -59,17 +59,18 @@ public class BODatosHerramientasImpl extends Log implements BODatosHerramientas 
 		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
 		info("entra en sentencia if");
 		if(resultado == 0) {
-			info("mensaje correcto");
-			datos.get(0).setStatusOp("1");
-			audit.GrabarPistaAuditora(datos.get(0));
-			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
-		}
-		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
-		else {
 			error("mensaje error");
 			mensaje.setMsjAccion(new EnvioMensaje().getFallo());
 			datos.get(0).setStatusOp("0");
 			audit.GrabarPistaAuditora(datos.get(0));
+		}
+		//mensaje en respuesta si la condicional no se cumple mandar mensale de fallo
+		else {
+			
+			info("mensaje correcto");
+			datos.get(0).setStatusOp("1");
+			audit.GrabarPistaAuditora(datos.get(0));
+			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 		}
 		return mensaje;
 	}
@@ -115,7 +116,7 @@ public class BODatosHerramientasImpl extends Log implements BODatosHerramientas 
 		int respuesta=daoherrm.Eliminar(datos);
 		//Condicional para el envio del mensaje de respuesta
 		MsgBean msj = new MsgBean();
-		info("entra en sentencia if");
+		
 		//Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
 		if(respuesta==1) {
 			info("mensaje correcot");

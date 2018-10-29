@@ -59,7 +59,7 @@ public class BODatosHerramientasUsadasImpl extends Log implements BODatosHerrami
 		MsgBean mensaje = new MsgBean();
 		info("entra en sentencia if");
 		// Condicion para el resultado donde sea igual a 1 mandar mensaje correcto
-		if (resultado == 0) {
+		if (resultado == 1) {
 			info("mensaje correcto");
 			mensaje.setMsjAccion(new EnvioMensaje().getCorrecto());
 			datos.get(0).setStatusOp("1");

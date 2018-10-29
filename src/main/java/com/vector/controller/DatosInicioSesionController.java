@@ -55,7 +55,7 @@ public class DatosInicioSesionController extends Log{
 	 */
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody DatosInicioSesionBean datos){
-		info("Se creo un usuario"+datos.getIdtipocorreo()+datos.getNombre());
+		info("Se creo un usuario"+datos.getIdtipocorreo()+datos.getNombre()+"\n");
 		MsgBean respuesta =login.CreateUser(datos);
 		
 		return new ResponseEntity<MsgBean>(respuesta,HttpStatus.OK);
@@ -71,7 +71,7 @@ public class DatosInicioSesionController extends Log{
 	 */
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<DatosInicioSesionBean>buscar(@RequestBody DatosInicioSesionBean datos){
-		info("Se busco los datos del usuario"+datos.getiduser());
+		info("Se busco los datos del usuario"+datos.getiduser()+"\n");
 		return new ResponseEntity<DatosInicioSesionBean>(login.Buscar(datos),HttpStatus.OK);
 	}
 	
@@ -84,7 +84,7 @@ public class DatosInicioSesionController extends Log{
 	 */
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Verificar", method = RequestMethod.POST)
 	public ResponseEntity<List<DatosFormularioBean>> verificarlogin(@RequestBody @Valid DatosInicioSesionBean datos){
-		info("se verifica el usuario");/*letreros*/
+		info("se verifica el usuario"+"\n");/*letreros*/
 		info("Datos de sesion "+datos.toString());
 		datos.setAccion("Inteto de logueo Usuario "+datos.getUsuario());
 		List<DatosFormularioBean> respuestaLogin =login.VerificarUsuario(datos);
@@ -106,7 +106,7 @@ public class DatosInicioSesionController extends Log{
 	 */
 	@RequestMapping(path = "/SGRHWebService/DatosSesion/Listar", method = RequestMethod.POST)
 	public ResponseEntity<List<DatosInicioSesionBean>> consulta(@RequestBody @Valid DatosPistaAuditoraBean audit){
-		info("Se ingreso a listar Usuarios");
+		info("Se ingreso a listar Usuarios"+"\n");
 		List<DatosInicioSesionBean> usuarios = login.ListarUsuarios(audit);
 		if(usuarios.isEmpty()) {
 			info("no se encontro datos");

@@ -151,12 +151,16 @@ public class DAODatosLaboralesImpl extends Log implements DAODatosLaborales {
 	 */
 	@Override
 	public int Modificar(DatosLaboralesBean datos) {
+		int IDdesmotivotermino = ids.desmotivoIDUltimo(jdbcTemplate);
+		/**ARREGLAR EL METODO PARA QUE INGRESE EN LA PIV08 CUANDO ACTUALICE EL IDMOTIVOTERMINO PARA SU RELACION*/
 		info("entrando en el metodo");
 		// TODO Auto-generated method stub
 		final String sql = "UPDATE TBLEXPSLABORALES SET IDMOTIVOTER=(?), IDEMPRESA=(?), PUESTO=(?), FINICIAL=(?), FFINAL=(?), ACTREALIZADAS=(?), LOGROS=(?), IDTIPOCONTRATA=(?) WHERE IDEXPLABORAL=(?)";
 		final String sql2 = "UPDATE TBLEMPRESAS SET NOMEMPRESA=(?) WHERE IDEMPRESA=(?)  ";
 		final String sql3 = "UPDATE TBLDESCSMOTIVOS SET DESCRIPCION = (?) WHERE IDDESCMOTIVO =(?)";
 		final String sql4 = "SELECT * FROM TBLEXPSLABORALES WHERE IDEXPLABORAL = (?)";
+		final String sql5 = "insert into tblpiv08 values (?,?,?)";
+		final String sql6 = "insert into TBLDESCSMOTIVOS values (?,?)";
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
@@ -199,6 +203,25 @@ public class DAODatosLaboralesImpl extends Log implements DAODatosLaborales {
 				} else {
 					info("IDDESCRIPCIONMOTIVO[" + datos.getIddescmotivo() + "]");
 				}
+				
+				if (datos.getIdmotivotermino() == 4) {
+					debug("datos entrantes para el sql6: IDDESCRIPCIONMOTIVO["+IDdesmotivotermino+"], DESCRIPCION["+datos.getDescripcionexp()+"]");
+					PreparedStatement ps6 = con.prepareStatement(sql6);
+					ps6.setLong(1, IDdesmotivotermino);
+					ps6.setString(2, datos.getDescripcionexp());
+					ps6.execute();
+					info("ejecucion de la sentencia sql6: "+sql6);
+					
+					debug("datos entrantes para el sql5: IDMOTIVO["+datos.getIdmotivotermino()+"], IDDESCRIPCIONMOTIVO["+IDdesmotivotermino+"], IDEXPERIENCIALABORAL["+datos.getIdexplaborl()+"]");
+					PreparedStatement ps7 = con.prepareStatement(sql5);
+					ps7.setLong(1, datos.getIdmotivotermino());
+					ps7.setLong(2, IDdesmotivotermino);
+					ps7.setLong(3, datos.getIdexplaborl());
+					ps7.execute();
+					info("ejecucion de la sentencia sql5: "+ sql5);
+				}else {
+					info("IDMOTIVO[" + datos.getIdmotivotermino() + "]");
+				}
 
 				debug("datos entrantes para el sql4: IDEXPERIENCIALABORAL[" + datos.getIdexplaborl() + "]");
 				PreparedStatement ps4 = con.prepareStatement(sql4);
@@ -221,29 +244,71 @@ public class DAODatosLaboralesImpl extends Log implements DAODatosLaborales {
 		final String sql = "DELETE TBLEXPSLABORALES WHERE IDEXPLABORAL=(?) ";
 		final String sql2 = "select * from tblpiv08 where idexplaboral=(?)";
 		final String sql3 = "delete tbldescsmotivos where iddescmotivo = (?)";
+		final String sql4 = "select * from tblexpslaborales where idexplaboral = (?)";
+		final String sql5 ="delete tblempresas where idempresa =(?)";
 		int respuesta = jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				debug("datos entrantes para el sql2: IDEXPERIENCIALABORAL[" + id + "]");
-				PreparedStatement ps2 = con.prepareStatement(sql2);
-				ps2.setInt(1, id);
-				ResultSet rs2 = ps2.executeQuery();
-				info("ejecucion de la sentencia sql2: "+sql2);
-				rs2.next();
-				int iddesc = rs2.getInt(2);
-				warn("datos obtenido: IDDESCRIPCIONMOTIVO["+iddesc+"]");
 				
-				debug("datos entrantes para el sql3: IDDESCRIPCIONMOTIVO[" + iddesc + "]");
-				PreparedStatement ps3 = con.prepareStatement(sql3);
-				ps3.setInt(1, iddesc);
-				ps3.execute();
-				info("ejecucion de la sentencia sql3: "+sql3);
 				
-				debug("datos entrantes para el sql: IDEXPERIENCIALABORAL[" + id + "]");
-				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setInt(1, id);
-				info("ejecucion de la sentecia sql: " + sql);
-				return ps;
+				debug("datos entrantes para el sql4: IDEXPERIENCIALABORAL[" + id + "]");
+				PreparedStatement ps4 = con.prepareStatement(sql4);
+				ps4.setInt(1, id);
+				ResultSet rs4= ps4.executeQuery();
+				info("ejecucion de la sentencia sql4: "+sql4);
+				if(rs4.next());
+				int idempresa = rs4.getInt(3);
+				int idmotivo = rs4.getInt(2);
+				warn("datos obtenido: IDEMPRESA["+idempresa+"], IDMOTIVO["+idmotivo+"]");
+				
+				if (idmotivo == 4) {
+					info("entrando al if");
+					debug("datos entrantes para el sql2: IDEXPERIENCIALABORAL[" + id + "]");
+					PreparedStatement ps2 = con.prepareStatement(sql2);
+					ps2.setInt(1, id);
+					ResultSet rs2 = ps2.executeQuery();
+					info("ejecucion de la sentencia sql2: "+sql2);
+					if(rs2.next());
+					int iddesc = rs2.getInt(2);
+					warn("datos obtenido: IDDESCRIPCIONMOTIVO["+iddesc+"]");
+					
+					debug("datos entrantes para el sql3: IDDESCRIPCIONMOTIVO[" + iddesc + "]");
+					PreparedStatement ps3 = con.prepareStatement(sql3);
+					ps3.setInt(1, iddesc);
+					ps3.execute();
+					info("ejecucion de la sentencia sql3: "+sql3);
+					
+					debug("datos entrantes para el sql: IDEXPERIENCIALABORAL[" + id + "]");
+					PreparedStatement ps = con.prepareStatement(sql);
+					ps.setInt(1, id);
+					ps.execute();
+					info("ejecucion de la sentecia sql: " + sql);
+					
+					debug("datos entrantes para el sql5: IDEMPRESA[" + idempresa + "]");
+					PreparedStatement ps6 = con.prepareStatement(sql5);
+					ps6.setInt(1, idempresa);
+					ps6.execute();
+					info("ejecucion de la sentecia sql5: " + sql5);
+				}else {
+					info("entrando al else");
+					
+					PreparedStatement ps = con.prepareStatement(sql);
+					ps.setInt(1, id);
+					ps.execute();
+					info("ejecucion de la sentecia sql: " + sql);
+					
+					debug("datos entrantes para el sql5: IDEMPRESA[" + idempresa + "]");
+					PreparedStatement ps5 = con.prepareStatement(sql5);
+					ps5.setInt(1, idempresa);
+					ps5.execute();
+					info("ejecucion de la sentecia sql5: " + sql5);
+				}
+				
+				debug("datos entrantes para el sql4(1): IDEXPERIENCIALABORAL[" + (id+1) + "]");
+				PreparedStatement ps6 = con.prepareStatement(sql4);
+				ps6.setInt(1, (id+1));
+				info("ejecucion de la sentecia sql4(1): " + sql4);
+				return ps6;
 			}
 		});
 		warn("datos enviados: RESPUESTA[" + respuesta + "]");
@@ -321,6 +386,7 @@ public class DAODatosLaboralesImpl extends Log implements DAODatosLaborales {
 	private void setBuscarDatosLaborales(ResultSet rs2) throws SQLException {
 
 		DatosLaboralesBean respuesta = new DatosLaboralesBean();
+		info("se enlistaron las experiencias laborales");
 		rs2.next();
 		respuesta.setIdexplaborl(rs2.getInt(1));
 		respuesta.setIdmotivotermino(rs2.getInt(2));

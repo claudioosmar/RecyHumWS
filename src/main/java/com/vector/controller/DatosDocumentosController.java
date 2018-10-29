@@ -48,7 +48,7 @@ public class DatosDocumentosController extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody List<DatosDocumentoBean> datos){
 		//Linea de impresion en consola que muestra datos del documento al ser creado
-		info("Se agrego el doc "+datos.toString());
+		info("Se agrego el doc "+datos.get(0).getIddocumentoNw()+"\n");
 		return new ResponseEntity<MsgBean>(documento.Crear(datos),HttpStatus.OK);
 	}
 	
@@ -63,7 +63,7 @@ public class DatosDocumentosController extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody DatosDocumentoBean datos){
 		//Ruta utilizada para la llamada de la funcion Modificar documentos
-		info("Se modifico el documento "+datos.getDescripciondocNw()+" con id "+datos.getIddocumentoLt()+" " + "al ID de persona "+datos.getIdpersona()+" con id nuevo documento "+datos.getIddocumentoNw()+" ");
+		info("Se modifico el documento "+datos.getDescripciondocNw()+" con id "+datos.getIddocumentoLt()+" " + "al ID de persona "+datos.getIdpersona()+" con id nuevo documento "+datos.getIddocumentoNw()+" "+"\n");
 		return new ResponseEntity<MsgBean>(documento.Modificar(datos),HttpStatus.OK);
 	}
 	
@@ -78,7 +78,7 @@ public class DatosDocumentosController extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosDocumentoBean datos){
 		//Linea de impresion en consola que muestra datos de los documentos al ser eliminados
-		info("se elimino el documento "+datos.getDescripciondocNw()+ "con el ID de documento "+datos.getIddocumentoNw());
+		info("se elimino el documento "+datos.getDescripciondocNw()+ "con el ID de documento "+datos.getIddocumentoNw()+"\n");
 		return new ResponseEntity<MsgBean>(documento.Eliminar(datos),HttpStatus.OK);
 	}
 	
@@ -93,7 +93,7 @@ public class DatosDocumentosController extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosDocumentoBean>>buscar(@RequestBody DatosDocumentoBean datos){
 		//mensaje de impresion en la consola que muestra los datos que relacionan la consulta
-		info("se busco el documento "+datos.toString());
+		info("se busco el documento "+datos.getIddocumentoNw()+"\n");
 		return new ResponseEntity<List<DatosDocumentoBean>>(documento.Buscar(datos),HttpStatus.OK);
 	}
 	
@@ -108,7 +108,7 @@ public class DatosDocumentosController extends Log{
 	@RequestMapping(path = "/SGRHWebService/DatosDocumento/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosDocumentoBean>> consulta(@RequestBody DatosDocumentoBean datos){
 		//mensaje de impresion de la accion realisada
-		info("Ingresando a listar documento ");
+		info("Ingresando a listar documento "+"\n");
 		List<DatosDocumentoBean> documentos = documento.Listar(datos);
 		if(documentos.isEmpty()) {
 			info("no se encontraron datos");

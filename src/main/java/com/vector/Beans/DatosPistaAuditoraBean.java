@@ -24,24 +24,24 @@ public class DatosPistaAuditoraBean {
 	
 	/** The iduser. */
 	@NotNull(message="IDUsuario Necesario")
-	private long iduserp;
+	private long iduserp=0;
 	
 	/** The formulario. */
 	@NotNull(message="Formulario Necesario")
-	private String formulario;
+	private String formulario="";
 	
 	/** The sistema. */
 	@NotNull(message="Sistema Necesario")
-	private String sistema;
+	private String sistema="";
 	
 	/** The accion. */
-	private String accion;
+	private String accion="";
 	
 	/** The ipequipo. */
 	@NotNull(message="IPEquipo Necesario")
-	private String ipequipo;
+	private String ipequipo="";
 	
-	private String statusOp;
+	private String statusOp="";
 	
 	
 	/**

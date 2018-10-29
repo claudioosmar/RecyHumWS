@@ -69,6 +69,7 @@ public class DAODatosCursoImpl extends Log implements DAODatosCurso {
 	@Override
 	@Transactional(readOnly = true)
 	public int Crear(DatosCursoBean datos) {
+		info("entra en el metodo");
 		// TODO Auto-generated method stub
 		autoin = new AutoIncrementablesBDOracle();
 		long idcurso = autoin.CursoIDUltimo(jdbcTemplate);
@@ -146,7 +147,7 @@ public class DAODatosCursoImpl extends Log implements DAODatosCurso {
 				info("entrando la sentencia if");
 				if (datos.getIdestudio() != 0) {
 					PreparedStatement ps4 = con.prepareStatement(sql6);
-					debug("datos entrantes para el sql6: " + idcurso + " " + datos.getIdestudio() + "\n");
+					debug("datos entrantes para el sql6: IDCURSO[" + idcurso + "], IDESTUDIO[" + datos.getIdestudio() + "]");
 					ps4.setLong(2, idcurso);
 					ps4.setLong(1, datos.getIdestudio());
 					ps4.execute();

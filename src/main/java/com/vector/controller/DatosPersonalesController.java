@@ -46,7 +46,7 @@ public class DatosPersonalesController extends Log {
 	public ResponseEntity<DatosPersonalesBean> insertar(@RequestBody DatosPersonalesBean datos) {
 		// Linea de impresion en consola que muestra datos de los datos personales al
 		// ser creados
-		info("Se creo una persona: " + datos.toString());
+		info("Se creo una persona: " + datos.toString()+"\n");
 		return new ResponseEntity<DatosPersonalesBean>(bodatos.Crear(datos), HttpStatus.OK);
 	}
 
@@ -62,7 +62,7 @@ public class DatosPersonalesController extends Log {
 	public ResponseEntity<MsgBean> actualizar(@RequestBody DatosPersonalesBean datos) {
 		// Linea de impresion en consola que muestra datos de los datos personales al
 		// ser modificados
-		info("Se modifico datos personales: " + datos.toString());
+		info("Se modifico datos personales: " + datos.toString()+"\n");
 		return new ResponseEntity<MsgBean>(bodatos.Modificar(datos), HttpStatus.OK);
 	}
 
@@ -78,7 +78,7 @@ public class DatosPersonalesController extends Log {
 	public ResponseEntity<MsgBean> eliminar(@RequestBody DatosPersonalesBean datos) {
 		// Linea de impresion en consola que muestra datos de los datos personales al
 		// ser eliminados
-		info("se eliminó los datos personales con id: " + datos.getIdpersona());
+		info("se eliminó los datos personales con id: " + datos.getIdpersona()+"\n");
 		return new ResponseEntity<MsgBean>(bodatos.Eliminar(datos), HttpStatus.OK);
 	}
 
@@ -94,7 +94,7 @@ public class DatosPersonalesController extends Log {
 	public ResponseEntity<DatosPersonalesBean> buscar(@RequestBody DatosPersonalesBean datos) {
 		// mensaje de impresion en la consola que muestra los datos que relacionan la
 		// consulta
-		info("se busco los datos personales: " + datos.getIdpersona());
+		info("se busco los datos personales: " + datos.getIdpersona()+"\n");
 		return new ResponseEntity<DatosPersonalesBean>(bodatos.Buscar(datos), HttpStatus.OK);
 	}
 
@@ -110,7 +110,7 @@ public class DatosPersonalesController extends Log {
 	public ResponseEntity<List<DatosPersonalesBean>> busquedaestudiosp(@PathVariable("id") long id) {
 		// Linea de impresion en consola que muestra datos de los datos personales al
 		// ser creados
-		info("Se Busco datos estudio de la persona: " + id);
+		info("Se Busco datos estudio de la persona: " + id+"\n");
 		return new ResponseEntity<List<DatosPersonalesBean>>(bodatos.BusquedaEstudiosPersona(id), HttpStatus.OK);
 	}
 
@@ -174,7 +174,7 @@ public class DatosPersonalesController extends Log {
 	public ResponseEntity<MsgBean> actualizar2(@RequestBody DatosPersonalesBean datos) {
 		// Linea de impresion en consola que muestra datos de los datos personales al
 		// ser modificados v2
-		info("Se modificaron datos personales: " + datos.toString());
+		info("Se modificaron datos personales: " + datos.toString()+"\n");
 		return new ResponseEntity<MsgBean>(bodatos.Modificar2(datos), HttpStatus.OK);
 	}
 
@@ -190,7 +190,7 @@ public class DatosPersonalesController extends Log {
 	public ResponseEntity<MsgBean> actualizar3(@RequestBody DatosPersonalesBean datos) {
 		// Linea de impresion en consola que muestra datos de los datos personales al
 		// ser modificados v2
-		info("Se actualizaron datos de suma importancia: " + datos.toString());
+		info("Se actualizaron datos de suma importancia: " + datos.toString()+"\n");
 		return new ResponseEntity<MsgBean>(bodatos.Modificar3(datos), HttpStatus.OK);
 	}
 
@@ -206,7 +206,7 @@ public class DatosPersonalesController extends Log {
 	public ResponseEntity<List<DatosPersonalesBean>> BuscarNombreCompleto(@PathVariable("cadena") String parametro) {
 		// Linea de impresion en consola que muestra datos de los datos personales al
 		// ser modificados v2
-		info("Busqueda exitosa al buscar por: " + parametro);
+		info("Busqueda exitosa al buscar por: " + parametro+"\n");
 		return new ResponseEntity<List<DatosPersonalesBean>>(bodatos.BusquedaNombreCompleto(parametro), HttpStatus.OK);
 	}
 
@@ -219,7 +219,7 @@ public class DatosPersonalesController extends Log {
 	// Ruta utilizada para la llamada de la funcion listar idiomas
 	@RequestMapping("/SGRHWebService/DatosPersonales/Listar")
 	public ResponseEntity<List<DatosPersonalesBean>> Listar(@RequestBody DatosPersonalesBean datos) {
-		info("Ingresando a listar datos personales ");
+		info("Ingresando a listar datos personales "+"\n");
 		List<DatosPersonalesBean> resp = bodatos.Listar(datos);
 		if (resp.isEmpty()) {
 			info("No se encontro contenido");

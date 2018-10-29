@@ -30,7 +30,7 @@ import com.vector.Beans.MsgBean;
  */
 @ControllerAdvice
 public class ErroresdeNegocio extends Log {
-	 
+	
 	/**
 	 * Clase: SQLException 
 	 * Descripcion:.

@@ -51,6 +51,7 @@ public class DAODatosEstudioImpl extends Log implements DAODatosEstudio {
 	 */
 	@Transactional(readOnly = true)
 	public long Crear(DatosEstudioBean datos) {
+		info("entrando al metodo");
 		// TODO Auto-generated method stub
 		autoin= new AutoIncrementablesBDOracle();
 		long idcarrera=autoin.CarreraIDUltimo(jdbcTemplate);
@@ -140,6 +141,7 @@ public class DAODatosEstudioImpl extends Log implements DAODatosEstudio {
 	@Override
 	@Transactional(readOnly = true)
 	public int Modificar(DatosEstudioBean datos) {
+		info("entrando al metodo");
 		// TODO Auto-generated method stub
 		final String sql = "update tblcarreras set NOMCARRERA =(?) where IDCARRERA =(?)";
 		final String sql2 ="update tblestudios set idgrado=(?),idlocalidad=(?),instituto=(?),peinicial=(?),pefinal=(?) where idestudio =(?)";
@@ -185,6 +187,7 @@ public class DAODatosEstudioImpl extends Log implements DAODatosEstudio {
 	@Override
 	@Transactional(readOnly = true)
 	public int Eliminar(DatosEstudioBean datos) {
+		info("entrando al metodo");
 		// TODO Auto-generated method stub
 		//final String sql="delete tblestudios where idestudio = (?)";
 		final String sql2="Select * from tblestudios where idestudio = (?)";
@@ -208,13 +211,7 @@ public class DAODatosEstudioImpl extends Log implements DAODatosEstudio {
 				ps1.setLong(1, idAux2);
 				ps1.execute();
 				info("ejecucion de la sentencia sql3: "+sql3);
-			/*	ResultSet rs = ps1.executeQuery();
-				rs.next();
-				ps1.execute();
-				info("se elimino la carrera con id: "+idAux2+"y el estudio con id: "+datos.getIdestudio());
-				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setLong(1, datos.getIdestudio());
-				ps.execute();*/
+				
 				info("se elimino la carrera con id: "+idAux2+"y el estudio con id: "+datos.getIdestudio());
 				}
 				debug("datos entrantes para el sql2: IDESTUDIO["+datos.getIdestudio()+"]");
@@ -224,6 +221,7 @@ public class DAODatosEstudioImpl extends Log implements DAODatosEstudio {
 				return ps2;
 			}
 		});
+		warn("datos enviados: RESPUESTA["+respuesta+"]");
 		return respuesta;
 	}
 
@@ -232,6 +230,7 @@ public class DAODatosEstudioImpl extends Log implements DAODatosEstudio {
 	 */
 	@Override
 	public List<DatosEstudioBean> Buscar(DatosEstudioBean datos) {
+		info("entrando al metodo");
 		// TODO Auto-generated method stub
 		final String sql = "select * from tblestudios est,tblcarreras carr,tblgradosests gra,tbllocalidades loc, tblpiv15 piv where est.idcarrera = carr.idcarrera and est.idlocalidad = loc.idlocalidad and est.idgrado = gra.idgrado and piv.idestudio=est.idestudio and piv.idpersona = (?)";
 		jdbcTemplate.update(new PreparedStatementCreator() {
@@ -256,6 +255,7 @@ public class DAODatosEstudioImpl extends Log implements DAODatosEstudio {
 	 */
 	@Override
 	public List<DatosEstudioBean> Listar() {
+		info("entrando al metodo");
 		// TODO Auto-generated method stub
 		final String sql = "select * from tblestudios est,tblcarreras carr,tblgradosests gra,tbllocalidades loc where est.idcarrera = carr.idcarrera and est.idlocalidad = loc.idlocalidad and est.idgrado = gra.idgrado";
 		info("ejecucion de la sentencia sql: "+sql);
@@ -271,7 +271,7 @@ public class DAODatosEstudioImpl extends Log implements DAODatosEstudio {
 private void setDatosEstudio(ResultSet rs) throws SQLException{
 	datos= new ArrayList<DatosEstudioBean>();
 	DatosEstudioBean respuesta;
-	info("entra en el while");
+	info("se enlistaron los estudios");
 	while(rs.next()) {
 		respuesta = new DatosEstudioBean();
 		respuesta.setIdgrado(rs.getInt(2));

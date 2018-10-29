@@ -249,15 +249,7 @@ public class DAODatosPersonalesImpl extends Log implements DAODatosPersonales {
 				ResultSet rs14 = ps14.executeQuery();
 				info("ejecucion de la sentencia sql6: "+sql6);
 				rs14.next();
-//				// Quinteava insersion -- Correos -- Correo Principal
-//				debug("datos entrantes para el sql7: IDPERSONA["+iDpersona+"], CORREOPRINCIPAL"+datos.getCorreoPrincipal()+"]");
-//				PreparedStatement ps15 = con.prepareStatement(sql7);
-//				ps15.setInt(1, iDpersona);
-//				ps15.setInt(2, 1);
-//				ps15.setString(3, datos.getCorreoPrincipal());
-//				ResultSet rs15 = ps15.executeQuery();
-//				info("ejecucion de la sentencia sql7: "+sql7);
-//				rs15.next();
+
 				// dieciseisava insersion -- Correos -- Correo Secundario --nulos
 				if (!datos.getCorreoSecundario().equals(" ")) {
 					info("entra en el if");

@@ -49,7 +49,7 @@ public class DatosCorreoAltController extends Log {
 	@RequestMapping(path = "/SGRHWebService/DatosCorreo/Crear", method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> insertar(@RequestBody @Valid List<DatosCorreoAltBean> datos){
 		//Linea de impresion en consola que muestra datos del correoalt al ser creados
-		info("Se creo un correo: "+datos.toString());
+		info("Se creo un correo: "+datos.get(0).getCorreoNw()+"\n");
 		return new ResponseEntity<MsgBean>(correo.Crear(datos),HttpStatus.OK);
 	}
 	
@@ -64,7 +64,7 @@ public class DatosCorreoAltController extends Log {
 	@RequestMapping(path = "/SGRHWebService/DatosCorreo/Modificar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean>actualizar(@RequestBody @Valid DatosCorreoAltBean datos){
 		//Linea de impresion en consola que muestra datos del correoalt al ser modificados
-		info("Se modifico el correo: "+datos.toString());
+		info("Se modifico el correo: "+datos.getCorreoNw()+"\n");
 		return new ResponseEntity<MsgBean>(correo.Modificar(datos),HttpStatus.OK);
 	}
 	
@@ -79,7 +79,7 @@ public class DatosCorreoAltController extends Log {
 	@RequestMapping(path = "/SGRHWebService/DatosCorreo/Eliminar",method = RequestMethod.POST)
 	public ResponseEntity<MsgBean> eliminar(@RequestBody @Valid DatosCorreoAltBean datos){
 		//Linea de impresion en consola que muestra datos del correoalt al ser eliminados
-		info("se elimino el correo: "+datos.getCorreoNw());
+		info("se elimino el correo: "+datos.getCorreoNw()+"\n");
 		return new ResponseEntity<MsgBean>(correo.Eliminar(datos),HttpStatus.OK);
 	}
 	
@@ -94,7 +94,7 @@ public class DatosCorreoAltController extends Log {
 	@RequestMapping(path = "/SGRHWebService/DatosCorreo/Buscar",method=RequestMethod.POST)
 	public ResponseEntity<DatosCorreoAltBean> buscar(@RequestBody @Valid DatosCorreoAltBean datos){
 		//mensaje de impresion en la consola que muestra los datos que relacionan la consulta
-		info("se busco el correo de la persona: "+datos.getIdpersona());
+		info("se busco el correo de la persona: "+datos.getIdpersona()+"\n");
 		return new ResponseEntity<DatosCorreoAltBean>(correo.Buscar(datos),HttpStatus.OK);
 	}
 	
@@ -109,7 +109,7 @@ public class DatosCorreoAltController extends Log {
 	@RequestMapping(path = "/SGRHWebService/DatosCorreo/Listar",method=RequestMethod.POST)
 	public ResponseEntity<List<DatosCorreoAltBean>> consulta(@RequestBody @Valid DatosCorreoAltBean datos){
 		//mensaje de impresion de la accion realisada
-		info("Ingresando a listar los correos ");
+		info("Ingresando a listar los correos "+"\n");
 		List<DatosCorreoAltBean> correos = correo.Listar(datos);
 		if(correos.isEmpty()) {
 			info("no se encontraron datos");

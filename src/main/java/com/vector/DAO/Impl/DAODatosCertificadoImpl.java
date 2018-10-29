@@ -54,6 +54,7 @@ public class DAODatosCertificadoImpl extends Log implements DAODatosCertificado 
 	@Override
 	@Transactional
 	public int Crear(DatosCertificadoBean datos) {
+		info("entra en el metodo");
 		// TODO Auto-generated method stub	
 		autoin = new AutoIncrementablesBDOracle();
 		int IDCertificado = autoin.CertificadoIDUltimo(jdbcTemplate);
@@ -81,6 +82,7 @@ public class DAODatosCertificadoImpl extends Log implements DAODatosCertificado 
 				 
 			}
 		});
+		warn("datos enviados: RESPUESTA["+respuesta+"]");
 		return respuesta;
 		
 	}
@@ -91,6 +93,7 @@ public class DAODatosCertificadoImpl extends Log implements DAODatosCertificado 
 	@Override
 	@Transactional(readOnly = true)
 	public int Modificar(DatosCertificadoBean datos) {
+		info("entra en el metodo");
 		// TODO Auto-generated method stub
 		//SENTENCIA SQL PARA LA MODIFICACION DE DATOS EN LA TABLA CERTIFICADO
 		final String sql= "update tblcertificado set iddoc = (?), nomcertificado = (?) where idcertificado = (?) and iddoc = (?)";
@@ -109,6 +112,7 @@ public class DAODatosCertificadoImpl extends Log implements DAODatosCertificado 
 				 
 			}
 		});
+		warn("datos enviados: RESPUESTA["+respuesta+"]");
 		return respuesta;
 	}
 
@@ -119,6 +123,7 @@ public class DAODatosCertificadoImpl extends Log implements DAODatosCertificado 
 	@Override
 	@Transactional(readOnly = true)
 	public int Eliminar(DatosCertificadoBean datos) {
+		info("entra en el metodo");
 		// TODO Auto-generated method stub
 		//SENTENCIA SQL DE ELIMINACION PARA LA TABLA CERTIFICADO
 		final String sql="delete tblcertificado where idcertificado = (?) and iddoc = (?)";
@@ -134,6 +139,7 @@ public class DAODatosCertificadoImpl extends Log implements DAODatosCertificado 
 				return ps;
 			}
 		});
+		warn("datos enviados: RESPUESTA["+respuesta+"]");
 		return respuesta;
 	}
 
@@ -144,6 +150,7 @@ public class DAODatosCertificadoImpl extends Log implements DAODatosCertificado 
 	@Override
 	@Transactional//(readOnly = true)
 	public List<DatosCertificadoBean> Buscar(DatosCertificadoBean datos) {
+		info("entra en el metodo");
 		// TODO Auto-generated method stub
 		//SENTENCIA SQL PARA UNA CONSULTA EN LA TABLA CERTIFICADO
 		final String sql="select * from tblpiv05 piv5, tblpiv15 piv15, tblcertificado cert where piv15.idestudio=piv5.idestudio and piv5.idcertificado=cert.idcertificado and piv15.idpersona = (?) ";
@@ -170,6 +177,7 @@ public class DAODatosCertificadoImpl extends Log implements DAODatosCertificado 
 	 */
 	@Override
 	public List<DatosCertificadoBean> Listar() {
+		info("entra en el metodo");
 		// TODO Auto-generated method stub
 		final String sql="select * from tblcertificado";
 		info("ejecuta sentencia sql: "+sql);

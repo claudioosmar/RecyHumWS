@@ -198,8 +198,9 @@ public class DAODatosIdiomasImpl extends Log implements DAODatosIdiomas {
 		info("entra en el metodo");
 		datos = new ArrayList<DatosIdiomasBean>();
 		DatosIdiomasBean respuesta;
+		info("se enlistaron los idiomas");
 		while (rs.next()) {
-			info("entra en while");
+			
 			respuesta = new DatosIdiomasBean();
 			respuesta.setIddominio(rs.getInt(1));
 			respuesta.setPcjescrito(rs.getInt(2));

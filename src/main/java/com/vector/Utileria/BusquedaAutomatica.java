@@ -82,25 +82,55 @@ public class BusquedaAutomatica extends Log{
 	 */
 	@RequestMapping(value = "/SGRHWebService/BusquedaAutomatica/ListarCP",method=RequestMethod.POST)
 	public List<BusquedaAutomatica>BusquedaCP(BusquedaAutomatica datos4) {
+		info("entra en el metodo: codpost["+datos4.getCodigopost()+"]");
 		//sentencia sql para recuperar los estados
-		final String sql4 = "select * from tbllocalidades l, tblmunicipios m, tblestados e where l.idmunicipio = m.idmunicipio and m.idestado=e.idestado and l.codpost = (?)";
-		
+		final String sql4 = "SELECT * FROM tbllocalidades WHERE codpost = (?)";
+		final String sql5 = "SELECT idlocalidad, idmunicipio, nombre FROM tbllocalidades WHERE codpost = (?)";
+		final String sql6 = "SELECT idestado, nombre FROM tblmunicipios WHERE idmunicipio = (?)";
+		final String sql7 = "SELECT nombre FROM tblestados WHERE idestado = (?)";
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				//preparacion de la sentencia
-				info("datos en entrada para el sql: CODIGOPOSTAL["+datos4.getCodigopost()+"]");
-				PreparedStatement ps4 = con.prepareStatement(sql4);	
+				info("datos en entrada para el sql5: CODIGOPOSTAL["+datos4.getCodigopost()+"]");
+				PreparedStatement ps4 = con.prepareStatement(sql5);	
 				ps4.setInt(1, datos4.getCodigopost());
-				//mensaje en consola
+				ResultSet rs4 = ps4.executeQuery();		
+				if(rs4.next());
+				info("ejecucion de la sentencia sql5: "+sql5);
+				int idmunicipio = rs4.getInt(2);
+				warn("datos enviados: IDMUNICIPIO["+idmunicipio+"]");	
+				datos4.setIdlocalidad(rs4.getInt(1));
+				datos4.setNombrelocalidad(rs4.getString(3));
+				warn("datos enviados: IDLOCALIDAD["+rs4.getInt(1)+"], NOMBRELOCALIDAD["+rs4.getString(3)+"]");
+				
+				info("datos entrantes para el sql6: IDMUNICIPIO["+idmunicipio+"]");
+				PreparedStatement ps5 = con.prepareStatement(sql6);
+				ps5.setInt(1, idmunicipio);
+				ResultSet rs5 = ps5.executeQuery();
+				if(rs5.next());
+				info("ejecucion de la sentencia sql5: "+sql5);
+				datos4.setNombremunicipio(rs5.getString(2));
+				int idestado = rs5.getInt(1);
+				warn("datos enviados: NOMBREMUNICIPIO["+rs5.getString(2)+"], IDESTADO["+idestado+"]");
+				
+				info("datos entrantes para el sql7: IDESTADO["+idestado+"]");
+				PreparedStatement ps6 = con.prepareStatement(sql7);
+				ps6.setInt(1, idestado);
+				ResultSet rs6 = ps6.executeQuery();
+				if(rs6.next());
+				info("ejecucion de la sentencia sql5: "+sql5);
+				datos4.setNombreestado(rs6.getString(1));
+				warn("datos enviados: NOMBREESTADO["+rs6.getString(1)+"]");
+				
+				info("datos en entrada para el sql5: CODIGOPOSTAL["+datos4.getCodigopost()+"]");
+				PreparedStatement ps7 = con.prepareStatement(sql4);	
+				ps7.setInt(1, datos4.getCodigopost());
 				info("ejecucion de la sentencia sql4: "+sql4);
-				// recuperando los datos
-				ResultSet rs4 = ps4.executeQuery();
-				//metodo set que retorna las filas de la sentencia
-				info("llamada al metodo setDatosBusquedaEstados(rs)");
+				
+				info("llamada al metodo setDatosBusquedaCP(rs4)");
 				setDatosBusquedaCP(rs4);
-				//retorna la sentencia
-				return ps4;
+				return ps7;
 		
 			}
 		});
@@ -120,15 +150,12 @@ public class BusquedaAutomatica extends Log{
 	 */
 	private void setDatosBusquedaCP(ResultSet rs4) throws SQLException{
 		datos4= new ArrayList<BusquedaAutomatica>();
-		BusquedaAutomatica respuesta4;
+		BusquedaAutomatica datos4;
 		info("entra en el while");
 		while(rs4.next()) {
-			respuesta4 = new BusquedaAutomatica();
-			respuesta4.setIdlocalidad(rs4.getInt(1));
-			respuesta4.setNombrelocalidad(rs4.getString(3));
-			respuesta4.setNombremunicipio(rs4.getString(8));
-			respuesta4.setNombreestado(rs4.getString(12));
-			this.datos4.add(respuesta4);
+			datos4 = new BusquedaAutomatica();
+			
+			this.datos4.add(datos4);
 			}
 		info("se enlisto todo");
 	}
